@@ -2,14 +2,14 @@ package com.springmvc.DTO;
 
 public class emergencyRoom 
 {
-	int number;
-	String hosName;
-	String hosaddr;
-	int distance;
-	String travelTime;
-	int numOfBad;
-	boolean isPediatrics;
-	boolean isObstetricsAndGynecology;
+	private int number;
+	private String hosName;
+	private String hosaddr;
+	private int distance;
+	private String travelTime;
+	private int numOfBad;
+	private boolean isPediatrics;
+	private boolean isObstetricsAndGynecology;
 	
 	public int getNumber() {
 		return number;

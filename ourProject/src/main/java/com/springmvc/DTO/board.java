@@ -2,15 +2,15 @@ package com.springmvc.DTO;
 
 import java.util.Date;
 
-public class board 
+public class Board 
 {
-	int number;
-	String Date;
-	String subject;
-	String category;
-	String viewCount;
-	Date supportDeadline;
-	boolean isOverDeadline;
+	private int number;
+	private String Date;
+	private String subject;
+	private String category;
+	private String viewCount;
+	private Date supportDeadline;
+	private boolean isOverDeadline;
 	
 	public int getNumber() {
 		return number;

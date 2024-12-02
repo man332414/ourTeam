@@ -2,11 +2,11 @@ package com.springmvc.DTO;
 
 public class parentingDiary 
 {
-	long today = System.currentTimeMillis();
-	String wather;
-	String myMood;
-	String diaryText;
-	String fileName;
+	private long today = System.currentTimeMillis();
+	private String wather;
+	private String myMood;
+	private String diaryText;
+	private String fileName;
 	
 	public long getToday() {
 		return today;

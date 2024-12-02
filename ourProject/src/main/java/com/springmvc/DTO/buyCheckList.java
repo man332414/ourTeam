@@ -2,14 +2,14 @@ package com.springmvc.DTO;
 
 public class buyCheckList 
 {
-	int num;
-	String useCategory;
-	String gradeCategory;
-	String productName;
-	int productPrice;
-	int quantity;
-	String acquisitionPath;
-	String acquisitionMethod;
+	private int num;
+	private String useCategory;
+	private String gradeCategory;
+	private String productName;
+	private int productPrice;
+	private int quantity;
+	private String acquisitionPath;
+	private String acquisitionMethod;
 	
 	
 	public int getNum() {
