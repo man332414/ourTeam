@@ -2,6 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
@@ -12,9 +13,12 @@
 	</div>
 	<div>
 		<form:form modelAttribute="member" method="post">
-			<p>아이디 : <form:input path="userId" name="id" /></p>
+			<p>
+				아이디 : <form:input path="userId" name="id" id="userId" />
+				<button id="checkDupl">중복검사</button>
+			</p>
 			<p>비밀번호 : <form:password path="password" name="id" /></p>
-			<p>E-mail : <form:input path="email" name="email" /></p>
+			<p>E-mail : <form:input type="email" path="email" name="email" /></p>
 			<p>이름 : <form:input path="name" name="name" /></p>
 			<p>사이트에서 사용할 별명 : <form:input path="nikName" name="nikName" /></p>
 			<p>아기생일 : <form:input path="babyBirthDay" name="babyBirthDay" /></p>
@@ -24,9 +28,72 @@
 				<form:option value="lgu+">LG U+</form:option>
 				<form:option value="알뜰">알뜰폰</form:option>
 			</form:select></p>
-			<p>전화번호 : <form:input type="number" path="phone" name="phone" /></p>
-			<p><input type="submit" value="회원가입"></p>
+			<p>전화번호 : <form:input type="tel" path="phone" name="phone" minlength="11" maxlenght="11" id="phoneNumber" /></p>
+			<p>
+				<input type="submit" value="회원가입" id="submitbtn">
+			</p>
 		</form:form>
 	</div>
 </body>
+<script type="text/javascript">
+	// 전화번호 자릿수 필터
+	let phoneNumber = document.querySelector("#phoneNumber");
+	
+	phoneNumber.addEventListener("input", function(){
+		if(this.value.length > 11)
+			{
+				console.log("전화번호 입력 값 출력 : "+phoneNumber);
+				this.value = this.value.slice(0, 11);
+			}
+	});
+</script>
+<script type="text/javascript">
+// 	아이디 중복검사
+	let isDupl = document.querySelector("#checkDupl");
+	console.log(isDupl);
+
+	isDupl.addEventListener("click", duplconfirm);
+	
+	function duplconfirm(e)
+	{
+		e.preventDefault();
+		let userId = document.querySelector("#userId").value;
+		let userIdtoJsonify = {"userId" : userId};
+		console.log("userIdtoJsonify : "+userIdtoJsonify);
+		$.ajax({
+	        url: "/ourProject/isDuplicate",
+	        type: "POST",
+	        contentType: "application/json",
+	        data: JSON.stringify(userIdtoJsonify),
+	        dataType: "json",
+	        success: function(response) {
+	        	console.log("response : " + response.isDuplicate);
+	            if (response.isDuplicate == "true") 
+	            {
+	                alert("중복 ID가 있습니다.");
+	            }
+	            else 
+	            {
+	                alert("사용 가능한 ID입니다.");
+	            }
+	        },
+	        error: function(error) {
+	            console.error("에러발생:", error);
+	        }
+	    });
+	}
+</script>
+
+<script type="text/javascript">
+// 	회원가입 성공 안내
+	let submitbtn = document.querySelector("#submitbtn");
+	console.log(submitbtn);
+	
+	submitbtn.addEventListener("click", subFunc);
+	
+	function subFunc()
+	{
+		alert("회원가입 성공했습니다.")
+	}
+</script>
 </html>

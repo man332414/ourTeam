@@ -31,4 +31,16 @@ public class memberServiceImpl implements memberService
 		memberRepository.updateMember(member);
 	}
 
+	@Override
+	public void deleteMember(String userId) 
+	{
+		memberRepository.deleteMember(userId);
+	}
+
+	@Override
+	public int isDuplicate(String userId) 
+	{
+		return memberRepository.isDuplicate(userId);
+	}
+
 }

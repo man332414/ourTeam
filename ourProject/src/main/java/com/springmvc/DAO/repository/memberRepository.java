@@ -9,4 +9,8 @@ public interface memberRepository
 	Member getMemberById(String userId);
 
 	void updateMember(Member member);
+
+	void deleteMember(String userId);
+
+	int isDuplicate(String userId);
 }
