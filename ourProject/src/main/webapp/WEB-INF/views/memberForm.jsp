@@ -48,7 +48,7 @@
 	});
 </script>
 <script type="text/javascript">
-// 	아이디 중복검사
+	// 	아이디 중복검사
 	let isDupl = document.querySelector("#checkDupl");
 	console.log(isDupl);
 
@@ -85,7 +85,7 @@
 </script>
 
 <script type="text/javascript">
-// 	회원가입 성공 안내
+	// 	회원가입 성공 안내
 	let submitbtn = document.querySelector("#submitbtn");
 	console.log(submitbtn);
 	

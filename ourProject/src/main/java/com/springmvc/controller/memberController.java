@@ -25,6 +25,12 @@ public class memberController
 //	--------------------------------- 집으로 가기 ---------------------------------
 
 	@GetMapping
+	public String goHome1()
+	{
+		return "home";
+	}
+	
+	@GetMapping("/home")
 	public String goHome()
 	{
 		return "home";
@@ -49,7 +55,7 @@ public class memberController
 	}
 	
 	@PostMapping("isDuplicate")
-	public ResponseEntity<Map<String,String>> isDuplicate(@RequestBody Map<String, String> MapUserId)
+	public ResponseEntity<Map<String, String>> isDuplicate(@RequestBody Map<String, String> MapUserId)
 	{
 		System.out.println("controller.isDuplicate : "+MapUserId.get("userId"));
 		String userId = MapUserId.get("userId");
@@ -104,6 +110,6 @@ public class memberController
 		memberService.deleteMember(userId);
 		System.out.println("------------------------------------------");
 		
-		return "home";
+		return "redirect:/home";
 	}
 }

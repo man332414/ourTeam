@@ -40,8 +40,9 @@
 	
 	deletebtn.addEventListener("click", delfunc);
 	
-	function delfunc()
+	function delfunc(e)
 	{
+		e.preventDefault();
 		console.log("함수입장");
 		let result = window.confirm("정말 삭제하시겠습니까?");
 		if(result)
