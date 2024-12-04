@@ -105,19 +105,7 @@ public class EmergencyController {
 	}
 	
 	//HospitalListAddOpenAPI
-	
-	
-	
 		
-//	//@RequestMapping(value="/all")
-//	@GetMapping("/all")
-//	public String requestAllBooks(Model model) {
-//		System.out.println("000.bc AllBook : 진입");
-//		List<emergencyRoom> list= emergencyService.getALLBookList();
-//		model.addAttribute("bookList",list);
-//		return "books";
-//	}
-//	
 
 	@GetMapping("/all")
 	public ModelAndView requestAllBooks() {
