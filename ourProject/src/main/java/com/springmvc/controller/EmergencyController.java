@@ -41,21 +41,12 @@ import com.springmvc.service.EmergencyService;
 @RequestMapping("/emergencys")
 public class EmergencyController {
 	
-
 	@Autowired // 컴포넌트 스캔되어야 함
 	private EmergencyService emergencyService;
 	
 	//private EmergencyValidator emergencyValidator;
 	
-	
-	@RequestMapping("/emergency")
-	public String welcome(Model model) {
-		model.addAttribute(model);
-		return "emergency";
-	}
-		
-	
-	//@RequestMapping(value="/books", method=RequestMethod.GET)
+	//@RequestMapping(value="/emergencys", method=RequestMethod.GET)
 	@GetMapping
 	public String requestRoomList(Model model) {
 		System.out.println("000.rc : requestRoomList 진입");
@@ -67,6 +58,15 @@ public class EmergencyController {
 
 		return "emergencys";
 	}
+		
+	
+	@RequestMapping("/emergency")
+	public String welcome(Model model) {
+		model.addAttribute(model);
+		return "emergency";
+	}
+		
+	
 	
 	@GetMapping("/all")
 	public ModelAndView requestAllRooms() {
@@ -105,30 +105,18 @@ public class EmergencyController {
 	}
 	
 	//HospitalListAddOpenAPI
-		
-
-	@GetMapping("/all")
-	public ModelAndView requestAllBooks() {
-		System.out.println("000.bc mav AllBook : 진입");
-		ModelAndView modelAndView = new ModelAndView();
-		List<emergencyRoom> list= emergencyService.getALLemergencyRoomList();
-		modelAndView.addObject("bookList",list);
-		modelAndView.setViewName("books");
-		return modelAndView;
-	}
 	
 	 
 	
 	@ModelAttribute
 	public void addAttributrs(Model model) {
-		model.addAttribute("addTitle","신규도서등록");
+		model.addAttribute("addTitle","신규병원등록");
 	}
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		binder.setAllowedFields("bookId","name","ubitPrice","Author","Description",
-				"publisher","category","unitsInStock","totalPages",
-				"releaseDate","condition","bookImage");
+		binder.setAllowedFields("number","hosName","hosaddr","distance","travelTime",
+				"numOfBad","isPediatrics","isObstetricsAndGynecology");
 	}
 
 }
