@@ -134,7 +134,7 @@
       	<artifactId>mysql-connector-java</artifactId>
       	<version>8.0.33</version>
  	 </dependency>	
-<<<<<<< HEAD
+
  	 
  	 <!--json-->
 	<dependency>
@@ -147,8 +147,7 @@
       	<artifactId>jackson-mapper-asl</artifactId>
       	<version>1.9.11</version>
  	 </dependency>	
-=======
->>>>>>> 878c28593c852c6fe9dbdcad05f7eb3913744ffb
+
 
   </dependencies>
   <build>

@@ -16,6 +16,14 @@ public class EemergencyServiceImpl implements EmergencyService {
 	@Autowired
 	private EmergencyRoomRepository emergencyRoomRepository;
 
+	public EemergencyServiceImpl() {
+		
+		System.out.println("EemergencyServiceImpl: 진입");
+		
+		
+		return ;
+	}
+	
 	@Override
 	public List<emergencyRoom> getALLemergencyRoomList() {
 		// TODO Auto-generated method stub
@@ -24,7 +32,7 @@ public class EemergencyServiceImpl implements EmergencyService {
 	}
 
 	@Override
-<<<<<<< HEAD
+
 	public List<emergencyRoom> getemergencyRoomListByAddress(String address) {
 		List<emergencyRoom> roomsByAddress = emergencyRoomRepository.getemergencyRoomListByAddress(address);
 		
@@ -33,35 +41,24 @@ public class EemergencyServiceImpl implements EmergencyService {
 
 	@Override
 	public List<emergencyRoom> getemergencyRoomListByChange(String ischanged) {
-=======
-	public List<emergencyRoom> getemergencyRoomListByCategory(String category) {
->>>>>>> 878c28593c852c6fe9dbdcad05f7eb3913744ffb
+
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-<<<<<<< HEAD
 
 
 	@Override
 	public emergencyRoom getemergencyRoomkByNum(int number) {
-=======
-	@Override
-	public Set<emergencyRoom> getemergencyRoomListByFilter(Map<String, List<String>> filter) {
->>>>>>> 878c28593c852c6fe9dbdcad05f7eb3913744ffb
-		// TODO Auto-generated method stub
+	// TODO Auto-generated method stub
 		return null;
 	}
 
-<<<<<<< HEAD
-
-=======
 	@Override
 	public emergencyRoom getRoomByNumber(int number) {
 		// TODO Auto-generated method stub
 		return null;
 	}
->>>>>>> 878c28593c852c6fe9dbdcad05f7eb3913744ffb
+
 
 	@Override
 	public void setNewemergencyRoom(emergencyRoom emergencyRoom) {
@@ -81,7 +78,16 @@ public class EemergencyServiceImpl implements EmergencyService {
 		
 	}
 
-	
+	@Override
+	public List<emergencyRoom> getemergencyRoomListByCategory(String category) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
+	@Override
+	public Set<emergencyRoom> getemergencyRoomListByFilter(Map<String, List<String>> filter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

@@ -1,6 +1,5 @@
 package com.springmvc.controller;
 
-
 import java.io.File;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.ModelAttribute;
-<<<<<<< HEAD
+
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,12 +30,12 @@ import com.springmvc.DTO.emergencyRoom;
 import com.springmvc.api.HospitalListAddOpenAPI;
 import com.springmvc.service.EmergencyService;
 import com.springmvc.exception.AddressException;
-=======
+
 import org.springframework.web.servlet.ModelAndView;
 
 import com.springmvc.DTO.emergencyRoom;
 import com.springmvc.service.EmergencyService;
->>>>>>> 878c28593c852c6fe9dbdcad05f7eb3913744ffb
+
 
 @Controller
 @RequestMapping("/emergencys")
@@ -55,22 +54,17 @@ public class EmergencyController {
 		return "emergency";
 	}
 		
-<<<<<<< HEAD
-  //@RequestMapping(value="/rooms", method=RequestMethod.GET)
-	@GetMapping
-	public String requestRoomList(Model model) {
-		System.out.println("000.rc : requestRoomList 진입");
-=======
+	
 	//@RequestMapping(value="/books", method=RequestMethod.GET)
 	@GetMapping
 	public String requestRoomList(Model model) {
-		System.out.println("000.rc : RoomList 진입");
->>>>>>> 878c28593c852c6fe9dbdcad05f7eb3913744ffb
+		System.out.println("000.rc : requestRoomList 진입");
+
 		List<emergencyRoom> list= emergencyService.getALLemergencyRoomList();
 		System.out.println("뷰이동"+list);
 		model.addAttribute("emergencylist",list);
 		
-<<<<<<< HEAD
+
 		return "emergencys";
 	}
 	
@@ -97,11 +91,6 @@ public class EmergencyController {
 		return "emergencys";
 	} 
 	
-	@ModelAttribute
-	public void addAttributrs(Model model) {
-		model.addAttribute("addTitle","신규병원등록");
-	}
-	
 	@GetMapping("addapi")
 	public ModelAndView addapiRooms() {
 		System.out.println("===============================");
@@ -119,20 +108,7 @@ public class EmergencyController {
 	
 	
 	
-	
-	
-	
-	
-	@InitBinder
-	public void initBinder(WebDataBinder binder) {
-		binder.setAllowedFields("number","hosName","hosaddr","distance","travelTime",
-				"numOfBad","isPediatrics","isObstetricsAndGynecology");
-	}
-	
-=======
-		return "emergency";
-	}
-	
+		
 //	//@RequestMapping(value="/all")
 //	@GetMapping("/all")
 //	public String requestAllBooks(Model model) {
@@ -166,9 +142,5 @@ public class EmergencyController {
 				"publisher","category","unitsInStock","totalPages",
 				"releaseDate","condition","bookImage");
 	}
-	
 
-
-	
->>>>>>> 878c28593c852c6fe9dbdcad05f7eb3913744ffb
 }
