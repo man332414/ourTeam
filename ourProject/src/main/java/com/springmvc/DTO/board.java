@@ -8,7 +8,7 @@ public class Board
 	private String Date;
 	private String subject;
 	private String category;
-	private String viewCount;
+	private int viewCount;
 	private Date supportDeadline;
 	private boolean isOverDeadline;
 	
@@ -36,10 +36,10 @@ public class Board
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getViewCount() {
+	public int getViewCount() {
 		return viewCount;
 	}
-	public void setViewCount(String viewCount) {
+	public void setViewCount(int viewCount) {
 		this.viewCount = viewCount;
 	}
 	public Date getSupportDeadline() {
@@ -48,4 +48,14 @@ public class Board
 	public void setSupportDeadline(Date supportDeadline) {
 		this.supportDeadline = supportDeadline;
 	}
+	
+	public Board toEntity() {
+		Board board = new Board();
+		board.setSubject(this.subject);
+		board.setDate(this.Date);
+		board.setCategory(this.category);
+		return board;
+	}
+
+	public Board() {}
 }

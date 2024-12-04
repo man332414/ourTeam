@@ -1,7 +1,10 @@
 package com.springmvc.DAO.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.springmvc.DAO.repository.memberRepository;
 import com.springmvc.DTO.Member;
@@ -41,6 +44,13 @@ public class memberServiceImpl implements memberService
 	public int isDuplicate(String userId) 
 	{
 		return memberRepository.isDuplicate(userId);
+	}
+
+	@Override
+	public List<Member> readAllMember() 
+	{
+		List<Member> members = memberRepository.readAllMember();
+		return members;
 	}
 
 }

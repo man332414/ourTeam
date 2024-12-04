@@ -29,7 +29,7 @@ public class MonitoringInterceptor implements HandlerInterceptor
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception 
 	{
-		logger.info("요청 처리 종료 시각 : " + getCurrentTime());
+
 	}
 
 	@Override

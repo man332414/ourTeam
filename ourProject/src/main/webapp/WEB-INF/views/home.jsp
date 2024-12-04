@@ -7,6 +7,8 @@
 <title>home</title>
 </head>
 <body>
- <a href="signIn">sign-In</a>
+ <p><a href="signIn">sign-In</a></p>
+ <p><a href="readMembers">readMembers</a></p>
+ <p><a href="board">Board</a></p>
 </body>
 </html>

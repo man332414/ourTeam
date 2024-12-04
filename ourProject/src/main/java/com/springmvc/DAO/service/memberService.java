@@ -1,5 +1,9 @@
 package com.springmvc.DAO.service;
 
+import java.util.List;
+
+import org.springframework.ui.Model;
+
 import com.springmvc.DTO.Member;
 
 public interface memberService 
@@ -13,4 +17,6 @@ public interface memberService
 	void deleteMember(String userId);
 
 	int isDuplicate(String userId);
+
+	List<Member> readAllMember();
 }

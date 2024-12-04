@@ -42,7 +42,6 @@
 	
 	function delfunc(e)
 	{
-		e.preventDefault();
 		console.log("함수입장");
 		let result = window.confirm("정말 삭제하시겠습니까?");
 		if(result)
@@ -55,6 +54,6 @@
 			{
 				alert("취소하였습니다.")
 			}
-	}
+	}	
 </script>
 </html>

@@ -1,10 +1,13 @@
 package com.springmvc.DAO.repository;
 
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 
 import com.springmvc.DTO.Member;
 
@@ -70,6 +73,16 @@ public class memberRepositoryImpl implements memberRepository
 		int cont = template.queryForObject(sql, new Object[] {userId}, Integer.class);
 		
 		return cont;
+	}
+	
+	@Override
+	public List<Member> readAllMember() 
+	{
+		System.out.println("memberRepository.readAllMember 입장");
+		String sql = "select * from member";
+		List<Member> members = template.query(sql, new memberRowMapper());
+		
+		return members;
 	}
 
 }

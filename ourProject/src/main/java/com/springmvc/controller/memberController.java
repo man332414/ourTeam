@@ -1,6 +1,7 @@
 package com.springmvc.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class memberController
 //	--------------------------------- 집으로 가기 ---------------------------------
 
 	@GetMapping
-	public String goHome1()
+	public String goHomedefault()
 	{
 		return "home";
 	}
@@ -77,6 +78,23 @@ public class memberController
 		return ResponseEntity.ok(response);
 	}
 
+//	--------------------------------- 회원정보 읽어오기 ---------------------------------
+	
+	@GetMapping("/readMembers")
+	public String readAllMember(Model model)
+	{
+		System.out.println("memberController.readAllMember() 입장");
+		//전처리 : 해당없음
+		//모델이동
+		List<Member> members = memberService.readAllMember();
+		System.out.println("memberController.readAllMember() 모델 다녀왔고 뭐가져왔나 보자 하나만 꺼내봐라 : " + members.get(0).getUserId());
+		System.out.println("------------------------------------------");
+		//뷰 이동
+		model.addAttribute("members", members);
+		return "members";
+	}
+	
+	
 //	--------------------------------- 회원정보 업데이트 ---------------------------------
 	
 	@GetMapping("/updateMember")
