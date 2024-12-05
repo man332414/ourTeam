@@ -45,4 +45,9 @@
 	 	<beans:property name="username" value="root" />
 	 	<beans:property name="password" value="1234" />
 	 </beans:bean>
+	 
+	 <interceptors>
+	 	<beans:bean class="com.springmvc.interceptor.MonitoringInterceptor" />
+	 </interceptors>
+	 
 </beans:beans>

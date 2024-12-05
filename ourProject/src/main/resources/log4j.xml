@@ -7,7 +7,7 @@
 		<param name="append" value="false"/>
 		<param name="maxFileSize" value="10KB"/>
 		<param name="maxBackupIndex" value="5"/>
-		<param name="file" value="/ourProject/logs/monitor.log"/>
+		<param name="file" value="d:\project\ourProject\src\main\webapp\logs"/>
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
 		</layout>
@@ -44,7 +44,7 @@
 	<!-- Root Logger -->
 	<root>
 		<priority value="warn" />
-		<appender-ref ref="console" />
+		<appender-ref ref="monitor" />
 	</root>
 	
 </log4j:configuration>

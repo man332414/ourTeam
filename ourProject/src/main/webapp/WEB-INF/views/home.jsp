@@ -9,6 +9,6 @@
 <body>
  <p><a href="signIn">sign-In</a></p>
  <p><a href="readMembers">readMembers</a></p>
- <p><a href="board">Board</a></p>
+ <p><a href="board/list">Board</a></p>
 </body>
 </html>

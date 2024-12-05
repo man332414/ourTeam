@@ -1,6 +1,7 @@
 package com.springmvc.DAO.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.springmvc.DTO.Board;
 
@@ -8,9 +9,11 @@ public interface boardService
 {
 
 	List<Board> getAllBoards();
+	
+	void saveAll();
 
-	List<Board> fatchBoardFormApi();
+	Board getOneBoard(Integer number);
 
-	void saveBoardsFromJson(List<Board> apiBoard);
+	List<Map<String, Object>> getSearchResult(Map<String, String> searchFor);
 
 }

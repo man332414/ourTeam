@@ -6,11 +6,12 @@ public class Board
 {
 	private int number;
 	private String Date;
-	private String subject;
+	private String title;
 	private String category;
 	private int viewCount;
 	private Date supportDeadline;
 	private boolean isOverDeadline;
+	private String content;
 	
 	public int getNumber() {
 		return number;
@@ -23,12 +24,6 @@ public class Board
 	}
 	public void setDate(String date) {
 		Date = date;
-	}
-	public String getSubject() {
-		return subject;
-	}
-	public void setSubject(String subject) {
-		this.subject = subject;
 	}
 	public String getCategory() {
 		return category;
@@ -49,13 +44,18 @@ public class Board
 		this.supportDeadline = supportDeadline;
 	}
 	
-	public Board toEntity() {
-		Board board = new Board();
-		board.setSubject(this.subject);
-		board.setDate(this.Date);
-		board.setCategory(this.category);
-		return board;
-	}
-
 	public Board() {}
+	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 }

@@ -61,12 +61,6 @@
       </exclusions>
     </dependency>
       
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-webmvc</artifactId>
-      <version>5.3.21</version>
-	</dependency>	
-
       <!-- Logging -->
 	  <dependency>
 	     <groupId>org.slf4j</groupId>
