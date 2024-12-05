@@ -109,20 +109,46 @@ public class EmergencyRoomRepositoryImpl implements EmergencyRoomRepository {
 
 	@Override
 	public void setNewemergencyRoom(emergencyRoom emergencyRoom) {
-		// TODO Auto-generated method stub
-
+		
+		System.out.println("ERI setNewemergencyRoom 진입 "+ emergencyRoom);
+		System.out.println("hosName: " + emergencyRoom.getHosName());
+		String SQL = "INSERT INTO emergencyroom VALUES(?,?,?,?,?,?,?,?)";
+		
+		System.out.println("ERI setNewemergencyRoom SQL= "+ SQL);
+		System.out.println("emergencyRoom.getHosName()= "+ emergencyRoom.getHosName());
+		System.out.println("emergencyRoom.getHosaddr()= "+ emergencyRoom.getHosaddr());
+		
+		template.update(SQL,emergencyRoom.getNumber(),emergencyRoom.getHosName(),emergencyRoom.getHosaddr(),
+				emergencyRoom.getDistance(),emergencyRoom.getTravelTime(),emergencyRoom.getNumOfBad(),
+				emergencyRoom.isPediatrics(),emergencyRoom.isObstetricsAndGynecology());
+		
+		System.out.println("ERI setNewemergencyRoom template.update(SQL = "+ SQL);
 	}
+	 
+	
 
 	@Override
 	public void setUpdateemergencyRoomk(emergencyRoom emergencyRoom) {
-		// TODO Auto-generated method stub
-
-	}
+		
+		System.out.println("ERI setUpdateemergencyRoomk 진입 "+ emergencyRoom);
+		System.out.println("emergencyRoom.getHosName()= "+ emergencyRoom.getHosName());
+		System.out.println("emergencyRoom.getHosaddr()= "+ emergencyRoom.getHosaddr());
+		System.out.println("emergencyRoom.getTravelTime()= "+ emergencyRoom.getTravelTime());
+		
+		String SQL = "UPDATE emergencyroom SET hosName = ?, hosaddr = ?, distance = ?, travelTime = ?, numOfBad = ?, isPediatrics = ?, isObstetricsAndGynecology = ?  where num = ? ";
+        template.update(SQL, emergencyRoom.getHosName(), emergencyRoom.getHosaddr(), emergencyRoom.getDistance(), emergencyRoom.getTravelTime(), emergencyRoom.getNumOfBad(), emergencyRoom.isPediatrics(), emergencyRoom.isObstetricsAndGynecology(), emergencyRoom.getNumber());
+		
+		System.out.println("ERI setUpdateemergencyRoomk SQL2= "+ SQL);
+		System.out.println("sql= "+"name: "+emergencyRoom.getHosName()+"addr: "+emergencyRoom.getHosaddr()+"dis: "+
+				emergencyRoom.getDistance()+"time: "+emergencyRoom.getTravelTime()+"bed: "+emergencyRoom.getNumOfBad()+"baby: "+
+				emergencyRoom.isPediatrics()+"lady: "+emergencyRoom.isObstetricsAndGynecology()+"num: "+emergencyRoom.getNumber());
+		}
 
 	
 	@Override
 	public void setDeleteemergencyRoom(int number) {
-		// TODO Auto-generated method stub
+		String SQL="delete from emergencyroom where num=?";
+		this.template.update(SQL,number);
 		
 	}
 

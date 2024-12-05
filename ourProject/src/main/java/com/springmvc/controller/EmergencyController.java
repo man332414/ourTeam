@@ -1,6 +1,7 @@
 package com.springmvc.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -36,7 +37,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.springmvc.DTO.emergencyRoom;
 import com.springmvc.service.EmergencyService;
 
-
 @Controller
 @RequestMapping("/emergencys")
 public class EmergencyController {
@@ -67,7 +67,6 @@ public class EmergencyController {
 	}
 		
 	
-	
 	@GetMapping("/all")
 	public ModelAndView requestAllRooms() {
 		System.out.println("000.rc requestAllrooms : 진입");
@@ -91,23 +90,63 @@ public class EmergencyController {
 		return "emergencys";
 	} 
 	
+	@GetMapping("add")
+	public String requestAddRoomForm(@ModelAttribute("NewRoom") emergencyRoom room) {
+		System.out.println("===============================");
+		System.out.println("000.rc get requestAddRoomForm : 진입");
+		
+		return "addRoom";
+	}
+	
+	
+	@PostMapping("/add")
+	public String submitAddNewBook(@ModelAttribute("NewRoom") emergencyRoom room,BindingResult result, HttpServletRequest request){
+			System.out.println("000.rc post submitAddNewBook : 진입 "+ room);
+			
+			if(result.hasErrors()) 
+				return "addRoom";
+			
+			//MultipartFile bookImage = book.getBookImage();
+			//String save=request.getServletContext().getRealPath("resources/images");
+			//String saveName = bookImage.getOriginalFilename();
+			//File savefile = new File(save,saveName);
+			
+//			if(bookImage != null && !bookImage.isEmpty()) {
+//				try {
+//					bookImage.transferTo(savefile);
+//					book.setFileName(saveName);
+//					
+//				}catch(Exception e) {
+//					throw new RuntimeException("도서 이미지 업로드가 실패했습니다:",e);
+//				}
+//			}
+			
+			emergencyService.setNewemergencyRoom(room);
+			
+		return "redirect:/emergencys";
+	}
+	
+	 
+	
+	
+	
 	@GetMapping("addapi")
-	public ModelAndView addapiRooms() {
+	public String addapiRooms() throws IOException {
 		System.out.println("===============================");
 		System.out.println("000.rc addapiRooms : 진입");
 		HospitalListAddOpenAPI hl = new HospitalListAddOpenAPI();
-		 
+		hl.main(null); 
 		ModelAndView modelAndView = new ModelAndView();
 		List<emergencyRoom> list= emergencyService.getALLemergencyRoomList();
 		modelAndView.addObject("emergencylist",list);
 		modelAndView.setViewName("emergencys");
-		return modelAndView;
+		
+		return "redirect:/emergencys";
 	}
 	
 	//HospitalListAddOpenAPI
 	
 	 
-	
 	@ModelAttribute
 	public void addAttributrs(Model model) {
 		model.addAttribute("addTitle","신규병원등록");

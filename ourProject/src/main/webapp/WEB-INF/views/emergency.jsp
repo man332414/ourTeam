@@ -27,7 +27,6 @@
 						<br>${room.hosaddr}
 						<p>거리= ${room.distance}km | 이동시간= ${room.travelTime} (분)
 					<p>병상수는 ${room.numOfBad}개 있습니다
-<<<<<<< HEAD
 					<p>소아과: 
 						<c:choose>
 						<c:when test="${room.pediatrics == true}">
@@ -46,7 +45,6 @@
 							<b> 없습니다						
 						</c:otherwise>
 						</c:choose>
-=======
 <%-- 					<p>소아과: ${room.isPediatrics} --%>
 <%-- 					<p>산부인과: ${room.isObstetricsAndGynecology} --%>
 >>>>>>> 878c28593c852c6fe9dbdcad05f7eb3913744ffb

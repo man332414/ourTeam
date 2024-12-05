@@ -23,6 +23,8 @@ public class emergencyRoom
 		this.hosaddr = hosaddr;
 	}
 	
+	 
+	
 	public int getNumber() {
 		return number;
 	}

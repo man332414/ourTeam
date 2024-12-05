@@ -62,19 +62,22 @@ public class EemergencyServiceImpl implements EmergencyService {
 
 	@Override
 	public void setNewemergencyRoom(emergencyRoom emergencyRoom) {
-		// TODO Auto-generated method stub
+		System.out.println("100.EemergencyServiceImpl setNewemergencyRoom: 진입");
+		emergencyRoomRepository.setNewemergencyRoom(emergencyRoom);
 		
 	}
 
 	@Override
 	public void setUpdateemergencyRoomk(emergencyRoom emergencyRoom) {
-		// TODO Auto-generated method stub
+		System.out.println("130.EemergencyServiceImpl setUpdateemergencyRoomk: 진입");
+		emergencyRoomRepository.setUpdateemergencyRoomk(emergencyRoom);
 		
 	}
 
 	@Override
 	public void setDeleteemergencyRoom(int number) {
-		// TODO Auto-generated method stub
+		System.out.println("140.EemergencyServiceImpl setDeleteemergencyRoom: 진입");
+		emergencyRoomRepository.setDeleteemergencyRoom(number);
 		
 	}
 

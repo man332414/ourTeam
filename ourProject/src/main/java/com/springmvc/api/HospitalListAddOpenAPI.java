@@ -8,8 +8,15 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 public class HospitalListAddOpenAPI {
+	
+	private StringBuilder urlBuilder;
+	private BufferedReader rd;
+	
     public static void main(String[] args) throws IOException {
+    	HospitalListAddOpenAPI hl = new HospitalListAddOpenAPI();
+    	System.out.println("HospitalListAddOpenAPI 진입");
     	String key = "59ojQNxXAJkaA29tsw%2Fql6IaRazj4K%2BUDFTTAom7HTo318eWaC99iJ9Hy761TzJ1KAyTulV2WYF4A3U0MDD8Xg%3D%3D";
+//        StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/B551182/hospAsmInfoService/getHospAsmInfo"); /*URL*/
         StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/B551182/hospAsmInfoService/getHospAsmInfo"); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=59ojQNxXAJkaA29tsw%2Fql6IaRazj4K%2BUDFTTAom7HTo318eWaC99iJ9Hy761TzJ1KAyTulV2WYF4A3U0MDD8Xg%3D%3D"); /*Service Key*/
         urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/
@@ -18,7 +25,7 @@ public class HospitalListAddOpenAPI {
         /*암호화된 요양기호(확인방법: 건강보험심사평가원 오픈API[병원정보서비스>병원기본목록(getHospBasisList1)](암호화된요양기호(ykiho)))*/
         URL url = new URL(urlBuilder.toString());
         
-        System.out.println("urlBuilder  : " + urlBuilder);
+        System.out.println("url  : " + url);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
         conn.setRequestProperty("Content-type", "application/json");
@@ -40,10 +47,16 @@ public class HospitalListAddOpenAPI {
         rd.close();
         conn.disconnect();
         System.out.println("sb.toString()= " + sb.toString());
+        
+     
+        System.out.println("HospitalListAddOpenAPI hospital  호출 " );
+		hl.hospital(urlBuilder );
+		System.out.println("HospitalListAddOpenAPI hospital  호출 종료" );
     }
     
-    public void hospital() {
-    	
+    public void hospital(StringBuilder urlBuilder) {
+    	 System.out.println("hospital  진입 " + urlBuilder);
+    	 System.out.println("rd   " + rd);
     }
     
     
