@@ -10,7 +10,7 @@ public class EmergencyRoomRowMapper implements RowMapper<emergencyRoom> {
 
 	@Override
 	public emergencyRoom mapRow(ResultSet rs, int rowNum) throws SQLException {
-		System.out.println("Room RowMapper 진입");
+		 
 		emergencyRoom room = new emergencyRoom();
 		
 		room.setNumber(rs.getInt(1));
@@ -22,8 +22,8 @@ public class EmergencyRoomRowMapper implements RowMapper<emergencyRoom> {
 		room.setPediatrics(rs.getBoolean(7));
 		room.setObstetricsAndGynecology(rs.getBoolean(8));
 		
-		System.out.println("Room RowMapper 진입" +room.isPediatrics());
-		System.out.println("Room RowMapper 진입" +room.isObstetricsAndGynecology());
+	//	System.out.println("Room RowMapper 진입" +room.isPediatrics());
+	//	System.out.println("Room RowMapper 진입" +room.isObstetricsAndGynecology());
 		return room;
 	}
 

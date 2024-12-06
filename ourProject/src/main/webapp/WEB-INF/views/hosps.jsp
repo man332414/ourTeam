@@ -21,8 +21,8 @@
                 <tr>
                     <td>${room.hosName}</td>
                     <td>${room.hosaddr}</td>
-                    <td>${room.isPediatrics ? '예' : '아니오'}</td>
-                    <td>${room.isObstetricsAndGynecology ? '예' : '아니오'}</td>
+<%--                     <td>${room.Pediatrics ? '예' : '아니오'}</td> --%>
+<%--                     <td>${room.ObstetricsAndGynecology ? '예' : '아니오'}</td> --%>
                 </tr>
             </c:forEach>
         </tbody>

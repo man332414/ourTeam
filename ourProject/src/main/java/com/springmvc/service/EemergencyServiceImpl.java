@@ -18,9 +18,6 @@ public class EemergencyServiceImpl implements EmergencyService {
 
 	public EemergencyServiceImpl() {
 		
-		System.out.println("EemergencyServiceImpl: 진입");
-		
-		
 		return ;
 	}
 	
@@ -62,7 +59,7 @@ public class EemergencyServiceImpl implements EmergencyService {
 
 	@Override
 	public void setNewemergencyRoom(emergencyRoom emergencyRoom) {
-		System.out.println("100.EemergencyServiceImpl setNewemergencyRoom: 진입");
+	
 		emergencyRoomRepository.setNewemergencyRoom(emergencyRoom);
 		
 	}

@@ -109,21 +109,14 @@ public class EmergencyRoomRepositoryImpl implements EmergencyRoomRepository {
 	@Override
 	public void setNewemergencyRoom(emergencyRoom emergencyRoom) {
 		
-		System.out.println("ERI setNewemergencyRoom 진입 "+ emergencyRoom);
-		System.out.println("hosName: " + emergencyRoom.getHosName());
+	//	System.out.println("ERI setNewemergencyRoom 진입 "+ emergencyRoom);
 		String SQL = "INSERT INTO emergencyroom VALUES(?,?,?,?,?,?,?,?)";
-		
-		System.out.println("ERI setNewemergencyRoom SQL= "+ SQL);
-		System.out.println("emergencyRoom.getHosName()= "+ emergencyRoom.getHosName());
-		System.out.println("emergencyRoom.getHosaddr()= "+ emergencyRoom.getHosaddr());
 		
 		template.update(SQL,emergencyRoom.getNumber(),emergencyRoom.getHosName(),emergencyRoom.getHosaddr(),
 				emergencyRoom.getDistance(),emergencyRoom.getTravelTime(),emergencyRoom.getNumOfBad(),
 				emergencyRoom.isPediatrics(),emergencyRoom.isObstetricsAndGynecology());
 		
-		System.out.println("ERI setNewemergencyRoom template.update(SQL = "+ SQL);
 	}
-	 
 	
 
 	@Override
@@ -151,10 +144,6 @@ public class EmergencyRoomRepositoryImpl implements EmergencyRoomRepository {
 		
 	}
 
-	
-	
-	
-	
  
 
 }
