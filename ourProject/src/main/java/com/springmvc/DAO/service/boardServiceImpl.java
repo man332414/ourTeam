@@ -7,18 +7,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-
 import com.springmvc.DAO.repository.boardRepository;
 import com.springmvc.DTO.Board;
 
@@ -29,9 +22,9 @@ public class boardServiceImpl implements boardService
 	private boardRepository boardRepository;
 		
 	@Override
-	public List<Board> getAllBoards() 
+	public List<Board> getAllBoards(int currentPage, int numberOfRows) 
 	{
-		List<Board> boards = boardRepository.getAllBoards();
+		List<Board> boards = boardRepository.getAllBoards(currentPage, numberOfRows);
 		return boards;
 	}
 	
@@ -44,9 +37,17 @@ public class boardServiceImpl implements boardService
 		String reqUrl = "https://apis.data.go.kr/1371037/ktvBoard/noticeList?"
 				+ "serviceKey=%2FRQc%2BsltwaX9aUxJzxpKaOzbNQg18j1Sv56GlvnpzROKDRqSvRjDX9hcg%2FlcEcB%2FN%2F9zUZpg708yaYcsfkfAXg%3D%3D&"
 				+ "numOfRows=100&"
-				+ "pageNo=1&"
+				+ "pageNo=2&"
 				+ "orderBy=regDate&"
-				+ "startDate=20200101";
+				+ "startDate=20150101";
+//		요청변수(Request Parameter)
+//		serviceKey	//	-		//공공데이터포털 발급 인증 키
+//		numOfRows	//	1		//한페이지 결과 수
+//		pageNo		//	10		//페이지 번호
+//		orderBy		//	viewCnt	//정렬 기준(등록일:regDate, 조회수:viewCnt)
+//		startDate	//	20240101//시작일(등록일[registDate] 기준, 미 입력 시 종료일 이전 30일)
+//		endDate		//	20240831//종료일(등록일[registDate] 기준, 미 입력 시 오늘날짜)
+//		title		//	안내		//제목
 		//step 2 커넥션 생성
 		try
 		{
@@ -77,20 +78,29 @@ public class boardServiceImpl implements boardService
 			JSONArray item = items.getJSONArray("item");
 			
 			int i = 0;
+			int cnt = 0;
 			while(true)
 			{
 				JSONObject first = (JSONObject)item.get(i);
+				if(first == null || first.isEmpty())
+				{
+					System.out.println("반복문 나가기 : " + first);
+					break;				
+				}
 				Board bd = new Board();
+				boolean isBoardList = boardRepository.isBoardList(first.getString("title"));
+				if(isBoardList) 
+				{
+					cnt++;
+					System.out.println(i+1 + "번 컨텐츠에서 중복이 발생했습니다. 현재까지 "+ cnt + "건 중복");
+					i++;
+					continue;
+				}
 				bd.setTitle(first.getString("title"));
 				bd.setDate(first.getString("registDate"));
 				bd.setCategory(first.getString("boardName"));
 				bd.setContent(first.getString("content"));
 				
-				if(first == null || first.isEmpty() || first.isEmpty())
-				{
-					System.out.println("반복문 나가기 : " + first);
-					break;				
-				}
 				System.out.println("잘 넣었나 보자 : " + bd.getTitle());
 				boardsIntoDB.add(bd);
 				i++;
@@ -116,6 +126,13 @@ public class boardServiceImpl implements boardService
 	{
 		List<Map<String,Object>> searchResult = boardRepository.getSearchResult(searchFor);
 		return searchResult;
+	}
+
+	@Override
+	public int getTotalPage(int numberOfRows) 
+	{
+		int totalPage = boardRepository.getTotalPage(numberOfRows);
+		return totalPage;
 	}
 
 }

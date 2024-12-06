@@ -8,12 +8,14 @@ import com.springmvc.DTO.Board;
 public interface boardService 
 {
 
-	List<Board> getAllBoards();
+	List<Board> getAllBoards(int currentPage, int numberOfRows);
 	
 	void saveAll();
 
 	Board getOneBoard(Integer number);
 
 	List<Map<String, Object>> getSearchResult(Map<String, String> searchFor);
+
+	int getTotalPage(int numberOfRows);
 
 }

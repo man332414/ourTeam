@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%! int numberOfRows; 
+	int currentPage;
+	%>
 <!DOCTYPE html>
 <html>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -18,6 +22,16 @@
 			<form action="searching">
 				검색하기 : <input type="text" id="searchBox">
 			</form>
+	    	<form method="get" action="">
+        		<label for="numberOfRows">페이지당 항목 수:</label>
+        		<select name="numberOfRows" id="numberOfRows" onchange="this.form.submit()">
+	            	<option value="10" <%= numberOfRows == 10 ? "selected" : "" %>>선택</option>
+	            	<option value="10" <%= numberOfRows == 10 ? "selected" : "" %>>10</option>
+	            	<option value="20" <%= numberOfRows == 20 ? "selected" : "" %>>20</option>
+	            	<option value="50" <%= numberOfRows == 50 ? "selected" : "" %>>50</option>
+	            	<option value="100" <%= numberOfRows == 100 ? "selected" : "" %>>100</option>
+        		</select>
+  			</form>
 		</div>
 		<table border="1px">
 			<tr>
@@ -35,54 +49,18 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		<%
+			int totalPage = (int)request.getAttribute("totalPage");
+			for(int i = 1; i <= totalPage; i++)
+			{
+		%>
+			<a href="?currentPage=<%=i%>"><%=i%></a>
+		<%
+			}
+		%>		
 	</div>
 </body>
-<script type="text/javascript">
-	// 	검색기능
-	let search = document.querySelector("#searchBox");
-	console.log(search);
-
-	search.addEventListener("input", searchFunction);
-	
-	function searchFunction(e)
-	{
-		e.preventDefault();
-		let searchFor = search.value;
-		let searchFortoJsonify = {"searchFor" : searchFor};
-// 		console.log("searchFortoJsonify : "+searchFortoJsonify);
-		$.ajax({
-	        url: "/ourProject/board/list/searching",
-	        type: "POST",
-	        contentType: "application/json",
-	        data: JSON.stringify(searchFortoJsonify),
-	        dataType: "json",
-	        success: function(hello) 
-	        {
-	        	console.log(hello);
-	        	let resultHtml = '';
-	        	if(hello == null || hello=="")
-	        		{
-	        			resultHtml = '<tr><td colspan = "5"> 검색 결과가 없습니다.</td></tr>';
-	        		}
-	        	else
-	        		{
-		    			hello.forEach(function(board){
-		    				resultHtml += `<tr>
-			                    <td><a href="content?number=${board.number}">${board.number}</a></td>
-			                    <td><a href="content?number=${board.number}">${board.category}</a></td>
-			                    <td><a href="content?number=${board.number}">${board.title}</a></td>
-			                    <td><a href="content?number=${board.number}">${board.date}</a></td>
-			                    <td><a href="content?number=${board.number}"></a></td>
-							</tr>`;
-		    			});
-	        		}
-	        	$('#resultBody').html(resultHtml);
-	        },
-	        error: function(error) {
-	            console.error("에러발생:", error);
-	        }
-	    });
-	}
+<script type="text/javascript" src="/ourProject/resources/js/searchFunction.js">
 </script>
 
 </html>

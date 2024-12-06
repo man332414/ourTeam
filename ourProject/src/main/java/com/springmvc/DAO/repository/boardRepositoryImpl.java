@@ -1,7 +1,5 @@
 package com.springmvc.DAO.repository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springmvc.DTO.Board;
 
 @Repository
@@ -28,13 +24,37 @@ public class boardRepositoryImpl implements boardRepository
 	}
 
 	@Override
-	public List<Board> getAllBoards() 
+	public int getTotalPage(int numberOfRows)
 	{
-		String sql = "select * from board";
-		List<Board> boards = template.query(sql, new boardRowMapper());
+		System.out.println("boardRepository.getTotalPage() 입장");
+		String totalBoardsQuery = "select count(*) from board";
+		int totalBoards = template.queryForObject(totalBoardsQuery, Integer.class);
+		int totalPage = totalBoards / numberOfRows;
+		if((totalBoards%numberOfRows) != 0 && totalBoards > numberOfRows )
+		{
+			totalPage = totalPage+1;
+		}
+		System.out.println("전체페이지 요 있다. : " + totalPage + " = " + totalBoards + " / " + numberOfRows);
+
+		return totalPage;
+	}
+
+
+
+	// 게시판 데이터베이스 읽어오기
+	@Override
+	public List<Board> getAllBoards(int currentPage, int numberOfRows) 
+	{
+		System.out.println("boardRepository.getAllBoards() 입장");
+		// 현재 페이지에 띄울 아이템 추리기
+		int offset = (currentPage-1) * numberOfRows;
+		
+		String sql = "select * from board order by number limit ? offset ?";
+		List<Board> boards = template.query(sql, new Object[] {numberOfRows, offset}, new boardRowMapper());
 		return boards;
 	}
 
+	// API 게시판 읽어오기 
 	@Override
 	public void saveAll(List<Board> boards) 
 	{
@@ -47,7 +67,8 @@ public class boardRepositoryImpl implements boardRepository
 			System.out.println("잘 넣고 있나? 방금넣은거 뭐야 보자 : " + bd.getTitle());
 		}
 	}
-
+	
+	// 하나의 컨텐츠 읽어오기
 	@Override
 	public Board getOneBoard(Integer number) 
 	{
@@ -58,6 +79,7 @@ public class boardRepositoryImpl implements boardRepository
 		return board;
 	}
 
+	// 검색 하기
 	@Override
 	public List<Map<String,Object>> getSearchResult(Map<String, String> searchFor) 
 	{
@@ -83,6 +105,18 @@ public class boardRepositoryImpl implements boardRepository
 		{
 			return null;
 		}
+	}
+
+	// API 읽어올 때 중복검사 하기
+	@Override
+	public boolean isBoardList(String title) 
+	{
+		System.out.println("boardRepository.isBoardList 입장");
+		String sql="";
+		sql = "select count(*) from board where title=?";
+		int count = template.queryForObject(sql, new Object[] {title}, Integer.class);
+		
+		return count >= 1;
 	}
 
 }

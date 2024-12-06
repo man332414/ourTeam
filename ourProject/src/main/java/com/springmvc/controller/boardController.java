@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -36,11 +37,14 @@ public class boardController
 	
 //	--------------------------------- 전체 다 읽어오기 ---------------------------------
 	@GetMapping("/list")
-	public String readAllBoards(Model model)
+	public String readAllBoards(Model model, @RequestParam(value="currentPage", defaultValue="1") int currentPage, @RequestParam(value="numberOfRows", defaultValue="10") int numberOfRows)
 	{
 		System.out.println("boardController.readAllBoards() 입장");
-		List<Board> boards = boardService.getAllBoards();
+		List<Board> boards = boardService.getAllBoards(currentPage, numberOfRows);
 		
+		int totalPage = boardService.getTotalPage(numberOfRows);
+		
+		model.addAttribute("totalPage", totalPage);
 		model.addAttribute("boards",boards);
 		
 		System.out.println("------------------------------------------");
@@ -77,10 +81,10 @@ public class boardController
 		} 
 		catch (Exception e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
+		model.addAttribute("jsonResult", jsonResult);
 		
 		return ResponseEntity.ok(jsonResult);
 	}
