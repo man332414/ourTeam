@@ -23,7 +23,6 @@ public class EmergencyRoomRepositoryImpl implements EmergencyRoomRepository {
 	private List<emergencyRoom> listOfRooms = new ArrayList<emergencyRoom>();
 	private JdbcTemplate template;
 	
-
 	@Autowired
 	public void setJdbcTemplate(DataSource dataSource) {
 		this.template= new JdbcTemplate(dataSource);
@@ -152,6 +151,9 @@ public class EmergencyRoomRepositoryImpl implements EmergencyRoomRepository {
 		
 	}
 
+	
+	
+	
 	
  
 

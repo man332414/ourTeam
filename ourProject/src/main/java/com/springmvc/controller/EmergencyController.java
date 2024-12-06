@@ -13,15 +13,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import org.springframework.web.servlet.DispatcherServlet;
@@ -30,12 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.springmvc.DTO.emergencyRoom;
 import com.springmvc.api.HospitalListAddOpenAPI;
 import com.springmvc.service.EmergencyService;
-import com.springmvc.exception.AddressException;
 
-import org.springframework.web.servlet.ModelAndView;
-
-import com.springmvc.DTO.emergencyRoom;
-import com.springmvc.service.EmergencyService;
 
 @Controller
 @RequestMapping("/emergencys")
@@ -128,20 +119,35 @@ public class EmergencyController {
 	
 	 
 	
-	
-	
-	@GetMapping("addapi")
-	public String addapiRooms() throws IOException {
+	@GetMapping("/addapi")
+	public String addApiRooms(Model model)  {
 		System.out.println("===============================");
 		System.out.println("000.rc addapiRooms : 진입");
+
+	try {
+		System.out.println("000.rc addapiRooms  try : 진입");
 		HospitalListAddOpenAPI hl = new HospitalListAddOpenAPI();
-		hl.main(null); 
-		ModelAndView modelAndView = new ModelAndView();
-		List<emergencyRoom> list= emergencyService.getALLemergencyRoomList();
-		modelAndView.addObject("emergencylist",list);
-		modelAndView.setViewName("emergencys");
+		System.out.println("h1 =  : 진입");
+        List<emergencyRoom> roomList = hl.fetchHospitalData(); // API 호출하여 데이터 가져오기
+        System.out.println("roomList =  " + roomList);
+
+        // DB에 저장
+        for (emergencyRoom room : roomList) {
+        	System.out.println("000.rc addapiRooms  try for : 진입");
+            emergencyService.setNewemergencyRoom(room);
+        }
+
+        model.addAttribute("emergencylist", roomList);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+//		ModelAndView modelAndView = new ModelAndView();
+//		List<emergencyRoom> list= emergencyService.getALLemergencyRoomList();
+//		modelAndView.addObject("emergencylist",list);
+//		modelAndView.setViewName("emergencys");
 		
-		return "redirect:/emergencys";
+		return "hosps";
+//		return "redirect:/emergencys";
 	}
 	
 	//HospitalListAddOpenAPI

@@ -16,7 +16,7 @@
 				<h1 class="display-5 fw-bold">emergency입니다</h1>
 				<p class="col-md-8 fs-4">EmergencyRoomList s</p>   
 				<a href="emergencys/add" >병원등록</a><br>   
-				<a href="https://apis.data.go.kr/B551182/hospInfoServicev2/getHospBasisList?ServiceKey=59ojQNxXAJkaA29tsw%2Fql6IaRazj4K%2BUDFTTAom7HTo318eWaC99iJ9Hy761TzJ1KAyTulV2WYF4A3U0MDD8Xg%3D%3D&pageNo=1&numOfRows=10" >병원등록aaa</a>
+				<a href="emergencys/addapi" >병원등록apiaaa</a>
 				<a href="https://apis.data.go.kr/B551182/hospInfoServicev2/getHospBasisList?ServiceKey=59ojQNxXAJkaA29tsw%2Fql6IaRazj4K%2BUDFTTAom7HTo318eWaC99iJ9Hy761TzJ1KAyTulV2WYF4A3U0MDD8Xg%3D%3D&pageNo=1&numOfRows=10" >병원api xml->json</a>
 				<form action="convert" method="post" Content-Type="application/xml">
 					<label>병원api xml->json method=post</label>

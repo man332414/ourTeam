@@ -20,8 +20,8 @@ public interface EmergencyService {
 	Set<emergencyRoom> getemergencyRoomListByFilter(Map<String,List<String>> filter);
 	emergencyRoom getRoomByNumber(int number);
 
-	void setNewemergencyRoom(emergencyRoom emergencyRoom);
-	void setUpdateemergencyRoomk(emergencyRoom emergencyRoom);
-	void setDeleteemergencyRoom(int number);
+	public void setNewemergencyRoom(emergencyRoom emergencyRoom);
+	public void setUpdateemergencyRoomk(emergencyRoom emergencyRoom);
+	public void setDeleteemergencyRoom(int number);
 
 }

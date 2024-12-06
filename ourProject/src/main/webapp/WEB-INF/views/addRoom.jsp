@@ -55,12 +55,12 @@
 		
 		<div class="form-group row">
 			<label class="col-sm-2 control-label">소아과보유여부</label>
-			<form:input path="pediatrics" class="form-control" />
+			<form:checkbox  path="pediatrics" class="form-control" />
 		</div>
 		
 		<div class="form-group row">
 			<label class="col-sm-2 control-label">산부인과보유여부</label>
-			<form:input path="obstetricsAndGynecology" class="form-control" />
+			<form:checkbox  path="obstetricsAndGynecology" class="form-control" />
 		</div>
 
 		<div class="form-group row">

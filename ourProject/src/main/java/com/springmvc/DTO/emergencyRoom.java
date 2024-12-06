@@ -2,14 +2,14 @@ package com.springmvc.DTO;
 
 public class emergencyRoom 
 {
-	int number;            //순번
-	String hosName;        //병원이름
-	String hosaddr;        //병원주소
-	int distance;          //거리
-	String travelTime;     //이동시간
-	int numOfBad;          //응급실병상수
-	boolean isPediatrics;  //소아과보유여부
-	boolean isObstetricsAndGynecology;    //산부인과보유여부
+	private int number;            //순번
+	private String hosName;        //병원이름
+	private String hosaddr;        //병원주소
+	private int distance;          //거리
+	private String travelTime;     //이동시간
+	private int numOfBad;          //응급실병상수
+	private boolean isPediatrics;  //소아과보유여부
+	private boolean isObstetricsAndGynecology;    //산부인과보유여부
 	
 	public emergencyRoom() {}
 	
