@@ -17,7 +17,7 @@
 				아이디 : <form:input path="userId" name="id" id="userId" />
 				<button id="checkDupl">중복검사</button>
 			</p>
-			<p>비밀번호 : <form:password path="password" name="id" /></p>
+			<p>비밀번호 : <form:password path="password" name="password" /></p>
 			<p>E-mail : <form:input type="email" path="email" name="email" /></p>
 			<p>이름 : <form:input path="name" name="name" /></p>
 			<p>사이트에서 사용할 별명 : <form:input path="nikName" name="nikName" /></p>

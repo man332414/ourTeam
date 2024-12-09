@@ -55,6 +55,7 @@ public class memberController
 		return "home";
 	}
 	
+//	--------------------------------- 중복검사 ---------------------------------
 	@PostMapping("isDuplicate")
 	public ResponseEntity<Map<String, String>> isDuplicate(@RequestBody Map<String, String> MapUserId)
 	{

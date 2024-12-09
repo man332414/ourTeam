@@ -37,7 +37,7 @@ public class boardServiceImpl implements boardService
 		String reqUrl = "https://apis.data.go.kr/1371037/ktvBoard/noticeList?"
 				+ "serviceKey=%2FRQc%2BsltwaX9aUxJzxpKaOzbNQg18j1Sv56GlvnpzROKDRqSvRjDX9hcg%2FlcEcB%2FN%2F9zUZpg708yaYcsfkfAXg%3D%3D&"
 				+ "numOfRows=100&"
-				+ "pageNo=2&"
+				+ "pageNo=1&"
 				+ "orderBy=regDate&"
 				+ "startDate=20150101";
 //		요청변수(Request Parameter)
@@ -122,9 +122,11 @@ public class boardServiceImpl implements boardService
 	}
 
 	@Override
-	public List<Map<String,Object>> getSearchResult(Map<String, String> searchFor) 
+	public List<Map<String, Object>> getSearchResult(
+			Map<String, String> searchFor/* , int currentPage, int numberOfRows */) 
 	{
-		List<Map<String,Object>> searchResult = boardRepository.getSearchResult(searchFor);
+		List<Map<String, Object>> searchResult = boardRepository
+				.getSearchResult(searchFor/* , currentPage, numberOfRows */);
 		return searchResult;
 	}
 
@@ -135,4 +137,27 @@ public class boardServiceImpl implements boardService
 		return totalPage;
 	}
 
+	@Override
+	public void deleteBoard(List<Integer> number)
+	{
+		boardRepository.deleteBoard(number);
+	}
+
+	@Override
+	public void updateBoard(Board board)
+	{
+		boardRepository.updateBoard(board);
+	}
+
+	@Override
+	public void addBoard(Board board) 
+	{
+		boardRepository.addBoard(board);
+	}
+	
+//	public int getTotalPageForSeach(Map<String, String> searchFor, int numberOfRows)
+//	{
+//		return boardRepository.getTotalPageForSeach(searchFor, numberOfRows);
+//	}
+//
 }

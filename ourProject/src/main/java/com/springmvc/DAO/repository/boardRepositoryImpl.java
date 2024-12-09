@@ -81,17 +81,26 @@ public class boardRepositoryImpl implements boardRepository
 
 	// 검색 하기
 	@Override
-	public List<Map<String,Object>> getSearchResult(Map<String, String> searchFor) 
+	public List<Map<String, Object>> getSearchResult(
+			Map<String, String> searchFor/* , int currentPage, int numberOfRows */) 
 	{
 //		System.out.println("boardRepositoryImpl.getSearchResult() 입장 : " + searchFor.get("searchFor"));
 		String sql = "select count(*) from board where title like ?";
 		String query = "%"+searchFor.get("searchFor")+"%";
 		int cont = template.queryForObject(sql, new Object[]{query}, Integer.class);
+		
+
+		// 검색한 컨텐츠 존재여부 확인
 		if(cont > 0)
 		{
 			System.out.println("boardRepositoryImpl.getSearchResult() 입장 : " + cont);
+			
+//			int offset = (currentPage-1) * numberOfRows;
+
+			
 			sql = "select * from board where title like ?";
-			List<Map<String, Object>> searchResult = template.query(sql, new Object[] {query}, new boardRowMapper());
+			// Json 형식으로 반환하기 위해 이렇게 받아여
+			List<Map<String, Object>> searchResult = template.query(sql, new Object[] { query/* , numberOfRows, offset */}, new boardRowMapper());
 			
 //			Map<String, Object> searchResultToJson = new HashMap<String, Object>();			
 //			for(int i = 0; i < searchResult.size(); i++)
@@ -106,6 +115,25 @@ public class boardRepositoryImpl implements boardRepository
 			return null;
 		}
 	}
+	
+//	// 검색기능의 토탈페이지
+//	public int getTotalPageForSeach(Map<String, String> searchFor, int numberOfRows) 
+//	{
+//		String sql = "select count(*) from board where title like ?";
+//		String query = "%"+searchFor.get("searchFor")+"%";
+//		int cont = template.queryForObject(sql, new Object[]{query}, Integer.class);
+//
+//		// 컨텐츠 숫자를 기반으로 전체 페이지 확인
+//		
+//		int totalPage = cont/numberOfRows;
+//		if((cont%numberOfRows) != 0 && cont > numberOfRows)
+//		{
+//			totalPage = totalPage+1;
+//		}
+//		
+//		System.out.println("검색에 대한 전체페이지 요 있다. : " + totalPage);
+//		return totalPage;
+//	}
 
 	// API 읽어올 때 중복검사 하기
 	@Override
@@ -117,6 +145,36 @@ public class boardRepositoryImpl implements boardRepository
 		int count = template.queryForObject(sql, new Object[] {title}, Integer.class);
 		
 		return count >= 1;
+	}
+
+	@Override
+	public void deleteBoard(List<Integer> number) 
+	{
+		System.out.println("boardRepositroy.deleteBoard() 입장");
+		int queryInt;
+		for(int buildQuery : number) 
+		{
+			queryInt = (int)buildQuery;
+			String sql = "delete from board where number=?";
+			System.out.println("잘만들었나? : " + sql.substring(0, sql.length()-1) + queryInt + ";");
+			template.update(sql, new Object[] {queryInt});
+		}
+		
+	}
+
+	@Override
+	public void updateBoard(Board board) 
+	{
+		System.out.println("boardRepository.updateBoard() 입장");
+		String sql = "update board set date=?, title=?, category=?, content=? where number=?";
+		template.update(sql, board.getDate(), board.getTitle(), board.getCategory(), board.getContent(), board.getNumber());
+	}
+
+	@Override
+	public void addBoard(Board board)
+	{
+		String sql = "insert into board(number, date, title, category, content) values(?, ?, ?, ?, ?)";
+		template.update(sql, null, board.getDate(), board.getTitle(), board.getCategory(), board.getContent());
 	}
 
 }

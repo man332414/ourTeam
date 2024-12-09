@@ -20,7 +20,7 @@
 		<div>
 			<h4>내용</h4>
 			<p>${board.content}</p>
-			<p><a href="list">목록으로</a></p>
+			<p><a href="list">목록으로</a><a href="/ourProject/admin/update?number=${board.number}">수정</a><a href="/ourProject/admin/delete?number=${board.number}">삭제</a></p>
 		</div>
 	</div>
 

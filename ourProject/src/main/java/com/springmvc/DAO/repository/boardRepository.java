@@ -13,10 +13,18 @@ public interface boardRepository {
 
 	Board getOneBoard(Integer number);
 
-	List<Map<String, Object>> getSearchResult(Map<String, String> searchFor);
+	List<Map<String, Object>> getSearchResult(Map<String, String> searchFor/* , int currentPage, int numberOfRows */);
 
 	boolean isBoardList(String title);
 
 	int getTotalPage(int numberOfRows);
+
+	void deleteBoard(List<Integer> number);
+
+	void updateBoard(Board board);
+
+	void addBoard(Board board);
+	
+//	public int getTotalPageForSeach(Map<String, String> searchFor, int numberOfRows);
 
 }

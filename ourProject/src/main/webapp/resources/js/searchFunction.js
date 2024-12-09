@@ -33,7 +33,9 @@
 			                    <td><a href="content?number=${board.number}">${board.title}</a></td>
 			                    <td><a href="content?number=${board.number}">${board.date}</a></td>
 			                    <td><a href="content?number=${board.number}"></a></td>
-							</tr>`;
+							</tr>
+//							totalPage = (int)request.getAttribute("totalPage")
+							`;
    						});
 	        		}
 //	        	console.log(resultHtml);

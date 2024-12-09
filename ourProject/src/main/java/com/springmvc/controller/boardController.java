@@ -69,12 +69,13 @@ public class boardController
 //	--------------------------------- 검색하기 ---------------------------------
 	@PostMapping("/list/searching")
 	@ResponseBody
-	public ResponseEntity<String> searching(@RequestBody Map<String, String> searchFor, Model model)
+	public ResponseEntity<String> searching(@RequestBody Map<String, String> searchFor, Model model, @RequestParam(value="currentPage", defaultValue="1") int currentPage, @RequestParam(value="numberOfRows", defaultValue="10") int numberOfRows)
 	{
 		System.out.println("검색어 : " + searchFor.get("searchFor"));
-		List<Map<String, Object>> searchResult = boardService.getSearchResult(searchFor);
+		List<Map<String, Object>> searchResult = boardService.getSearchResult(searchFor/* , currentPage, numberOfRows */);
 		ObjectMapper objMapper = new ObjectMapper();
 		String jsonResult ="";
+//		int totalPage = boardService.getTotalPageForSeach(searchFor, numberOfRows);
 		try 
 		{
 			jsonResult = objMapper.writeValueAsString(searchResult);
@@ -84,8 +85,10 @@ public class boardController
 			e.printStackTrace();
 		}
 		
+//		model.addAttribute("totalPage", totalPage);
 		model.addAttribute("jsonResult", jsonResult);
 		
 		return ResponseEntity.ok(jsonResult);
 	}
+		
 }
