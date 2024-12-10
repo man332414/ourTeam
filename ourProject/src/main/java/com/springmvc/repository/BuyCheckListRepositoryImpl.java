@@ -1,5 +1,6 @@
 package com.springmvc.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -7,9 +8,7 @@ import javax.sql.DataSource;
 import com.springmvc.DTO.buyCheckList;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.jdbc.core.JdbcTemplate;
-import java.util.ArrayList;
 import org.springframework.stereotype.Repository;
 
 @Repository
