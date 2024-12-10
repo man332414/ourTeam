@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <link href="http://localhost:8080/ourProject/resources/css/bootstrap.min.css" rel="stylesheet">
-    <title>출산용품 상세정보</title>
+    <title>출산용품 관리</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -46,24 +46,34 @@
 
     <div class="container">
         <div class="p-5 mb-4 bg-light rounded-3">
-            <h1 class="display-5 fw-bold">출산용품 상세정보</h1>
-            <c:if test="${not empty product}">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">${product.productName}</h5>
-                        <p class="card-text">분류: ${product.useCategory}</p>
-                        <p class="card-text">가격: ${product.productPrice} 원</p>
-                        <p class="card-text">재고 수량: ${product.quantity}개</p>
-                        <p class="card-text">상세 설명: ${product.acquisitionPath}</p>
-                        <p class="card-text">구매 방법: ${product.acquisitionMethod}</p>
-                        <a href="products" class="btn btn-primary">목록으로 돌아가기</a>
-                    </div>
-                </div>
-            </c:if>
-            <c:if test="${empty product}">
-                <p>해당 출산용품의 상세정보가 없습니다.</p>
-                <a href="products" class="btn btn-primary">목록으로 돌아가기</a>
-            </c:if>
+            <h1 class="display-5 fw-bold">출산용품 관리</h1>
+            <p class="col-md-8 fs-4">출산용품 목록을 확인하세요.</p>
+            <a href="products/add" class="btn btn-primary">용품 등록</a>
+
+            <div class="row mt-4">
+                <c:if test="${not empty productlist}">
+                    <c:forEach items="${productlist}" var="product">
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">${product.productName}</h5>
+                                    <p class="card-text">분류: ${product.useCategory}<br>가격: ${product.productPrice} 원</p>
+                                    <p>재고 수량: ${product.quantity}개</p>
+                                    <p>취득 경로: ${product.acquisitionPath}</p>
+                                    <p>취득 방법: ${product.acquisitionMethod}</p>
+                                    <a href="<c:url value='products/product?id=${product.num}' />" class="btn btn-secondary">상세정보 &raquo;</a>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </c:if>
+                <c:if test="${empty productlist}">
+                    <p>출산용품이 없습니다.</p>
+                </c:if>
+            </div>
+
+            <hr>
         </div>
     </div>
 

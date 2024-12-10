@@ -1,10 +1,6 @@
 package com.springmvc.controller;
 
-
-import java.io.File;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,84 +9,114 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.ModelAttribute;
+
 import org.springframework.web.servlet.ModelAndView;
 
-import com.springmvc.DTO.emergencyRoom;
-import com.springmvc.service.EmergencyService;
+import com.springmvc.DTO.buyCheckList;
+import com.springmvc.service.BuyCheckListService;
+
 
 @Controller
 @RequestMapping("/products")
 public class ProductController {
 	
-
 	@Autowired // 컴포넌트 스캔되어야 함
-	private EmergencyService emergencyService;
+	private BuyCheckListService buyCheckListService;
 	
-	//private EmergencyValidator emergencyValidator;
-	
+	@GetMapping
+	public String requestlistList(Model model) {
+		System.out.println("000.rc : requestlistList 진입");
+
+		List<buyCheckList> list= buyCheckListService.getALLbuyCheckList();
+		System.out.println("뷰이동: " + list);
+		model.addAttribute("productlist",list);
+		
+		return "products";
+	}
+		
 	
 	@RequestMapping("/product")
 	public String welcome(Model model) {
 		model.addAttribute(model);
 		return "product";
 	}
-		
-	//@RequestMapping(value="/books", method=RequestMethod.GET)
-	@GetMapping
-	public String requestRoomList(Model model) {
-		System.out.println("000.rc : RoomList 진입");
-		List<emergencyRoom> list= emergencyService.getALLemergencyRoomList();
-		System.out.println("뷰이동"+list);
-		model.addAttribute("emergencylist",list);
-		
-		return "product";
+	
+	@GetMapping("/product")
+	public String viewProductDetail(@RequestParam("num") int id, Model model) {
+	    buyCheckList product = buyCheckListService.getbuyCheckListkByNum(id); // 제품 ID로 조회
+	    model.addAttribute("product", product); // 모델에 추가
+	    return "product"; // JSP 파일 이름
 	}
 	
-//	//@RequestMapping(value="/all")
-//	@GetMapping("/all")
-//	public String requestAllBooks(Model model) {
-//		System.out.println("000.bc AllBook : 진입");
-//		List<emergencyRoom> list= emergencyService.getALLBookList();
-//		model.addAttribute("bookList",list);
-//		return "books";
-//	}
-//	
-
+	
 	@GetMapping("/all")
-	public ModelAndView requestAllBooks() {
-		System.out.println("000.bc mav AllBook : 진입");
+	public ModelAndView requestAllLists() {
+		System.out.println("000.rc requestAlllists : 진입");
 		ModelAndView modelAndView = new ModelAndView();
-		List<emergencyRoom> list= emergencyService.getALLemergencyRoomList();
-		modelAndView.addObject("bookList",list);
-		modelAndView.setViewName("books");
+		List<buyCheckList> list= buyCheckListService.getALLbuyCheckList();
+		modelAndView.addObject("productlist",list);
+		modelAndView.setViewName("products");
 		return modelAndView;
 	}
 	
-	 
+	@GetMapping("/{useCategory}")
+	public String requestListsByAddress(@PathVariable("useCategory") String useCategory,Model model) {
+		System.out.println("000.rc requestListsByuseCategory : 진입"+ useCategory);
+		List<buyCheckList> listsByuseCategory= buyCheckListService.getbuyCheckListByuseCategory(useCategory);
+		
+		if (listsByuseCategory == null || listsByuseCategory.isEmpty()){
+//			throw new AddressException();
+		}
+		model.addAttribute("productlist",listsByuseCategory);
+		System.out.println("000.rc requestListsByuseCategory : listsByuseCategory= "+ listsByuseCategory);
+		
+		return "products";
+	} 
 	
+	@GetMapping("add")
+	public String requestAddListForm(@ModelAttribute("NewList") buyCheckList list,BindingResult result, HttpServletRequest request) {
+		System.out.println("===============================");
+		System.out.println("000.rc get requestAddListForm : 진입");
+		
+		//form에 입력
+		if(result.hasErrors()) 
+			return "addproduct";
+		
+		return "addproduct";
+	}
+	
+	
+	@PostMapping("/add")
+	public String submitAddNewBook(@ModelAttribute("NewList") buyCheckList list,BindingResult result, HttpServletRequest request){
+			System.out.println("000.rc post submitAddNewList : 진입 "+ list);
+			
+			if(result.hasErrors()) 
+				return "addproduct";
+			
+			// DB에 저장
+			System.out.println("DB에 저장 setNewbuyCheckList : 실행 ");
+			buyCheckListService.setNewbuyCheckList(list);
+			
+		return "redirect:/products";
+	}
+	
+	 
 	@ModelAttribute
 	public void addAttributrs(Model model) {
-		model.addAttribute("addTitle","신규도서등록");
+		model.addAttribute("addTitle","신규품목등록");
 	}
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		binder.setAllowedFields("bookId","name","ubitPrice","Author","Description",
-				"publisher","category","unitsInStock","totalPages",
-				"releaseDate","condition","bookImage");
+		binder.setAllowedFields("num","useCategory","gradeCategory","productName","productPrice",
+				"quantity","acquisitionPath","acquisitionMethod");
 	}
-	
 
-
-	
 }

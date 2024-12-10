@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <link href="http://localhost:8080/ourProject/resources/css/bootstrap.min.css" rel="stylesheet">
-    <title>출산용품 상세정보</title>
+    <title>출산용품 등록</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -46,24 +46,40 @@
 
     <div class="container">
         <div class="p-5 mb-4 bg-light rounded-3">
-            <h1 class="display-5 fw-bold">출산용품 상세정보</h1>
-            <c:if test="${not empty product}">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">${product.productName}</h5>
-                        <p class="card-text">분류: ${product.useCategory}</p>
-                        <p class="card-text">가격: ${product.productPrice} 원</p>
-                        <p class="card-text">재고 수량: ${product.quantity}개</p>
-                        <p class="card-text">상세 설명: ${product.acquisitionPath}</p>
-                        <p class="card-text">구매 방법: ${product.acquisitionMethod}</p>
-                        <a href="products" class="btn btn-primary">목록으로 돌아가기</a>
-                    </div>
+            <h1 class="display-5 fw-bold">출산용품 등록</h1>
+            <p class="col-md-8 fs-4">출산용품 정보를 입력하세요.</p>
+
+            <form action="add" method="post">
+                <div class="mb-3">
+                    <label for="productName" class="form-label">용품 이름</label>
+                    <input type="text" class="form-control" id="productName" name="productName" required>
                 </div>
-            </c:if>
-            <c:if test="${empty product}">
-                <p>해당 출산용품의 상세정보가 없습니다.</p>
-                <a href="products" class="btn btn-primary">목록으로 돌아가기</a>
-            </c:if>
+                <div class="mb-3">
+                    <label for="useCategory" class="form-label">분류</label>
+                    <input type="text" class="form-control" id="useCategory" name="useCategory" required>
+                <div class="mb-3">
+                    <label for="gradeCategory" class="form-label">시기</label>
+                    <input type="text" class="form-control" id="gradeCategory" name="gradeCategory" required>
+                </div>
+                <div class="mb-3">
+                    <label for="productPrice" class="form-label">가격 (원)</label>
+                    <input type="number" class="form-control" id="productPrice" name="productPrice" required>
+                </div>
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">재고 수량</label>
+                    <input type="number" class="form-control" id="quantity" name="quantity" required>
+                </div>
+                <div class="mb-3">
+                    <label for="acquisitionPath" class="form-label">취득 경로</label>
+                    <input type="text" class="form-control" id="acquisitionPath" name="acquisitionPath" required> 
+                </div>
+                <div class="mb-3">
+                    <label for="acquisitionMethod" class="form-label">취득 방법</label>
+                    <input type="text" class="form-control" id="acquisitionMethod" name="acquisitionMethod" required> 
+                </div>
+                <button type="submit" class="btn btn-primary">등록</button>
+                <a href="products" class="btn btn-secondary">취소</a>
+            </form>
         </div>
     </div>
 
