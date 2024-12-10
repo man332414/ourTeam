@@ -7,8 +7,6 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.ui.Model;
-
 import com.springmvc.DTO.Member;
 
 @Repository
@@ -20,8 +18,8 @@ public class memberRepositoryImpl implements memberRepository
 	public void setJdbctemplate(DataSource dataSource)
 	{
 		this.template=new JdbcTemplate(dataSource);
-			
 	}
+	
 	@Override
 	public void addNewMemver(Member member) 
 	{

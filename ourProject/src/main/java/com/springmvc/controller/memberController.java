@@ -12,30 +12,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.springmvc.DAO.service.memberService;
 import com.springmvc.DTO.Member;
 
-@Controller("/")
+@Controller
+@RequestMapping
 public class memberController 
 {
 	@Autowired
 	private memberService memberService;
 	
-//	--------------------------------- 집으로 가기 ---------------------------------
-
-	@GetMapping
-	public String goHomedefault()
-	{
-		return "home";
-	}
-	
-	@GetMapping("/home")
-	public String goHome()
-	{
-		return "home";
-	}
 
 //	--------------------------------- 회원가입 ---------------------------------
 	

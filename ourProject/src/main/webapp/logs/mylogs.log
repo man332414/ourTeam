@@ -1,4 +1,29 @@
-2024-12-09 18:00:27 INFO  ContextLoader:271 - Root WebApplicationContext: initialization started
-2024-12-09 18:00:27 INFO  ContextLoader:307 - Root WebApplicationContext initialized in 127 ms
-2024-12-09 18:00:27 INFO  DispatcherServlet:525 - Initializing Servlet 'appServlet'
-2024-12-09 18:00:27 INFO  DispatcherServlet:547 - Completed initialization in 667 ms
+2024-12-10 16:19:36 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/resources/js/fullcalendar-6.1.15/dist/index.global.js
+2024-12-10 16:19:36 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-10 16:19:36 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-10 16:19:36 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-10 16:19:36 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-10 16:19:55 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/calendar
+2024-12-10 16:19:55 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/calendar
+2024-12-10 16:19:55 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-10 16:19:55 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-10 16:19:55 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-10 16:19:55 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-10 16:19:55 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/resources/js/fullcalendar-6.1.15/dist/index.global.js
+2024-12-10 16:19:55 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/resources/js/fullcalendar-6.1.15/dist/index.global.js
+2024-12-10 16:19:55 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-10 16:19:55 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-10 16:19:55 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-10 16:19:55 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-10 16:23:30 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/calendar
+2024-12-10 16:23:30 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/calendar
+2024-12-10 16:23:30 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-10 16:23:30 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-10 16:23:30 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-10 16:23:30 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-10 16:23:30 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/resources/js/fullcalendar-6.1.15/dist/index.global.js
+2024-12-10 16:23:30 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/resources/js/fullcalendar-6.1.15/dist/index.global.js
+2024-12-10 16:23:30 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-10 16:23:30 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-10 16:23:30 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-10 16:23:30 INFO  MonitoringInterceptor:40 - ====================================================

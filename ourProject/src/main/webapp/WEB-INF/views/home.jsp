@@ -10,6 +10,7 @@
  <p><a href="signIn">sign-In</a></p>
  <p><a href="readMembers">readMembers</a></p>
  <p><a href="board/list">Board</a></p>
- <p><a href="admin">admin Page</a></p>
+ <p><a href="calendar">Calendar</a></p>
+ <p><a href="admin">Admin Page</a></p>
 </body>
 </html>

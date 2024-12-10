@@ -31,8 +31,6 @@ public class adminController
 	@PostMapping("/create")
 	public String createBoard(@ModelAttribute Board board, Model moedl)
 	{
-		int number=0;
-		
 		boardService.addBoard(board);
 				
 		return "redirect:/admin/board";

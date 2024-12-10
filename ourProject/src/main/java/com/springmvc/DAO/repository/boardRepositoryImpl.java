@@ -147,6 +147,7 @@ public class boardRepositoryImpl implements boardRepository
 		return count >= 1;
 	}
 
+	//삭제하기
 	@Override
 	public void deleteBoard(List<Integer> number) 
 	{
@@ -162,6 +163,7 @@ public class boardRepositoryImpl implements boardRepository
 		
 	}
 
+	//수정하기
 	@Override
 	public void updateBoard(Board board) 
 	{
@@ -170,6 +172,7 @@ public class boardRepositoryImpl implements boardRepository
 		template.update(sql, board.getDate(), board.getTitle(), board.getCategory(), board.getContent(), board.getNumber());
 	}
 
+	//생성하기
 	@Override
 	public void addBoard(Board board)
 	{
