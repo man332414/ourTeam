@@ -53,10 +53,28 @@ public class ParentingDiaryRepositoryImpl implements ParentingDiaryRepository {
 
 	@Override
 	public parentingDiary getparentingDiaryById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		System.out.println("getparentingDiaryById: 진입" + id );
+		parentingDiary diaryInfo = null;
+		
+		String SQL = "select count(*) from parentingDiary where id = ?";
+		int rowCount = template.queryForObject(SQL,Integer.class, id);
+		System.out.println("30.PRI getparentingDiaryById: rowCount ="+rowCount);
+		if(rowCount!=0) {
+			SQL = "select * from parentingDiary where id =?";
+			diaryInfo=template.queryForObject(SQL, new Object[] {id},new ParentingDiaryRowMapper());
+		} 
+		
+		System.out.println("getparentingDiaryById 진입 SQL= " + SQL);
+		
+	    if(diaryInfo == null) {
+				System.out.println("에러입니다 " + SQL);
+		}  
+		  
+		System.out.println("getparentingDiaryById  parentingDiary= " + diaryInfo);
+		return diaryInfo;
 	}
-
+	
 	@Override
 	public void setNewparentingDiary(parentingDiary parentingDiary) {
 		System.out.println("ERI setNewparentingDiary 진입 "+ parentingDiary);
@@ -71,9 +89,7 @@ public class ParentingDiaryRepositoryImpl implements ParentingDiaryRepository {
 			try {
 		        // LocalDateTime을 Timestamp로 변환
 		        LocalDateTime today = parentingDiary.getToday();
-		        System.out.println("parentingDiary.getToday() = " + parentingDiary.getToday());
 		        Timestamp timestamp = Timestamp.valueOf(today);
-		        System.out.println("Timestamp.valueOf(today) = " + Timestamp.valueOf(today));
 		        
 		        // 데이터베이스에 데이터 삽입
 		        template.update(SQL,0, timestamp, parentingDiary.getWeather(),

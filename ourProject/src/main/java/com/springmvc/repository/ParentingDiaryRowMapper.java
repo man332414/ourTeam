@@ -29,8 +29,8 @@ public class ParentingDiaryRowMapper implements RowMapper<parentingDiary> {
 		diary.setWeather(rs.getString(3));
 		diary.setMyMood(rs.getString(4));
 		diary.setDiaryText(rs.getString(5));
-		diary.setFileName(rs.getString(6));
-		
+		diary.setFileName(rs.getString(6)); // 파일 이름을 저장
+		 
 		return diary;
 	}
 }

@@ -27,14 +27,13 @@ public class ParentingDiaryServiceImpl implements ParentingDiaryService {
 
 	@Override
 	public parentingDiary getparentingDiaryById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("getparentingDiaryById: 진입");
+		return parentingDiaryRepository.getparentingDiaryById(id);
 	}
 
 	@Override
 	public void setNewparentingDiary(parentingDiary parentingDiary) {
 		parentingDiaryRepository.setNewparentingDiary(parentingDiary);
-
 	}
 
 	@Override

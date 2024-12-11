@@ -2,6 +2,8 @@ package com.springmvc.DTO;
 
 import java.time.LocalDateTime;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class parentingDiary 
 {
 	//long today = System.currentTimeMillis();  //날자
@@ -10,7 +12,8 @@ public class parentingDiary
 	private String weather;    //날씨
 	private String myMood;     //기분 또는 상태
 	private String diaryText;  //내용
-	private String fileName;   //사진첨무
+	private String fileName;    //파일이름
+	private MultipartFile diaryImage; //사진이미지
 	
 	
 	public int getId() {
@@ -27,11 +30,9 @@ public class parentingDiary
 	}
 	
 	public String getWeather() {
-		System.out.println("getWeather := " + weather);
 		return weather;
 	}
 	public void setWeather(String weather) {
-		System.out.println("setWeather : " + weather);
 		this.weather = weather;
 	}
 	public String getMyMood() {
@@ -50,7 +51,15 @@ public class parentingDiary
 		return fileName;
 	}
 	public void setFileName(String fileName) {
+		System.out.println("setFileName : " + fileName);
 		this.fileName = fileName;
+	} 
+	public MultipartFile getDiaryImage() {
+		return diaryImage;
+	}
+	public void setDiaryImage(MultipartFile diaryImage) {
+		System.out.println("diaryImage : " + diaryImage);
+		this.diaryImage = diaryImage;
 	}
 		 
 }

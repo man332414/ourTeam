@@ -8,7 +8,6 @@
     <meta charset="UTF-8">
     <link href="http://localhost:8080/ourProject/resources/css/bootstrap.min.css" rel="stylesheet">
     <title>성장일기 목록</title>
-    <!-- jQuery 라이브러리 로드 -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
 </head>
@@ -30,7 +29,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="products">출산용품 관리</a>
                     </li>
-                    <!-- 추가 네비게이션 항목 -->
                 </ul>
             </div>
         </div>
@@ -48,18 +46,27 @@
                         <div class="col-md-4 mb-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 type="datetime-local" class="card-title">${diary.today}</h5>
-                                    <p class="card-text">날씨: ${diary.weather}<br>기분: ${diary.myMood}</p>
+                                    <h5 class="card-title d-flex justify-content-between">
+									    <span>${diary.today}</span>
+									    <span>ID: ${diary.id}</span>
+									</h5>
+                                    <p class="card-text"><br>날씨: ${diary.weather}<br>기분: ${diary.myMood}</p>
                                     <p>작성일: ${diary.today}</p>
+                                    
+                                    
+                                    <!-- 이미지 표시 -->
+                                    <c:if test="${not empty diary.fileName}">
+                                        <img src="${pageContext.request.contextPath}/resources/images/${diary.fileName}" alt="Diary Image" class="img-fluid mb-2" style="max-height: 200px; width: auto;"/>
+                                    </c:if>
+
                                     <a href="<c:url value='/diarys/${diary.id}' />" class="btn btn-secondary">상세보기 &raquo;</a>
                                     <a href="<c:url value='/diarys/edit/${diary.id}' />" class="btn btn-warning">수정</a>
-							   <%-- <a href="<c:url value='/diarys/delete/${diary.id}' />" class="btn btn-danger">삭제</a> --%>
                                     <button class="btn btn-danger delete-button" data-id="${diary.id}">삭제</button> <!-- Ajax 삭제 버튼 -->
                                 </div>
                             </div>
                         </div>
                         
-                         <!-- 콘솔에 diary 정보를 출력 -->
+                        <!-- 콘솔에 diary 정보를 출력 -->
                         <script>
                             console.log("Diary ID: ${diary.id}, Title: ${diary.today}, Weather: ${diary.weather}, Mood: ${diary.myMood}");
                         </script>
@@ -78,9 +85,7 @@
 	<script>
 	$(document).ready(function() {
         $('.delete-button').click(function() {
-            console.log('Deleting diary with ID: ' + $(this).data('id')); // 삭제할 ID 출력
             var diaryId = $(this).data('id');
-            console.log('Deleting diary with ID: ' + diaryId); // 삭제할 ID 출력
             if (confirm('정말로 삭제하시겠습니까?')) {
                 $.ajax({
                     url: 'diarys/delete/' + diaryId,
@@ -90,7 +95,7 @@
                         location.reload(); // 페이지 새로 고침
                     },
                     error: function(xhr, status, error) {
-                        console.error('삭제에 실패했습니다: ' + error); // 에러 메시지 출력
+                        console.error('삭제에 실패했습니다: ' + error);
                         alert('삭제에 실패했습니다: ' + error);
                     }
                 });

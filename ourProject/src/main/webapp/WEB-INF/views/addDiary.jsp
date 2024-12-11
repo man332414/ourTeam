@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <h1 class="mt-5">성장일기 작성하기</h1>
-        <form action="add" method="post" class="mt-4">
+        <form action="add" method="post" class="mt-4" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="today" class="form-label">일자</label>
                 <input type="datetime-local" class="form-control" id="today" name="today" required>
@@ -31,6 +31,11 @@
                     <option value="기타">기타</option>
                 </select>
             </div>
+            <div class="mb-3">
+		        <label for="diaryImage" class="form-label">사진 업로드</label>
+		        <input type="file" class="form-control" id="diaryImage" name="diaryImage" accept="image/*">
+	   		</div>
+            
             <div class="mb-3">
                 <label for="diaryText" class="form-label">내용</label>
                 <textarea class="form-control" id="diaryText" name="diaryText" rows="5" required></textarea>
