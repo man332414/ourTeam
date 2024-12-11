@@ -15,7 +15,6 @@ import com.springmvc.DTO.Board;
 public class boardRepositoryImpl implements boardRepository 
 {
 	private JdbcTemplate template;
-	
 	@Autowired
 	public void setJdbctemplate(DataSource dataSource)
 	{
@@ -81,8 +80,7 @@ public class boardRepositoryImpl implements boardRepository
 
 	// 검색 하기
 	@Override
-	public List<Map<String, Object>> getSearchResult(
-			Map<String, String> searchFor/* , int currentPage, int numberOfRows */) 
+	public List<Map<String, Object>> getSearchResult(Map<String, String> searchFor , int currentPage, int numberOfRows) 
 	{
 //		System.out.println("boardRepositoryImpl.getSearchResult() 입장 : " + searchFor.get("searchFor"));
 		String sql = "select count(*) from board where title like ?";
@@ -95,12 +93,13 @@ public class boardRepositoryImpl implements boardRepository
 		{
 			System.out.println("boardRepositoryImpl.getSearchResult() 입장 : " + cont);
 			
-//			int offset = (currentPage-1) * numberOfRows;
-
+			int offset = (currentPage-1) * numberOfRows;
 			
-			sql = "select * from board where title like ?";
+			List<Map<String, Object>> searchResult=null;
+			
+			sql = "select * from board where title like ? limit ? offset ?";
 			// Json 형식으로 반환하기 위해 이렇게 받아여
-			List<Map<String, Object>> searchResult = template.query(sql, new Object[] { query/* , numberOfRows, offset */}, new boardRowMapper());
+			searchResult = template.query(sql, new Object[] {query , numberOfRows, offset}, new boardRowMapper());
 			
 //			Map<String, Object> searchResultToJson = new HashMap<String, Object>();			
 //			for(int i = 0; i < searchResult.size(); i++)
@@ -116,24 +115,44 @@ public class boardRepositoryImpl implements boardRepository
 		}
 	}
 	
-//	// 검색기능의 토탈페이지
-//	public int getTotalPageForSeach(Map<String, String> searchFor, int numberOfRows) 
-//	{
-//		String sql = "select count(*) from board where title like ?";
-//		String query = "%"+searchFor.get("searchFor")+"%";
-//		int cont = template.queryForObject(sql, new Object[]{query}, Integer.class);
-//
-//		// 컨텐츠 숫자를 기반으로 전체 페이지 확인
-//		
-//		int totalPage = cont/numberOfRows;
-//		if((cont%numberOfRows) != 0 && cont > numberOfRows)
-//		{
-//			totalPage = totalPage+1;
-//		}
-//		
-//		System.out.println("검색에 대한 전체페이지 요 있다. : " + totalPage);
-//		return totalPage;
-//	}
+	// 검색기능의 토탈페이지
+	public int getTotalPageForSeach(Map<String, String> searchFor, int numberOfRows) 
+	{
+		String sql = "select count(*) from board where title like ?";
+		String query = "%"+searchFor.get("searchFor")+"%";
+		int cont = template.queryForObject(sql, new Object[]{query}, Integer.class);
+
+		// 컨텐츠 숫자를 기반으로 전체 페이지 확인
+		
+		int totalPage = cont/numberOfRows;
+		if((cont%numberOfRows) != 0 && cont > numberOfRows)
+		{
+			totalPage = totalPage+1;
+		}
+		
+		System.out.println("검색에 대한 전체페이지 요 있다. : " + totalPage);
+		return totalPage;
+	}
+	
+	//오버로딩
+	@Override
+	public int getTotalPageForSeach(String searchFor, int numberOfRows) 
+	{
+		String sql = "select count(*) from board where title like ?";
+		String query = "%"+searchFor+"%";
+		int cont = template.queryForObject(sql, new Object[]{query}, Integer.class);
+
+		// 컨텐츠 숫자를 기반으로 전체 페이지 확인
+		
+		int totalPage = cont/numberOfRows;
+		if((cont%numberOfRows) != 0 && cont > numberOfRows)
+		{
+			totalPage = totalPage+1;
+		}
+		
+		System.out.println("검색에 대한 전체페이지 요 있다. : " + totalPage);
+		return totalPage;
+	}
 
 	// API 읽어올 때 중복검사 하기
 	@Override
@@ -179,5 +198,21 @@ public class boardRepositoryImpl implements boardRepository
 		String sql = "insert into board(number, date, title, category, content) values(?, ?, ?, ?, ?)";
 		template.update(sql, null, board.getDate(), board.getTitle(), board.getCategory(), board.getContent());
 	}
+
+	
+	@Override
+	public List<Board> getSearchedBoards(String searchFor, int currentPage, int numberOfRows) 
+	{
+		System.out.println("boardRepositoryImpl.getSearchedBoards() 입장");
+		String sql = "select * from board where title like ? limit ? offset ?";
+		String query = "%"+searchFor+"%";
+		int offset = (currentPage-1) * numberOfRows;
+
+		// Json 형식으로 반환하기 위해 이렇게 받아여
+		List<Board> boards = template.query(sql, new Object[] {query , numberOfRows, offset}, new boardRowMapper());
+
+		return boards;
+	}
+
 
 }

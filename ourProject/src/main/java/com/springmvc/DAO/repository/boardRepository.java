@@ -13,7 +13,7 @@ public interface boardRepository {
 
 	Board getOneBoard(Integer number);
 
-	List<Map<String, Object>> getSearchResult(Map<String, String> searchFor/* , int currentPage, int numberOfRows */);
+	List<Map<String, Object>> getSearchResult(Map<String, String> searchFor , int currentPage, int numberOfRows);
 
 	boolean isBoardList(String title);
 
@@ -25,6 +25,12 @@ public interface boardRepository {
 
 	void addBoard(Board board);
 	
-//	public int getTotalPageForSeach(Map<String, String> searchFor, int numberOfRows);
+	public int getTotalPageForSeach(Map<String, String> searchFor, int numberOfRows);
+
+	//오버로딩
+	int getTotalPageForSeach(String searchFor, int numberOfRows);
+
+	List<Board> getSearchedBoards(String searchFor, int currentPage, int numberOfRows);
+
 
 }

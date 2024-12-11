@@ -12,10 +12,11 @@
 		<h1>회원가입 메뉴 입니다.</h1>
 	</div>
 	<div>
-		<form:form modelAttribute="member" method="post">
+		<form:form modelAttribute="member" method="post" id="signInForm">
 			<p>
 				아이디 : <form:input path="userId" name="id" id="userId" />
 				<button id="checkDupl">중복검사</button>
+				<input type="hidden" id="idCheck" value="false" />
 			</p>
 			<p>비밀번호 : <form:password path="password" name="password" /></p>
 			<p>E-mail : <form:input type="email" path="email" name="email" /></p>
@@ -51,7 +52,8 @@
 	// 	아이디 중복검사
 	let isDupl = document.querySelector("#checkDupl");
 	console.log(isDupl);
-
+	let isCheck = document.querySelector("#idCheck").value;
+	
 	isDupl.addEventListener("click", duplconfirm);
 	
 	function duplconfirm(e)
@@ -75,6 +77,7 @@
 	            else 
 	            {
 	                alert("사용 가능한 ID입니다.");
+	                isCheck = 'true';
 	            }
 	        },
 	        error: function(error) {
@@ -86,14 +89,23 @@
 
 <script type="text/javascript">
 	// 	회원가입 성공 안내
+	let signInForm = document.querySelector("#signInForm");
 	let submitbtn = document.querySelector("#submitbtn");
 	console.log(submitbtn);
 	
 	submitbtn.addEventListener("click", subFunc);
 	
-	function subFunc()
+	function subFunc(e)
 	{
+		e.preventDefault();
+		if(isCheck=='false')
+		{
+			alert("id 중복검사 하시기 바랍니다.");
+			return false;
+		}
+		
 		alert("회원가입 성공했습니다.")
+		signInForm.submit();
 	}
 </script>
 </html>

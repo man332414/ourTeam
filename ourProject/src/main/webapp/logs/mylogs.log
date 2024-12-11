@@ -1,29 +1,94 @@
-2024-12-10 16:19:36 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/resources/js/fullcalendar-6.1.15/dist/index.global.js
-2024-12-10 16:19:36 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
-2024-12-10 16:19:36 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
-2024-12-10 16:19:36 INFO  MonitoringInterceptor:40 - ====================================================
-2024-12-10 16:19:36 INFO  MonitoringInterceptor:40 - ====================================================
-2024-12-10 16:19:55 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/calendar
-2024-12-10 16:19:55 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/calendar
-2024-12-10 16:19:55 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
-2024-12-10 16:19:55 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
-2024-12-10 16:19:55 INFO  MonitoringInterceptor:40 - ====================================================
-2024-12-10 16:19:55 INFO  MonitoringInterceptor:40 - ====================================================
-2024-12-10 16:19:55 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/resources/js/fullcalendar-6.1.15/dist/index.global.js
-2024-12-10 16:19:55 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/resources/js/fullcalendar-6.1.15/dist/index.global.js
-2024-12-10 16:19:55 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
-2024-12-10 16:19:55 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
-2024-12-10 16:19:55 INFO  MonitoringInterceptor:40 - ====================================================
-2024-12-10 16:19:55 INFO  MonitoringInterceptor:40 - ====================================================
-2024-12-10 16:23:30 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/calendar
-2024-12-10 16:23:30 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/calendar
-2024-12-10 16:23:30 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
-2024-12-10 16:23:30 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
-2024-12-10 16:23:30 INFO  MonitoringInterceptor:40 - ====================================================
-2024-12-10 16:23:30 INFO  MonitoringInterceptor:40 - ====================================================
-2024-12-10 16:23:30 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/resources/js/fullcalendar-6.1.15/dist/index.global.js
-2024-12-10 16:23:30 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/resources/js/fullcalendar-6.1.15/dist/index.global.js
-2024-12-10 16:23:30 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
-2024-12-10 16:23:30 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
-2024-12-10 16:23:30 INFO  MonitoringInterceptor:40 - ====================================================
-2024-12-10 16:23:30 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:47:15 INFO  ContextLoader:271 - Root WebApplicationContext: initialization started
+2024-12-11 17:47:15 INFO  ContextLoader:307 - Root WebApplicationContext initialized in 133 ms
+2024-12-11 17:47:15 INFO  DispatcherServlet:525 - Initializing Servlet 'appServlet'
+2024-12-11 17:47:16 INFO  DispatcherServlet:547 - Completed initialization in 724 ms
+2024-12-11 17:49:09 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/signIn
+2024-12-11 17:49:09 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/signIn
+2024-12-11 17:49:09 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-11 17:49:09 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-11 17:49:09 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:49:09 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:49:20 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/isDuplicate
+2024-12-11 17:49:20 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/isDuplicate
+2024-12-11 17:49:20 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : POST
+2024-12-11 17:49:20 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : POST
+2024-12-11 17:49:20 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:49:20 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:49:30 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/isDuplicate
+2024-12-11 17:49:30 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/isDuplicate
+2024-12-11 17:49:30 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : POST
+2024-12-11 17:49:30 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : POST
+2024-12-11 17:49:30 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:49:30 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:52:31 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/signIn
+2024-12-11 17:52:31 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/signIn
+2024-12-11 17:52:31 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-11 17:52:31 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-11 17:52:31 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:52:31 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:52:42 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/isDuplicate
+2024-12-11 17:52:42 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/isDuplicate
+2024-12-11 17:52:42 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : POST
+2024-12-11 17:52:42 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : POST
+2024-12-11 17:52:42 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:52:42 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:52:48 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/isDuplicate
+2024-12-11 17:52:48 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/isDuplicate
+2024-12-11 17:52:48 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : POST
+2024-12-11 17:52:48 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : POST
+2024-12-11 17:52:48 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:52:48 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:52:52 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/signIn
+2024-12-11 17:52:52 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/signIn
+2024-12-11 17:52:52 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : POST
+2024-12-11 17:52:52 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : POST
+2024-12-11 17:52:52 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:52:52 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:52:58 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/readMembers
+2024-12-11 17:52:58 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/readMembers
+2024-12-11 17:52:58 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-11 17:52:58 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-11 17:52:58 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:52:58 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:53:08 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/deleteMember?userId=231
+2024-12-11 17:53:08 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/deleteMember?userId=231
+2024-12-11 17:53:08 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-11 17:53:08 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-11 17:53:08 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:53:08 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:53:08 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/home
+2024-12-11 17:53:08 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/home
+2024-12-11 17:53:08 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-11 17:53:08 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-11 17:53:08 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:53:08 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:53:10 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/readMembers
+2024-12-11 17:53:10 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/readMembers
+2024-12-11 17:53:10 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-11 17:53:10 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-11 17:53:10 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:53:10 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:53:22 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/board/list
+2024-12-11 17:53:22 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/board/list
+2024-12-11 17:53:22 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-11 17:53:22 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-11 17:53:22 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:53:22 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:53:22 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/resources/js/searchFunction.js
+2024-12-11 17:53:22 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/resources/js/searchFunction.js
+2024-12-11 17:53:22 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-11 17:53:22 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-11 17:53:22 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:53:22 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:53:25 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/calendar
+2024-12-11 17:53:25 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/calendar
+2024-12-11 17:53:25 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-11 17:53:25 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-11 17:53:25 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:53:25 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:53:55 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/calendar/addevents
+2024-12-11 17:53:55 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/calendar/addevents
+2024-12-11 17:53:55 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : POST
+2024-12-11 17:53:55 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : POST
+2024-12-11 17:53:55 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-11 17:53:55 INFO  MonitoringInterceptor:40 - ====================================================

@@ -37,7 +37,7 @@ public class memberController
 	@PostMapping("/signIn")
 	public String addMember(@ModelAttribute Member member, Model modle)
 	{
-		System.out.println("memberController.addMember 입장 : " +member.getUserId());
+		System.out.println("memberController.addMember() 입장 : " +member.getUserId());
 		memberService.addNewMember(member);
 		System.out.println("------------------------------------------");
 		
@@ -48,7 +48,7 @@ public class memberController
 	@PostMapping("isDuplicate")
 	public ResponseEntity<Map<String, String>> isDuplicate(@RequestBody Map<String, String> MapUserId)
 	{
-		System.out.println("controller.isDuplicate : "+MapUserId.get("userId"));
+		System.out.println("memberController.isDuplicate() : "+MapUserId.get("userId"));
 		String userId = MapUserId.get("userId");
 		Map<String, String> response = new HashMap<String, String>();
 		

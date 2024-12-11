@@ -12,7 +12,7 @@ public class CalendarEvent
     private String description; // 이벤트 설명 (선택적)
     private String location; // 이벤트 위치 (선택적)
     private String category; // 이벤트 카테고리 (예: "회의", "일정", "휴가" 등)
-    private int userId; // 이벤트 소유자 사용자 ID
+    private String userId; // 이벤트 소유자 사용자 ID
     
 	public CalendarEvent() {}
 	
@@ -64,10 +64,10 @@ public class CalendarEvent
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 

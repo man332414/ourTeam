@@ -122,11 +122,10 @@ public class boardServiceImpl implements boardService
 	}
 
 	@Override
-	public List<Map<String, Object>> getSearchResult(
-			Map<String, String> searchFor/* , int currentPage, int numberOfRows */) 
+	public List<Map<String, Object>> getSearchResult(Map<String, String> searchFor, int currentPage, int numberOfRows) 
 	{
 		List<Map<String, Object>> searchResult = boardRepository
-				.getSearchResult(searchFor/* , currentPage, numberOfRows */);
+				.getSearchResult(searchFor , currentPage, numberOfRows);
 		return searchResult;
 	}
 
@@ -155,9 +154,24 @@ public class boardServiceImpl implements boardService
 		boardRepository.addBoard(board);
 	}
 	
-//	public int getTotalPageForSeach(Map<String, String> searchFor, int numberOfRows)
-//	{
-//		return boardRepository.getTotalPageForSeach(searchFor, numberOfRows);
-//	}
-//
+	public int getTotalPageForSeach(Map<String, String> searchFor, int numberOfRows)
+	{
+		return boardRepository.getTotalPageForSeach(searchFor, numberOfRows);
+	}
+	
+	// 오버로딩
+	@Override
+	public int getTotalPageForSeach(String searchFor, int numberOfRows) {
+		// TODO Auto-generated method stub
+		return boardRepository.getTotalPageForSeach(searchFor, numberOfRows);
+	}
+
+	@Override
+	public List<Board> getSearchedBoards(String searchFor, int currentPage, int numberOfRows) 
+	{
+//		System.out.println("boardServiceImpl.getSearchedBoards() 입장");
+		List<Board> boards = boardRepository.getSearchedBoards(searchFor,currentPage,numberOfRows);
+		return boards;
+	}
+
 }

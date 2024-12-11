@@ -3,8 +3,9 @@
 <html>
 <head>
 <meta charset='utf-8' />
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.15/main.min.css' rel='stylesheet' />
-<script src="/ourProject/resources/js/fullcalendar-6.1.15/dist/index.global.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.15/main.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <style>
 	body {
@@ -42,21 +43,40 @@
 </style>
 </head>
 <body>
+	<button id="addBtn">일정추가</button>
     <div id="eventModal">
         <div class="modal-content">
             <h2>새 일정 추가</h2>
-            <form id="eventForm">
-                <label>제목:</label>
-                <input type="text" id="eventTitle" required><br>
-                <label>시작 날짜:</label>
-                <input type="date" id="eventStart" required><br>
-                <label>종료 날짜:</label>
-                <input type="date" id="eventEnd"><br>
-                <label>설명:</label>
-                <textarea id="eventDescription"></textarea><br>
-                <button type="submit">저장</button>
-                <button type="button" id="closeModal">취소</button>
-            </form>
+			<form id="eventForm">
+			    <label for="title">이벤트 제목:</label>
+			    <input type="text" id="title" name="title" required><br><br>
+			
+			    <label for="start">시작 날짜 및 시간:</label>
+			    <input type="datetime-local" id="start" name="start" required><br><br>
+			
+			    <label for="end">종료 날짜 및 시간 (선택적):</label>
+			    <input type="datetime-local" id="end" name="end"><br><br>
+			
+			    <label for="allDay">하루 종일 이벤트:</label>
+			    <input type="checkbox" id="allDay" name="allDay"><br><br>
+			
+			    <label for="description">이벤트 설명:</label>
+			    <textarea id="description" name="description"></textarea><br><br>
+			
+			    <label for="location">이벤트 위치:</label>
+			    <input type="text" id="location" name="location"><br><br>
+			
+			    <label for="category">이벤트 카테고리:</label>
+			    <select id="category" name="category">
+			        <option value="회의">회의</option>
+			        <option value="일정">일정</option>
+			        <option value="휴가">휴가</option>
+			        <option value="기타">기타</option>
+			    </select><br><br>
+			
+			    <button type="submit">이벤트 저장</button>
+			    <button id="closeBtn">취소</button>
+			</form>
         </div>
     </div>
 
@@ -65,8 +85,7 @@
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
 		let calendarEl = document.getElementById('calendar');
-        let eventModal = document.getElementById('eventModal');
-        let eventForm = document.getElementById('eventForm');
+// 		console.log(calendarEl);
 		let calendar = new FullCalendar.Calendar(calendarEl, {
 				headerToolbar: {
 					left: 'prev,next today',
@@ -74,89 +93,66 @@
 					right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
 				},
 		    initialView: 'dayGridMonth',
-		    events: '/calendar/events', // 서버에서 이벤트 가져오기
-		    editable: true,
-		    eventAdd: function(info) {
-		        fetch('/calendar/events', {
-		            method: 'POST',
-		            body: JSON.stringify(info.event),
-		            headers: {
-		                'Content-Type': 'application/json'
-		            }
-
+// 		    events: '/calendar/events', // 서버에서 이벤트 가져오기
 			navLinks: true, // can click day/week names to navigate views
 			businessHours: true, // display business hours
 			editable: true,
-			selectable: true,
-			events: [
-// 				{
-// 				  title: '안녕하세요',
-// 				  start: '2024-12-03T13:00:00',
-// 				  constraint: 'businessHours'
-// 				},
-// 				{
-// 				  title: 'Meeting',
-// 				  start: '2024-12-13T11:00:00',
-// 				  constraint: 'availableForMeeting', // defined below
-// 				  color: '#257e4a'
-// 				},
-// 				{
-// 				  title: 'Conference',
-// 				  start: '2024-12-18',
-// 				  end: '2023-01-20'
-// 				},
-// 				{
-// 				  title: 'Party',
-// 				  start: '2024-12-29T20:00:00'
-// 				},
-				
-// 				// areas where "Meeting" must be dropped
-// 				{
-// 				  groupId: 'availableForMeeting',
-// 				  start: '2024-12-11T10:00:00',
-// 				  end: '2024-12-11T16:00:00',
-// 				  display: 'background'
-// 				},
-// 				{
-// 				  groupId: 'availableForMeeting',
-// 				  start: '2024-12-13T10:00:00',
-// 				  end: '2024-12-13T16:00:00',
-// 				  display: 'background'
-// 				},
-				
-// 				// red areas where no events can be dropped
-// 				{
-// 				  start: '2024-12-24',
-// 				  end: '2024-12-28',
-// 				  overlap: false,
-// 				  display: 'background',
-// 				  color: '#ff9f89'
-// 				},
-// 				{
-// 				  start: '2024-12-06',
-// 				  end: '2024-12-08',
-// 				  overlap: false,
-// 				  display: 'background',
-// 				  color: '#ff9f89'
-// 				}
-			]
-			
+			selectable: true,			
 		});
 		calendar.render();
 		
 		let addBtn = document.querySelector("#addBtn");
 		console.log(addBtn);
+		let eventAddModal = document.querySelector("#eventModal");
+		console.log(eventAddModal);
+		let closeBtn = document.querySelector("#closeBtn");
+				
+		addBtn.addEventListener("click", appearFunc);
+		closeBtn.addEventListener("click", disappearFunc);
 		
-		addBtn.addEventListener("click", addFunc)
-		
-		function addFunc()
+		function appearFunc()
 		{
-			calendar.addEvent({
-				title: "new Event",
-				start: "2024-12-15T16:00:00"
-			});
+			console.log("appearFunc() 입장")
+			eventAddModal.style.display='block';
+			
 		}
+		
+		$('#eventForm').submit(function(e) {
+		    e.preventDefault();  // 폼 제출을 막음
 
+		    // 폼 데이터 수집
+		    let eventData = {
+		        title: $('#title').val(),
+		        start: $('#start').val(),
+		        end: $('#end').val() || null,  // 종료 날짜가 없으면 null
+		        allDay: $('#allDay').is(':checked'),
+		        description: $('#description').val() || null,
+		        location: $('#location').val() || null,
+		        category: $('#category').val()
+		    };
+
+		    // 서버로 JSON 데이터 전송
+		    $.ajax({
+		        url: 'calendar/addevents',  // 서버의 이벤트 수신 URL
+		        method: 'POST',
+		        contentType: 'application/json',
+		        data: JSON.stringify(eventData),
+		        success: function(response) {
+		            console.log('이벤트 저장 성공:', response);
+		        },
+		        error: function(xhr, status, error) {
+		            console.error('이벤트 저장 실패:', error);
+		        }
+		    });
+		    disappearFunc();
+		});
+		
+		function disappearFunc()
+		{
+			console.log("disappearFunc() 입장")
+			eventAddModal.style.display='none';
+		}
+			
 });
 </script>
 </html>
