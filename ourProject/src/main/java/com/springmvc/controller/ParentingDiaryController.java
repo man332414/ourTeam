@@ -157,7 +157,7 @@ public class ParentingDiaryController {
         }
         
         parentingDiaryService.setUpdateparentingDiary(diary);
-        return "daily";
+        return "diary";
     }  
 	
 	 

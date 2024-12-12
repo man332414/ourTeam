@@ -31,10 +31,10 @@
     <div class="container mt-4">
         <h1 class="mb-4">성장일기 수정</h1>
         
-        <form action="<c:url value='/diarys/update/${diary.id}' />" method="post">
+        <form action="<c:url value='/diarys/update?id=${diary.id}' />" method="post">
             <div class="mb-3">
                 <label for="today" class="form-label">일자</label>
-                <input type="date" class="form-control" id="today" name="today" value="${diary.today}" required>
+                <input type="datetime-local" class="form-control" id="today" name="today" value="${diary.today}" required>
             </div>
             <div class="mb-3">
                 <label for="weather" class="form-label">날씨</label>
@@ -49,7 +49,7 @@
                 <textarea class="form-control" id="diaryText" name="diaryText" rows="4" required>${diary.diaryText}</textarea>
             </div>
             <button type="submit" class="btn btn-primary">수정 완료</button>
-            <a href="diarys" class="btn btn-secondary">취소</a>
+            <a href="./" class="btn btn-secondary">취소</a>
         </form>
     </div>
 

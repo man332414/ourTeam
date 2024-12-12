@@ -60,7 +60,7 @@
                                     </c:if>
 
                                     <a href="<c:url value='/diarys/${diary.id}' />" class="btn btn-secondary">상세보기 &raquo;</a>
-                                    <a href="<c:url value='/diarys/edit/${diary.id}' />" class="btn btn-warning">수정</a>
+                                    <a href="<c:url value='/diarys/update?id=${diary.id}' />" class="btn btn-warning">수정</a>
                                     <button class="btn btn-danger delete-button" data-id="${diary.id}">삭제</button> <!-- Ajax 삭제 버튼 -->
                                 </div>
                             </div>
