@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset='utf-8' />
-<link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.15/main.min.css" rel="stylesheet">
+<!-- <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.15/main.min.css" rel="stylesheet"> -->
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -43,7 +43,6 @@
 </style>
 </head>
 <body>
-	<button id="addBtn">일정추가</button>
     <div id="eventModal">
         <div class="modal-content">
             <h2>새 일정 추가</h2>
@@ -82,77 +81,5 @@
 
 	<div id='calendar'></div>
 </body>
-<script>
-	document.addEventListener('DOMContentLoaded', function() {
-		let calendarEl = document.getElementById('calendar');
-// 		console.log(calendarEl);
-		let calendar = new FullCalendar.Calendar(calendarEl, {
-				headerToolbar: {
-					left: 'prev,next today',
-					center: 'title',
-					right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
-				},
-		    initialView: 'dayGridMonth',
-// 		    events: '/calendar/events', // 서버에서 이벤트 가져오기
-			navLinks: true, // can click day/week names to navigate views
-			businessHours: true, // display business hours
-			editable: true,
-			selectable: true,			
-		});
-		calendar.render();
-		
-		let addBtn = document.querySelector("#addBtn");
-		console.log(addBtn);
-		let eventAddModal = document.querySelector("#eventModal");
-		console.log(eventAddModal);
-		let closeBtn = document.querySelector("#closeBtn");
-				
-		addBtn.addEventListener("click", appearFunc);
-		closeBtn.addEventListener("click", disappearFunc);
-		
-		function appearFunc()
-		{
-			console.log("appearFunc() 입장")
-			eventAddModal.style.display='block';
-			
-		}
-		
-		$('#eventForm').submit(function(e) {
-		    e.preventDefault();  // 폼 제출을 막음
-
-		    // 폼 데이터 수집
-		    let eventData = {
-		        title: $('#title').val(),
-		        start: $('#start').val(),
-		        end: $('#end').val() || null,  // 종료 날짜가 없으면 null
-		        allDay: $('#allDay').is(':checked'),
-		        description: $('#description').val() || null,
-		        location: $('#location').val() || null,
-		        category: $('#category').val()
-		    };
-
-		    // 서버로 JSON 데이터 전송
-		    $.ajax({
-		        url: 'calendar/addevents',  // 서버의 이벤트 수신 URL
-		        method: 'POST',
-		        contentType: 'application/json',
-		        data: JSON.stringify(eventData),
-		        success: function(response) {
-		            console.log('이벤트 저장 성공:', response);
-		        },
-		        error: function(xhr, status, error) {
-		            console.error('이벤트 저장 실패:', error);
-		        }
-		    });
-		    disappearFunc();
-		});
-		
-		function disappearFunc()
-		{
-			console.log("disappearFunc() 입장")
-			eventAddModal.style.display='none';
-		}
-			
-});
-</script>
+<script src="/ourProject/resources/js/(calendar.jsp)fullCalendar.js"></script>
 </html>

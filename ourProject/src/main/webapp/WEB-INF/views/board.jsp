@@ -14,7 +14,6 @@
 <body>
 	<div style="display:flex; justify-content: space-between; text-align: center;">
 		<h1>게시판 기능입니다.</h1>
-		<a href="refresh">글 다시 읽어오기</a>
 	</div>
 	
 	<div>

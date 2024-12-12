@@ -2,11 +2,15 @@ package com.springmvc.DTO;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class CalendarEvent 
 {
     private String id; // 고유 ID
     private String title; // 이벤트 제목
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime start; // 시작 날짜 및 시간
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime end; // 종료 날짜 및 시간 (선택적)
     private boolean allDay; // 하루 종일 이벤트인지 여부 (선택적)
     private String description; // 이벤트 설명 (선택적)
@@ -35,6 +39,11 @@ public class CalendarEvent
 		this.start = start;
 	}
 	public LocalDateTime getEnd() {
+//		System.out.println("CalendarEvent.getEnd() 입장 : " + end);
+//		if(end!=null) 
+//		{
+//			return end.minusMonths(1);
+//		}
 		return end;
 	}
 	public void setEnd(LocalDateTime end) {

@@ -158,6 +158,15 @@
 	    <version>6.1.9</version>
 	</dependency>
 
+	<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
+	<!-- DB에 LocalDateTime가 안된다고 해서 집어넣은 의존성 -->
+	<dependency>
+	    <groupId>com.fasterxml.jackson.datatype</groupId>
+	    <artifactId>jackson-datatype-jsr310</artifactId>
+	    <version>2.18.2</version>
+	</dependency>
+
+
   </dependencies>
   <build>
     <finalName>ourProject</finalName>

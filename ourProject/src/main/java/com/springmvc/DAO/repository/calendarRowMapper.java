@@ -22,7 +22,7 @@ public class calendarRowMapper implements RowMapper<CalendarEvent>
         event.setDescription(rs.getString("description")); // 설명
         event.setLocation(rs.getString("location")); // 위치
         event.setCategory(rs.getString("category")); // 카테고리
-        event.setUserId(rs.getString("user_id")); // 사용자 ID
+//        event.setUserId(rs.getString("user_id")); // 사용자 ID
 
 		return event;
 	}

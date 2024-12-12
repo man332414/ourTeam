@@ -20,7 +20,18 @@
 	<div>
 		<div>
 			<form action="searching">
-				검색하기 : <input type="text" id="searchBox">
+			<% 
+				String searchFor;
+				if(request.getAttribute("searchFor") == null)
+				{
+					searchFor="";							
+				}
+				else
+				{
+					searchFor = (String)request.getAttribute("searchFor"); 
+				}
+			%>
+				검색하기 : <input type="text" id="searchBox" value="<%=searchFor%>">
 			</form>
 	    	<form method="get" action="">
         		<label for="numberOfRows">페이지당 항목 수:</label>
@@ -58,15 +69,18 @@
 				</tbody>
 			</table>
 		</form>
-		<%
-			int totalPage = (int)request.getAttribute("totalPage");
-			for(int i = 1; i <= totalPage; i++)
-			{
-		%>
-			<a href="?currentPage=<%=i%>"><%=i%></a>
-		<%
-			}
-		%>		
+		<% int totalPage = 0; %>
+		<div id="pages">
+			<%
+				totalPage = (int)request.getAttribute("totalPage");
+				for(int i = 1; i <= totalPage; i++)
+				{
+			%>
+				<a href="?currentPage=<%=i%>&search=<%=searchFor%>"><%=i%></a>
+			<%
+				}
+			%>		
+		</div>	
 	</div>
 </body>
 <script type="text/javascript" src="/ourProject/resources/js/searchFunction.js">
@@ -87,6 +101,7 @@
 	}
 </script>
 <script>
+    //선택버튼 클릭 시 해당페이지 전체 선택
 	let checkAll = document.querySelector("#number");
 	console.log(checkAll);
 
@@ -104,5 +119,4 @@
 		);
 	}
 </script>
-
 </html>
