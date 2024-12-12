@@ -29,7 +29,6 @@ public class EemergencyServiceImpl implements EmergencyService {
 	}
 
 	@Override
-
 	public List<emergencyRoom> getemergencyRoomListByAddress(String address) {
 		List<emergencyRoom> roomsByAddress = emergencyRoomRepository.getemergencyRoomListByAddress(address);
 		
