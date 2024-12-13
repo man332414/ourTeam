@@ -31,14 +31,7 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${org.springframework.version}</version>
         </dependency>
-        
-        <!-- Spring Boot Starter Web 의존성 추가 -->
-<!--		<dependency>-->
-<!--		    <groupId>org.springframework.boot</groupId>-->
-<!--		    <artifactId>spring-boot-starter-web</artifactId>-->
-<!--		    <version>3.3.4</version>-->
-<!--		</dependency>-->
-
+		
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -145,6 +138,12 @@
 		    <groupId>org.json</groupId>
 		    <artifactId>json</artifactId>
 		    <version>20231013</version> <!-- 최신 버전 확인 후 추가 -->
+		</dependency>
+	    <!-- Spring Boot Starter Web 의존성 추가 -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-web</artifactId>
+		    <version>3.3.4</version>
 		</dependency>
 	    
         

@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,6 +33,8 @@ public class MapController {
 	
 	@Autowired // 컴포넌트 스캔되어야 함
 	private EmergencyService emergencyService;
+	 @Autowired
+    private RestTemplate restTemplate; // XML에서 등록한 RestTemplate 빈 주입
 
 	@GetMapping("/maptest")
     public ModelAndView showMap() {
@@ -40,39 +43,66 @@ public class MapController {
     }
 
 	@GetMapping("/getCoordinates")
-	@ResponseBody
-	public String getCoordinates(@RequestParam String address) {
-	    try {
-	        // 주소를 URL 인코딩
-	        String encodedAddress = URLEncoder.encode(address, "UTF-8");
-	        String apiKey = "9c0a4381f5a94e6cb0eef56dbcf98cb6";
-	        String url = "https://dapi.kakao.com/v2/local/search/address.json?query=" + encodedAddress;
-
-	        RestTemplate restTemplate = new RestTemplate();
-	        HttpHeaders headers = new HttpHeaders();
-	        headers.set("Authorization", "KakaoAK " + apiKey);
-	        HttpEntity<String> entity = new HttpEntity<>(headers);
-
-	        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-	        JSONObject jsonObject = new JSONObject(response.getBody());
-
-	        JSONArray documents = jsonObject.getJSONArray("documents");
-	        if (documents.length() > 0) {
-	            JSONObject location = documents.getJSONObject(0).getJSONObject("address");
-	            double latitude = location.getDouble("y");
-	            double longitude = location.getDouble("x");
-	            return "{\"latitude\": " + latitude + ", \"longitude\": " + longitude + "}";
-	        } else {
-	            return "{\"latitude\": 0, \"longitude\": 0}"; // 주소가 없을 경우
-	        }
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	        return "{\"latitude\": 0, \"longitude\": 0}"; // 오류 발생 시 기본값 반환
+    @ResponseBody
+    public String getCoordinates(@RequestParam(required = false, defaultValue = "경남 창원시 마산회원구 양덕북12길 113") String address) {
+		 
+	    System.out.println("받은 주소: " + address); // 주소 출력
+	    if (address == null || address.isEmpty()) {
+	        return "{\"error\": \"주소가 비어 있습니다.\"}"; // 주소가 비어 있을 경우 에러 처리
 	    }
-	}
-    
+	    
+	    
+        try {
+        	System.out.println("100 getCoordinates: try 진입");
+            // 주소를 URL 인코딩
+            String encodedAddress = URLEncoder.encode(address, "UTF-8");
+            System.out.println("109 encodedAddress= " + encodedAddress);
+            String apiKey = "9c0a4381f5a94e6cb0eef56dbcf98cb6"; // 실제 API 키
+            String url = "https://dapi.kakao.com/v2/local/search/address.json?query=" + address;
+            System.out.println("110 url= " + url);
+          //  url = url+ "&apiKey=" + apiKey;
+           
+
+            RestTemplate restTemplate = new RestTemplate();
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("Authorization", "KakaoAK " + apiKey);
+            headers.set("os", "web"); // 추가된 헤더
+            headers.set("origin", "http://localhost:8080"); // 도메인 변경
+          //  url = url+ "&headers=" + headers;
+            System.out.println("120 headers= " + headers);
+  
+            HttpEntity<String> entity = new HttpEntity<>(headers);
+            System.out.println("130 entity= " + entity);
+            
+            
+            System.out.println("139  url= " + url);
+            ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+            System.out.println("140 response= " + response);
+            
+            JSONObject jsonObject = new JSONObject(response.getBody());
+            System.out.println("200 jsonObject: = "+jsonObject);
+
+            JSONArray documents = jsonObject.getJSONArray("documents");
+            System.out.println("210 documents= "+ documents);
+            if (documents.length() > 0) {
+                JSONObject location = documents.getJSONObject(0).getJSONObject("address");
+                double latitude = location.getDouble("y");
+                double longitude = location.getDouble("x");
+                System.out.println("latitude= " + latitude + ", longitude= " + longitude);
+                return "{\"latitude\": " + latitude + ", \"longitude\": " + longitude + "}";
+            } else {
+                System.out.println("latitude: 0, longitude: 0");
+                return "{\"latitude\": 0, \"longitude\": 0}"; // 주소가 없을 경우
+            }
+        } catch (Exception e) {
+            System.out.println("900 Exception: error");
+            e.printStackTrace();
+            return "{\"error\": \"주소 검색 중 오류 발생\"}"; // 오류 발생 시 메시지 반환
+        }
+    }
+
 	
-	@GetMapping
+	@GetMapping("/map")
 	public String requestMap(Model model) {
 		System.out.println("000.mapc : requestMap 진입");
 
