@@ -20,9 +20,9 @@
 </head>
 <body>
 	<h1>임산부 정보 취합 프로젝트</h1>
-	<a href="emergencys">1. </a><br>
-	<a href="emergencys">2. </a><br>
-	<a href="emergencys">3. </a><br>
+	<a href="members">1.members(회원관리) </a><br>
+	<a href="board">2.board(게시판) </a><br>
+	<a href="calendar">3.calendar(일정관리) </a><br>
 	<a href="emergencys">4.emergencys(응급실관리)</a><br>
 	<a href="products">5.products(출산/육아용품관리)</a><br>
 	<a href="diarys">6.diarys(성장일기)</a><br>

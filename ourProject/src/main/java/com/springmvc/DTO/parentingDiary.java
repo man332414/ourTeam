@@ -6,7 +6,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class parentingDiary 
 {
-<<<<<<< HEAD
 	//long today = System.currentTimeMillis();  //날자
 	private int id ;             //key
 	private LocalDateTime today; // 또는 Date 타입
@@ -15,14 +14,6 @@ public class parentingDiary
 	private String diaryText;  //내용
 	private String fileName;    //파일이름
 	private MultipartFile diaryImage; //사진이미지
-=======
-	private long today = System.currentTimeMillis();
-	private String wather;
-	private String myMood;
-	private String diaryText;
-	private String fileName;
->>>>>>> team1
-	
 	
 	public int getId() {
 		return id;
