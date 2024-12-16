@@ -2,6 +2,7 @@ package com.springmvc.DTO;
 
 public class emergencyRoom 
 {
+<<<<<<< HEAD
 	private int number;            //순번
 	private String hosName;        //병원이름
 	private String hosaddr;        //병원주소
@@ -24,6 +25,16 @@ public class emergencyRoom
 	}
 	
 	 
+=======
+	private int number;
+	private String hosName;
+	private String hosaddr;
+	private int distance;
+	private String travelTime;
+	private int numOfBad;
+	private boolean isPediatrics;
+	private boolean isObstetricsAndGynecology;
+>>>>>>> team1
 	
 	public int getNumber() {
 		return number;

@@ -1,0 +1,9 @@
+2024-12-12 17:53:22 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-12 17:53:22 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-12 17:53:22 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-12 17:53:22 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/calendar/events?start=2024-12-01T00%3A00%3A00Z&end=2025-01-12T00%3A00%3A00Z&timeZone=UTC
+2024-12-12 17:53:22 INFO  MonitoringInterceptor:23 - 접근한 URL 경로 : /ourProject/calendar/events?start=2024-12-01T00%3A00%3A00Z&end=2025-01-12T00%3A00%3A00Z&timeZone=UTC
+2024-12-12 17:53:22 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-12 17:53:22 INFO  MonitoringInterceptor:24 - 접근하는 매핑 : GET
+2024-12-12 17:53:22 INFO  MonitoringInterceptor:40 - ====================================================
+2024-12-12 17:53:22 INFO  MonitoringInterceptor:40 - ====================================================

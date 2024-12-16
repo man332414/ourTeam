@@ -68,4 +68,16 @@
 		2. 뷰 리졸브 생성
 		3. com.springmvc.controller.HomeController : @Controller이 존재하면 만듦.
 	 -->
+	 
+	 <beans:bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+	 	<beans:property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+	 	<beans:property name="url" value="jdbc:mysql://localhost:3306/ourproject" />
+	 	<beans:property name="username" value="root" />
+	 	<beans:property name="password" value="1234" />
+	 </beans:bean>
+	 
+	 <interceptors>
+	 	<beans:bean class="com.springmvc.interceptor.MonitoringInterceptor" />
+	 </interceptors>
+	 
 </beans:beans>

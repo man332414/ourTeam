@@ -1,17 +1,15 @@
 package com.springmvc.DTO;
 
-public class member 
+public class Member 
 {
-	String userId;
-	String email;
-	String name;
-	String nikName;
-	String birthDay;
-	String babyBirthDay;
-	String gender;
-	String address;
-	String phone1;
-	String phone2;
+	private String userId;
+	private String password;
+	private String email;
+	private String name;
+	private String nikName;
+	private String babyBirthDay;
+	private String telecom;
+	private String phone;
 	
 	public String getUserId() {
 		return userId;
@@ -37,40 +35,28 @@ public class member
 	public void setNikName(String nikName) {
 		this.nikName = nikName;
 	}
-	public String getBirthDay() {
-		return birthDay;
-	}
-	public void setBirthDay(String birthDay) {
-		this.birthDay = birthDay;
-	}
 	public String getBabyBirthDay() {
 		return babyBirthDay;
 	}
 	public void setBabyBirthDay(String babyBirthDay) {
 		this.babyBirthDay = babyBirthDay;
 	}
-	public String getGender() {
-		return gender;
+	public String getPassword() {
+		return password;
 	}
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public String getAddress() {
-		return address;
+	public String getTelecom() {
+		return telecom;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setTelecom(String telecom) {
+		this.telecom = telecom;
 	}
-	public String getPhone1() {
-		return phone1;
+	public String getPhone() {
+		return phone;
 	}
-	public void setPhone1(String phone1) {
-		this.phone1 = phone1;
-	}
-	public String getPhone2() {
-		return phone2;
-	}
-	public void setPhone2(String phone2) {
-		this.phone2 = phone2;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 }
