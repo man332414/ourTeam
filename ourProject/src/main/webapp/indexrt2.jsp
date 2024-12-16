@@ -13,25 +13,20 @@
             width: 100%;
             height: 350px;
         }
-        /* 고정된 메뉴를 위한 여백 설정 */
-        body {
-            padding-top: 70px; /* 메뉴 높이만큼 여백 추가 */
-        }
     </style>
 </head>
 <body>
-    <header class="bg-light py-3 fixed-top">
+    <header class="bg-light py-3">
         <div class="container text-center">
             <h1>임산부 정보 취합 프로젝트</h1>
             <nav class="nav justify-content-center">
-                <a class="nav-link" href="readMembers">회원 관리</a>
-                <a class="nav-link" href="admin/board">게시판</a>
+                <a class="nav-link" href="members">회원 관리</a>
+                <a class="nav-link" href="board">게시판</a>
                 <a class="nav-link" href="calendar">일정 관리</a>
                 <a class="nav-link" href="emergencys">응급실 관리</a>
                 <a class="nav-link" href="products">출산/육아용품 관리</a>
                 <a class="nav-link" href="diarys">성장일기</a>
                 <a class="nav-link" href="map">지도</a>
-                <a class="nav-link" href="home">관리자페이지</a>
             </nav>
         </div>
     </header>
@@ -93,43 +88,14 @@
     
     <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=9c0a4381f5a94e6cb0eef56dbcf98cb6"></script>
     <script>
-        // 지도를 표시할 div 요소를 가져옵니다.
-        var mapContainer = document.getElementById('map');
-
-        // 현재 위치를 가져옵니다.
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                var lat = position.coords.latitude; // 위도
-                var lng = position.coords.longitude; // 경도
-
-                // 지도 옵션 설정
-                var mapOption = { 
-                    center: new kakao.maps.LatLng(35.23209, 128.5838), // 현재 위치를 중심 좌표로 설정
-                    level: 3 // 지도의 확대 레벨
-                };
-
-                
-                console.log("현재 위치 - 위도:", lat, "경도:", lng); // 올바른 console.log 사용
-
-                // 지도를 생성합니다.
-                var map = new kakao.maps.Map(mapContainer, mapOption);
-            }, function(error) {
-                console.error('Geolocation error:', error);
-                // 기본 좌표 설정 (예: 서울)
-                var mapOption = { 
-                    center: new kakao.maps.LatLng(37.5665, 126.978), // 서울의 좌표
-                    level: 3 // 지도의 확대 레벨
-                };
-                var map = new kakao.maps.Map(mapContainer, mapOption);
-            });
-        } else {
-            // Geolocation을 지원하지 않을 경우 기본 좌표 설정
-            var mapOption = { 
-                center: new kakao.maps.LatLng(37.5665, 126.978), // 서울의 좌표
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+            mapOption = { 
+                center: new kakao.maps.LatLng(35.232058, 128.583789), // 지도의 중심좌표
                 level: 3 // 지도의 확대 레벨
             };
-            var map = new kakao.maps.Map(mapContainer, mapOption);
-        }
+
+        // 지도를 표시할 div와 지도 옵션으로 지도를 생성합니다
+        var map = new kakao.maps.Map(mapContainer, mapOption); 
     </script>
 </body>
 </html>
