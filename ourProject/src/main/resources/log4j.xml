@@ -24,6 +24,23 @@
 		<appender-ref ref="monitor"/>
 	</logger>
 	
+	 <!-- JDBC 로그 레벨 조정 -->
+    <logger name="org.springframework.jdbc">
+        <level value="info" />
+    </logger>
+    <logger name="org.springframework.jdbc.core">
+        <level value="info" />
+    </logger>
+     <logger name="org.springframework.jdbc.core.JdbcTemplate">
+        <level value="info" />
+    </logger>
+     <logger name="org.springframework.jdbc.datasource">
+        <level value="info" />
+    </logger>
+     <logger name="org.springframework.jdbc.datasource.DataSourceUtils">
+        <level value="info" />
+    </logger>
+    
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
 		<level value="info" />

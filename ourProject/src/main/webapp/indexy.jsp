@@ -27,7 +27,9 @@
 	<a href="products">5.products(출산/육아용품관리)</a><br>
 	<a href="diarys">6.diarys(성장일기)</a><br>
 	<a href="map">9.지도</a><br>
+	<a href="map1">9.지도에 표시</a><br>
 	<a href="maptest">9t.maptest</a><br>
+	<a href="mapdistim">10.map거리시간구하기</a><br>
 	9c0a4381f5a94e6cb0eef56dbcf98cb6
 
 	<div id="map">map</div>

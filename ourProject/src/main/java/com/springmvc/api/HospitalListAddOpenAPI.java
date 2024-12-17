@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import com.springmvc.DTO.*;
+import com.springmvc.controller.DistanceCalculator;
 
 import javax.xml.transform.stream.StreamSource;
 import java.io.InputStream;
@@ -147,6 +148,9 @@ public class HospitalListAddOpenAPI {
                 room.setPediatrics(Boolean.parseBoolean(hospitalElement.getElementsByTagName("isPediatrics").item(0).getTextContent()));
                 room.setObstetricsAndGynecology(Boolean.parseBoolean(hospitalElement.getElementsByTagName("isObstetricsAndGynecology").item(0).getTextContent()));
 
+                room.setDistance(1);
+                room.setTravelTime(API_URL);
+                
                 roomList.add(room);
             }
 
@@ -202,7 +206,7 @@ public class HospitalListAddOpenAPI {
         NodeList hospitalNodes = documentInfo.getElementsByTagName("item"); // <item> 요소 찾기
 
         // 각 <item> 요소를 순회하며 데이터 출력
-        System.out.println("xxxxxxxxxxxxxxxxxxHospital Name: for 문 진입" );
+        System.out.println("================================= xHospital Name: for 문 진입" );
         for (int i = 0; i < hospitalNodes.getLength(); i++) {
             Element hospitalElement = (Element) hospitalNodes.item(i);
 
@@ -210,21 +214,30 @@ public class HospitalListAddOpenAPI {
             String name = hospitalElement.getElementsByTagName("yadmNm").item(0).getTextContent(); // <name> 요소
          
             String address = hospitalElement.getElementsByTagName("addr").item(0).getTextContent(); // <address> 요소
-            String xPOS = hospitalElement.getElementsByTagName("XPos").item(0).getTextContent(); // <address> 요소
-            String yPOS = hospitalElement.getElementsByTagName("YPos").item(0).getTextContent(); // <address> 요소
+            String xPOS = hospitalElement.getElementsByTagName("YPos").item(0).getTextContent(); // <address> 요소
+            String yPOS = hospitalElement.getElementsByTagName("XPos").item(0).getTextContent(); // <address> 요소
 
             // 데이터 출력
 //            System.out.println("Hospital Name: " + name);
 //            System.out.println("Hospital Address: " + address);
-//            System.out.println("x 좌표: " + xPOS);
-//            System.out.println("y 좌표: " + yPOS);
+            System.out.println("x 좌표: " + xPOS);
+
+            System.out.println("y 좌표: " + yPOS);
 //            System.out.println("---------------------------");
 //            
             hospitalElement = (Element) hospitalNodes.item(i);
             emergencyRoom room = new emergencyRoom();
+            DistanceCalculator dis = new DistanceCalculator();
+            
+            double dismeter = dis.distance(35.232058,128.583789,Double.parseDouble(xPOS), Double.parseDouble(yPOS));
+            System.out.println("dismeter= " + dismeter);
             
             room.setHosName(name);
             room.setHosaddr(address);
+
+            room.setDistance((int)dismeter);
+            room.setTravelTime("00:30:00");
+            
             room.setPediatrics(true);
             room.setObstetricsAndGynecology(false);
             roomList.add(room);

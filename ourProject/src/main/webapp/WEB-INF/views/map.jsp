@@ -39,6 +39,7 @@
                     "a_201705111713?page=1&perPage=10&serviceKey=COog2VpGwoKjJbuLbsotfPe9FOvhuC5Ax5" +
                     "OLcRW2sAPnLle8ggr2h8GA%2B977YsNjZZzkz4vKnJOzvcAqqbfBUA%3D%3D";
             //공공데이터 포털에서 api 키 받은 후에 사용하는 open APi
+            
 
             $.getJSON(url, function (data) {
             	// 데이터 확인
@@ -55,7 +56,7 @@
                         .data[i]
                         .전화번호 + "</td></tr>";
                     $("table").append(txt);
-                    
+                                     
                  // 주소들로 좌표를 검색합니다 json으로 받은 data.data[i].소재지를 넣어서 이름을 표시해주고,
                     // function(result,status)는 받은 소재지의 경도,위도가 표시된다.
                     geocoder.addressSearch(data.data[i].소재지, function (result, status) {

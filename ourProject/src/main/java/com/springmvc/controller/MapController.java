@@ -41,6 +41,13 @@ public class MapController {
         ModelAndView modelAndView = new ModelAndView("maptest");
         return modelAndView;
     }
+	
+	@GetMapping("/mapdistim")
+	public String requestMapDisTim(Model model) {
+		System.out.println("000.mapc : requestMapDisTim 진입");
+ 
+		return "mapdistim";
+	}
 
 	@GetMapping("/getCoordinates")
     @ResponseBody
@@ -111,6 +118,16 @@ public class MapController {
 		model.addAttribute("emergencylist",list);
 		
 		return "map";
+	}
+	@GetMapping("/map1")
+	public String requestMap1(Model model) {
+		System.out.println("000.map1 : requestMap 진입");
+
+		List<emergencyRoom> list= emergencyService.getALLemergencyRoomList();
+		System.out.println("뷰이동"+list);
+		model.addAttribute("emergencylist",list);
+		
+		return "map1";
 	}
 		
 //	@GetMapping("/maptest")
