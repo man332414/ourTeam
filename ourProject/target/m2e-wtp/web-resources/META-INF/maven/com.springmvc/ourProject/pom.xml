@@ -10,7 +10,9 @@
     <properties>
         <java.version>17</java.version>
         <org.springframework.version>5.3.21</org.springframework.version> <!-- 최신 버전으로 수정 -->
+        <org.springframework.boot.version>2.6.8</org.springframework.boot.version>
         <org.slf4j.version>1.7.36</org.slf4j.version>
+        <jackson.version>2.15.2</jackson.version>
         
     </properties>
 
@@ -113,42 +115,54 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.14.0</version> <!-- 최신 버전으로 수정 -->
+            <version>${jackson.version}</version> <!-- 최신 버전으로 수정 -->
         </dependency>
         <dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
 		    <artifactId>jackson-annotations</artifactId>
-		    <version>2.14.0</version> <!-- 최신 버전으로 변경 -->
+		    <version>${jackson.version}</version> <!-- 최신 버전으로 변경 -->
 		</dependency>
 		<dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
 		    <artifactId>jackson-core</artifactId>
-		    <version>2.14.0</version> <!-- 최신 버전으로 변경 -->
+		    <version>${jackson.version}</version> <!-- 최신 버전으로 변경 -->
 		</dependency>
+		<dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
+		<!-- DB에 LocalDateTime가 안된다고 해서 집어넣은 의존성 -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.datatype</groupId>
+		    <artifactId>jackson-datatype-jsr310</artifactId>
+		    <version>${jackson.version}</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>2.8.7</version>
 		</dependency>
 		
-        <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-xml</artifactId>
-            <version>2.14.0</version>
-        </dependency>
-        
         <!-- Spring Data JPA -->
 	    <dependency>
 	        <groupId>org.springframework.boot</groupId>
 	        <artifactId>spring-boot-starter-data-jpa</artifactId>
-	         <version>2.6.8</version>
+	        <version>${org.springframework.boot.version}</version>
 	    </dependency>
-	
 	    <dependency>
 	        <groupId>org.springframework.boot</groupId>
 	        <artifactId>spring-boot-starter-thymeleaf</artifactId>
-	         <version>2.6.8</version>
+	        <version>${org.springframework.boot.version}</version>
 	    </dependency>
+	     <!-- Spring Boot Starter Web 의존성 추가 -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-web</artifactId>
+		    <version>${org.springframework.boot.version}</version>
+		</dependency>
         
         <dependency>
 	        <groupId>commons-fileupload</groupId>
@@ -167,12 +181,7 @@
 		    <artifactId>json</artifactId>
 		    <version>20231013</version> <!-- 최신 버전 확인 후 추가 -->
 		</dependency>
-	    <!-- Spring Boot Starter Web 의존성 추가 -->
-		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-web</artifactId>
-		    <version>3.3.4</version>
-		</dependency>
+	   
 	    <!-- https://mvnrepository.com/artifact/org.webjars/fullcalendar -->
 		<dependency>
 		    <groupId>org.webjars</groupId>
@@ -180,13 +189,7 @@
 		    <version>6.1.9</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
-		<!-- DB에 LocalDateTime가 안된다고 해서 집어넣은 의존성 -->
-		<dependency>
-		    <groupId>com.fasterxml.jackson.datatype</groupId>
-		    <artifactId>jackson-datatype-jsr310</artifactId>
-		    <version>2.18.2</version>
-		</dependency>
+		
 		
 
     </dependencies>
