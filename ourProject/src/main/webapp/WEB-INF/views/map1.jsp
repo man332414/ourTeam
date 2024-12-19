@@ -13,7 +13,7 @@
         <a href="javascript:void(0);" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
             혹시 주소 결과가 잘못 나오는 경우에는 여기에 제보해주세요.
         </a>
-        <a href="https://map.kakao.com/link/to/삼성창원병원,35.2429963860914,128.591965801829to" onclick="window.open('https://map.kakao.com/link/to/삼성창원병원,35.2429963860914,128.591965801829/from/집,35.232058,128.583789', '_blank', 'width=981, height=650')">
+        <a href="javascript:void(0);" onclick="window.open('https://map.kakao.com/link/to/삼성창원병원,35.2429963860914,128.591965801829/from/집,35.232058,128.583789', '_blank', 'width=981, height=650')">
         목적지 바로입력
         </a>
         

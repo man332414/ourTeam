@@ -1,15 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%! int numberOfRows;
+<%! int numberOfRows; 
 	int currentPage;
-%>   
+	%>
 <!DOCTYPE html>
 <html lang="ko">
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <head>
     <meta charset="UTF-8">
-<script type="text/javascript" src="/ourProject/resources/js/searchFunction.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>임산부 정보 취합 프로젝트</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
@@ -31,7 +28,7 @@
             <h1>임산부 정보 취합 프로젝트</h1>
             <nav class="nav justify-content-center">
                 <a class="nav-link" href="readMembers">회원 관리</a>
-                <a class="nav-link" href="board/list">게시판</a>
+                <a class="nav-link" href="admin/board">게시판</a>
                 <a class="nav-link" href="calendar">일정 관리</a>
                 <a class="nav-link" href="emergencys">응급실 관리</a>
                 <a class="nav-link" href="products">출산/육아용품 관리</a>
@@ -68,8 +65,8 @@
             <div id="map"></div>
         </section>
 
-         <section id="board" class="mb-4">
-            <h2 class="text-center">임산부지원게시판</h2>
+        <section id="board" class="mb-4">
+            <h2 class="text-center">게시판</h2>
             <form action="searching">
                 <%
                     String searchFor;
@@ -114,13 +111,21 @@
                     </c:forEach>
                 </tbody>
             </table>
-            <% int totalPage = 0; %>
             <div id="pages" class="text-center">
+                <%
+                	Integer totalPageAttribute = (Integer) request.getAttribute("totalPage");
+                	int totalPage = (totalPageAttribute != null) ? totalPageAttribute : 1; // 기본값 설정
                 
-                <a href="board/list">더보기</a>	
+//                 	int totalPage = (int) request.getAttribute("totalPage");
+                    for (int i = 1; i <= totalPage; i++) {
+                %>
+                    <a href="?currentPage=<%= i %>&search=<%= searchFor %>"><%= i %></a>
+                <%
+                    }
+                %>		
             </div>
         </section>
-         
+
         <section id="recommended-content" class="mb-4">
             <h2 class="text-center">추천 콘텐츠</h2>
             <ul class="list-group">
@@ -155,12 +160,9 @@
 
                 // 지도 옵션 설정
                 var mapOption = { 
-                    center: new kakao.maps.LatLng(35.23209, 128.5838), // 현재 위치를 중심 좌표로 설정
+                    center: new kakao.maps.LatLng(lat, lng), // 현재 위치를 중심 좌표로 설정
                     level: 3 // 지도의 확대 레벨
                 };
-
-                
-                console.log("현재 위치 - 위도:", lat, "경도:", lng); // 올바른 console.log 사용
 
                 // 지도를 생성합니다.
                 var map = new kakao.maps.Map(mapContainer, mapOption);
@@ -169,19 +171,3 @@
                 // 기본 좌표 설정 (예: 서울)
                 var mapOption = { 
                     center: new kakao.maps.LatLng(37.5665, 126.978), // 서울의 좌표
-                    level: 3 // 지도의 확대 레벨
-                };
-                var map = new kakao.maps.Map(mapContainer, mapOption);
-            });
-        } else {
-            // Geolocation을 지원하지 않을 경우 기본 좌표 설정
-            var mapOption = { 
-                center: new kakao.maps.LatLng(37.5665, 126.978), // 서울의 좌표
-                level: 3 // 지도의 확대 레벨
-            };
-            var map = new kakao.maps.Map(mapContainer, mapOption);
-        }
-    </script>
-</body>
-
-</html>

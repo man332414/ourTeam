@@ -63,9 +63,10 @@ public class MapController {
         	System.out.println("100 getCoordinates: try 진입");
             // 주소를 URL 인코딩
             String encodedAddress = URLEncoder.encode(address, "UTF-8");
-            System.out.println("109 encodedAddress= " + encodedAddress);
-            String apiKey = "9c0a4381f5a94e6cb0eef56dbcf98cb6"; // 실제 API 키
-            String url = "https://dapi.kakao.com/v2/local/search/address.json?query=" + address;
+            System.out.println("109 encodedAddress= " + address);
+//            String apiKey = "9c0a4381f5a94e6cb0eef56dbcf98cb6"; // 실제 API 키
+            String apiKey = "d5934fbf6c46e7c57da3924560a75db6"; // 실제 REST API 키
+            String url = "https://dapi.kakao.com/v2/local/search/address.json?query=" + encodedAddress;
             System.out.println("110 url= " + url);
           //  url = url+ "&apiKey=" + apiKey;
            
@@ -95,6 +96,7 @@ public class MapController {
                 JSONObject location = documents.getJSONObject(0).getJSONObject("address");
                 double latitude = location.getDouble("y");
                 double longitude = location.getDouble("x");
+                System.out.println("documents.length()= " + documents.length()  );
                 System.out.println("latitude= " + latitude + ", longitude= " + longitude);
                 return "{\"latitude\": " + latitude + ", \"longitude\": " + longitude + "}";
             } else {

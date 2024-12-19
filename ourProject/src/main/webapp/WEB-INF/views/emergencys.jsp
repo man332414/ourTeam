@@ -105,6 +105,10 @@
                                 </c:choose>
                             </p>
                             <a href="<c:url value="/emergencys/room?id=${room.number}" />" class="btn btn-secondary">상세정보 &raquo;</a>
+                            <a href="javascript:void(0);" 
+                            onclick="window.open('https://map.kakao.com/link/to/${room.hosName},${latitude},${longitude}/from/집,35.232058,128.583789', 
+                            		'_blank', 'width=981, height=650')">
+							        목적지 지도보기 </a>
                         </div>
                     </div>
                 </div>

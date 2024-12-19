@@ -11,6 +11,8 @@ public class emergencyRoom
 	private int numOfBad;          //응급실병상수
 	private boolean isPediatrics;  //소아과보유여부
 	private boolean isObstetricsAndGynecology;    //산부인과보유여부
+	private double  latitude;     //위도 Xpos 
+	private double  longitude;    //경도 Ypos 
 	
 	public emergencyRoom() {}
 	
@@ -75,6 +77,22 @@ public class emergencyRoom
 
 	public void setObstetricsAndGynecology(boolean isObstetricsAndGynecology) {
 		this.isObstetricsAndGynecology = isObstetricsAndGynecology;
+	}
+
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
 	}
 	 
 	

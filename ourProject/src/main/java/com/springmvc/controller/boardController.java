@@ -120,4 +120,20 @@ public class boardController
 		return "board";
 	}
 
+//	--------------------------------- index에서 게시판 조회 ---------------------------------
+	@GetMapping("/index")
+	public String getIndex(Model model, 
+	                       @RequestParam(value = "currentPage", defaultValue = "1") int currentPage,
+	                       @RequestParam(value = "numberOfRows", defaultValue = "10") int numberOfRows) {
+	    System.out.println("boardController.getIndex() 입장");
+	    
+	    List<Board> boards = boardService.getAllBoards(currentPage, numberOfRows);
+	    int totalPage = boardService.getTotalPage(numberOfRows);
+
+	    model.addAttribute("boards", boards);
+	    model.addAttribute("totalPage", totalPage);
+	    
+	    return "index"; // index.jsp로 이동
+	}
+	
 }
