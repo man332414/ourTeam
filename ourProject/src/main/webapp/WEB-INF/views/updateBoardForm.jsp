@@ -22,7 +22,7 @@
 			<div>
 				<h4>내용</h4>
 				<p><form:textarea path="content" value="${board.content}" rows="20" cols="100" /></p>
-				<p><a href="list">목록으로</a><input type="submit" value="수정하기"><a href="/ourProject/admin/delete?number=${board.number}">삭제</a></p>
+				<p><a href="../board/list">목록으로</a><input type="submit" value="수정하기"><a href="/ourProject/admin/delete?number=${board.number}">삭제</a></p>
 			</div>
 		</form:form>
 	</div>

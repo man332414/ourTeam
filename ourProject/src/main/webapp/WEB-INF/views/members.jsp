@@ -11,7 +11,7 @@
 <body>
 	<div>
 		<p><h1>멤버 관리 페이지 입니다.</h1>
-		<table >
+		<table>
 			<tr>
 				<th>아이디</th><th>이메일</th><th>이름</th><th>닉네임</th><th>전화번호</th><th>비고</th>
 			</tr>

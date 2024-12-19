@@ -1,13 +1,8 @@
 package com.springmvc.controller;
 
-import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.Document;
 
@@ -134,7 +128,7 @@ public class EmergencyController {
         List<emergencyRoom> roomList = hl.fetchHospitalData(); // API 호출하여 데이터 가져오기
         System.out.println("roomList =  " + roomList);
 
-        Document documentInfo = null;
+//        Document documentInfo = null;
         StringBuilder urlBuilder = new StringBuilder("https://apis.data.go.kr/B551182/hospInfoServicev2/getHospBasisList"); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=59ojQNxXAJkaA29tsw%2Fql6IaRazj4K%2BUDFTTAom7HTo318eWaC99iJ9Hy761TzJ1KAyTulV2WYF4A3U0MDD8Xg%3D%3D"); /*Service Key*/
         urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/

@@ -11,4 +11,8 @@ public interface calendarEventService
 
 	List<CalendarEvent> getAllEvents();
 
+	void updateEvent(CalendarEvent event);
+
+	void deleteEvent(CalendarEvent event);
+
 }

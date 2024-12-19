@@ -118,6 +118,6 @@ public class memberController
 		memberService.deleteMember(userId);
 		System.out.println("------------------------------------------");
 		
-		return "redirect:/home";
+		return "redirect:./readMembers";
 	}
 }

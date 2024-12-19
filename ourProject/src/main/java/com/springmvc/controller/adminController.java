@@ -21,7 +21,7 @@ public class adminController
 	@Autowired
 	boardService boardService;
 	
-//	--------------------------------- 생성 ---------------------------------
+//	--------------------------------- 게시글생성 ---------------------------------
 	@GetMapping("/create")
 	public String createBoardForm(@ModelAttribute Board board, Model model)
 	{

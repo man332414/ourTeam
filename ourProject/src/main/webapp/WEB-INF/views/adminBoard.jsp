@@ -83,7 +83,7 @@
 		</div>	
 	</div>
 </body>
-<script type="text/javascript" src="/ourProject/resources/js/searchFunction.js">
+<script type="text/javascript" src="/ourProject/resources/js/(board.jsp)searchFunction.js">
 </script>
 <script>
 // 	버튼 누르면 제출되는 함수

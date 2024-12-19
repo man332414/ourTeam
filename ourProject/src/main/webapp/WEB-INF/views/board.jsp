@@ -45,7 +45,7 @@
         
         <div class="search-container">
             
-            <form action="searching" class="form-inline justify-content-center">
+            <form action="list/searching" class="form-inline justify-content-center">
 			<% 
 				String searchFor;
 				if(request.getAttribute("searchFor") == null)
@@ -64,6 +64,7 @@
             <form method="get" action="" class="form-inline justify-content-center mt-2">
                 <label for="numberOfRows" class="mr-2">페이지당 항목 수:</label>
                 <select name="numberOfRows" id="numberOfRows" class="form-control" onchange="this.form.submit()">
+					<option value="10" <%= numberOfRows == 10 ? "selected" : "" %>>선택</option>
                     <option value="10" <%= numberOfRows == 10 ? "selected" : "" %>>10</option>
                     <option value="20" <%= numberOfRows == 20 ? "selected" : "" %>>20</option>
                     <option value="50" <%= numberOfRows == 50 ? "selected" : "" %>>50</option>
@@ -88,7 +89,7 @@
                         <td><a href="content?number=${board.number}">${board.number}</a></td>
                         <td><a href="content?number=${board.number}">${board.category}</a></td>
                         <td><a href="content?number=${board.number}">${board.title}</a></td>
-                        <td>${board.date}</td>
+                        <td><a href="content?number=${board.number}">${board.date}</a></td>
                         <td><a href="content?number=${board.number}">보기</a></td>
                     </tr>
                 </c:forEach>
@@ -107,4 +108,5 @@
         </div>
     </div>
 </body>
+<script type="text/javascript" src="/ourProject/resources/js/(board.jsp)searchFunction.js"></script>
 </html>
