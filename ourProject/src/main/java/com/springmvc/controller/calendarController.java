@@ -1,10 +1,9 @@
 package com.springmvc.controller;
 
-import java.time.ZoneOffset;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springmvc.DAO.service.calendarEventService;
 import com.springmvc.DTO.CalendarEvent;
 
@@ -32,7 +30,7 @@ public class calendarController
 	}
 	
 	// =================================== 생성 ===================================
-	@PostMapping("/addevents")
+	@PostMapping("/addevent")
 	public ResponseEntity<String> setEvent(@RequestBody CalendarEvent event)
 	{
 		System.out.println("calendarController.setEvent() 입장 : " + event.getStart());
@@ -43,37 +41,42 @@ public class calendarController
 	}
 	
 	// =================================== 모두 읽어오기 ===================================
-    @GetMapping("/events")
-    @ResponseBody
-    public ResponseEntity<List<CalendarEvent>> getAllEvents() {
-        System.out.println("calendarController.getAllEvents() 입장");
-        
-        try {
-            List<CalendarEvent> jsontypeData = calendarEventService.getAllEvents();
-            
-            // 데이터 확인을 위한 로그 출력
-            System.out.println("조회된 이벤트 데이터: " + jsontypeData);
-            
-            // JSON 변환 확인을 위한 추가 로직
-            ObjectMapper objectMapper = new ObjectMapper(); // Jackson ObjectMapper 생성
-            String jsonOutput = objectMapper.writeValueAsString(jsontypeData); // List를 JSON 문자열로 변환
-            System.out.println("JSON 형식으로 변환된 데이터: " + jsonOutput); // JSON 출력
-            
-            // 데이터가 올바른 형식인지 확인
-            for (CalendarEvent data : jsontypeData) {
-                System.out.println("제목: " + data.getTitle() + ", 시작: " + data.getStart());
-            }
-            
-            System.out.println("------------------------------------------");
-            return ResponseEntity.ok(jsontypeData);
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-        }
-    }
-    
-    
-}
+	@GetMapping(value="/events", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ResponseEntity<List<CalendarEvent>> getAllEvents(Model model)
+	{
+		System.out.println("calendarController.getAllEvents() 입장");
+		List<CalendarEvent> jsontypeData = calendarEventService.getAllEvents();
+//		for(CalendarEvent data:jsontypeData)
+//		{
+//			System.out.println("----------");
+//			System.out.println("제목이랑 봐야 알겠는데 : "+data.getTitle());
+//			System.out.println("날짜 한번 보자 : "+data.getStart()); 			
+//		}
+		
+		System.out.println("------------------------------------------");
+		return ResponseEntity.ok(jsontypeData);
+	}
 	
+	// =================================== 업데이트 ===================================
+	@PostMapping("/updateevent")
+	public ResponseEntity<String> updateEvent(@RequestBody CalendarEvent event)
+	{
+		System.out.println("calendarController.updateEvent() 입장 : " + event.getTitle());
+		calendarEventService.updateEvent(event);
+				
+		System.out.println("------------------------------------------");
+		return ResponseEntity.ok("Evens is successfully updated");
+	}
 
+	// =================================== 삭제 ===================================
+	@PostMapping("/deleteevent")
+	public ResponseEntity<String> deleteEvent(@RequestBody CalendarEvent event)
+	{
+		System.out.println("calendarController.deleteEvent() 입장 : " + event.getTitle());
+		calendarEventService.deleteEvent(event);
+
+		return ResponseEntity.ok("Evens is successfully deleted");
+	}
+
+}

@@ -9,7 +9,7 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <head>
     <meta charset="UTF-8">
-<script type="text/javascript" src="/ourProject/resources/js/searchFunction.js"></script>
+<!-- <script type="text/javascript" src="/ourProject/resources/js/searchFunction.js"></script> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>임산부 정보 취합 프로젝트</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->

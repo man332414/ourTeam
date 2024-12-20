@@ -1,6 +1,5 @@
 package com.springmvc.DAO.repository;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -50,6 +49,23 @@ public class calendarEventRepositoryImpl implements calendarEventRepository
 		System.out.println("calendarEventRepository.getAllEvents() 입장");
 		String sql = "select * from CalendarEvent";
 		return template.query(sql, new Object[] {}, new calendarRowMapper());
+	}
+
+	//이벤트 업데이트
+	@Override
+	public void updateEvent(CalendarEvent event) 
+	{
+		System.out.println("calendarEventRepository.updateEvent() 입장");
+		String sql = "UPDATE CalendarEvent SET title = ?, start = ?, end = ?, all_day = ?, description = ?, location = ?, category = ? WHERE id = ?";
+		template.update(sql, event.getTitle(), event.getStart(), event.getEnd(), event.isAllDay(), event.getDescription(), event.getLocation(), event.getCategory(), event.getId());
+	}
+
+	@Override
+	public void deleteEvent(CalendarEvent event) 
+	{
+		System.out.println("calendarEventRepository.deleteEvent() 입장");
+		String sql = "delete from CalendarEvent where id=?";
+		template.update(sql, event.getId());
 	}
 
 }

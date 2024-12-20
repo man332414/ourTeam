@@ -25,6 +25,20 @@ public class calendarEventServiceImpl implements calendarEventService
 	{
 		System.out.println("calendarEventService.getAllEvents() 입장");
 		return calendarEventRepository.getAllEvents();
+	}
+
+	@Override
+	public void updateEvent(CalendarEvent event) 
+	{
+		System.out.println("calendarEventService.updateEvent() 입장");
+		calendarEventRepository.updateEvent(event);
+	}
+
+	@Override
+	public void deleteEvent(CalendarEvent event)
+	{
+		System.out.println("calendarEventService.deleteEvent() 입장");
+		calendarEventRepository.deleteEvent(event);
 	} 
 	
 }
