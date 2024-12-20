@@ -1,5 +1,9 @@
 package com.springmvc.DTO;
 
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Member 
 {
 	private String userId;
@@ -7,7 +11,8 @@ public class Member
 	private String email;
 	private String name;
 	private String nikName;
-	private String babyBirthDay;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate babyBirthDay;
 	private String telecom;
 	private String phone;
 	
@@ -35,11 +40,11 @@ public class Member
 	public void setNikName(String nikName) {
 		this.nikName = nikName;
 	}
-	public String getBabyBirthDay() {
+	public LocalDate getBabyBirthDay() {
 		return babyBirthDay;
 	}
-	public void setBabyBirthDay(String babyBirthDay) {
-		this.babyBirthDay = babyBirthDay;
+	public void setBabyBirthDay(LocalDate localDate) {
+		this.babyBirthDay = localDate;
 	}
 	public String getPassword() {
 		return password;
