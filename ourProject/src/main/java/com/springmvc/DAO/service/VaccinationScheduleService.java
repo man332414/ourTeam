@@ -1,9 +1,8 @@
 package com.springmvc.DAO.service;
 
-import org.springframework.stereotype.Service;
+import java.time.LocalDate;
 
-@Service
 public interface VaccinationScheduleService 
 {
-
+	void vaccinationSchedule(LocalDate babyBirthDay);
 }

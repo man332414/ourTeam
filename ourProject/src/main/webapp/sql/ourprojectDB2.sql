@@ -50,3 +50,7 @@ CREATE TABLE CalendarEvent (
 insert into CalendarEvent values(null, 'mySchedule', '2024-12-20 16:00:00', NULL, '0', NULL, NULL, '회의', '2024-12-20 16:00:00', '2024-12-20 16:00:02');
 insert into CalendarEvent values(null, 'mySchedule2', '2024-12-20 16:00:00', NULL, '0', NULL, NULL, '회의', '2024-12-20 16:00:00', '2024-12-20 16:00:02');
 insert into CalendarEvent values(null, 'mySchedule3', '2024-12-20 16:00:00', NULL, '0', NULL, NULL, '회의', '2024-12-20 16:00:00', '2024-12-20 16:00:02');
+
+select * from member;
+
+delete from member where userId=231;
