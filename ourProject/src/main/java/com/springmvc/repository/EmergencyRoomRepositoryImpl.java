@@ -144,6 +144,12 @@ public class EmergencyRoomRepositoryImpl implements EmergencyRoomRepository {
 		
 	}
 
- 
+	//ajax
+	@Override
+	public void deleteByNumber(int number) {
+		String SQL="delete from emergencyroom where num=?";
+		this.template.update(SQL,number);
+		System.out.println("deleteByNumber SQL = " +SQL+number );
+	}
 
 }

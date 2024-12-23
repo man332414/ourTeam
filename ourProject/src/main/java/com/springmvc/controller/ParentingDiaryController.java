@@ -49,14 +49,6 @@ public class ParentingDiaryController {
 		return "diarys";
 	}
 		
-	@GetMapping("/diary")
-	public String viewProductDetail(@RequestParam("num") int id, Model model) {
-	    parentingDiary diary = parentingDiaryService.getparentingDiaryById(id); // 제품 ID로 조회
-	    model.addAttribute("diary", diary); // 모델에 추가
-	    return "diary"; // JSP 파일 이름
-	}
-	
-	
 	@GetMapping("/all")
 	public ModelAndView requestAllLists() {
 		System.out.println("000.rc requestAlldiarys : 진입");
@@ -130,6 +122,7 @@ public class ParentingDiaryController {
 	
 	@GetMapping("/{id}")
 	public String viewDiaryDetail(@PathVariable int id, Model model) {
+		System.out.println("ParentingDiaryController  viewProductDetail(): {id}진입");
 	    parentingDiary diary = parentingDiaryService.getparentingDiaryById(id);
 	    model.addAttribute("diary", diary);
 	    return "diary"; // diary.jsp 파일 이름

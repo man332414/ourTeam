@@ -16,7 +16,7 @@ public interface EmergencyRoomRepository    {
 	void setUpdateemergencyRoomk(emergencyRoom emergencyRoom);
 	void setDeleteemergencyRoom(int number);
 
-	
+	public void deleteByNumber(int number); //ajax
 
 
 }

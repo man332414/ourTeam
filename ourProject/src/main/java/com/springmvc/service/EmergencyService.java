@@ -23,5 +23,6 @@ public interface EmergencyService {
 	public void setNewemergencyRoom(emergencyRoom emergencyRoom);
 	public void setUpdateemergencyRoomk(emergencyRoom emergencyRoom);
 	public void setDeleteemergencyRoom(int number);
+	public void deleteRoom(int number) ; //ajax
 
 }

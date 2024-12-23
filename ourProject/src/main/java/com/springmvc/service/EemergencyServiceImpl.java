@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springmvc.DTO.emergencyRoom;
+import com.springmvc.DTO.parentingDiary;
 import com.springmvc.repository.EmergencyRoomRepository;
 
 @Service
@@ -51,10 +52,9 @@ public class EemergencyServiceImpl implements EmergencyService {
 
 	@Override
 	public emergencyRoom getRoomByNumber(int number) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("getRoomByNumber: 진입");
+		return emergencyRoomRepository.getemergencyRoomkByNum(number);
 	}
-
 
 	@Override
 	public void setNewemergencyRoom(emergencyRoom emergencyRoom) {
@@ -87,6 +87,12 @@ public class EemergencyServiceImpl implements EmergencyService {
 	public Set<emergencyRoom> getemergencyRoomListByFilter(Map<String, List<String>> filter) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void deleteRoom(int number) {
+		// TODO Auto-generated method stub
+		emergencyRoomRepository.deleteByNumber(number);
 	}
 	
 }
