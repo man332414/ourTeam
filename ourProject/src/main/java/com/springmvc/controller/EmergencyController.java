@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import org.springframework.web.servlet.DispatcherServlet;
@@ -59,10 +60,25 @@ public class EmergencyController {
 	@GetMapping("/{number}")
 	public String viewEmergency2Detail(@PathVariable int number, Model model) {
 		System.out.println("EmergencyController viewEmergency2Detail(): {number} 진입");
-		emergencyRoom room = emergencyService.getemergencyRoomkByNum(number); // 제품 ID로 조회
+		emergencyRoom room = emergencyService.getemergencyRoomByNum(number); // 제품 ID로 조회
 	    model.addAttribute("room", room); // 모델에 추가
 	    return "emergency"; // JSP 파일 이름
 	}
+	
+	@GetMapping("/update")  
+    public String getUpdateRoomForm(@ModelAttribute("updateRoom") emergencyRoom room, @RequestParam("number") int number, Model model) {
+		emergencyRoom roomByNum = emergencyService.getemergencyRoomByNum(number);
+        model.addAttribute("room", roomByNum);
+        return "emergencyEdit";  // 수정 폼 
+    }  
+	
+	@PostMapping("/update") 
+    public String submitUpdateDiaryForm(@ModelAttribute("updateRoom") emergencyRoom room) {
+        
+        emergencyService.setUpdateemergencyRoom(room);
+        return "emergency";
+    }  
+	
 	
 	
 	@GetMapping("/all")
@@ -75,19 +91,19 @@ public class EmergencyController {
 		return modelAndView;
 	}
 	
-	@GetMapping("/{address}")
-	public String requestRoomsByAddress(@PathVariable("address") String address,Model model) {
-		System.out.println("000.rc requestRoomsByAddress : 진입"+ address);
-		List<emergencyRoom> roomsByAddress= emergencyService.getemergencyRoomListByAddress(address);
-		
-		if (roomsByAddress == null || roomsByAddress.isEmpty()){
-//			throw new AddressException();
-		}
-		model.addAttribute("emergencylist",roomsByAddress);
-		
-		return "emergencys";
-	} 
-	
+//	@GetMapping("/{address}")
+//	public String requestRoomsByAddress(@PathVariable("address") String address,Model model) {
+//		System.out.println("000.rc requestRoomsByAddress : 진입"+ address);
+//		List<emergencyRoom> roomsByAddress= emergencyService.getemergencyRoomListByAddress(address);
+//		
+//		if (roomsByAddress == null || roomsByAddress.isEmpty()){
+// 
+//		}
+//		model.addAttribute("emergencylist",roomsByAddress);
+//		
+//		return "emergencys";
+//	} 
+//	
 	@GetMapping("add")
 	public String requestAddRoomForm(@ModelAttribute("NewRoom") emergencyRoom room) {
 		System.out.println("===============================");

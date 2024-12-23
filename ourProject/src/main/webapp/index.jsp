@@ -13,11 +13,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>임산부 정보 취합 프로젝트</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+        #map-section {
+   		 text-align: center;
+		}
+        
         /* 지도 스타일 설정 */
         #map {
-            width: 100%;
-            height: 350px;
+            width: 75%;
+            height: 450px;
+            display: inline-block; /* 또는 원하는 너비를 설정 */
         }
         /* 고정된 메뉴를 위한 여백 설정 */
         body {
@@ -127,8 +133,7 @@
                 <li class="list-group-item"><a href="#blog1">임신 초기 건강 관리</a></li>
                 <li class="list-group-item"><a href="#blog2">영양 가이드</a></li>
                 <li class="list-group-item"><a href="#blog3">운동과 스트레스 관리</a></li>
-                <li class="list-group-item"><a href="./indexy.jsp">indexy</a></li>
-                <li class="list-group-item"><a href="./indexrt.jsp">indexrt</a></li>
+                <li class="list-group-item"><a href="./indexy.jsp">index-test</a></li>
             </ul>
         </section>
     </main>
@@ -152,10 +157,12 @@
             navigator.geolocation.getCurrentPosition(function(position) {
                 var lat = position.coords.latitude; // 위도
                 var lng = position.coords.longitude; // 경도
-
+               // lat = 35.232019; // 위도
+               // lng = 128.583789; // 경도
+               
                 // 지도 옵션 설정
                 var mapOption = { 
-                    center: new kakao.maps.LatLng(35.23209, 128.5838), // 현재 위치를 중심 좌표로 설정
+                    center: new kakao.maps.LatLng(35.232019, 128.583789), // 현재 위치를 중심 좌표로 설정
                     level: 3 // 지도의 확대 레벨
                 };
 
@@ -164,11 +171,26 @@
 
                 // 지도를 생성합니다.
                 var map = new kakao.maps.Map(mapContainer, mapOption);
+                // 마커와 인포윈도우 생성
+                var markerPosition  = new kakao.maps.LatLng(lat, lng); 
+                var marker = new kakao.maps.Marker({
+                    position: markerPosition
+                });
+
+                marker.setMap(map); // 마커를 지도에 추가
+
+                // 인포윈도우 내용 설정
+                var infowindow = new kakao.maps.InfoWindow({
+                    content: '<div style="padding:5px;">현재 위치</div>'
+                });
+
+                infowindow.open(map, marker); // 인포윈도우를 마커 위에 표시
+                
             }, function(error) {
                 console.error('Geolocation error:', error);
-                // 기본 좌표 설정 (예: 서울)
+                // 기본 좌표 설정 (예: 양덕)
                 var mapOption = { 
-                    center: new kakao.maps.LatLng(37.5665, 126.978), // 서울의 좌표
+                    center: new kakao.maps.LatLng(35.232019, 128.583789), // 양덕동의 좌표
                     level: 3 // 지도의 확대 레벨
                 };
                 var map = new kakao.maps.Map(mapContainer, mapOption);
@@ -176,7 +198,7 @@
         } else {
             // Geolocation을 지원하지 않을 경우 기본 좌표 설정
             var mapOption = { 
-                center: new kakao.maps.LatLng(37.5665, 126.978), // 서울의 좌표
+                center: new kakao.maps.LatLng(35.232019, 128.583789), // 양덕동의 좌표
                 level: 3 // 지도의 확대 레벨
             };
             var map = new kakao.maps.Map(mapContainer, mapOption);

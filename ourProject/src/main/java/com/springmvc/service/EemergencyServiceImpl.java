@@ -45,7 +45,7 @@ public class EemergencyServiceImpl implements EmergencyService {
 
 
 	@Override
-	public emergencyRoom getemergencyRoomkByNum(int number) {
+	public emergencyRoom getemergencyRoomByNum(int number) {
 	// TODO Auto-generated method stub
 		return null;
 	}
@@ -53,7 +53,7 @@ public class EemergencyServiceImpl implements EmergencyService {
 	@Override
 	public emergencyRoom getRoomByNumber(int number) {
 		System.out.println("getRoomByNumber: 진입");
-		return emergencyRoomRepository.getemergencyRoomkByNum(number);
+		return emergencyRoomRepository.getemergencyRoomByNum(number);
 	}
 
 	@Override
@@ -64,9 +64,9 @@ public class EemergencyServiceImpl implements EmergencyService {
 	}
 
 	@Override
-	public void setUpdateemergencyRoomk(emergencyRoom emergencyRoom) {
+	public void setUpdateemergencyRoom(emergencyRoom emergencyRoom) {
 		System.out.println("130.EemergencyServiceImpl setUpdateemergencyRoomk: 진입");
-		emergencyRoomRepository.setUpdateemergencyRoomk(emergencyRoom);
+		emergencyRoomRepository.setUpdateemergencyRoom(emergencyRoom);
 		
 	}
 

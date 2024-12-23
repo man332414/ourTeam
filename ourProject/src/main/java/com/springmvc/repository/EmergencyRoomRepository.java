@@ -11,9 +11,9 @@ public interface EmergencyRoomRepository    {
 
 	List<emergencyRoom> getemergencyRoomListByAddress(String category);
 	List<emergencyRoom> getemergencyRoomListByChange(String ischanged);
-	emergencyRoom getemergencyRoomkByNum(int number);
+	emergencyRoom getemergencyRoomByNum(int number);
 	void setNewemergencyRoom(emergencyRoom emergencyRoom);
-	void setUpdateemergencyRoomk(emergencyRoom emergencyRoom);
+	void setUpdateemergencyRoom(emergencyRoom emergencyRoom);
 	void setDeleteemergencyRoom(int number);
 
 	public void deleteByNumber(int number); //ajax

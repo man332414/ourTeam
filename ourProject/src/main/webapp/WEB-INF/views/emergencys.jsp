@@ -10,6 +10,7 @@
     <title>응급실 관리</title>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -91,7 +92,7 @@
                                 </c:choose>
                             </p>
                             <a href="<c:url value="/emergencys/${room.number}" />"    class="btn btn-secondary">상세정보 &raquo;</a>
-                            <a href="<c:url value='/emergencys/update?id=${room.number}' />" class="btn btn-warning">수정</a>
+                            <a href="<c:url value='/emergencys/update?number=${room.number}' />" class="btn btn-warning">수정</a>
                             <button class="btn btn-danger delete-button" data-id="${room.number}">삭제</button> <!-- Ajax 삭제 버튼 -->
                             
                             <a href="javascript:void(0);" 
@@ -101,6 +102,7 @@
                         </div>
                     </div>
                 </div>
+               
             </c:forEach>
             </c:if>
             <c:if test="${empty emergencylist}">
@@ -133,7 +135,7 @@
         });
     });
     </script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> <!-- Bootstrap JS -->
 </body>

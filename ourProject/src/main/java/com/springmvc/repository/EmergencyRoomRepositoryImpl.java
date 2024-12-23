@@ -84,9 +84,9 @@ public class EmergencyRoomRepositoryImpl implements EmergencyRoomRepository {
 	}
 
 	@Override
-	public emergencyRoom getemergencyRoomkByNum(int number) {
+	public emergencyRoom getemergencyRoomByNum(int number) {
 		
-		System.out.println("getemergencyRoomkByNum: 진입");
+		System.out.println("getemergencyRoomByNum: 진입");
 		emergencyRoom emergencyRoomInfo = null;
 		String SQL = "select * from emergencyroom where num = " + number   ;
 		//emergencyRoomInfo = (emergencyRoom) template.query(SQL,new EmergencyRoomRowMapper());
@@ -120,7 +120,7 @@ public class EmergencyRoomRepositoryImpl implements EmergencyRoomRepository {
 	
 
 	@Override
-	public void setUpdateemergencyRoomk(emergencyRoom emergencyRoom) {
+	public void setUpdateemergencyRoom(emergencyRoom emergencyRoom) {
 		
 		System.out.println("ERI setUpdateemergencyRoomk 진입 "+ emergencyRoom);
 		System.out.println("emergencyRoom.getHosName()= "+ emergencyRoom.getHosName());

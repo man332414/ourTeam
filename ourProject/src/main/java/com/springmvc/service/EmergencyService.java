@@ -14,14 +14,14 @@ public interface EmergencyService {
 
 	List<emergencyRoom> getemergencyRoomListByAddress(String address);
 	List<emergencyRoom> getemergencyRoomListByChange(String ischanged);
-	emergencyRoom getemergencyRoomkByNum(int number);
+	emergencyRoom getemergencyRoomByNum(int number);
 
 	List<emergencyRoom> getemergencyRoomListByCategory(String category);
 	Set<emergencyRoom> getemergencyRoomListByFilter(Map<String,List<String>> filter);
 	emergencyRoom getRoomByNumber(int number);
 
 	public void setNewemergencyRoom(emergencyRoom emergencyRoom);
-	public void setUpdateemergencyRoomk(emergencyRoom emergencyRoom);
+	public void setUpdateemergencyRoom(emergencyRoom emergencyRoom);
 	public void setDeleteemergencyRoom(int number);
 	public void deleteRoom(int number) ; //ajax
 
