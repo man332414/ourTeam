@@ -38,21 +38,21 @@ public class ProductController {
 		System.out.println("뷰이동: " + list);
 		model.addAttribute("productlist",list);
 		
-		return "products";
+		return "readAllProducts";
 	}
 		
 	
 	@RequestMapping("/product")
 	public String welcome(Model model) {
 		model.addAttribute(model);
-		return "product";
+		return "readOneProduct";
 	}
 	
 	@GetMapping("/product")
-	public String viewProductDetail(@RequestParam("num") int id, Model model) {
+	public String viewProductDetail(@RequestParam int id, Model model) {
 	    buyCheckList product = buyCheckListService.getbuyCheckListkByNum(id); // 제품 ID로 조회
 	    model.addAttribute("product", product); // 모델에 추가
-	    return "product"; // JSP 파일 이름
+	    return "readOneProduct"; // JSP 파일 이름
 	}
 	
 	
@@ -77,19 +77,19 @@ public class ProductController {
 		model.addAttribute("productlist",listsByuseCategory);
 		System.out.println("000.rc requestListsByuseCategory : listsByuseCategory= "+ listsByuseCategory);
 		
-		return "products";
+		return "readAllProducts";
 	} 
 	
-	@GetMapping("add")
+	@GetMapping("/add")
 	public String requestAddListForm(@ModelAttribute("NewList") buyCheckList list,BindingResult result, HttpServletRequest request) {
 		System.out.println("===============================");
 		System.out.println("000.rc get requestAddListForm : 진입");
 		
 		//form에 입력
 		if(result.hasErrors()) 
-			return "addproduct";
+			return "createProduct";
 		
-		return "addproduct";
+		return "createProduct";
 	}
 	
 	
@@ -98,7 +98,7 @@ public class ProductController {
 			System.out.println("000.rc post submitAddNewList : 진입 "+ list);
 			
 			if(result.hasErrors()) 
-				return "addproduct";
+				return "createProduct";
 			
 			// DB에 저장
 			System.out.println("DB에 저장 setNewbuyCheckList : 실행 ");

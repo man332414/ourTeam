@@ -8,8 +8,12 @@
     <meta charset="utf-8">
     <title>지도 생성하기</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
+    
 </head>
 <body>
+	<%@ include file="header.jsp" %>
+
     <!-- 지도를 표시할 div 입니다 -->
     카카오맵입니다. map
     <div id="map" style="width:100%;height:450px;"></div>

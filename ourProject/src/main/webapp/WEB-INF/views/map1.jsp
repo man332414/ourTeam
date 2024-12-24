@@ -5,9 +5,11 @@
 <head>
     <meta charset="utf-8">
     <title>주소로 장소 표시하기</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
     
 </head>
 <body>
+	<%@ include file="header.jsp" %>
 <p style="margin-top:-12px">
     <em class="link">
         <a href="javascript:void(0);" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">

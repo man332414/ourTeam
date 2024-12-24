@@ -1,13 +1,8 @@
 package com.springmvc.controller;
 
-import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +18,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.Document;
 
 import com.springmvc.DTO.emergencyRoom;
-import com.springmvc.DTO.parentingDiary;
 import com.springmvc.api.HospitalListAddOpenAPI;
 import com.springmvc.service.EmergencyService;
 
@@ -181,7 +173,7 @@ public class EmergencyController {
 //		modelAndView.addObject("emergencylist",list);
 //		modelAndView.setViewName("emergencys");
 		
-		return "hosps";
+		return "redirect:/emergencys";
 //		return "redirect:/emergencys";
 	}
 	

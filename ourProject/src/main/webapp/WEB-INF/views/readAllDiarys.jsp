@@ -12,33 +12,34 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">성장일기 관리</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="home">홈</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="diarys">성장일기 관리</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="products">출산용품 관리</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+	<%@ include file="header.jsp" %>
+<!--     <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
+<!--         <div class="container"> -->
+<!--             <a class="navbar-brand" href="#">성장일기 관리</a> -->
+<!--             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> -->
+<!--                 <span class="navbar-toggler-icon"></span> -->
+<!--             </button> -->
+<!--             <div class="collapse navbar-collapse" id="navbarNav"> -->
+<!--                 <ul class="navbar-nav"> -->
+<!--                     <li class="nav-item"> -->
+<!--                         <a class="nav-link" href="home">홈</a> -->
+<!--                     </li> -->
+<!--                     <li class="nav-item"> -->
+<!--                         <a class="nav-link" href="diarys">성장일기 관리</a> -->
+<!--                     </li> -->
+<!--                     <li class="nav-item"> -->
+<!--                         <a class="nav-link" href="products">출산용품 관리</a> -->
+<!--                     </li> -->
+<!--                 </ul> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--     </nav> -->
 
     <div class="container">
         <div class="p-5 mb-4 bg-light rounded-3">
             <h1 class="display-5 fw-bold">성장일기 목록</h1>
             <p class="col-md-8 fs-4">작성된 성장일기를 확인하세요.</p>
-            <a href="diarys/add" class="btn btn-primary">일기 작성하기</a>
+            <a href="add" class="btn btn-primary">일기 작성하기</a>
 
             <div class="row mt-4">
                 <c:if test="${not empty diarylist}">
@@ -87,8 +88,9 @@
         $('.delete-button').click(function() {
             var diaryId = $(this).data('id');
             if (confirm('정말로 삭제하시겠습니까?')) {
+            	console.log("diaryId : "+diaryId);
                 $.ajax({
-                    url: 'diarys/delete/' + diaryId,
+                    url: 'delete/' + diaryId,
                     type: 'DELETE',
                     success: function(result) {
                         alert('성장일기가 삭제되었습니다.');

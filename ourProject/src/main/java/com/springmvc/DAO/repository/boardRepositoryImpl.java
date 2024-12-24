@@ -19,7 +19,6 @@ public class boardRepositoryImpl implements boardRepository
 	public void setJdbctemplate(DataSource dataSource)
 	{
 		this.template=new JdbcTemplate(dataSource);
-			
 	}
 	
 	// 전체 페이지 읽어오기
@@ -38,8 +37,6 @@ public class boardRepositoryImpl implements boardRepository
 
 		return totalPage;
 	}
-
-
 
 	// 게시판 데이터베이스 읽어오기
 	@Override
@@ -212,6 +209,18 @@ public class boardRepositoryImpl implements boardRepository
 		// Json 형식으로 반환하기 위해 이렇게 받아여
 		List<Board> boards = template.query(sql, new Object[] {query , numberOfRows, offset}, new boardRowMapper());
 
+		return boards;
+	}
+
+	// 홈페이지에 게시판 맛보기 출력
+	@Override
+	public List<Board> getSoneBoards()
+	{
+		System.out.println("boardRepository.getSomeBoards() 입장");
+		String sql = "select * from board limit 5";
+		
+		List<Board> boards = template.query(sql, new boardRowMapper());
+		
 		return boards;
 	}
 

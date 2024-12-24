@@ -174,4 +174,11 @@ public class boardServiceImpl implements boardService
 		return boards;
 	}
 
+	@Override
+	public List<Board> getSomeBoards() 
+	{
+		List<Board> boards = boardRepository.getSoneBoards();
+		return boards;
+	}
+
 }

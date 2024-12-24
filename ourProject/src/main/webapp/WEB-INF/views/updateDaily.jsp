@@ -9,24 +9,25 @@
     <title>성장일기 수정</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">성장일기 관리</a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="home">홈</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="diarys">성장일기 관리</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="products">출산용품 관리</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<!--     <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
+<!--         <div class="container"> -->
+<!--             <a class="navbar-brand" href="#">성장일기 관리</a> -->
+<!--             <div class="collapse navbar-collapse" id="navbarNav"> -->
+<!--                 <ul class="navbar-nav"> -->
+<!--                     <li class="nav-item"> -->
+<!--                         <a class="nav-link" href="home">홈</a> -->
+<!--                     </li> -->
+<!--                     <li class="nav-item"> -->
+<!--                         <a class="nav-link" href="diarys">성장일기 관리</a> -->
+<!--                     </li> -->
+<!--                     <li class="nav-item"> -->
+<!--                         <a class="nav-link" href="products">출산용품 관리</a> -->
+<!--                     </li> -->
+<!--                 </ul> -->
+<!--             </div>  -->
+<!--         </div> -->
+<!--     </nav> -->
+	<%@ include file="header.jsp" %>
 
     <div class="container mt-4">
         <h1 class="mb-4">성장일기 수정</h1>

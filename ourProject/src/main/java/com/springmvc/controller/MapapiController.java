@@ -1,6 +1,5 @@
 package com.springmvc.controller;
 
-import com.springmvc.controller.KakaoRouteResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

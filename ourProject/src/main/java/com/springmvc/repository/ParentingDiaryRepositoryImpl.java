@@ -104,7 +104,7 @@ public class ParentingDiaryRepositoryImpl implements ParentingDiaryRepository {
 	public void setUpdateparentingDiary(parentingDiary parentingDiary) {
 		System.out.println("PRI setUpdateparentingDiary 진입 "+ parentingDiary);
 		
-		String SQL = "UPDATE parentingDiary SET today = ?, wather = ?, myMood = ?, diaryText = ?, fileName = ?  where id = ? ";
+		String SQL = "UPDATE parentingDiary SET today = ?, weather = ?, myMood = ?, diaryText = ?, fileName = ?  where id = ? ";
         template.update(SQL, parentingDiary.getToday(),parentingDiary.getWeather(), parentingDiary.getMyMood(), parentingDiary.getDiaryText(), parentingDiary.getFileName(), parentingDiary.getId());
 		
 		System.out.println("ERI setUpdateparentingDiary SQL2= "+ SQL);

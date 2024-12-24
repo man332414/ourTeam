@@ -39,7 +39,7 @@ public class ParentingDiaryServiceImpl implements ParentingDiaryService {
 	@Override
 	public void setUpdateparentingDiary(parentingDiary parentingDiary) {
 		// TODO Auto-generated method stub
-
+		parentingDiaryRepository.setUpdateparentingDiary(parentingDiary);
 	}	
 	
 	@Override

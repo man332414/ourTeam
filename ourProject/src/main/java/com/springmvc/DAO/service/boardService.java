@@ -30,5 +30,7 @@ public interface boardService
 
 	List<Board> getSearchedBoards(String searchFor, int currentPage, int numberOfRows);
 
+	List<Board> getSomeBoards();
+
 
 }

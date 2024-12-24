@@ -42,7 +42,8 @@ public class BuyCheckListServiceImpl implements BuyCheckListService {
 	@Override
 	public buyCheckList getbuyCheckListkByNum(int number) {
 	// TODO Auto-generated method stub
-		return null;
+		buyCheckList buyCheckListInfo= buyCheckListRepository.getbuyCheckListkByNum(number);
+		return buyCheckListInfo;
 	}
 
 	@Override
