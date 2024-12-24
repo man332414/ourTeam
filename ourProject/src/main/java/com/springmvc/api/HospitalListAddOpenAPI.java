@@ -231,6 +231,9 @@ public class HospitalListAddOpenAPI {
             
             room.setPediatrics(true);
             room.setObstetricsAndGynecology(false);
+            room.setLatitude(Double.parseDouble(xPOS));
+            room.setLongitude(Double.parseDouble(yPOS));
+
             roomList.add(room);
             
         }

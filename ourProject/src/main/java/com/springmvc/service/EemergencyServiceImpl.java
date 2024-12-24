@@ -46,8 +46,8 @@ public class EemergencyServiceImpl implements EmergencyService {
 
 	@Override
 	public emergencyRoom getemergencyRoomByNum(int number) {
-	// TODO Auto-generated method stub
-		return null;
+		System.out.println("getemergencyRoomByNum: 진입");
+		return emergencyRoomRepository.getemergencyRoomByNum(number);
 	}
 
 	@Override

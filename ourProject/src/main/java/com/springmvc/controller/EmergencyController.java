@@ -58,8 +58,8 @@ public class EmergencyController {
 	}
 		
 	@GetMapping("/{number}")
-	public String viewEmergency2Detail(@PathVariable int number, Model model) {
-		System.out.println("EmergencyController viewEmergency2Detail(): {number} 진입");
+	public String viewEmergencyDetail(@PathVariable int number, Model model) {
+		System.out.println("EmergencyController viewEmergencyDetail(): {number} 진입");
 		emergencyRoom room = emergencyService.getemergencyRoomByNum(number); // 제품 ID로 조회
 	    model.addAttribute("room", room); // 모델에 추가
 	    return "emergency"; // JSP 파일 이름
@@ -73,12 +73,12 @@ public class EmergencyController {
     }  
 	
 	@PostMapping("/update") 
-    public String submitUpdateDiaryForm(@ModelAttribute("updateRoom") emergencyRoom room) {
-        
+    public String submitUpdateRoomForm(@ModelAttribute("updateRoom") emergencyRoom room) {
+      	
+		System.out.println("EmergencyController submitUpdateRoomForm(): 진입");
         emergencyService.setUpdateemergencyRoom(room);
-        return "emergency";
+        return "redirect:/emergencys";
     }  
-	
 	
 	
 	@GetMapping("/all")

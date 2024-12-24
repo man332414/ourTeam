@@ -35,10 +35,10 @@
         <h1 class="mb-4">병원 수정</h1>
 
         <div class="card">
-            <div class="card-body">
-                <form action="<c:url value='/emergencysy/update?number=${room.number}' />" method="post">
+            <div class="card-body" width="500px">
+                <form action="<c:url value='/emergencys/update?number=${room.number}' />" method="post">
                     <div class="mb-3">
-                        <label for="hosName" class="form-label">병원 이름</label>
+                        <label for="hosName" class="form-label">${room.number} 병원 이름 </label>
                         <input type="text" class="form-control" id="hosName" name="hosName" value="${room.hosName}" required>
                     </div>
                     <div class="mb-3">
@@ -51,11 +51,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="travelTime" class="form-label">이동시간 (분)</label>
-                        <input type="number" class="form-control" id="travelTime" name="travelTime" value="${room.travelTime}" required>
+                        <input type="number" class="form-control" id="travelTime" name="travelTime" value="${room.travelTime}" >
                     </div>
                     <div class="mb-3">
                         <label for="numOfBad" class="form-label">병상수</label>
-                        <input type="number" class="form-control" id="numOfBad" name="numOfBad" value="${room.numOfBad}" required>
+                        <input type="number" class="form-control" id="numOfBad" name="numOfBad" value="${room.numOfBad}" >
                     </div>
                     <div class="mb-3">
                         <label for="pediatrics" class="form-label">소아과</label>

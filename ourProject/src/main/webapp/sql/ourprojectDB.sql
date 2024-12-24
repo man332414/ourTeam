@@ -8,11 +8,13 @@ CREATE TABLE emergencyroom -- 응급실 테이블
 	numOfBad int,              -- 응급실병상수
 	isPediatrics boolean,      -- 소아과보유여부
     isObstetricsAndGynecology boolean   -- 산부인과보유여부
+    xPos DECIMAL(10, 8),         -- 위도
+    yPos DECIMAL(11, 8)          -- 경도
 );
 
-INSERT INTO emergencyroom VALUES(0, '창원병원', '경남 창원시 성산구 창원대로 721', 11, '0:20', 10, false,true);
-INSERT INTO emergencyroom VALUES(0, '삼성창원병원', '경남 창원시 마산회원구 팔용로 158', 3, '0:08', 15, true,true);
-INSERT INTO emergencyroom VALUES(0, '창원경상국립대학교병원', '경남 창원시 성산구 삼정자로 11', 21, '0:30', 20, true,false);
+INSERT INTO emergencyroom VALUES(0, '창원병원', '경남 창원시 성산구 창원대로 721', 11, '0:20', 10, false,true,37.27798550,127.02742710);
+INSERT INTO emergencyroom VALUES(0, '삼성창원병원', '경남 창원시 마산회원구 팔용로 158', 3, '0:08', 15, true,true,37.27798550,127.02742710);
+INSERT INTO emergencyroom VALUES(0, '창원경상국립대학교병원', '경남 창원시 성산구 삼정자로 11', 21, '0:30', 20, true,false,37.27798550,127.02742710);
 
 -- 2. buychecklist: 용품 테이블
 CREATE TABLE buychecklist -- 용품 테이블

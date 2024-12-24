@@ -8,6 +8,7 @@ import java.util.Set;
 import javax.sql.DataSource;
 
 import com.springmvc.DTO.emergencyRoom;
+import com.springmvc.DTO.parentingDiary;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -86,16 +87,27 @@ public class EmergencyRoomRepositoryImpl implements EmergencyRoomRepository {
 	@Override
 	public emergencyRoom getemergencyRoomByNum(int number) {
 		
-		System.out.println("getemergencyRoomByNum: 진입");
+		System.out.println("getemergencyRoomByNum: 진입" + number);
 		emergencyRoom emergencyRoomInfo = null;
-		String SQL = "select * from emergencyroom where num = " + number   ;
-		//emergencyRoomInfo = (emergencyRoom) template.query(SQL,new EmergencyRoomRowMapper());
-		// query 메서드 대신 queryForObject 메서드 사용
-		emergencyRoomInfo = (emergencyRoom) template.queryForObject(SQL, new EmergencyRoomRowMapper());
-				
-		System.out.println("getemergencyRoomkByNum  emergencyRoomInfo= " + emergencyRoomInfo);
+		
+		String SQL = "select count(*) from emergencyroom where num = ?";
+		int rowCount = template.queryForObject(SQL,Integer.class, number);
+		System.out.println("30.ERI getemergencyRoomByNum: rowCount ="+rowCount);
 
+		if(rowCount!=0) {
+			SQL = "select * from emergencyroom where num = ?";
+			emergencyRoomInfo=template.queryForObject(SQL, new Object[] {number},new EmergencyRoomRowMapper());
+		} 
+		
+		System.out.println("getemergencyRoomkByNum  SQL= " + SQL);
+
+		if(emergencyRoomInfo == null) {
+			System.out.println("에러입니다 " + SQL);
+		} 
+		
+		System.out.println("getemergencyRoomkByNum  emergencyRoomInfo= " + emergencyRoomInfo);
 		return emergencyRoomInfo;
+		
 	}
 
 	public List<emergencyRoom> getemergencyRoomListByCategory(String category) {
@@ -110,11 +122,11 @@ public class EmergencyRoomRepositoryImpl implements EmergencyRoomRepository {
 	public void setNewemergencyRoom(emergencyRoom emergencyRoom) {
 		
 	//	System.out.println("ERI setNewemergencyRoom 진입 "+ emergencyRoom);
-		String SQL = "INSERT INTO emergencyroom VALUES(?,?,?,?,?,?,?,?)";
+		String SQL = "INSERT INTO emergencyroom VALUES(?,?,?,?,?,?,?,?,?,?)";
 		
 		template.update(SQL,emergencyRoom.getNumber(),emergencyRoom.getHosName(),emergencyRoom.getHosaddr(),
 				emergencyRoom.getDistance(),emergencyRoom.getTravelTime(),emergencyRoom.getNumOfBad(),
-				emergencyRoom.isPediatrics(),emergencyRoom.isObstetricsAndGynecology());
+				emergencyRoom.isPediatrics(),emergencyRoom.isObstetricsAndGynecology(),emergencyRoom.getLatitude(),emergencyRoom.getLongitude());
 		
 	}
 	

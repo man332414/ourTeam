@@ -122,7 +122,7 @@ public class ParentingDiaryController {
 	
 	@GetMapping("/{id}")
 	public String viewDiaryDetail(@PathVariable int id, Model model) {
-		System.out.println("ParentingDiaryController  viewProductDetail(): {id}진입");
+		System.out.println("ParentingDiaryController  viewDiaryDetail(): {id}진입");
 	    parentingDiary diary = parentingDiaryService.getparentingDiaryById(id);
 	    model.addAttribute("diary", diary);
 	    return "diary"; // diary.jsp 파일 이름

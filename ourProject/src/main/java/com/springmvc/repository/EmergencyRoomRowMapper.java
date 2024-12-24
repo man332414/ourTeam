@@ -21,9 +21,9 @@ public class EmergencyRoomRowMapper implements RowMapper<emergencyRoom> {
 		room.setNumOfBad(rs.getInt(6));
 		room.setPediatrics(rs.getBoolean(7));
 		room.setObstetricsAndGynecology(rs.getBoolean(8));
+		room.setLatitude(rs.getDouble(9));
+		room.setLongitude(rs.getDouble(10));
 		
-	//	System.out.println("Room RowMapper 진입" +room.isPediatrics());
-	//	System.out.println("Room RowMapper 진입" +room.isObstetricsAndGynecology());
 		return room;
 	}
 

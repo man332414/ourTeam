@@ -14,6 +14,8 @@
                 <th>주소</th>
                 <th>소아과 보유 여부</th>
                 <th>산부인과 보유 여부</th>
+                <th>위도좌표</th>
+                <th>경도좌표</th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +25,8 @@
                     <td>${room.hosaddr}</td>
 <%--                     <td>${room.Pediatrics ? '예' : '아니오'}</td> --%>
 <%--                     <td>${room.ObstetricsAndGynecology ? '예' : '아니오'}</td> --%>
+                    <td>${room.latitude}</td>
+                    <td>${room.longitude}</td>
                 </tr>
             </c:forEach>
         </tbody>

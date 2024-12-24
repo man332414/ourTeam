@@ -33,11 +33,14 @@
     </nav>
 
     <div class="container mt-4">
-        <h1 class="mb-4">성장일기 상세보기</h1>
+        <h1 class="mb-4">응급실 상세보기</h1>
 
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">${room.hosName}</h5>
+                <h5 class="card-title d-flex justify-content-between">
+                             <span>${room.hosName}</span>
+						     <span>ID: ${room.number}</span>
+                            </h5><br>
                 <p class="card-text">${room.hosaddr}<br></p>
                 <p class="card-text">거리: ${room.distance} km | 이동시간: ${room.travelTime} 분</p>
                 <p class="card-text">병상수: ${room.numOfBad}개</p>
@@ -66,7 +69,7 @@
                     <img src="${pageContext.request.contextPath}/resources/images/${room.hosaddr}" alt="Diary Image" class="img-fluid mb-2" style="max-height: 300px; width: auto;"/>
                 </c:if>
 
-                <a href="<c:url value='/emergencysy/update?number=${room.number}' />" class="btn btn-warning">수정</a>
+                <a href="<c:url value='/emergencys/update?number=${room.number}' />" class="btn btn-warning">수정</a>
                 <button class="btn btn-danger delete-button" data-id="${room.number}">삭제</button>
                 <a href="./" class="btn btn-secondary">목록으로 돌아가기</a>
             </div>

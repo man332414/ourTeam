@@ -7,9 +7,51 @@
 <head>
     <meta charset="UTF-8">
     <link href="http://localhost:8080/ourProject/resources/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>응급실 관리</title>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+   
+	<style>
+    .scroll-top {
+        position: fixed;
+        bottom: 70px; /* 하단에서 위로 위치 조정 */
+        right: 20px;
+        display: none; /* 초기에는 숨김 */
+        z-index: 1000; /* 다른 요소 위에 표시 */
+    }
+    .scroll-bottom {
+        position: fixed;
+        bottom: 20px; /* 하단에서 위치 조정 */
+        right: 20px;
+        display: none; /* 초기에는 숨김 */
+        z-index: 1000; /* 다른 요소 위에 표시 */
+    }
+	</style>
+	
+    
+	<script>
+    $(document).ready(function() {
+        // 스크롤 시 버튼 표시
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 100) {
+                $('.scroll-btn').fadeIn(); // 버튼 표시
+            } else {
+                $('.scroll-btn').fadeOut(); // 버튼 숨김
+            }
+        });
+
+        // 상단으로 스크롤
+        $('.scroll-top').click(function() {
+            $('html, body').animate({scrollTop: 0}, 800);
+        });
+
+        // 하단으로 스크롤
+        $('.scroll-bottom').click(function() {
+            $('html, body').animate({scrollTop: $(document).height()}, 800);
+        });
+    });
+	</script>
     
 </head>
 <body>
@@ -48,12 +90,11 @@
     </nav>
 
     <div class="container">
-        <div class="p-5 mb-4 bg-light rounded-3">
-            <div class="container-fluid py-5">
+        <div class="mb-4 bg-light rounded-3">
+            <div class="container-fluid py-1"><br>
                 <h1 class="display-5 fw-bold">응급실 관리</h1>
                 <a href="emergencys/add" class="btn btn-primary">병원 등록</a>
                 <a href="emergencys/addapi" class="btn btn-secondary">병원 등록 API</a>
-                <a href="https://apis.data.go.kr/B551182/hospInfoServicev2/getHospBasisList?ServiceKey=59ojQNxXAJkaA29tsw%2Fql6IaRazj4K%2BUDFTTAom7HTo318eWaC99iJ9Hy761TzJ1KAyTulV2WYF4A3U0MDD8Xg%3D%3D&pageNo=1&numOfRows=10" class="btn btn-info">병원 API XML -> JSON</a>
                 <p class="col-md-8 fs-4">응급실 목록을 확인하세요.</p>
             </div>
         </div>
@@ -94,9 +135,8 @@
                             <a href="<c:url value="/emergencys/${room.number}" />"    class="btn btn-secondary">상세정보 &raquo;</a>
                             <a href="<c:url value='/emergencys/update?number=${room.number}' />" class="btn btn-warning">수정</a>
                             <button class="btn btn-danger delete-button" data-id="${room.number}">삭제</button> <!-- Ajax 삭제 버튼 -->
-                            
                             <a href="javascript:void(0);" 
-                            onclick="window.open('https://map.kakao.com/link/to/${room.hosName},${latitude},${longitude}/from/집,35.232058,128.583789', 
+                            onclick="window.open('https://map.kakao.com/link/to/${room.hosName},${room.latitude},${room.longitude}/from/집,35.232058,128.583789', 
                             		'_blank', 'width=981, height=650')">
 							        목적지 지도보기 </a>
                         </div>
@@ -111,6 +151,19 @@
         </div>
         
         <hr>
+        
+        
+		<!-- 하단으로 스크롤 버튼 -->
+		<button class="scroll-btn btn btn-primary scroll-bottom" title="하단으로 이동">
+		    <i class="fas fa-arrow-down"></i>
+		</button>
+		
+		<!-- 상단으로 스크롤 버튼 -->
+		<button class="scroll-btn btn btn-primary scroll-top" title="상단으로 이동">
+		    <i class="fas fa-arrow-up"></i>
+		</button>
+		
+        
     </div>
 
 	<script>
