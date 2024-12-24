@@ -7,6 +7,7 @@
 <title>회원정보 수정</title>
 </head>
 <body>
+	<%@ include file="header.jsp" %>
 	<div>
 		<h1>회원정보수정 메뉴 입니다.</h1>
 	</div>

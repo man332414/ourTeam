@@ -130,14 +130,16 @@ function eventUpdateForm(eventObj)
 	// 수정 시 모달 폼에 데이터 집어넣기
 	document.querySelector("#id").value = eventObj.id;
 	document.querySelector("#title").value = eventObj.title;
+	console.log("제목 "+eventObj.title);
 	document.querySelector("#start").value = toLocalISOString(eventObj.start);
-	console.log(eventObj.start);
+//	console.log(eventObj.start);
 	document.getElementById('end').value = toLocalISOString(eventObj.end);
-	console.log(eventObj.allDay);
+//	console.log(eventObj.allDay);
 	
 	if(eventObj.allDay){document.querySelector("#allDay").setAttribute("checked", "");}
 	else{document.querySelector("#allDay").removeAttribute("checked");}
 	
+	console.log(eventObj.description);
 	if(eventObj.description != undefined){document.querySelector("#description").value = eventObj.description;}
 	if(eventObj.location != undefined){document.querySelector("#location").value = eventObj.location;}
 	switch(eventObj.category)

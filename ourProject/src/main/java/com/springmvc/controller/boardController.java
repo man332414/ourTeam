@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,6 +68,7 @@ public class boardController
 		
 		return "oneBoard";
 	}
+	
 //	--------------------------------- 검색하기 ---------------------------------
 	@PostMapping("/list/searching")
 	@ResponseBody
@@ -92,7 +94,9 @@ public class boardController
 		
 		try 
 		{
+			System.out.println("searcherResult 값은? "+ searchResult);
 			jsonResult = objMapper.writeValueAsString(searchResult);
+			System.out.println("jsonResult 값은? "+jsonResult);
 		} 
 		catch (Exception e) 
 		{
@@ -135,5 +139,60 @@ public class boardController
 	    
 	    return "index"; // index.jsp로 이동
 	}
+
+//	--------------------------------- 생성 ---------------------------------
+	@GetMapping("/create")
+	public String createBoardForm(@ModelAttribute Board board, Model model)
+	{
+		model.addAttribute("board", board);
+		return "addBoard";
+	}
+	@PostMapping("/create")
+	public String createBoard(@ModelAttribute Board board, Model moedl)
+	{
+		boardService.addBoard(board);
+				
+		return "redirect:/board/list";
+	}
 	
+//	--------------------------------- 삭제 ---------------------------------
+	@GetMapping("/delete")
+	public String deleteBoard(@RequestParam(required=false) List<Integer> number, Model model)
+	{
+		System.out.println("adminController.deleteBoard() 입장");
+		System.out.print("뭐지울거야? ");
+		if(number != null && !number.isEmpty())
+		{
+			for(int deleteNumber : number)
+			{
+				System.out.print(deleteNumber + ", ");
+			}
+			System.out.println("");
+			
+			boardService.deleteBoard(number);
+			
+			return "redirect:list";			
+		}
+		System.out.println("아무것도 없어? 그러면 곤란한데.. 다시 돌아가");
+		String message = "<script>alert("+"선택된 항목이 없습니다. 선택 후 삭제버튼을 눌러주세요."+");</script>";
+		model.addAttribute("message", message);
+		return "redirect:list";
+	}
+	
+//	--------------------------------- 수정 ---------------------------------
+	@GetMapping("/update")
+	public String updateBoardForm(@ModelAttribute Board board, @RequestParam int number, Model model)
+	{
+		Board boardUpdate = boardService.getOneBoard(number);
+		model.addAttribute("board", boardUpdate);
+		return "updateBoardForm";
+	}
+	
+	@PostMapping("/update")
+	public String updateBoard(@ModelAttribute Board board, Model model)
+	{
+		boardService.updateBoard(board);
+		return "redirect:/board/list";
+	}
+
 }

@@ -86,7 +86,7 @@ public class VaccinationScheduleServiceImpl implements VaccinationScheduleServic
 		events.add(createEvent("b형헤모필루스인플루엔자 4차", 6, 12, "Hib 2차"));
 		
 		//폐렴구균 감염증
-		baseDate=birth.plusMonths(2); //1차 접종 시작시기
+		baseDate = birth.plusMonths(2); //1차 접종 시작시기
 		events.add(createEvent("폐렴구균 감염증 1차", baseDate, 1, "PCV 1차"));
 		events.add(createEvent("폐렴구균 감염증 2차", 2, 1, "PCV 2차"));
 		events.add(createEvent("폐렴구균 감염증 3차", 2, 1, "PCV 3차"));

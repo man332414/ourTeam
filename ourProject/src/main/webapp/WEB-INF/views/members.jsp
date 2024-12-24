@@ -9,6 +9,7 @@
 <title>Members Administration</title>
 </head>
 <body>
+	<%@ include file="header.jsp" %>
 	<div>
 		<p><h1>멤버 관리 페이지 입니다.</h1>
 		<table >

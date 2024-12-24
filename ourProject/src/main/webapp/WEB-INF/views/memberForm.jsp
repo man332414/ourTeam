@@ -8,6 +8,7 @@
 <title>회원가입</title>
 </head>
 <body>
+	<%@ include file="header.jsp" %>
 	<div>
 		<h1>회원가입 메뉴 입니다.</h1>
 	</div>

@@ -21,7 +21,8 @@ public class boardRepositoryImpl implements boardRepository
 		this.template=new JdbcTemplate(dataSource);
 			
 	}
-
+	
+	// 전체 페이지 읽어오기
 	@Override
 	public int getTotalPage(int numberOfRows)
 	{
@@ -53,7 +54,7 @@ public class boardRepositoryImpl implements boardRepository
 		return boards;
 	}
 
-	// API 게시판 읽어오기 
+	// API 게시판 DB저장하기 
 	@Override
 	public void saveAll(List<Board> boards) 
 	{
@@ -199,7 +200,7 @@ public class boardRepositoryImpl implements boardRepository
 		template.update(sql, null, board.getDate(), board.getTitle(), board.getCategory(), board.getContent());
 	}
 
-	
+	//검색된 게시판 가져오기
 	@Override
 	public List<Board> getSearchedBoards(String searchFor, int currentPage, int numberOfRows) 
 	{

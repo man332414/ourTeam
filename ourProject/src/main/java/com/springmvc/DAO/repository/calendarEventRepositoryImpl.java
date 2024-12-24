@@ -88,6 +88,8 @@ public class calendarEventRepositoryImpl implements calendarEventRepository
 				event.getLocation(),
 				event.getCategory()
 			);
+			
+//			System.out.println("description "+event.getDescription());
 		}
 	}
 }

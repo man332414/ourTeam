@@ -26,22 +26,22 @@
     </style>
 </head>
 <body>
-    <header class="bg-light py-3 fixed-top">
-        <div class="container text-center">
-            <h1>임산부 정보 취합 프로젝트</h1>
-            <nav class="nav justify-content-center">
-                <a class="nav-link" href="signIn">회원 가입</a>
-                <a class="nav-link" href="readMembers">회원 관리</a>
-                <a class="nav-link" href="board/list">게시판</a>
-                <a class="nav-link" href="calendar">일정 관리</a>
-                <a class="nav-link" href="emergencys">응급실 관리</a>
-                <a class="nav-link" href="products">출산/육아용품 관리</a>
-                <a class="nav-link" href="diarys">성장일기</a>
-                <a class="nav-link" href="map">지도</a>
-                <a class="nav-link" href="home">관리자페이지</a>
-            </nav>
-        </div>
-    </header>
+	<%@ include file="header.jsp" %>
+<!--     <header class="bg-light py-3 fixed-top"> -->
+<!--         <div class="container text-center"> -->
+<!--             <h1>임산부 정보 취합 프로젝트</h1> -->
+<!--             <nav class="nav justify-content-center"> -->
+<!--                 <a class="nav-link" href="signIn">회원 가입</a> -->
+<!--                 <a class="nav-link" href="readMembers">회원 관리</a> -->
+<!--                 <a class="nav-link" href="board/list">게시판</a> -->
+<!--                 <a class="nav-link" href="calendar">일정 관리</a> -->
+<!--                 <a class="nav-link" href="emergencys">응급실 관리</a> -->
+<!--                 <a class="nav-link" href="products">출산/육아용품 관리</a> -->
+<!--                 <a class="nav-link" href="diarys">성장일기</a> -->
+<!--                 <a class="nav-link" href="map">지도</a> -->
+<!--             </nav> -->
+<!--         </div> -->
+<!--     </header> -->
 
     <main class="container mt-4">
         <section id="welcome" class="text-center mb-4">

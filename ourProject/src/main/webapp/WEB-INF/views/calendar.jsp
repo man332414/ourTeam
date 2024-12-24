@@ -43,6 +43,7 @@
 </style>
 </head>
 <body>
+	<%@ include file="header.jsp" %>
     <div id="eventModal">
         <div class="modal-content">
             <h2 id="modalTitle">새 일정 추가</h2>

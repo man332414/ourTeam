@@ -7,7 +7,7 @@
 <title>게시글</title>
 </head>
 <body>
-
+	<%@ include file="header.jsp" %>
 	<div>
 		<h1>글 하나 읽어오기</h1>
 	</div>
@@ -20,7 +20,7 @@
 		<div>
 			<h4>내용</h4>
 			<p>${board.content}</p>
-			<p><a href="list">목록으로</a><a href="/ourProject/admin/update?number=${board.number}">수정</a><a href="/ourProject/admin/delete?number=${board.number}">삭제</a></p>
+			<p><a href="list">목록으로</a><a href="/ourProject/board/update?number=${board.number}">수정</a><a href="/ourProject/board/delete?number=${board.number}">삭제</a></p>
 		</div>
 	</div>
 

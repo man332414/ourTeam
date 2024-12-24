@@ -8,7 +8,7 @@
 <title>게시글</title>
 </head>
 <body>
-
+	<%@ include file="header.jsp" %>
 	<div>
 		<h1>보드 수정하기</h1>
 	</div>

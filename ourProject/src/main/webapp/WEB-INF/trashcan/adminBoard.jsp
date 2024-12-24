@@ -16,7 +16,6 @@
 		<h1>관리자 게시판 기능입니다.</h1>
 		<a href="/ourProject/board/refresh">글 다시 읽어오기</a>
 	</div>
-	
 	<div>
 		<div>
 			<form action="searching">

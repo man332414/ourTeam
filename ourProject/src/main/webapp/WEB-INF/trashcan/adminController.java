@@ -33,7 +33,7 @@ public class adminController
 	{
 		boardService.addBoard(board);
 				
-		return "redirect:/admin/board";
+		return "redirect:/board/list";
 	}
 
 	
@@ -43,6 +43,7 @@ public class adminController
 	{
 		return "admin";
 	}
+	
 //	--------------------------------- 관리자 게시판으로 이동 ---------------------------------
 	@GetMapping("/board")
 	public String board(Model model, @RequestParam(value="currentPage", defaultValue="1") int currentPage, @RequestParam(value="numberOfRows", defaultValue="10") int numberOfRows)
@@ -61,7 +62,6 @@ public class adminController
 	}
 	
 //	--------------------------------- 삭제 ---------------------------------
-
 	@GetMapping("/delete")
 	public String deleteBoard(@RequestParam(required=false) List<Integer> number, Model model)
 	{

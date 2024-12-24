@@ -10,6 +10,7 @@
 <title>게시글</title>
 </head>
 <body>
+	<%@ include file="header.jsp" %>
 	<% 
 		Date date = new Date(); 
 		String pattern = "yyyy-MM-dd HH:mm:ss";
@@ -21,7 +22,10 @@
 	<div>
 		<form:form modelAttribute="board" method="post">
 			<div>
-				<h2>분류 : <form:input path="category" name="category" /></h2>				
+				<h2>분류 : <form:select path="category" name="category">
+					<form:option value="공지사항">공지사항</form:option>
+					<form:option value="기타">기타</form:option>
+				</form:select></h2>
 				<h2>제목 : <form:input path="title" name="title" /></h2>
 				<h3>게시일자 : <form:input path="date" name="date" value="<%=format1.format(date)%>" readonly="true" /></h3>
 			</div>
