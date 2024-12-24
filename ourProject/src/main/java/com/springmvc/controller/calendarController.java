@@ -61,7 +61,7 @@ public class calendarController
 	// =================================== 업데이트 ===================================
 	@PostMapping("/updateevent")
 	public ResponseEntity<String> updateEvent(@RequestBody CalendarEvent event)
-	{
+	{		
 		System.out.println("calendarController.updateEvent() 입장 : " + event.getTitle());
 		calendarEventService.updateEvent(event);
 				

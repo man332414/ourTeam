@@ -7,28 +7,33 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import com.springmvc.DAO.service.VaccinationScheduleServiceImpl;
 import com.springmvc.DTO.Member;
 
 @Repository
 public class memberRepositoryImpl implements memberRepository 
 {
+	
 	private JdbcTemplate template;
 	
+	// jdbc 연결
 	@Autowired
 	public void setJdbctemplate(DataSource dataSource)
 	{
 		this.template=new JdbcTemplate(dataSource);
 	}
 	
+	// -------------------------------------- 생성 --------------------------------------
 	@Override
 	public void addNewMemver(Member member) 
 	{
 		System.out.println("memberRepository.addNewMember 입장");
 		String sql = "insert into member values(?, ?, ?, ?, ?, ?, ?, ?)";
 		template.update(sql, member.getUserId(), member.getPassword(), member.getEmail(), member.getName(), member.getNikName(), member.getBabyBirthDay(), member.getTelecom(), member.getPhone());
-		
 	}
 	
+	// -------------------------------------- 하나만 읽어오기 --------------------------------------
 	@Override
 	public Member getMemberById(String userId) 
 	{
@@ -39,6 +44,7 @@ public class memberRepositoryImpl implements memberRepository
 		return memberById;
 	}
 	
+	// -------------------------------------- 수정 --------------------------------------
 	@Override
 	public void updateMember(Member member) 
 	{
@@ -56,6 +62,7 @@ public class memberRepositoryImpl implements memberRepository
 		}
 	}
 	
+	// -------------------------------------- 삭제 --------------------------------------
 	@Override
 	public void deleteMember(String userId) 
 	{
@@ -64,6 +71,7 @@ public class memberRepositoryImpl implements memberRepository
 		template.update(sql, userId);
 	}
 	
+	// -------------------------------------- 중복검사 --------------------------------------
 	@Override
 	public int isDuplicate(String userId) 
 	{
@@ -73,6 +81,7 @@ public class memberRepositoryImpl implements memberRepository
 		return cont;
 	}
 	
+	// -------------------------------------- 모두 읽어오기 --------------------------------------
 	@Override
 	public List<Member> readAllMember() 
 	{

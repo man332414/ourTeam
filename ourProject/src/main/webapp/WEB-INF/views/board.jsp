@@ -107,4 +107,5 @@
         </div>
     </div>
 </body>
+<script type="text/javascript" src="/ourProject/resources/js/(board.jsp)searchFunction.js"></script>
 </html>

@@ -68,4 +68,26 @@ public class calendarEventRepositoryImpl implements calendarEventRepository
 		template.update(sql, event.getId());
 	}
 
+	// 생일에 따른 백신 접종일정 추가
+	@Override
+	public void setVaccinationSchedule(List<CalendarEvent> events) 
+	{
+		for(CalendarEvent event : events)
+		{
+			String sql = "INSERT INTO CalendarEvent (title, start, end, all_day, description, location, category, created_at, updated_at) " +
+					"VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), NOW())";
+			
+			template.update
+			(
+				sql, 
+				event.getTitle(), 
+				event.getStart(),
+				event.getEnd() != null ? event.getEnd() : null,
+				event.isAllDay(),
+				event.getDescription(),
+				event.getLocation(),
+				event.getCategory()
+			);
+		}
+	}
 }

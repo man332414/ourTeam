@@ -22,7 +22,7 @@
 			<p>E-mail : <form:input type="email" path="email" name="email" /></p>
 			<p>이름 : <form:input path="name" name="name" /></p>
 			<p>사이트에서 사용할 별명 : <form:input path="nikName" name="nikName" /></p>
-			<p>아기생일 : <form:input path="babyBirthDay" name="babyBirthDay" /></p>
+			<p>아기생일 : <form:input path="babyBirthDay" name="babyBirthDay" type="date" /></p>
 			<p>통신사 : <form:select path="telecom" name="telecom">
 				<form:option value="skt">SKT</form:option>
 				<form:option value="kt">KT</form:option>

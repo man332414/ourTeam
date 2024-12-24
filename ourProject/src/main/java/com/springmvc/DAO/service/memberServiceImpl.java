@@ -14,11 +14,14 @@ public class memberServiceImpl implements memberService
 {
 	@Autowired
 	private memberRepository memberRepository;
+	@Autowired
+	private VaccinationScheduleService vaccinationScheduleService;
 	
 	@Override
 	public void addNewMember(Member member) 
 	{
-		memberRepository.addNewMemver(member);		
+		memberRepository.addNewMemver(member);
+		vaccinationScheduleService.vaccinationSchedule(member.getBabyBirthDay());
 	}
 
 	@Override

@@ -15,4 +15,6 @@ public interface calendarEventRepository
 
 	void deleteEvent(CalendarEvent event);
 
+	void setVaccinationSchedule(List<CalendarEvent> events);
+
 }
