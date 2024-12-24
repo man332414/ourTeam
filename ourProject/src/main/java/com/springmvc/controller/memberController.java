@@ -31,7 +31,7 @@ public class memberController
 	@GetMapping("/signIn")
 	public String memberForm(@ModelAttribute Member member, Model modle)
 	{
-		return "memberForm";
+		return "addMemberForm";
 	}
 	
 	@PostMapping("/signIn")

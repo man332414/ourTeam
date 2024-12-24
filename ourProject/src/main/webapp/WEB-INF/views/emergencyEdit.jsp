@@ -9,27 +9,29 @@
     <title>병원 수정</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">병원 관리</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="home">홈</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="diarys">성장일기 관리</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="products">출산용품 관리</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<!--     <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
+<!--         <div class="container"> -->
+<!--             <a class="navbar-brand" href="#">병원 관리</a> -->
+<!--             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> -->
+<!--                 <span class="navbar-toggler-icon"></span> -->
+<!--             </button> -->
+<!--             <div class="collapse navbar-collapse" id="navbarNav"> -->
+<!--                 <ul class="navbar-nav"> -->
+<!--                     <li class="nav-item"> -->
+<!--                         <a class="nav-link" href="home">홈</a> -->
+<!--                     </li> -->
+<!--                     <li class="nav-item"> -->
+<!--                         <a class="nav-link" href="diarys">성장일기 관리</a> -->
+<!--                     </li> -->
+<!--                     <li class="nav-item"> -->
+<!--                         <a class="nav-link" href="products">출산용품 관리</a> -->
+<!--                     </li> -->
+<!--                 </ul> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--     </nav> -->
+	<%@ include file="header.jsp" %>
+
 
     <div class="container mt-4">
         <h1 class="mb-4">병원 수정</h1>
@@ -38,7 +40,7 @@
             <div class="card-body" width="500px">
                 <form action="<c:url value='/emergencys/update?number=${room.number}' />" method="post">
                     <div class="mb-3">
-                        <label for="hosName" class="form-label">${room.number} 병원 이름 </label>
+                        <label for="hosName" class="form-label">병원 ID : ${room.number} </label>
                         <input type="text" class="form-control" id="hosName" name="hosName" value="${room.hosName}" required>
                     </div>
                     <div class="mb-3">

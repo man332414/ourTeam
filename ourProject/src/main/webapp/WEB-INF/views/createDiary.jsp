@@ -10,6 +10,8 @@
     <link href="http://localhost:8080/ourProject/resources/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+	<%@ include file="header.jsp" %>
+
     <div class="container">
         <h1 class="mt-5">성장일기 작성하기</h1>
         <form action="add" method="post" class="mt-4" enctype="multipart/form-data">
@@ -42,7 +44,7 @@
                 <textarea class="form-control" id="diaryText" name="diaryText" rows="5" required></textarea>
             </div>
             <button type="submit" class="btn btn-primary">저장</button>
-            <a href="diarys" class="btn btn-secondary">취소</a>
+            <a href="../diarys" class="btn btn-secondary">취소</a>
         </form>
     </div>
 

@@ -47,7 +47,8 @@ public class boardController
 		int totalPage = boardService.getTotalPage(numberOfRows);
 		
 		model.addAttribute("totalPage", totalPage);
-		model.addAttribute("boards",boards);
+		model.addAttribute("boards", boards);
+		model.addAttribute("currentPage", currentPage);
 		
 		System.out.println("------------------------------------------");
 
@@ -104,7 +105,7 @@ public class boardController
 		}
 		
 		model.addAttribute("jsonResult", jsonResult);
-		
+
 		System.out.println("------------------------------------------");
 		return ResponseEntity.ok(jsonResult);
 	}
@@ -120,25 +121,27 @@ public class boardController
 		model.addAttribute("searchFor", searchFor);
 		model.addAttribute("totalPage", totalPage);
 		model.addAttribute("boards", boards);
+		model.addAttribute("currentPage", currentPage);
+
 		System.out.println("------------------------------------------");
 		return "board";
 	}
 
-//	--------------------------------- index에서 게시판 조회 ---------------------------------
-	@GetMapping("/index")
-	public String getIndex(Model model, 
-	                       @RequestParam(value = "currentPage", defaultValue = "1") int currentPage,
-	                       @RequestParam(value = "numberOfRows", defaultValue = "10") int numberOfRows) {
-	    System.out.println("boardController.getIndex() 입장");
-	    
-	    List<Board> boards = boardService.getAllBoards(currentPage, numberOfRows);
-	    int totalPage = boardService.getTotalPage(numberOfRows);
-
-	    model.addAttribute("boards", boards);
-	    model.addAttribute("totalPage", totalPage);
-	    
-	    return "index"; // index.jsp로 이동
-	}
+////	--------------------------------- index에서 게시판 조회 ---------------------------------
+//	@GetMapping("/index")
+//	public String getIndex(Model model, 
+//	                       @RequestParam(value = "currentPage", defaultValue = "1") int currentPage,
+//	                       @RequestParam(value = "numberOfRows", defaultValue = "10") int numberOfRows) {
+//	    System.out.println("boardController.getIndex() 입장");
+//	    
+//	    List<Board> boards = boardService.getAllBoards(currentPage, numberOfRows);
+//	    int totalPage = boardService.getTotalPage(numberOfRows);
+//
+//	    model.addAttribute("boards", boards);
+//	    model.addAttribute("totalPage", totalPage);
+//	    
+//	    return "index"; // index.jsp로 이동
+//	}
 
 //	--------------------------------- 생성 ---------------------------------
 	@GetMapping("/create")

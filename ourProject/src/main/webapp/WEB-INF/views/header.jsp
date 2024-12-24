@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-    <header class="container" style="height:80px;">
+<%@ page pageEncoding="UTF-8"%>
+    <header class="container" style="height:150px;">
         <div class="text-center fixed-top bg-light py-3">
             <h1><a href="/ourProject">임산부 정보 취합 프로젝트</a></h1>
             <nav class="nav justify-content-center">

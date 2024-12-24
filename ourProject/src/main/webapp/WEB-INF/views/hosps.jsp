@@ -23,8 +23,8 @@
                 <tr>
                     <td>${room.hosName}</td>
                     <td>${room.hosaddr}</td>
-<%--                     <td>${room.Pediatrics ? '예' : '아니오'}</td> --%>
-<%--                     <td>${room.ObstetricsAndGynecology ? '예' : '아니오'}</td> --%>
+                    <td>${room.pediatrics ? '예' : '아니오'}</td>
+                    <td>${room.obstetricsAndGynecology ? '예' : '아니오'}</td>
                     <td>${room.latitude}</td>
                     <td>${room.longitude}</td>
                 </tr>

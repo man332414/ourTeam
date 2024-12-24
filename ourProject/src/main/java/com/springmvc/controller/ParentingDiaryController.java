@@ -46,7 +46,7 @@ public class ParentingDiaryController {
 		System.out.println("뷰이동: " + list);
 		model.addAttribute("diarylist",list);
 		
-		return "diarys";
+		return "readAllDiarys";
 	}
 		
 	@GetMapping("/all")
@@ -59,16 +59,16 @@ public class ParentingDiaryController {
 		return modelAndView;
 	}
 	
-	@GetMapping("add")
+	@GetMapping("/add")
 	public String requestAddDiaryForm(@ModelAttribute("NewDiary") parentingDiary Diary,BindingResult result, HttpServletRequest request) {
 		System.out.println("===============================");
 		System.out.println("000.rc get requestAddDiaryForm : 진입");
 		
 		//form에 입력
 		if(result.hasErrors()) 
-			return "adddiary";
+			return "createDiary";
 		
-		return "addDiary";
+		return "createDiary";
 	}
 	
 	
@@ -77,7 +77,7 @@ public class ParentingDiaryController {
 	    System.out.println("000.pc post submitAddNewDiary : 진입 " + diary);
 
 	    if (result.hasErrors()) {
-	        return "addDiary"; // 유효성 검사 실패 시 폼으로 리턴
+	        return "createDiary"; // 유효성 검사 실패 시 폼으로 리턴
 	    }
 
 	    MultipartFile diaryImage = diary.getDiaryImage();
@@ -87,7 +87,7 @@ public class ParentingDiaryController {
 	    if (diaryImage == null || diaryImage.isEmpty()) {
 	        System.out.println("파일이 업로드되지 않았습니다.");
 	        request.setAttribute("errorMessage", "파일을 선택해 주세요."); // 사용자에게 알림
-	        return "addDiary"; // 폼으로 리턴
+	        return "createDiary"; // 폼으로 리턴
 	    }
 
 	    String save = request.getServletContext().getRealPath("resources/images");
@@ -105,7 +105,7 @@ public class ParentingDiaryController {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        request.setAttribute("errorMessage", "파일 저장 중 오류가 발생했습니다.");
-	        return "addDiary"; // 오류 발생 시 폼으로 리턴
+	        return "createDiary"; // 오류 발생 시 폼으로 리턴
 	    }
 
 	    // DB에 저장
@@ -125,14 +125,14 @@ public class ParentingDiaryController {
 		System.out.println("ParentingDiaryController  viewDiaryDetail(): {id}진입");
 	    parentingDiary diary = parentingDiaryService.getparentingDiaryById(id);
 	    model.addAttribute("diary", diary);
-	    return "diary"; // diary.jsp 파일 이름
+	    return "readOneDiary"; // diary.jsp 파일 이름
 	}
 	
 	@GetMapping("/update")  
     public String getUpdateDiaryForm(@ModelAttribute("updateDiary") parentingDiary diary, @RequestParam("id") int id, Model model) {
 		parentingDiary diaryById = parentingDiaryService.getparentingDiaryById(id);
         model.addAttribute("diary", diaryById);
-        return "dailyEdit";  // 수정 폼 
+        return "updateDaily";  // 수정 폼 
     }  
 	
 	@PostMapping("/update") 
@@ -142,7 +142,7 @@ public class ParentingDiaryController {
         if (diaryImage!=null && !diaryImage.isEmpty()) {
             try {
                 String fname = diaryImage.getOriginalFilename(); 
-                diaryImage.transferTo(new File("c:/upload/" + fname));
+                diaryImage.transferTo(new File(rootDirectory + fname));
                 diary.setFileName(fname);
             } catch (Exception e) {
                 throw new RuntimeException("Book Image saving failed", e);
@@ -150,7 +150,7 @@ public class ParentingDiaryController {
         }
         
         parentingDiaryService.setUpdateparentingDiary(diary);
-        return "diary";
+        return "redirect:./"+diary.getId();
     }  
 	
 	 

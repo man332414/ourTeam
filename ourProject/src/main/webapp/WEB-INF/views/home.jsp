@@ -20,9 +20,9 @@
             height: 350px;
         }
         /* 고정된 메뉴를 위한 여백 설정 */
-        body {
+/*         body {
             padding-top: 70px; /* 메뉴 높이만큼 여백 추가 */
-        }
+        } */
     </style>
 </head>
 <body>
@@ -43,7 +43,7 @@
 <!--         </div> -->
 <!--     </header> -->
 
-    <main class="container mt-4">
+    <main class="container">
         <section id="welcome" class="text-center mb-4">
             <h2>환영합니다!</h2>
             <p>임산부를 위한 다양한 정보를 제공하여 지원받을 수 있도록 돕습니다.</p>
@@ -71,28 +71,6 @@
 
          <section id="board" class="mb-4">
             <h2 class="text-center">임산부지원게시판</h2>
-            <form action="searching">
-                <%
-                    String searchFor;
-                    if (request.getAttribute("searchFor") == null) {
-                        searchFor = "";							
-                    } else {
-                        searchFor = (String) request.getAttribute("searchFor"); 
-                    }
-                %>
-                검색하기 : <input type="text" id="searchBox" name="searchFor" value="<%= searchFor %>">
-                <input type="submit" value="검색">
-            </form>
-            <form method="get" action="">
-                <label for="numberOfRows">페이지당 항목 수:</label>
-                <select name="numberOfRows" id="numberOfRows" onchange="this.form.submit()">
-                    <option value="10" <%= numberOfRows == 10 ? "selected" : "" %>>선택</option>
-                    <option value="10" <%= numberOfRows == 10 ? "selected" : "" %>>10</option>
-                    <option value="20" <%= numberOfRows == 20 ? "selected" : "" %>>20</option>
-                    <option value="50" <%= numberOfRows == 50 ? "selected" : "" %>>50</option>
-                    <option value="100" <%= numberOfRows == 100 ? "selected" : "" %>>100</option>
-                </select>
-            </form>
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -106,11 +84,11 @@
                 <tbody id="resultBody">
                     <c:forEach var="board" items="${boards}">
                         <tr>
-                            <td><a href="content?number=${board.number}">${board.number}</a></td>
-                            <td><a href="content?number=${board.number}">${board.category}</a></td>
-                            <td><a href="content?number=${board.number}">${board.title}</a></td>
-                            <td><a href="content?number=${board.number}">${board.date}</a></td>
-                            <td><a href="content?number=${board.number}">보기</a></td>
+                            <td><a href="${board.content}">${board.number}</a></td>
+                            <td><a href="${board.content}">${board.category}</a></td>
+                            <td><a href="${board.content}">${board.title}</a></td>
+                            <td><a href="${board.content}">${board.date}</a></td>
+                            <td><a href="${board.content}"></a></td>
                         </tr>
                     </c:forEach>
                 </tbody>
@@ -122,16 +100,16 @@
             </div>
         </section>
          
-        <section id="recommended-content" class="mb-4">
-            <h2 class="text-center">추천 콘텐츠</h2>
-            <ul class="list-group">
-                <li class="list-group-item"><a href="#blog1">임신 초기 건강 관리</a></li>
-                <li class="list-group-item"><a href="#blog2">영양 가이드</a></li>
-                <li class="list-group-item"><a href="#blog3">운동과 스트레스 관리</a></li>
-                <li class="list-group-item"><a href="./indexy.jsp">indexy</a></li>
-                <li class="list-group-item"><a href="./indexrt.jsp">indexrt</a></li>
-            </ul>
-        </section>
+<!--         <section id="recommended-content" class="mb-4"> -->
+<!--             <h2 class="text-center">추천 콘텐츠</h2> -->
+<!--             <ul class="list-group"> -->
+<!--                 <li class="list-group-item"><a href="#blog1">임신 초기 건강 관리</a></li> -->
+<!--                 <li class="list-group-item"><a href="#blog2">영양 가이드</a></li> -->
+<!--                 <li class="list-group-item"><a href="#blog3">운동과 스트레스 관리</a></li> -->
+<!--                 <li class="list-group-item"><a href="./indexy.jsp">indexy</a></li> -->
+<!--                 <li class="list-group-item"><a href="./indexrt.jsp">indexrt</a></li> -->
+<!--             </ul> -->
+<!--         </section> -->
     </main>
 
     <footer class="bg-light text-center py-3">

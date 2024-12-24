@@ -32,5 +32,5 @@ public interface boardRepository {
 
 	List<Board> getSearchedBoards(String searchFor, int currentPage, int numberOfRows);
 
-
+	List<Board> getSoneBoards();
 }

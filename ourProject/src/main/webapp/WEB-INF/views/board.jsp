@@ -39,7 +39,7 @@
 </head>
 <body>
 	<%@ include file="header.jsp" %>
-    <div class="container mt-5">
+    <div class="container">
         <div class="text-center">
             <h1>게시판 기능입니다.</h1>            
         </div>
@@ -103,9 +103,19 @@
         <div id="pages">
             <%
                 totalPage = (int)request.getAttribute("totalPage");
-                for(int i = 1; i <= totalPage; i++) {
+                for(int i = 1; i <= totalPage; i++) 
+                {
+                	currentPage = (int)request.getAttribute("currentPage");
+	            	System.out.println("currentPage : " + currentPage);
+                	if(currentPage==i)
+                	{
             %>
-                <a href="?currentPage=<%=i%>&search=<%=searchFor%>"><%=i%></a>
+            			<a href="?currentPage=<%=i%>&search=<%=searchFor%>" style="font-weight:900;"><%=i%></a>
+   			<%
+   						continue;
+           			}
+   			%>
+               		<a href="?currentPage=<%=i%>&search=<%=searchFor%>"><%=i%></a>
             <%
                 }
             %>		

@@ -10,39 +10,40 @@
     <title>출산용품 등록</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">프로젝트 이름</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="home">홈</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="emergencys">응급실 관리</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="products">출산용품 관리</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="growth-diary">성장일기</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="consultation">상담 요청</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="community">커뮤니티</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="profile">내 정보</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<!--     <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
+<!--         <div class="container"> -->
+<!--             <a class="navbar-brand" href="#">프로젝트 이름</a> -->
+<!--             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> -->
+<!--                 <span class="navbar-toggler-icon"></span> -->
+<!--             </button> -->
+<!--             <div class="collapse navbar-collapse" id="navbarNav"> -->
+<!--                 <ul class="navbar-nav"> -->
+<!--                     <li class="nav-item"> -->
+<!--                         <a class="nav-link" href="home">홈</a> -->
+<!--                     </li> -->
+<!--                     <li class="nav-item"> -->
+<!--                         <a class="nav-link" href="emergencys">응급실 관리</a> -->
+<!--                     </li> -->
+<!--                     <li class="nav-item"> -->
+<!--                         <a class="nav-link" href="products">출산용품 관리</a> -->
+<!--                     </li> -->
+<!--                     <li class="nav-item"> -->
+<!--                         <a class="nav-link" href="growth-diary">성장일기</a> -->
+<!--                     </li> -->
+<!--                     <li class="nav-item"> -->
+<!--                         <a class="nav-link" href="consultation">상담 요청</a> -->
+<!--                     </li> -->
+<!--                     <li class="nav-item"> -->
+<!--                         <a class="nav-link" href="community">커뮤니티</a> -->
+<!--                     </li> -->
+<!--                     <li class="nav-item"> -->
+<!--                         <a class="nav-link" href="profile">내 정보</a> -->
+<!--                     </li> -->
+<!--                 </ul> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--     </nav> -->
+	<%@ include file="header.jsp" %>
 
     <div class="container">
         <div class="p-5 mb-4 bg-light rounded-3">
@@ -57,6 +58,7 @@
                 <div class="mb-3">
                     <label for="useCategory" class="form-label">분류</label>
                     <input type="text" class="form-control" id="useCategory" name="useCategory" required>
+                </div>
                 <div class="mb-3">
                     <label for="gradeCategory" class="form-label">시기</label>
                     <input type="text" class="form-control" id="gradeCategory" name="gradeCategory" required>
@@ -78,7 +80,7 @@
                     <input type="text" class="form-control" id="acquisitionMethod" name="acquisitionMethod" required> 
                 </div>
                 <button type="submit" class="btn btn-primary">등록</button>
-                <a href="products" class="btn btn-secondary">취소</a>
+                <a href="../products" class="btn btn-secondary">취소</a>
             </form>
         </div>
     </div>

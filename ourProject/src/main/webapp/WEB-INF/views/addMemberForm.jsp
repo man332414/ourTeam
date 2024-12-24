@@ -6,17 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
 </head>
 <body>
 	<%@ include file="header.jsp" %>
-	<div>
-		<h1>회원가입 메뉴 입니다.</h1>
-	</div>
-	<div>
-		<form:form modelAttribute="member" method="post" id="signInForm">
+	<div class="container">
+		<div>
+			<h1>회원가입 메뉴 입니다.</h1>
+		</div>
+		<form:form modelAttribute="member" method="post" id="signInForm" class="form-horizontal">
 			<p>
 				아이디 : <form:input path="userId" name="id" id="userId" />
-				<button id="checkDupl">중복검사</button>
+				<button id="checkDupl" class="btn btn-primary">중복검사</button>
 				<input type="hidden" id="idCheck" value="false" />
 			</p>
 			<p>비밀번호 : <form:password path="password" name="password" /></p>
@@ -30,9 +31,9 @@
 				<form:option value="lgu+">LG U+</form:option>
 				<form:option value="알뜰">알뜰폰</form:option>
 			</form:select></p>
-			<p>전화번호 : <form:input type="tel" path="phone" name="phone" minlength="11" maxlenght="11" id="phoneNumber" /></p>
+			<p>전화번호 : <form:input type="tel" path="phone" name="phone" id="phoneNumber" /></p>
 			<p>
-				<input type="submit" value="회원가입" id="submitbtn">
+				<input class="btn btn-primary" type="submit" value="회원가입" id="submitbtn">
 			</p>
 		</form:form>
 	</div>
@@ -45,7 +46,7 @@
 		if(this.value.length > 11)
 			{
 				console.log("전화번호 입력 값 출력 : "+phoneNumber);
-				this.value = this.value.slice(0, 11);
+				this.value = this.value.slice(0, 13);
 			}
 	});
 </script>

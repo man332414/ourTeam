@@ -17,35 +17,41 @@
 	
 	#calendar {
 	  max-width: 1100px;
+/* 	  padding-top:80px; */
 	  margin: 0 auto;
+	}
+	
+	#calendar a{
+		color:black;
 	}
   
 	#eventModal 
 	{
 		display: none;
 		position: fixed;
-		z-index: 1000;
+		z-index: 100;
 		left: 0;
 		top: 0;
 		width: 100%;
 		height: 100%;
 		background-color: rgba(0,0,0,0.4);
 	}
-	.modal-content 
-	{
-		background-color: #fefefe;
-		margin: 15% auto;
-		padding: 20px;
-		border: 1px solid #888;
-		width: 300px;
-	}
-  
+ 	#modal-content
+ 	{ 
+ 		background-color: #fefefe;
+ 		margin: 15% auto;
+ 		padding: 20px;
+ 		border: 1px solid #888;
+  		width: 500px;
+ 	}
 </style>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> Bootstrap CSS
+<title>임산부 달력</title>
 </head>
 <body>
 	<%@ include file="header.jsp" %>
     <div id="eventModal">
-        <div class="modal-content">
+        <div id="modal-content">
             <h2 id="modalTitle">새 일정 추가</h2>
 			<form id="eventForm">
 			    <input type="hidden" id="id"><br><br>
