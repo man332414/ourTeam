@@ -48,6 +48,7 @@
             <form method="get" action="" class="form-inline justify-content-center mt-2">
                 <label for="numberOfRows" class="mr-2">페이지당 항목 수:</label>
                 <select name="numberOfRows" id="numberOfRows" class="form-control" onchange="this.form.submit()">
+                    <option value="10" <%= numberOfRows == 10 ? "selected" : "" %>>선택</option>
                     <option value="10" <%= numberOfRows == 10 ? "selected" : "" %>>10</option>
                     <option value="20" <%= numberOfRows == 20 ? "selected" : "" %>>20</option>
                     <option value="50" <%= numberOfRows == 50 ? "selected" : "" %>>50</option>
@@ -106,7 +107,7 @@
                 for(int i = 1; i <= totalPage; i++) 
                 {
                 	currentPage = (int)request.getAttribute("currentPage");
-	            	System.out.println("currentPage : " + currentPage);
+// 	            	System.out.println("currentPage : " + currentPage);
                 	if(currentPage==i)
                 	{
             %>
@@ -129,7 +130,7 @@
 		</div>
     </div>
 </body>
-<script type="text/javascript" src="/ourProject/resources/js/(board.jsp)searchFunction.js"></script>
+<script type="text/javascript" src="/ourProject/resources/js/(readAllBoards.jsp)searchFunction.js"></script>
 <script>
 // 	버튼 누르면 제출되는 함수
 	let deleteBtn = document.querySelector("#deleteBtn");

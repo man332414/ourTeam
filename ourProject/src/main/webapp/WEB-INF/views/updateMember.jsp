@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>회원정보 수정</title>
+    <link href="http://localhost:8080/ourProject/resources/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<%@ include file="header.jsp" %>
@@ -29,7 +31,6 @@
 			<p>전화번호 : <form:input type="number" path="phone" value="${member.getPhone()}" /></p>
 			<p>
 			<input type="submit" value="수정">
-			<a href="deleteMember?userId=${member.getUserId()}">삭제</a>
 			<button id="delbtn">삭제</button>
 			</p>
 		</form:form>

@@ -85,9 +85,6 @@
             <scope>runtime</scope>
         </dependency>
 
-
-
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
@@ -132,6 +129,7 @@
             <artifactId>jackson-dataformat-xml</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
 		<!-- DB에 LocalDateTime가 안된다고 해서 집어넣은 의존성 -->
 		<dependency>
@@ -157,12 +155,13 @@
 	        <artifactId>spring-boot-starter-thymeleaf</artifactId>
 	        <version>${org.springframework.boot.version}</version>
 	    </dependency>
-	     <!-- Spring Boot Starter Web 의존성 추가 -->
-		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-web</artifactId>
-		    <version>3.3.4</version> <!-- version -->
-		</dependency>
+	    
+<!--	      Spring Boot Starter Web 의존성 추가 -->
+<!--		<dependency>-->
+<!--		    <groupId>org.springframework.boot</groupId>-->
+<!--		    <artifactId>spring-boot-starter-web</artifactId>-->
+<!--		    <version>3.3.4</version>  version -->
+<!--		</dependency>-->
         
         <dependency>
 	        <groupId>commons-fileupload</groupId>
@@ -188,9 +187,6 @@
 		    <artifactId>fullcalendar</artifactId>
 		    <version>6.1.9</version>
 		</dependency>
-
-		
-		
 
     </dependencies>
 

@@ -14,28 +14,65 @@
 		<div>
 			<h1>회원가입 메뉴 입니다.</h1>
 		</div>
-		<form:form modelAttribute="member" method="post" id="signInForm" class="form-horizontal">
-			<p>
-				아이디 : <form:input path="userId" name="id" id="userId" />
-				<button id="checkDupl" class="btn btn-primary">중복검사</button>
-				<input type="hidden" id="idCheck" value="false" />
-			</p>
-			<p>비밀번호 : <form:password path="password" name="password" /></p>
-			<p>E-mail : <form:input type="email" path="email" name="email" /></p>
-			<p>이름 : <form:input path="name" name="name" /></p>
-			<p>사이트에서 사용할 별명 : <form:input path="nikName" name="nikName" /></p>
-			<p>아기생일 : <form:input path="babyBirthDay" name="babyBirthDay" type="date" /></p>
-			<p>통신사 : <form:select path="telecom" name="telecom">
-				<form:option value="skt">SKT</form:option>
-				<form:option value="kt">KT</form:option>
-				<form:option value="lgu+">LG U+</form:option>
-				<form:option value="알뜰">알뜰폰</form:option>
-			</form:select></p>
-			<p>전화번호 : <form:input type="tel" path="phone" name="phone" id="phoneNumber" /></p>
-			<p>
-				<input class="btn btn-primary" type="submit" value="회원가입" id="submitbtn">
-			</p>
-		</form:form>
+		<table>
+			<form:form modelAttribute="member" method="post" id="signInForm" class="form-horizontal">
+				<tr>
+					<td>아이디 :</td> 
+					<td> 
+						<form:input path="userId" name="id" id="userId" />
+						<button id="checkDupl" class="btn btn-primary">중복검사</button>
+						<input type="hidden" id="idCheck" value="false" />
+					</td>
+				</tr>
+				<tr>
+					<td>비밀번호 :</td>
+					<td><form:password path="password" name="password" id="password" minlength="5" /></td>
+				</tr>
+				<tr>
+					<td>비밀번호 확인 :</td>
+					<td>
+						<input type="password" id="passwordconfirm" />
+						<input type="hidden" id="pwCheck" value="false" />
+						<span id="pwConfirmInfo" style="display:none; color:red;">비밀번호가 일치하지 않습니다.</span>
+					</td>
+				
+				</tr>
+				<tr>
+					<td>E-mail :</td>
+					<td><form:input type="email" path="email" name="email" /></td>
+				</tr>
+				<tr>
+					<td>이름 :</td>
+					<td><form:input path="name" name="name" /></td>
+				</tr>
+				<tr>
+					<td>사이트에서 사용할 별명 :</td>
+					<td><form:input path="nikName" name="nikName" /></td>
+				</tr>
+				<tr>
+					<td>아기생일 :</td>
+					<td><form:input path="babyBirthDay" name="babyBirthDay" type="date" /></td>
+				</tr>
+				<tr>
+					<td>통신사 :</td>
+					<td>
+						<form:select path="telecom" name="telecom">
+							<form:option value="skt">SKT</form:option>
+							<form:option value="kt">KT</form:option>
+							<form:option value="lgu+">LG U+</form:option>
+							<form:option value="알뜰">알뜰폰</form:option>
+						</form:select>
+					</td>
+				</tr>
+				<tr>
+					<td>전화번호 :</td>
+					<td><form:input type="tel" path="phone" name="phone" id="phoneNumber" /></td>
+				</tr>
+				<tr>
+					<td><input class="btn btn-primary" type="submit" value="회원가입" id="submitbtn"></td>
+				</tr>
+			</form:form>
+		</table>
 	</div>
 </body>
 <script type="text/javascript">
@@ -54,7 +91,7 @@
 	// 	아이디 중복검사
 	let isDupl = document.querySelector("#checkDupl");
 	console.log(isDupl);
-	let isCheck = document.querySelector("#idCheck").value;
+	let isIdCheck = document.querySelector("#idCheck").value;
 	
 	isDupl.addEventListener("click", duplconfirm);
 	
@@ -79,7 +116,7 @@
 	            else 
 	            {
 	                alert("사용 가능한 ID입니다.");
-	                isCheck = 'true';
+	                isIdCheck = 'true';
 	            }
 	        },
 	        error: function(error) {
@@ -88,7 +125,34 @@
 	    });
 	}
 </script>
-
+<script>
+	//비밀번호 일치 여부 확인
+	let passwordconfirm = document.querySelector("#passwordconfirm");
+	console.log("passwordconfirm : " + passwordconfirm);
+	let password = document.querySelector("#password")
+	console.log("password : " + password);
+	let isPwCheck = document.querySelector("#pwCheck").value;
+	let pwConfirmInfo = document.querySelector("#pwConfirmInfo");
+	
+	passwordconfirm.addEventListener("input", pwConfirm);
+	
+	function pwConfirm()
+	{
+		console.log("pwConfirm() 입장");
+		if(passwordconfirm.value == password.value)
+		{
+			console.log("비밀번호 일치");
+			isPwCheck = 'true';
+			pwConfirmInfo.style.display="none";
+		}
+		else
+		{
+			isPwCheck = 'false';
+			pwConfirmInfo.style.display="inline";
+		}
+	}
+	
+</script>
 <script type="text/javascript">
 	// 	회원가입 성공 안내
 	let signInForm = document.querySelector("#signInForm");
@@ -100,9 +164,15 @@
 	function subFunc(e)
 	{
 		e.preventDefault();
-		if(isCheck=='false')
+		if(isIdCheck=='false')
 		{
 			alert("id 중복검사 하시기 바랍니다.");
+			return false;
+		}
+		console.log("isPwCheck : "+ isPwCheck);
+		if(isPwCheck=='false')
+		{
+			alert("비밀번호가 일치하지 않습니다.");
 			return false;
 		}
 		

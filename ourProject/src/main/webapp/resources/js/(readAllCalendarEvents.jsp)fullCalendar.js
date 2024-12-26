@@ -42,6 +42,7 @@
 		// 일정 드래그 시 일정 변경 저장
 		eventChange: function(info)
 		{
+//			console.log("eventChange info : " + info);
 			let eventObj = info.event;
 			// 클릭하면 클릭된 이벤트의 내용들을 모달의 벨류들로 집어넣고
 			eventUpdateForm(eventObj);
@@ -111,10 +112,12 @@ function eventFormValues(){
 		start: $('#start').val(),
 		end: $('#end').val() ? $('#end').val() : null,
 		allDay: $('#allDay').is(':checked'),
-		description: $('#description').val() || null,
-		location: $('#location').val() || null,
-		category: $('#category').val(),
-		id: $('#id').val() || null
+		id: $('#id').val() || null,
+		extendedProps: {
+			description: $('#description').val() || null,
+			location: $('#location').val() || null,
+			category: $('#category').val()
+		}
 	}
 } 
 	
@@ -139,19 +142,23 @@ function eventUpdateForm(eventObj)
 	if(eventObj.allDay){document.querySelector("#allDay").setAttribute("checked", "");}
 	else{document.querySelector("#allDay").removeAttribute("checked");}
 	
-	console.log(eventObj.description);
-	if(eventObj.description != undefined){document.querySelector("#description").value = eventObj.description;}
-	if(eventObj.location != undefined){document.querySelector("#location").value = eventObj.location;}
-	switch(eventObj.category)
+	console.log("description 인데 뭐가 들었니? : "+eventObj.extendedProps.description);
+	if(eventObj.extendedProps.description != undefined){document.querySelector("#description").value = eventObj.extendedProps.description;}
+	if(eventObj.extendedProps.location != undefined){document.querySelector("#location").value = eventObj.extendedProps.location;}
+	switch(eventObj.extendedProps.category)
 	{
 		case "일정" :
 			document.querySelector("#category_1").setAttribute("selected","");
+			break;
 		case "휴가" :
 			document.querySelector("#category_2").setAttribute("selected","");
+			break;
 		case "기타" :
 			document.querySelector("#category_3").setAttribute("selected","");
+			break;
 		default :
-			document.querySelector("#category_0").setAttribute("selected","");	
+			document.querySelector("#category_0").setAttribute("selected","");
+			break;	
 	}
 } 
 

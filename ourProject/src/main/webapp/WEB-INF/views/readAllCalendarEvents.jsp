@@ -45,7 +45,7 @@
   		width: 500px;
  	}
 </style>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> Bootstrap CSS
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <title>임산부 달력</title>
 </head>
 <body>
@@ -91,5 +91,5 @@
 
 	<div id='calendar'></div>
 </body>
-<script src="/ourProject/resources/js/(calendar.jsp)fullCalendar.js"></script>
+<script src="/ourProject/resources/js/(readAllCalendarEvents.jsp)fullCalendar.js"></script>
 </html>
