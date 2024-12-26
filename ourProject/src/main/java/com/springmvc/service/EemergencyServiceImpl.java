@@ -22,10 +22,16 @@ public class EemergencyServiceImpl implements EmergencyService {
 	}
 
 	@Override
-	public List<emergencyRoom> getALLemergencyRoomList() {
+	public List<emergencyRoom> getALLemergencyRoomList(String sort) {
 		// TODO Auto-generated method stub
 		System.out.println("EemergencyServiceImpl 진입");
-		return emergencyRoomRepository.getALLemergencyRoomList();
+		return emergencyRoomRepository.getALLemergencyRoomList(sort);
+	}
+
+	@Override
+	public List<emergencyRoom> searchEmergencyRooms(String keyword,String sort) {
+		System.out.println("searchEmergencyRooms() 진입");
+		return emergencyRoomRepository.searchEmergencyRooms(keyword,sort);
 	}
 
 	@Override
