@@ -46,7 +46,7 @@ public class EmergencyController {
 		System.out.println("뷰이동"+list);
 		model.addAttribute("emergencylist",list);
 
-		return "emergencys";
+		return "readAllEmergencyRooms";
 	}
 
 	@GetMapping("/{number}")
@@ -54,14 +54,14 @@ public class EmergencyController {
 		System.out.println("EmergencyController viewEmergencyDetail(): {number} 진입");
 		emergencyRoom room = emergencyService.getemergencyRoomByNum(number); // 제품 ID로 조회
 	    model.addAttribute("room", room); // 모델에 추가
-	    return "emergency"; // JSP 파일 이름
+	    return "readOneEmergencyRoom"; // JSP 파일 이름
 	}
 
 	@GetMapping("/update")
     public String getUpdateRoomForm(@ModelAttribute("updateRoom") emergencyRoom room, @RequestParam("number") int number, Model model) {
 		emergencyRoom roomByNum = emergencyService.getemergencyRoomByNum(number);
         model.addAttribute("room", roomByNum);
-        return "emergencyEdit";  // 수정 폼
+        return "updateEmergencyRoom";  // 수정 폼
     }
 
 	@PostMapping("/update")
@@ -101,7 +101,7 @@ public class EmergencyController {
 		System.out.println("===============================");
 		System.out.println("000.rc get requestAddRoomForm : 진입");
 
-		return "addRoom";
+		return "createEmergencyRoom";
 	}
 
 
@@ -110,7 +110,7 @@ public class EmergencyController {
 			System.out.println("000.rc post submitAddNewBook : 진입 "+ room);
 
 			if(result.hasErrors()) {
-				return "addRoom";
+				return "createEmergencyRoom";
 			}
 
 			//MultipartFile bookImage = book.getBookImage();

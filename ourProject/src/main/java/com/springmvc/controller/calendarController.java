@@ -26,7 +26,7 @@ public class calendarController
 	@GetMapping
 	public String goCalendar()
 	{
-		return "calendar";
+		return "readAllCalendarEvents";
 	}
 
 	// =================================== 생성 ===================================
@@ -47,12 +47,12 @@ public class calendarController
 	{
 		System.out.println("calendarController.getAllEvents() 입장");
 		List<CalendarEvent> jsontypeData = calendarEventService.getAllEvents();
-		for(CalendarEvent data:jsontypeData)
-		{
-			System.out.println("----------");
-			System.out.println("제목이랑 봐야 알겠는데 : "+data.getTitle());
-			System.out.println("설명 한번 보자 : "+data.getDescription());
-		}
+//		for(CalendarEvent data:jsontypeData)
+//		{
+//			System.out.println("----------");
+//			System.out.println("제목이랑 봐야 알겠는데 : "+data.getTitle());
+//			System.out.println("설명 한번 보자 : "+data.getDescription());
+//		}
 
 		System.out.println("------------------------------------------");
 		return ResponseEntity.ok(jsontypeData);

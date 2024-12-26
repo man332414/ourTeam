@@ -31,7 +31,7 @@ public class memberController
 	@GetMapping("/signIn")
 	public String memberForm(@ModelAttribute Member member, Model modle)
 	{
-		return "addMemberForm";
+		return "createMember";
 	}
 
 	@PostMapping("/signIn")
@@ -81,7 +81,7 @@ public class memberController
 		System.out.println("------------------------------------------");
 		//뷰 이동
 		model.addAttribute("members", members);
-		return "members";
+		return "readAllMembers";
 	}
 
 
@@ -96,7 +96,7 @@ public class memberController
 		model.addAttribute("member", memberById);
 		System.out.println("------------------------------------------");
 
-		return "updateMemberForm";
+		return "updateMember";
 	}
 
 	@PostMapping("/updateMember")

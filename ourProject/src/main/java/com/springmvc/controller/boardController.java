@@ -52,7 +52,7 @@ public class boardController
 
 		System.out.println("------------------------------------------");
 
-		return "board";
+		return "readAllBoards";
 	}
 
 //	--------------------------------- 하나만 읽어오기 ---------------------------------
@@ -67,7 +67,7 @@ public class boardController
 
 		System.out.println("------------------------------------------");
 
-		return "oneBoard";
+		return "readOneBoard";
 	}
 
 //	--------------------------------- 검색하기 ---------------------------------
@@ -124,7 +124,7 @@ public class boardController
 		model.addAttribute("currentPage", currentPage);
 
 		System.out.println("------------------------------------------");
-		return "board";
+		return "readAllBoards";
 	}
 
 ////	--------------------------------- index에서 게시판 조회 ---------------------------------
@@ -148,7 +148,7 @@ public class boardController
 	public String createBoardForm(@ModelAttribute Board board, Model model)
 	{
 		model.addAttribute("board", board);
-		return "addBoard";
+		return "createBoard";
 	}
 	@PostMapping("/create")
 	public String createBoard(@ModelAttribute Board board, Model moedl)
@@ -188,7 +188,7 @@ public class boardController
 	{
 		Board boardUpdate = boardService.getOneBoard(number);
 		model.addAttribute("board", boardUpdate);
-		return "updateBoardForm";
+		return "updateBoard";
 	}
 
 	@PostMapping("/update")
