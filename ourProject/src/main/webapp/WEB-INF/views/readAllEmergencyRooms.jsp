@@ -104,7 +104,7 @@
 		<div class="mb-4">
 		    <form method="GET" action="emergencys">
 		        <div class="input-group">
-		            <input type="text" name="keyword" class="form-control" placeholder="병원 이름 검색">
+		            <input type="text" name="keyword" class="form-control" placeholder="병원 이름 검색" >
 		            <select name="sort" class="form-select">
 		                <option value="hosName">이름순</option>
 		                <option value="distance">거리 순</option>

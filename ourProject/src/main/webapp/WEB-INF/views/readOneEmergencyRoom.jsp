@@ -8,6 +8,16 @@
     <meta charset="UTF-8">
     <link href="http://localhost:8080/ourProject/resources/css/bootstrap.min.css" rel="stylesheet">
     <title>병원관리 상세보기</title>
+    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=9c0a4381f5a94e6cb0eef56dbcf98cb6&libraries=services">
+    </script> <!-- 여기에 발급받은 API 키를 입력하세요 -->
+      <style> 
+         .card_main { 
+             display: flex; 
+             justify-content: space-between; 
+             align-items: center; /* 수직 중앙 정렬 */ 
+         } 
+     </style> 
+</head>
 </head>
 <body>
 <!--     <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
@@ -32,7 +42,7 @@
 <!--         </div> -->
 <!--     </nav> -->
 	<%@ include file="header.jsp" %>
-
+<div class="card_main d-flex justify-content-between" >
     <div class="container mt-4">
         <h1 class="mb-4">응급실 상세보기</h1>
 
@@ -75,7 +85,83 @@
                 <a href="./" class="btn btn-secondary">목록으로 돌아가기</a>
             </div>
         </div>
+        
+         <!-- 카카오 지도 표시를 위한 div 추가 -->
+        <div id="map" style="width:100%;height:400px;"></div>
+
+        <script>
+        function initMap() {
+            var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+                mapOption = {
+                    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+                    level: 3 // 지도의 확대 레벨
+                };
+
+            var map = new kakao.maps.Map(mapContainer, mapOption); // 지도 생성
+
+            // 사용자 집 주소와 병원 주소에 대한 좌표 변환
+            var geocoder = new kakao.maps.services.Geocoder();
+
+            // 집 주소 (여기에 사용자의 집 주소를 입력하세요)
+            var homeAddress = "경남 창원시 마산회원구 양덕북12길 113";
+            var hospitalAddress = "${room.hosaddr}";
+
+            // 집 주소 좌표 찾기
+            geocoder.addressSearch(homeAddress, function(result, status) {
+                if (status === kakao.maps.services.Status.OK) {
+                    var homeCoords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                    map.setCenter(homeCoords); // 지도의 중심을 집 주소로 설정
+
+                    // 병원 주소 좌표 찾기
+                    geocoder.addressSearch(hospitalAddress, function(result, status) {
+                        if (status === kakao.maps.services.Status.OK) {
+                            var hospitalCoords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+                         // 경로 표시
+                            var linePath = [homeCoords, hospitalCoords];
+
+                            var polyline = new kakao.maps.Polyline({
+                                path: linePath,
+                                strokeWeight: 5,
+                                strokeColor: '#FF0000',
+                                strokeOpacity: 0.7,
+                                strokeStyle: 'solid'
+                            });
+
+                            polyline.setMap(map); // 지도에 경로 추가
+
+                            // 마커 추가
+                            var homeMarker = new kakao.maps.Marker({
+                                position: homeCoords,
+                                title: '집'
+                            });
+                            homeMarker.setMap(map);
+
+                            var hospitalMarker = new kakao.maps.Marker({
+                                position: hospitalCoords,
+                                title: '병원'
+                            });
+                            hospitalMarker.setMap(map);
+
+                            // 경로 안내를 위해 선을 지도에 추가
+                            var bounds = new kakao.maps.LatLngBounds();
+                            bounds.extend(homeCoords);
+                            bounds.extend(hospitalCoords);
+                            map.setBounds(bounds);
+                               
+                            
+                        }
+                    });
+                }
+            });
+        }
+
+        // 지도가 로드될 때 initMap 함수 호출
+        kakao.maps.load(initMap);
+        </script>
+        
     </div>
+</div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
