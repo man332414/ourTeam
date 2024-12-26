@@ -18,7 +18,6 @@ public class MonitoringInterceptor implements HandlerInterceptor
 	{
 		logger.info("접근한 URL 경로 : " + getURLPath(request));
 		logger.info("접근하는 매핑 : " + request.getMethod());
-//		logger.info("요청 시각 : " + getCurrentTime());
 		return true;
 	}
 
@@ -44,15 +43,6 @@ public class MonitoringInterceptor implements HandlerInterceptor
 		queryString = queryString == null? "" : "?" + queryString;
 		return currentPath+queryString;
 	}
-
-//	private String getCurrentTime()
-//	{
-//		DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-//		Calendar calendar = Calendar.getInstance();
-//		calendar.setTimeInMillis(System.currentTimeMillis());
-//
-//		return formatter.format(calendar.getTime());
-//	}
 
 }
 

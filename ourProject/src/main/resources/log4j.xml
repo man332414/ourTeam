@@ -7,7 +7,7 @@
 		<param name="append" value="false"/>
 		<param name="maxFileSize" value="10KB"/>
 		<param name="maxBackupIndex" value="5"/>
-		<param name="file" value="d:/sgh/project/ourProject/src/main/webapp/logs/mylogs.log"/>
+		<param name="file" value="d:/sgh/ourProjects/ourProject/src/main/webapp/logs/mylogs.log"/>
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
 		</layout>
@@ -26,37 +26,41 @@
 	
 	 <!-- JDBC 로그 레벨 조정 -->
     <logger name="org.springframework.jdbc">
-        <level value="info" />
+        <level value="warn" />
     </logger>
     <logger name="org.springframework.jdbc.core">
-        <level value="info" />
+        <level value="warn" />
+  	</logger>
+    <logger name="org.springframework.jdbc.core.JdbcTemplate">
+        <level value="warn" />
+   	</logger>
+    <logger name="org.springframework.jdbc.datasource">
+        <level value="warn" />
     </logger>
-     <logger name="org.springframework.jdbc.core.JdbcTemplate">
-        <level value="info" />
-    </logger>
-     <logger name="org.springframework.jdbc.datasource">
-        <level value="info" />
-    </logger>
-     <logger name="org.springframework.jdbc.datasource.DataSourceUtils">
-        <level value="info" />
+    <logger name="org.springframework.jdbc.datasource.DataSourceUtils">
+        <level value="warn" />
     </logger>
     
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
-		<level value="info" />
+		<level value="warn" />
 	</logger>
 	
 	<logger name="org.springframework.beans">
-		<level value="info" />
+		<level value="warn" />
 	</logger>
 	
 	<logger name="org.springframework.context">
-		<level value="info" />
+		<level value="warn" />
 	</logger>
 
 	<logger name="org.springframework.web">
-		<level value="info" />
+		<level value="warn" />
 	</logger>
+
+    <logger name="org.springframework.web.servlet.DispatcherServlet">
+        <level value="warn" />
+    </logger>
 
 	<!-- Root Logger -->
 	<root>

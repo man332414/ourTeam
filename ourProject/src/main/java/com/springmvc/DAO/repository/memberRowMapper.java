@@ -20,7 +20,10 @@ public class memberRowMapper implements RowMapper<Member>
 		member.setEmail(rs.getString("email"));
 		member.setName(rs.getString("name"));
 		member.setNikName(rs.getString("nikName"));
-		member.setBabyBirthDay(rs.getDate("babyBirthDay").toLocalDate());
+		if(rs.getDate("babyBirthDay") != null)
+		{
+			member.setBabyBirthDay(rs.getDate("babyBirthDay").toLocalDate());
+		}
 		member.setTelecom(rs.getString("telecom"));
 		member.setPhone(rs.getString("phone"));
 

@@ -20,7 +20,10 @@ public class memberServiceImpl implements memberService
 	public void addNewMember(Member member)
 	{
 		memberRepository.addNewMemver(member);
-		vaccinationScheduleService.vaccinationSchedule(member.getBabyBirthDay());
+		if(member.getBabyBirthDay() != null)
+		{
+			vaccinationScheduleService.vaccinationSchedule(member.getBabyBirthDay());
+		}
 	}
 
 	@Override
