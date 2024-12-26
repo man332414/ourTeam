@@ -1,6 +1,6 @@
 package com.springmvc.DTO;
 
-public class buyCheckList 
+public class buyCheckList
 {
 	private int num;
 	private String useCategory;
@@ -10,8 +10,8 @@ public class buyCheckList
 	private int quantity;
 	private String acquisitionPath;
 	private String acquisitionMethod;
-	
-	
+
+
 	public int getNum() {
 		return num;
 	}

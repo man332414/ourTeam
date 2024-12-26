@@ -10,7 +10,7 @@ import com.springmvc.DTO.Board;
 public class boardRowMapper implements RowMapper {
 
 	@Override
-	public Object mapRow(ResultSet rs, int rowNum) throws SQLException 
+	public Object mapRow(ResultSet rs, int rowNum) throws SQLException
 	{
 		Board board = new Board();
 		board.setNumber(rs.getInt("number"));
@@ -20,7 +20,7 @@ public class boardRowMapper implements RowMapper {
 		board.setViewCount(rs.getInt("viewCount"));
 		board.setSupportDeadline(rs.getDate("supportDeadline"));
 		board.setContent(rs.getString("content"));
-		
+
 		return board;
 	}
 

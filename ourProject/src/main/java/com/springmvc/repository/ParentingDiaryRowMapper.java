@@ -5,17 +5,17 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import com.springmvc.DTO.parentingDiary;
-
 import org.springframework.jdbc.core.RowMapper;
+
+import com.springmvc.DTO.parentingDiary;
 
 public class ParentingDiaryRowMapper implements RowMapper<parentingDiary> {
 
 	@Override
 	public parentingDiary mapRow(ResultSet rs, int rowNum) throws SQLException {
-		 
+
 		parentingDiary diary = new parentingDiary();
-		
+
 		diary.setId(rs.getInt(1));
 		// ResultSet에서 문자열로 가져온 후 LocalDateTime으로 변환
 	    String todayString = rs.getString(2);
@@ -30,7 +30,7 @@ public class ParentingDiaryRowMapper implements RowMapper<parentingDiary> {
 		diary.setMyMood(rs.getString(4));
 		diary.setDiaryText(rs.getString(5));
 		diary.setFileName(rs.getString(6)); // 파일 이름을 저장
-		 
+
 		return diary;
 	}
 }

@@ -7,14 +7,14 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.springmvc.DTO.Member;
 
-public class memberRowMapper implements RowMapper<Member> 
+public class memberRowMapper implements RowMapper<Member>
 {
 
 	@Override
-	public Member mapRow(ResultSet rs, int rowNum) throws SQLException 
+	public Member mapRow(ResultSet rs, int rowNum) throws SQLException
 	{
 		Member member = new Member();
-		
+
 		member.setUserId(rs.getString("userId"));
 		member.setPassword(rs.getString("password"));
 		member.setEmail(rs.getString("email"));
@@ -23,8 +23,8 @@ public class memberRowMapper implements RowMapper<Member>
 		member.setBabyBirthDay(rs.getDate("babyBirthDay").toLocalDate());
 		member.setTelecom(rs.getString("telecom"));
 		member.setPhone(rs.getString("phone"));
-		
+
 		return member;
 	}
-	
+
 }

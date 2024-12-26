@@ -7,32 +7,35 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.springmvc.DAO.repository.boardRepository;
 import com.springmvc.DTO.Board;
 
 @Service
-public class boardServiceImpl implements boardService 
+public class boardServiceImpl implements boardService
 {
 	@Autowired
 	private boardRepository boardRepository;
-		
+
 	@Override
-	public List<Board> getAllBoards(int currentPage, int numberOfRows) 
+	public List<Board> getAllBoards(int currentPage, int numberOfRows)
 	{
 		List<Board> boards = boardRepository.getAllBoards(currentPage, numberOfRows);
 		return boards;
 	}
-	
+
+	@Override
 	public void saveAll()
 	{
 		System.out.println("boardService.saveAll 입장");
-		List<Board> boardsIntoDB = new ArrayList<Board>();
-		
+		List<Board> boardsIntoDB = new ArrayList<>();
+
 		//step 1 url 작성하기
 		String reqUrl = "https://apis.data.go.kr/1371037/ktvBoard/noticeList?"
 				+ "serviceKey=%2FRQc%2BsltwaX9aUxJzxpKaOzbNQg18j1Sv56GlvnpzROKDRqSvRjDX9hcg%2FlcEcB%2FN%2F9zUZpg708yaYcsfkfAXg%3D%3D&"
@@ -56,19 +59,19 @@ public class boardServiceImpl implements boardService
 			// step 3 데이터 수신하기
 			int responseCode = con.getResponseCode();
 			System.out.println("응답코드 : " + responseCode);
-			
+
 			BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
 			// step 4 수신한 데이터 문자열
 			String line;
 			StringBuffer data = new StringBuffer();
-			
+
 			while((line = br.readLine()) != null)
 			{
 				data.append(line);
 			}
 			br.close();
 			System.out.println("뭐 들었나? : "+data);
-			
+
 			// step 5 데이터 json 객체로 변환하기
 			JSONTokener tok = new JSONTokener(data.toString());
 			JSONObject obj = new JSONObject(tok);
@@ -76,7 +79,7 @@ public class boardServiceImpl implements boardService
 			JSONObject body = response.getJSONObject("body");
 			JSONObject items = body.getJSONObject("items");
 			JSONArray item = items.getJSONArray("item");
-			
+
 			int i = 0;
 			int cnt = 0;
 			while(true)
@@ -85,11 +88,11 @@ public class boardServiceImpl implements boardService
 				if(first == null || first.isEmpty())
 				{
 					System.out.println("반복문 나가기 : " + first);
-					break;				
+					break;
 				}
 				Board bd = new Board();
 				boolean isBoardList = boardRepository.isBoardList(first.getString("title"));
-				if(isBoardList) 
+				if(isBoardList)
 				{
 					cnt++;
 					System.out.println(i+1 + "번 컨텐츠에서 중복이 발생했습니다. 현재까지 "+ cnt + "건 중복");
@@ -100,7 +103,7 @@ public class boardServiceImpl implements boardService
 				bd.setDate(first.getString("registDate"));
 				bd.setCategory(first.getString("boardName"));
 				bd.setContent(first.getString("content"));
-				
+
 				System.out.println("잘 넣었나 보자 : " + bd.getTitle());
 				boardsIntoDB.add(bd);
 				i++;
@@ -110,7 +113,7 @@ public class boardServiceImpl implements boardService
 		{
 			e.printStackTrace();
 		}
-		
+
 		boardRepository.saveAll(boardsIntoDB);
 	}
 
@@ -122,7 +125,7 @@ public class boardServiceImpl implements boardService
 	}
 
 	@Override
-	public List<Map<String, Object>> getSearchResult(Map<String, String> searchFor, int currentPage, int numberOfRows) 
+	public List<Map<String, Object>> getSearchResult(Map<String, String> searchFor, int currentPage, int numberOfRows)
 	{
 		List<Map<String, Object>> searchResult = boardRepository
 				.getSearchResult(searchFor , currentPage, numberOfRows);
@@ -130,7 +133,7 @@ public class boardServiceImpl implements boardService
 	}
 
 	@Override
-	public int getTotalPage(int numberOfRows) 
+	public int getTotalPage(int numberOfRows)
 	{
 		int totalPage = boardRepository.getTotalPage(numberOfRows);
 		return totalPage;
@@ -149,16 +152,17 @@ public class boardServiceImpl implements boardService
 	}
 
 	@Override
-	public void addBoard(Board board) 
+	public void addBoard(Board board)
 	{
 		boardRepository.addBoard(board);
 	}
-	
+
+	@Override
 	public int getTotalPageForSeach(Map<String, String> searchFor, int numberOfRows)
 	{
 		return boardRepository.getTotalPageForSeach(searchFor, numberOfRows);
 	}
-	
+
 	// 오버로딩
 	@Override
 	public int getTotalPageForSeach(String searchFor, int numberOfRows) {
@@ -167,7 +171,7 @@ public class boardServiceImpl implements boardService
 	}
 
 	@Override
-	public List<Board> getSearchedBoards(String searchFor, int currentPage, int numberOfRows) 
+	public List<Board> getSearchedBoards(String searchFor, int currentPage, int numberOfRows)
 	{
 //		System.out.println("boardServiceImpl.getSearchedBoards() 입장");
 		List<Board> boards = boardRepository.getSearchedBoards(searchFor,currentPage,numberOfRows);
@@ -175,7 +179,7 @@ public class boardServiceImpl implements boardService
 	}
 
 	@Override
-	public List<Board> getSomeBoards() 
+	public List<Board> getSomeBoards()
 	{
 		List<Board> boards = boardRepository.getSoneBoards();
 		return boards;

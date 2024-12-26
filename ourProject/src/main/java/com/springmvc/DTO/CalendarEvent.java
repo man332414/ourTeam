@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class CalendarEvent 
+public class CalendarEvent
 {
     private String id; // 고유 ID
     private String title; // 이벤트 제목
@@ -17,9 +17,9 @@ public class CalendarEvent
     private String location; // 이벤트 위치 (선택적)
     private String category; // 이벤트 카테고리 (예: "회의", "일정", "휴가" 등)
     private String userId; // 이벤트 소유자 사용자 ID
-    
+
 	public CalendarEvent() {}
-	
+
 	public String getId() {
 		return id;
 	}
@@ -40,7 +40,7 @@ public class CalendarEvent
 	}
 	public LocalDateTime getEnd() {
 //		System.out.println("CalendarEvent.getEnd() 입장 : " + end);
-//		if(end!=null) 
+//		if(end!=null)
 //		{
 //			return end.minusMonths(1);
 //		}

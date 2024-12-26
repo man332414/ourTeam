@@ -5,11 +5,11 @@ import java.util.Map;
 
 import com.springmvc.DTO.Board;
 
-public interface boardService 
+public interface boardService
 {
 
 	List<Board> getAllBoards(int currentPage, int numberOfRows);
-	
+
 	void saveAll();
 
 	Board getOneBoard(Integer number);
@@ -23,7 +23,7 @@ public interface boardService
 	void updateBoard(Board board);
 
 	void addBoard(Board board);
-	
+
 	public int getTotalPageForSeach(Map<String, String> searchFor, int numberOfRows);
 	// 오버로딩
 	int getTotalPageForSeach(String searchFor, int numberOfRows);

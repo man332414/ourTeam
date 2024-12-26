@@ -13,10 +13,10 @@ import com.springmvc.DTO.Board;
 
 @Controller
 @RequestMapping
-public class homeController 
+public class homeController
 {
 	@Autowired
-	private boardService boardService;	
+	private boardService boardService;
 
 //	--------------------------------- 집으로 가기 ---------------------------------
 	@GetMapping
@@ -29,7 +29,7 @@ public class homeController
 
 		return "home";
 	}
-	
+
 	@GetMapping("/home")
 	public String goHome(Model model)
 	{

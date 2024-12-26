@@ -15,10 +15,10 @@ public class ParentingDiaryServiceImpl implements ParentingDiaryService {
 	private ParentingDiaryRepository parentingDiaryRepository;
 
 	public ParentingDiaryServiceImpl() {
-		
+
 		return ;
 	}
-	
+
 	@Override
 	public List<parentingDiary> getALLparentingDiary() {
 		System.out.println("ParentingDiaryServiceImpl 진입");
@@ -40,8 +40,8 @@ public class ParentingDiaryServiceImpl implements ParentingDiaryService {
 	public void setUpdateparentingDiary(parentingDiary parentingDiary) {
 		// TODO Auto-generated method stub
 		parentingDiaryRepository.setUpdateparentingDiary(parentingDiary);
-	}	
-	
+	}
+
 	@Override
 	public void deleteDiary(int id) {
 		// TODO Auto-generated method stub

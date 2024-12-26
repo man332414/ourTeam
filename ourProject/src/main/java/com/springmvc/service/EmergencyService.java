@@ -1,15 +1,13 @@
 package com.springmvc.service;
 
 import java.util.List;
-
 import java.util.Map;
 import java.util.Set;
-
 
 import com.springmvc.DTO.emergencyRoom;
 
 public interface EmergencyService {
-	
+
 	List<emergencyRoom> getALLemergencyRoomList(); //ok
 
 	List<emergencyRoom> getemergencyRoomListByAddress(String address);

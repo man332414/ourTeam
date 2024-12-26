@@ -11,20 +11,20 @@ import org.springframework.stereotype.Repository;
 import com.springmvc.DTO.CalendarEvent;
 
 @Repository
-public class calendarEventRepositoryImpl implements calendarEventRepository 
+public class calendarEventRepositoryImpl implements calendarEventRepository
 {
 	private JdbcTemplate template;
-	
+
 	@Autowired
 	public void setJdbctemplate(DataSource dataSource)
 	{
 		this.template=new JdbcTemplate(dataSource);
-			
+
 	}
 
 	// 이벤트 생성기능
 	@Override
-	public void setEvent(CalendarEvent event) 
+	public void setEvent(CalendarEvent event)
 	{
 		System.out.println("calendarEventRepository.setEvent() 입장");
         String sql = "INSERT INTO CalendarEvent (title, start, end, all_day, description, location, category, created_at, updated_at) " +
@@ -32,7 +32,7 @@ public class calendarEventRepositoryImpl implements calendarEventRepository
 
         template.update
         (
-    		sql, event.getTitle(), 
+    		sql, event.getTitle(),
     		event.getStart(),
     		event.getEnd() != null ? event.getEnd() : null,
     		event.isAllDay(),
@@ -53,7 +53,7 @@ public class calendarEventRepositoryImpl implements calendarEventRepository
 
 	//이벤트 업데이트
 	@Override
-	public void updateEvent(CalendarEvent event) 
+	public void updateEvent(CalendarEvent event)
 	{
 		System.out.println("calendarEventRepository.updateEvent() 입장");
 		String sql = "UPDATE CalendarEvent SET title = ?, start = ?, end = ?, all_day = ?, description = ?, location = ?, category = ? WHERE id = ?";
@@ -61,7 +61,7 @@ public class calendarEventRepositoryImpl implements calendarEventRepository
 	}
 
 	@Override
-	public void deleteEvent(CalendarEvent event) 
+	public void deleteEvent(CalendarEvent event)
 	{
 		System.out.println("calendarEventRepository.deleteEvent() 입장");
 		String sql = "delete from CalendarEvent where id=?";
@@ -70,17 +70,17 @@ public class calendarEventRepositoryImpl implements calendarEventRepository
 
 	// 생일에 따른 백신 접종일정 추가
 	@Override
-	public void setVaccinationSchedule(List<CalendarEvent> events) 
+	public void setVaccinationSchedule(List<CalendarEvent> events)
 	{
 		for(CalendarEvent event : events)
 		{
 			String sql = "INSERT INTO CalendarEvent (title, start, end, all_day, description, location, category, created_at, updated_at) " +
 					"VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), NOW())";
-			
+
 			template.update
 			(
-				sql, 
-				event.getTitle(), 
+				sql,
+				event.getTitle(),
 				event.getStart(),
 				event.getEnd() != null ? event.getEnd() : null,
 				event.isAllDay(),
@@ -88,7 +88,7 @@ public class calendarEventRepositoryImpl implements calendarEventRepository
 				event.getLocation(),
 				event.getCategory()
 			);
-			
+
 //			System.out.println("description "+event.getDescription());
 		}
 	}

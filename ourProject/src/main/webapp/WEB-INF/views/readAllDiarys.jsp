@@ -39,7 +39,7 @@
         <div class="p-5 mb-4 bg-light rounded-3">
             <h1 class="display-5 fw-bold">성장일기 목록</h1>
             <p class="col-md-8 fs-4">작성된 성장일기를 확인하세요.</p>
-            <a href="add" class="btn btn-primary">일기 작성하기</a>
+            <a href="diarys/add" class="btn btn-primary">일기 작성하기</a>
 
             <div class="row mt-4">
                 <c:if test="${not empty diarylist}">
@@ -90,7 +90,7 @@
             if (confirm('정말로 삭제하시겠습니까?')) {
             	console.log("diaryId : "+diaryId);
                 $.ajax({
-                    url: 'delete/' + diaryId,
+                    url: 'diarys/delete/' + diaryId,
                     type: 'DELETE',
                     success: function(result) {
                         alert('성장일기가 삭제되었습니다.');

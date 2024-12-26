@@ -4,53 +4,52 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import com.springmvc.DAO.repository.memberRepository;
 import com.springmvc.DTO.Member;
 
 @Service
-public class memberServiceImpl implements memberService 
+public class memberServiceImpl implements memberService
 {
 	@Autowired
 	private memberRepository memberRepository;
 	@Autowired
 	private VaccinationScheduleService vaccinationScheduleService;
-	
+
 	@Override
-	public void addNewMember(Member member) 
+	public void addNewMember(Member member)
 	{
 		memberRepository.addNewMemver(member);
 		vaccinationScheduleService.vaccinationSchedule(member.getBabyBirthDay());
 	}
 
 	@Override
-	public Member getMemberById(String userId) 
+	public Member getMemberById(String userId)
 	{
 		Member memberById = memberRepository.getMemberById(userId);
 		return memberById;
 	}
 
 	@Override
-	public void updateMember(Member member) 
+	public void updateMember(Member member)
 	{
 		memberRepository.updateMember(member);
 	}
 
 	@Override
-	public void deleteMember(String userId) 
+	public void deleteMember(String userId)
 	{
 		memberRepository.deleteMember(userId);
 	}
 
 	@Override
-	public int isDuplicate(String userId) 
+	public int isDuplicate(String userId)
 	{
 		return memberRepository.isDuplicate(userId);
 	}
 
 	@Override
-	public List<Member> readAllMember() 
+	public List<Member> readAllMember()
 	{
 		List<Member> members = memberRepository.readAllMember();
 		return members;

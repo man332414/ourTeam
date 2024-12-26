@@ -2,7 +2,7 @@ package com.springmvc.DTO;
 
 import java.util.Date;
 
-public class Board 
+public class Board
 {
 	private int number;
 	private String Date;
@@ -12,7 +12,7 @@ public class Board
 	private Date supportDeadline;
 	private boolean isOverDeadline;
 	private String content;
-	
+
 	public int getNumber() {
 		return number;
 	}
@@ -43,9 +43,9 @@ public class Board
 	public void setSupportDeadline(Date supportDeadline) {
 		this.supportDeadline = supportDeadline;
 	}
-	
+
 	public Board() {}
-	
+
 	public String getTitle() {
 		return title;
 	}

@@ -31,9 +31,9 @@ public class DistanceCalculator {
 
         // 결과 출력
         System.out.printf("Distance between Seoul and Busan: %.2f kilometers", distance2*100);
-        
+
         return distance;
-        
+
     }
-    
+
 }

@@ -11,7 +11,7 @@ public class calendarRowMapper implements RowMapper<CalendarEvent>
 {
 
 	@Override
-	public CalendarEvent mapRow(ResultSet rs, int rowNum) throws SQLException 
+	public CalendarEvent mapRow(ResultSet rs, int rowNum) throws SQLException
 	{
 		CalendarEvent event = new CalendarEvent();
         event.setId(rs.getString("id")); // ID

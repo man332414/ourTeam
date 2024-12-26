@@ -2,17 +2,18 @@ package com.springmvc.repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import com.springmvc.DTO.emergencyRoom;
 
 import org.springframework.jdbc.core.RowMapper;
+
+import com.springmvc.DTO.emergencyRoom;
 
 public class EmergencyRoomRowMapper implements RowMapper<emergencyRoom> {
 
 	@Override
 	public emergencyRoom mapRow(ResultSet rs, int rowNum) throws SQLException {
-		 
+
 		emergencyRoom room = new emergencyRoom();
-		
+
 		room.setNumber(rs.getInt(1));
 		room.setHosName(rs.getString(2));
 		room.setHosaddr(rs.getString(3));
@@ -23,9 +24,9 @@ public class EmergencyRoomRowMapper implements RowMapper<emergencyRoom> {
 		room.setObstetricsAndGynecology(rs.getBoolean(8));
 		room.setLatitude(rs.getDouble(9));
 		room.setLongitude(rs.getDouble(10));
-		
+
 		return room;
 	}
 
-	 
+
 }

@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class parentingDiary 
+public class parentingDiary
 {
 	//long today = System.currentTimeMillis();  //날자
 	private int id ;             //key
@@ -14,7 +14,7 @@ public class parentingDiary
 	private String diaryText;  //내용
 	private String fileName;    //파일이름
 	private MultipartFile diaryImage; //사진이미지
-	
+
 	public int getId() {
 		return id;
 	}
@@ -27,7 +27,7 @@ public class parentingDiary
 	public void setToday(LocalDateTime today) {
 		this.today = today;
 	}
-	
+
 	public String getWeather() {
 		return weather;
 	}
@@ -52,7 +52,7 @@ public class parentingDiary
 	public void setFileName(String fileName) {
 		System.out.println("setFileName : " + fileName);
 		this.fileName = fileName;
-	} 
+	}
 	public MultipartFile getDiaryImage() {
 		return diaryImage;
 	}
@@ -60,5 +60,5 @@ public class parentingDiary
 		System.out.println("diaryImage : " + diaryImage);
 		this.diaryImage = diaryImage;
 	}
-		 
+
 }

@@ -8,20 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springmvc.DTO.buyCheckList;
-import com.springmvc.DTO.emergencyRoom;
 import com.springmvc.repository.BuyCheckListRepository;
 
 @Service
 public class BuyCheckListServiceImpl implements BuyCheckListService {
-	
+
 	@Autowired
 	private BuyCheckListRepository buyCheckListRepository;
 
 	public BuyCheckListServiceImpl() {
-		
+
 		return ;
 	}
-	
+
 	@Override
 	public List<buyCheckList> getALLbuyCheckList() {
 		// TODO Auto-generated method stub
@@ -29,7 +28,7 @@ public class BuyCheckListServiceImpl implements BuyCheckListService {
 		return buyCheckListRepository.getALLbuyCheckList();
 	}
 
-	 
+
 
 	@Override
 	public List<buyCheckList> getbuyCheckListByChange(String ischanged) {
@@ -48,9 +47,9 @@ public class BuyCheckListServiceImpl implements BuyCheckListService {
 
 	@Override
 	public void setNewbuyCheckList(buyCheckList buyCheckList) {
-	
+
 		buyCheckListRepository.setNewbuyCheckList(buyCheckList);
-		
+
 	}
 
 	@Override
@@ -63,13 +62,13 @@ public class BuyCheckListServiceImpl implements BuyCheckListService {
 	public void setDeletebuyCheckList(int number) {
 		System.out.println("140.BuyCheckListServiceImpl setDeletebuyCheckList: 진입");
 		buyCheckListRepository.setDeletebuyCheckList(number);
-		
+
 	}
 
 	@Override
 	public List<buyCheckList> getbuyCheckListByuseCategory(String useCategory) {
 		List<buyCheckList> listsByuseCategory = buyCheckListRepository.getbuyCheckListByuseCategory(useCategory);
-		
+
 		return listsByuseCategory;
 	}
 
@@ -78,5 +77,5 @@ public class BuyCheckListServiceImpl implements BuyCheckListService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 }

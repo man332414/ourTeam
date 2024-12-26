@@ -5,7 +5,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class mapapiDisTime {
-    
+
     @JsonProperty("routes")
     private List<Route> routes;
 
@@ -20,7 +20,7 @@ public class mapapiDisTime {
     public static class Route {
         @JsonProperty("distance")
         private int distance; // 거리 (미터)
-        
+
         @JsonProperty("duration")
         private int duration; // 시간 (초)
 

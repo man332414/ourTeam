@@ -7,7 +7,7 @@ public class XmlToJsonConverter {
     public static void main(String[] args) {
         try {
         	System.out.println("XmlToJsonConverter   진입");
-        	
+
             // XML 문자열 예시
             String xml = "<person><name>John Doe</name><age>30</age></person>";
             System.out.println("xml = " + xml);
@@ -15,7 +15,7 @@ public class XmlToJsonConverter {
             // XML을 Java 객체로 변환
             XmlMapper xmlMapper = new XmlMapper();
             Person person = xmlMapper.readValue(xml, Person.class);
-            
+
 
             // Java 객체를 JSON 문자열로 변환
             ObjectMapper jsonMapper = new ObjectMapper();

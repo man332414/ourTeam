@@ -15,20 +15,20 @@ public class calendarEventServiceImpl implements calendarEventService
 	calendarEventRepository calendarEventRepository;
 
 	@Override
-	public void setEvent(CalendarEvent event) 
+	public void setEvent(CalendarEvent event)
 	{
 		calendarEventRepository.setEvent(event);
 	}
 
 	@Override
-	public List<CalendarEvent> getAllEvents() 
+	public List<CalendarEvent> getAllEvents()
 	{
 		System.out.println("calendarEventService.getAllEvents() 입장");
 		return calendarEventRepository.getAllEvents();
 	}
 
 	@Override
-	public void updateEvent(CalendarEvent event) 
+	public void updateEvent(CalendarEvent event)
 	{
 		System.out.println("calendarEventService.updateEvent() 입장");
 		calendarEventRepository.updateEvent(event);
@@ -39,6 +39,6 @@ public class calendarEventServiceImpl implements calendarEventService
 	{
 		System.out.println("calendarEventService.deleteEvent() 입장");
 		calendarEventRepository.deleteEvent(event);
-	} 
-	
+	}
+
 }

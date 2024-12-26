@@ -1,11 +1,11 @@
 package com.springmvc.controller;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class KakaoRouteResponse {
-    
+
     @JsonProperty("routes")
     private List<Route> routes;
 
@@ -20,7 +20,7 @@ public class KakaoRouteResponse {
     public static class Route {
         @JsonProperty("distance")
         private int distance; // 거리 (미터)
-        
+
         @JsonProperty("duration")
         private int duration; // 시간 (초)
 

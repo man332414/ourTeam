@@ -1,10 +1,10 @@
 package com.springmvc.service;
 
+import org.springframework.stereotype.Service;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.springmvc.DTO.Response;
-
-import org.springframework.stereotype.Service;
 
 @Service
 public class XmlToJsonService {

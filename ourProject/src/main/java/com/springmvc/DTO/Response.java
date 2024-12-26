@@ -1,8 +1,8 @@
 package com.springmvc.DTO;
 
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-
 import java.util.List;
+
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 public class Response {
     @JacksonXmlProperty(localName = "header")

@@ -1,6 +1,6 @@
 package com.springmvc.DTO;
 
-public class emergencyRoom 
+public class emergencyRoom
 {
 
 	private int number;            //순번
@@ -11,21 +11,21 @@ public class emergencyRoom
 	private int numOfBad;          //응급실병상수
 	private boolean isPediatrics;  //소아과보유여부
 	private boolean isObstetricsAndGynecology;    //산부인과보유여부
-	private double  latitude;     //위도 Xpos 
-	private double  longitude;    //경도 Ypos 
-	
+	private double  latitude;     //위도 Xpos
+	private double  longitude;    //경도 Ypos
+
 	public emergencyRoom() {}
-	
+
 	public emergencyRoom(int number) {
 		this.number = number;
 	}
-	
+
 	public emergencyRoom(int number,String hosName,String hosaddr) {
 		this.number = number;
 		this.hosName = hosName;
 		this.hosaddr = hosaddr;
 	}
-	
+
 	public int getNumber() {
 		return number;
 	}
@@ -94,6 +94,6 @@ public class emergencyRoom
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
-	 
-	
+
+
 }

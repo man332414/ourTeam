@@ -24,7 +24,7 @@ public interface boardRepository {
 	void updateBoard(Board board);
 
 	void addBoard(Board board);
-	
+
 	public int getTotalPageForSeach(Map<String, String> searchFor, int numberOfRows);
 
 	//오버로딩

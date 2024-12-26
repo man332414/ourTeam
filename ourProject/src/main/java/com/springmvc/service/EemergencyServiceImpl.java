@@ -8,20 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springmvc.DTO.emergencyRoom;
-import com.springmvc.DTO.parentingDiary;
 import com.springmvc.repository.EmergencyRoomRepository;
 
 @Service
 public class EemergencyServiceImpl implements EmergencyService {
-	
+
 	@Autowired
 	private EmergencyRoomRepository emergencyRoomRepository;
 
 	public EemergencyServiceImpl() {
-		
+
 		return ;
 	}
-	
+
 	@Override
 	public List<emergencyRoom> getALLemergencyRoomList() {
 		// TODO Auto-generated method stub
@@ -32,7 +31,7 @@ public class EemergencyServiceImpl implements EmergencyService {
 	@Override
 	public List<emergencyRoom> getemergencyRoomListByAddress(String address) {
 		List<emergencyRoom> roomsByAddress = emergencyRoomRepository.getemergencyRoomListByAddress(address);
-		
+
 		return roomsByAddress;
 	}
 
@@ -58,23 +57,23 @@ public class EemergencyServiceImpl implements EmergencyService {
 
 	@Override
 	public void setNewemergencyRoom(emergencyRoom emergencyRoom) {
-	
+
 		emergencyRoomRepository.setNewemergencyRoom(emergencyRoom);
-		
+
 	}
 
 	@Override
 	public void setUpdateemergencyRoom(emergencyRoom emergencyRoom) {
 		System.out.println("130.EemergencyServiceImpl setUpdateemergencyRoomk: 진입");
 		emergencyRoomRepository.setUpdateemergencyRoom(emergencyRoom);
-		
+
 	}
 
 	@Override
 	public void setDeleteemergencyRoom(int number) {
 		System.out.println("140.EemergencyServiceImpl setDeleteemergencyRoom: 진입");
 		emergencyRoomRepository.setDeleteemergencyRoom(number);
-		
+
 	}
 
 	@Override
@@ -94,5 +93,5 @@ public class EemergencyServiceImpl implements EmergencyService {
 		// TODO Auto-generated method stub
 		emergencyRoomRepository.deleteByNumber(number);
 	}
-	
+
 }

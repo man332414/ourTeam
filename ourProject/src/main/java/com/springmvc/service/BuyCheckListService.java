@@ -1,15 +1,13 @@
 package com.springmvc.service;
 
 import java.util.List;
-
 import java.util.Map;
 import java.util.Set;
-
 
 import com.springmvc.DTO.buyCheckList;
 
 public interface BuyCheckListService {
-	
+
 	List<buyCheckList> getALLbuyCheckList(); //ok
 
 	List<buyCheckList> getbuyCheckListByChange(String ischanged);

@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class Member 
+public class Member
 {
 	private String userId;
 	private String password;
@@ -15,7 +15,7 @@ public class Member
     private LocalDate babyBirthDay;
 	private String telecom;
 	private String phone;
-	
+
 	public String getUserId() {
 		return userId;
 	}

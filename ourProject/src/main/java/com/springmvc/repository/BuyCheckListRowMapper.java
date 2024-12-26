@@ -2,17 +2,18 @@ package com.springmvc.repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import com.springmvc.DTO.buyCheckList;
 
 import org.springframework.jdbc.core.RowMapper;
+
+import com.springmvc.DTO.buyCheckList;
 
 public class BuyCheckListRowMapper implements RowMapper<buyCheckList> {
 
 	@Override
 	public buyCheckList mapRow(ResultSet rs, int rowNum) throws SQLException {
-		 
+
 		buyCheckList list = new buyCheckList();
-		
+
 		list.setNum(rs.getInt(1));
 		list.setUseCategory(rs.getString(2));
 		list.setGradeCategory(rs.getString(3));
@@ -21,9 +22,9 @@ public class BuyCheckListRowMapper implements RowMapper<buyCheckList> {
 		list.setQuantity(rs.getInt(6));
 		list.setAcquisitionPath(rs.getString(7));
 		list.setAcquisitionMethod(rs.getString(8));
-		
+
 		return list;
 	}
 
-	 
+
 }

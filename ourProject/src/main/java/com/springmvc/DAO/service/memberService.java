@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.springmvc.DTO.Member;
 
-public interface memberService 
+public interface memberService
 {
 	void addNewMember(Member member);
 

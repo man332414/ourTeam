@@ -18,17 +18,17 @@ import com.springmvc.DTO.CalendarEvent;
 
 @Controller
 @RequestMapping("/calendar")
-public class calendarController 
+public class calendarController
 {
 	@Autowired
 	calendarEventService calendarEventService;
-	
+
 	@GetMapping
 	public String goCalendar()
 	{
 		return "calendar";
 	}
-	
+
 	// =================================== 생성 ===================================
 	@PostMapping("/addevent")
 	public ResponseEntity<String> setEvent(@RequestBody CalendarEvent event)
@@ -39,7 +39,7 @@ public class calendarController
 
         return ResponseEntity.ok("Event is successfully saved");
 	}
-	
+
 	// =================================== 모두 읽어오기 ===================================
 	@GetMapping(value="/events", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
@@ -51,20 +51,20 @@ public class calendarController
 		{
 			System.out.println("----------");
 			System.out.println("제목이랑 봐야 알겠는데 : "+data.getTitle());
-			System.out.println("설명 한번 보자 : "+data.getDescription()); 			
+			System.out.println("설명 한번 보자 : "+data.getDescription());
 		}
-		
+
 		System.out.println("------------------------------------------");
 		return ResponseEntity.ok(jsontypeData);
 	}
-	
+
 	// =================================== 업데이트 ===================================
 	@PostMapping("/updateevent")
 	public ResponseEntity<String> updateEvent(@RequestBody CalendarEvent event)
-	{		
+	{
 		System.out.println("calendarController.updateEvent() 입장 : " + event.getTitle());
 		calendarEventService.updateEvent(event);
-				
+
 		System.out.println("------------------------------------------");
 		return ResponseEntity.ok("Evens is successfully updated");
 	}

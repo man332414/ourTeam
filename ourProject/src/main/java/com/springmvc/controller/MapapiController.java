@@ -20,7 +20,7 @@ import org.springframework.web.client.RestTemplate;
 	    	System.out.println("000 kakaomap getDistance 진입 " + kakaoApiKey);
 	        String url = String.format("https://apis.kakao.com/v1/route?origin=%s&destination=%s", start, end);
 	        System.out.println("100 url= " + url);
-	        
+
 	        RestTemplate restTemplate = new RestTemplate();
 	        System.out.println("200 restTemplate= " + restTemplate);
 	        System.out.println("200 restTemplate= " + restTemplate);
@@ -40,7 +40,7 @@ import org.springframework.web.client.RestTemplate;
 	            System.err.println("An unexpected error occurred: " + e.getMessage());
 	            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
 	        }
-	        
+
 	    }
 	}
-	
+
