@@ -8,8 +8,8 @@ import com.springmvc.DTO.emergencyRoom;
 
 public interface EmergencyService {
 
-	List<emergencyRoom> getALLemergencyRoomList(); //ok
-
+	List<emergencyRoom> getALLemergencyRoomList(String sort); //ok
+	List<emergencyRoom> searchEmergencyRooms(String keyword, String sort); // 검색 메서드 추가
 	List<emergencyRoom> getemergencyRoomListByAddress(String address);
 	List<emergencyRoom> getemergencyRoomListByChange(String ischanged);
 	emergencyRoom getemergencyRoomByNum(int number);

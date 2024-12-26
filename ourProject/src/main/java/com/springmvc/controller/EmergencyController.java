@@ -39,10 +39,17 @@ public class EmergencyController {
 
 	//@RequestMapping(value="/emergencys", method=RequestMethod.GET)
 	@GetMapping
-	public String requestRoomList(Model model) {
+	public String requestRoomList(@RequestParam(value = "keyword", required = false) String keyword,  
+								  @RequestParam(value = "sort", required = false) String sort,Model model) {
 		System.out.println("000.rc : requestRoomList 진입");
 
-		List<emergencyRoom> list= emergencyService.getALLemergencyRoomList();
+		List<emergencyRoom> list;
+	    if (keyword != null && !keyword.isEmpty()) {
+	        list = emergencyService.searchEmergencyRooms(keyword,sort); // 검색 메서드 추가
+	    } else {
+	        list= emergencyService.getALLemergencyRoomList(sort);
+	    }
+		
 		System.out.println("뷰이동"+list);
 		model.addAttribute("emergencylist",list);
 
@@ -74,10 +81,10 @@ public class EmergencyController {
 
 
 	@GetMapping("/all")
-	public ModelAndView requestAllRooms() {
+	public ModelAndView requestAllRooms(@RequestParam(value = "sort", required = false, defaultValue = "hosName") String sort) {
 		System.out.println("000.rc requestAllrooms : 진입");
 		ModelAndView modelAndView = new ModelAndView();
-		List<emergencyRoom> list= emergencyService.getALLemergencyRoomList();
+		List<emergencyRoom> list= emergencyService.getALLemergencyRoomList(sort);
 		modelAndView.addObject("emergencylist",list);
 		modelAndView.setViewName("emergencys");
 		return modelAndView;

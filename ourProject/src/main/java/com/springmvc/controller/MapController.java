@@ -108,8 +108,8 @@ public class MapController {
 	@GetMapping("/map")
 	public String requestMap(Model model) {
 		System.out.println("000.mapc : requestMap 진입");
-
-		List<emergencyRoom> list= emergencyService.getALLemergencyRoomList();
+		String sort="hosName";
+		List<emergencyRoom> list= emergencyService.getALLemergencyRoomList(sort);
 		System.out.println("뷰이동"+list);
 		model.addAttribute("emergencylist",list);
 

@@ -32,11 +32,12 @@ public class EmergencyRoomRepositoryImpl implements EmergencyRoomRepository {
 	}
 
 	@Override
-	public List<emergencyRoom> getALLemergencyRoomList() {
+	public List<emergencyRoom> getALLemergencyRoomList(String sort) {
 
 		System.out.println("getALLemergencyRoomList: 진입");
 
-		String SQL = "select * from emergencyroom";
+		if (sort==null) { sort="hosName";}
+		String SQL = "select * from emergencyroom order by "+ sort;
 
 		List<emergencyRoom> listOfRooms = template.query(SQL,new EmergencyRoomRowMapper());
 
@@ -49,6 +50,17 @@ public class EmergencyRoomRepositoryImpl implements EmergencyRoomRepository {
 		System.out.println("getALLemergencyRoomList 진입 " +listOfRooms);
 
 
+		return listOfRooms;
+	}
+
+	@Override
+	public List<emergencyRoom> searchEmergencyRooms(String keyword,String sort) {
+		
+		if (sort==null) { sort="hosName";}
+		String SQL = "select * from emergencyroom where hosName like '%" + keyword + "%' order by "+ sort ;
+		List<emergencyRoom> listOfRooms = template.query(SQL,new EmergencyRoomRowMapper());
+		
+		System.out.println("searchEmergencyRooms "+ sort + "sql= "+ SQL);
 		return listOfRooms;
 	}
 

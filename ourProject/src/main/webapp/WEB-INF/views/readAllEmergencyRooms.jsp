@@ -99,6 +99,21 @@
                 <p class="col-md-8 fs-4">응급실 목록을 확인하세요.</p>
             </div>
         </div>
+        
+        <!-- 검색 및 정렬 옵션 -->
+		<div class="mb-4">
+		    <form method="GET" action="emergencys">
+		        <div class="input-group">
+		            <input type="text" name="keyword" class="form-control" placeholder="병원 이름 검색">
+		            <select name="sort" class="form-select">
+		                <option value="hosName">이름순</option>
+		                <option value="distance">거리 순</option>
+		                <option value="numOfBad">병상수 순</option>
+		            </select>
+		            <button class="btn btn-outline-secondary" type="submit">검색</button>
+		        </div>
+		    </form>
+		</div>
 
         <div class="row">
           <c:if test="${not empty emergencylist}"> 
