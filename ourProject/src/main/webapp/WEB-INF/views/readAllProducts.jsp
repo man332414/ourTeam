@@ -8,6 +8,8 @@
     <meta charset="UTF-8">
     <link href="http://localhost:8080/ourProject/resources/css/bootstrap.min.css" rel="stylesheet">
     <title>출산용품 관리</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
 </head>
 <body>
 <!--     <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
@@ -57,13 +59,23 @@
                         <div class="col-md-4 mb-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">${product.productName}</h5>
+                                    <h5 class="card-title d-flex justify-content-between">
+									    <span>${product.productName}</span>
+									    <span>Num: ${product.num}</span>
+									</h5>
                                     <p class="card-text">분류: ${product.useCategory}<br>가격: ${product.productPrice} 원</p>
                                     <p>재고 수량: ${product.quantity}개</p>
                                     <p>취득 경로: ${product.acquisitionPath}</p>
                                     <p>취득 방법: ${product.acquisitionMethod}</p>
-                                    <a href="<c:url value='products/product?id=${product.num}' />" class="btn btn-secondary">상세정보 &raquo;</a>
                                     
+                                    <!-- 이미지 표시 -->
+                                    <c:if test="${not empty product.fileName}">
+                                        <img src="${pageContext.request.contextPath}/resources/images/${product.fileName}" alt="Product Image" class="img-fluid mb-2" style="max-height: 200px; width: auto;"/>
+                                    </c:if>
+                                    
+                                    <a href="<c:url value='products/product?id=${product.num}' />" class="btn btn-secondary">상세정보 &raquo;</a>
+                                    <a href="<c:url value='/products/update?id=${product.num}' />" class="btn btn-warning">수정</a>
+                                    <button class="btn btn-danger delete-button" data-id="${product.num}">삭제</button> <!-- Ajax 삭제 버튼 -->
                                 </div>
                             </div>
                         </div>
@@ -77,8 +89,30 @@
             <hr>
         </div>
     </div>
+	
+	<script>
+	$(document).ready(function() {
+        $('.delete-button').click(function() {
+            var productNum = $(this).data('id');
+            if (confirm('정말로 삭제하시겠습니까?')) {
+            	console.log("productNum : "+productNum);
+                $.ajax({
+                    url: 'products/delete/' + productNum,
+                    type: 'DELETE',
+                    success: function(result) {
+                        alert('용품이 삭제되었습니다.');
+                        location.reload(); // 페이지 새로 고침
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('삭제에 실패했습니다: ' + error);
+                        alert('삭제에 실패했습니다: ' + error);
+                    }
+                });
+            }
+        });
+    });
+    </script>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> <!-- Bootstrap JS -->
 </body>

@@ -150,14 +150,6 @@ public class ParentingDiaryController {
         return "redirect:./"+diary.getId();
     }
 
-
-
-//	@PostMapping("/update/{id}")
-//	public String setUpdateparentingDiary(@PathVariable int id, @ModelAttribute parentingDiary diary) {
-//	    parentingDiaryService.setUpdateparentingDiary(diary);
-//	    return "redirect:/diarys"; // 수정 후 목록 페이지로 리다이렉트
-//	}
-
 	//@GetMapping("delete/{id}") ajax로 변경
 	@DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteDiary(@PathVariable int id) {

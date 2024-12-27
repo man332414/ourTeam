@@ -1,5 +1,7 @@
 package com.springmvc.DTO;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class buyCheckList
 {
 	private int num;
@@ -10,7 +12,8 @@ public class buyCheckList
 	private int quantity;
 	private String acquisitionPath;
 	private String acquisitionMethod;
-
+	private String fileName;    //파일이름
+	private MultipartFile listImage; //사진이미지
 
 	public int getNum() {
 		return num;
@@ -60,4 +63,18 @@ public class buyCheckList
 	public void setAcquisitionMethod(String acquisitionMethod) {
 		this.acquisitionMethod = acquisitionMethod;
 	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public MultipartFile getListImage() {
+		return listImage;
+	}
+	public void setListImage(MultipartFile listImage) {
+		this.listImage = listImage;
+	}
+	
+	
 }

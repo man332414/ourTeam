@@ -13,5 +13,8 @@ public interface BuyCheckListRepository    {
 	void setNewbuyCheckList(buyCheckList buyCheckList);
 	void setUpdatebuyCheckList(buyCheckList buyCheckList);
 	void setDeletebuyCheckList(int number);
+	
+	public void deleteByNum(int number); //ajax
+
 
 }

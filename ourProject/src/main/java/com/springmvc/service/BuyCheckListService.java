@@ -19,5 +19,6 @@ public interface BuyCheckListService {
 	public void setNewbuyCheckList(buyCheckList buyCheckList);
 	public void setUpdatebuyCheckList(buyCheckList buyCheckList);
 	public void setDeletebuyCheckList(int number);
+	public void deleteProduct(int id) ; //ajax
 
 }

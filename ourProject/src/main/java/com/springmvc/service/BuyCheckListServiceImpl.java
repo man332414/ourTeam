@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springmvc.DTO.buyCheckList;
+import com.springmvc.DTO.parentingDiary;
 import com.springmvc.repository.BuyCheckListRepository;
+import com.springmvc.repository.ParentingDiaryRowMapper;
 
 @Service
 public class BuyCheckListServiceImpl implements BuyCheckListService {
@@ -40,11 +42,10 @@ public class BuyCheckListServiceImpl implements BuyCheckListService {
 
 	@Override
 	public buyCheckList getbuyCheckListkByNum(int number) {
-	// TODO Auto-generated method stub
-		buyCheckList buyCheckListInfo= buyCheckListRepository.getbuyCheckListkByNum(number);
-		return buyCheckListInfo;
+		
+		return buyCheckListRepository.getbuyCheckListkByNum(number);
 	}
-
+	
 	@Override
 	public void setNewbuyCheckList(buyCheckList buyCheckList) {
 
@@ -78,4 +79,12 @@ public class BuyCheckListServiceImpl implements BuyCheckListService {
 		return null;
 	}
 
+	@Override
+	public void deleteProduct(int id) {
+		buyCheckListRepository.deleteByNum(id);
+		
+	}
+
+	
+	
 }
