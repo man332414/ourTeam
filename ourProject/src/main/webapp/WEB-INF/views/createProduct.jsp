@@ -50,7 +50,7 @@
             <h1 class="display-5 fw-bold">출산용품 등록</h1>
             <p class="col-md-8 fs-4">출산용품 정보를 입력하세요.</p>
 
-            <form action="add" method="post">
+            <form action="add" method="post" class="mt-4" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="productName" class="form-label">용품 이름</label>
                     <input type="text" class="form-control" id="productName" name="productName" required>
@@ -79,6 +79,11 @@
                     <label for="acquisitionMethod" class="form-label">취득 방법</label>
                     <input type="text" class="form-control" id="acquisitionMethod" name="acquisitionMethod" required> 
                 </div>
+                <div class="mb-3">
+			        <label for="listImage" class="form-label">사진 업로드</label>
+			        <input type="file" class="form-control" id="listImage" name="listImage" accept="image/*">
+		   		</div>
+                
                 <button type="submit" class="btn btn-primary">등록</button>
                 <a href="../products" class="btn btn-secondary">취소</a>
             </form>

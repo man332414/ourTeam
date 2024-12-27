@@ -78,15 +78,23 @@ public class BuyCheckListRepositoryImpl implements BuyCheckListRepository {
 	@Override
 	public buyCheckList getbuyCheckListkByNum(int number) {
 
-		System.out.println("getbuyCheckListkByNum: 진입");
+		System.out.println("getbuyCheckListkByNum: 진입 " + number );
 		buyCheckList buyCheckListInfo = null;
-		String SQL = "select * from buyCheckList where num = " + number   ;
-		//buyCheckListInfo = (buyCheckList) template.query(SQL,new buyCheckListRowMapper());
-		// query 메서드 대신 queryForObject 메서드 사용
-		buyCheckListInfo = template.queryForObject(SQL, new BuyCheckListRowMapper());
-
-		System.out.println("getbuyCheckListkByNum  buyCheckListInfo= " + buyCheckListInfo);
-
+	
+		String SQL = "select count(*) from buychecklist where num = ?";
+		int rowCount = template.queryForObject(SQL,Integer.class, number);
+		if(rowCount!=0) {
+			SQL = "select * from buychecklist where num =?";
+			buyCheckListInfo=template.queryForObject(SQL, new Object[] {number},new BuyCheckListRowMapper());
+		}
+	
+		System.out.println("getbuyCheckListkByNum 진입 SQL= " + SQL);
+	
+	    if(buyCheckListInfo == null) {
+				System.out.println("에러입니다 " + SQL);
+		}
+	
+		System.out.println("getbuyCheckListkByNum  buyCheckList= " + buyCheckListInfo);
 		return buyCheckListInfo;
 	}
 
@@ -102,12 +110,12 @@ public class BuyCheckListRepositoryImpl implements BuyCheckListRepository {
 	public void setNewbuyCheckList(buyCheckList buyCheckList) {
 
 	//	System.out.println("ERI setNewbuyCheckList 진입 "+ buyCheckList);
-		String SQL = "INSERT INTO buyCheckList VALUES(?,?,?,?,?,?,?,?)";
+		String SQL = "INSERT INTO buyCheckList VALUES(?,?,?,?,?,?,?,?,?)";
 		System.out.println("insert = " + SQL);
 
 		template.update(SQL,buyCheckList.getNum(),buyCheckList.getUseCategory(),buyCheckList.getGradeCategory(),
 				buyCheckList.getProductName(),buyCheckList.getProductPrice(),buyCheckList.getQuantity(),
-				buyCheckList.getAcquisitionPath(),buyCheckList.getAcquisitionMethod());
+				buyCheckList.getAcquisitionPath(),buyCheckList.getAcquisitionMethod(), buyCheckList.getFileName());
 
 	}
 
@@ -130,6 +138,14 @@ public class BuyCheckListRepositoryImpl implements BuyCheckListRepository {
 		String SQL="delete from buyCheckList where num=?";
 		this.template.update(SQL,number);
 
+	}
+
+	@Override
+	public void deleteByNum(int number) {
+		String SQL="delete from buychecklist where num=?";
+		this.template.update(SQL,number);
+		System.out.println("deleteByNum SQL = " +SQL+number );
+		
 	}
 
 

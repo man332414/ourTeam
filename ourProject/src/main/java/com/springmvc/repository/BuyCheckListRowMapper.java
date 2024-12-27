@@ -22,6 +22,7 @@ public class BuyCheckListRowMapper implements RowMapper<buyCheckList> {
 		list.setQuantity(rs.getInt(6));
 		list.setAcquisitionPath(rs.getString(7));
 		list.setAcquisitionMethod(rs.getString(8));
+		list.setFileName(rs.getString(9)); // 파일 이름을 저장
 
 		return list;
 	}

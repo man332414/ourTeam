@@ -57,6 +57,9 @@
                         <p class="card-text">재고 수량: ${product.quantity}개</p>
                         <p class="card-text">상세 설명: ${product.acquisitionPath}</p>
                         <p class="card-text">구매 방법: ${product.acquisitionMethod}</p>
+                        <c:if test="${not empty product.fileName}">
+		                    <img src="${pageContext.request.contextPath}/resources/images/${product.fileName}" alt="Product Image" class="img-fluid mb-2" style="max-height: 300px; width: auto;"/>
+		                </c:if>
                         <a href="../products" class="btn btn-primary">목록으로 돌아가기</a>
                     </div>
                 </div>
