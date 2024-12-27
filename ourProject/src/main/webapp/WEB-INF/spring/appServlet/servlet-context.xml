@@ -18,7 +18,7 @@
 	<!-- 
 		 css,image,js와 같은 공유되는 파일의 위치를 정하고 MVC외 처리를 실시함
 		 디스패처서블렛은 관여하지 말고 그냥 통과시킬 것
-		 http://localhost:8080/ch0201/resources/images/p1234.jpg
+		 http://localhost:8080/ourProject/resources/images/OO.jpg
 	-->
 	<resources mapping="/resources/**" location="/resources/" />
 
