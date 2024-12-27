@@ -9,18 +9,28 @@
 
 	<http auto-config="true" use-expressions="true">
        <intercept-url pattern="/readMembers/**"  access="hasAuthority('ROLE_ADMIN')" />
-       <intercept-url pattern="/manager/**"  access="hasRole('ROLE_MANAGER')" />
        <intercept-url pattern="/diarys/**"  access="isAuthenticated()" />
        <intercept-url pattern="/**"  access="permitAll" /> 
-    </http>
+	 	<form-login login-page="/login"
+	 				default-target-url="/home"
+	 				authentication-failure-url="/login?error=true"
+	 				username-parameter="username"
+	 				password-parameter="password" />
+	 	<csrf/>
+	 	<logout logout-success-url="/logout"/>
+	 	<session-management session-fixation-protection="migrateSession">
+	 		<concurrency-control max-sessions="1" error-if-maximum-exceeded="true"/>
+	 	</session-management>
+	</http>
     
+    <!-- 인증 관리 -->
     <authentication-manager>
-    	<authentication-provider>
-        	<user-service>
-        		<user name="admin"  password="{noop}1234" authorities="ROLE_ADMIN, ROLE_USER"/> 
-        		<user name="manager"  password="{noop}1235" authorities="ROLE_MANAGER"/>
-        		<user name="guest"  password="{noop}1236" authorities="ROLE_USER"/>    
-        	 </user-service>
-    	</authentication-provider>
-	</authentication-manager>
+        <authentication-provider>
+            <jdbc-user-service data-source-ref="dataSource"
+                users-by-username-query="SELECT userId, password FROM member WHERE userId = ?"
+                authorities-by-username-query="SELECT role FROM member WHERE userId = ?" />
+        </authentication-provider>
+    </authentication-manager>
+
 </beans:beans>
+	
