@@ -182,7 +182,6 @@ public class EmergencyController {
 //		modelAndView.setViewName("emergencys");
 
 		return "redirect:/emergencys";
-//		return "redirect:/emergencys";
 	}
 
 	//HospitalListAddOpenAPI

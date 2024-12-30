@@ -157,11 +157,11 @@
 	    </dependency>
 	    
 <!--	      Spring Boot Starter Web 의존성 추가 -->
-<!--		<dependency>-->
-<!--		    <groupId>org.springframework.boot</groupId>-->
-<!--		    <artifactId>spring-boot-starter-web</artifactId>-->
-<!--		    <version>3.3.4</version>  version -->
-<!--		</dependency>-->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-web</artifactId>
+		    <version>3.3.4</version>   
+		</dependency>
         
         <dependency>
 	        <groupId>commons-fileupload</groupId>
@@ -187,6 +187,14 @@
 		    <artifactId>fullcalendar</artifactId>
 		    <version>6.1.9</version>
 		</dependency>
+		
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <version>1.18.24</version> <!-- 사용하려는 최신 버전으로 변경 -->
+		    <scope>provided</scope>
+		    
+</dependency>
 
     </dependencies>
 

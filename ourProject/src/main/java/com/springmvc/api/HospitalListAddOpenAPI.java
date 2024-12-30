@@ -13,11 +13,17 @@ import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
+import com.springmvc.DTO.KakaoMapResponse;
 import com.springmvc.DTO.emergencyRoom;
 import com.springmvc.controller.DistanceCalculator;
 
@@ -156,6 +162,8 @@ public class HospitalListAddOpenAPI {
 
     public List<emergencyRoom> fetchHospitalData(String apiUrl) throws Exception {
     	List<emergencyRoom> roomList = new ArrayList<>();
+    	double homeXPos = 35.232058;
+    	double homeYPos = 128.583789;
 
     	System.out.println("10. fetchHospitalData:  진입 " );
     	System.out.println("11. apiUrl=  " + apiUrl);
@@ -222,11 +230,17 @@ public class HospitalListAddOpenAPI {
             double dismeter = dis.distance(35.232058,128.583789,Double.parseDouble(xPOS), Double.parseDouble(yPOS));
             System.out.println("dismeter= " + dismeter);
 
+         // 카카오맵 API를 통해 거리 및 시간 계산
+            double distance = getDistanceAndTime(homeXPos, homeYPos, Double.parseDouble(xPOS), Double.parseDouble(yPOS));
+
+            
             room.setHosName(name);
             room.setHosaddr(address);
 
             room.setDistance((int)dismeter);
             room.setTravelTime("00:30:00");
+            room.setDistance((int) distance);
+            room.setTravelTime("00:30:00"); // 실제 이동 시간을 카카오 API에서 받아올 수 있도록 수정 필요
 
             room.setPediatrics(true);
             room.setObstetricsAndGynecology(false);
@@ -240,4 +254,33 @@ public class HospitalListAddOpenAPI {
         return roomList;
 
     	}
+    
+    private double getDistanceAndTime(double originLat, double originLon, double destLat, double destLon) {
+    	
+    	String kakaoApiKey ="d5934fbf6c46e7c57da3924560a75db6";
+        
+    	try {
+            String url = String.format("https://apis.kakao.com/v2/maps/directions.json?origin=%s,%s&destination=%s,%s",
+                    originLon, originLat, destLon, destLat);
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("Authorization", "KakaoAK " + kakaoApiKey);
+
+            HttpEntity<String> entity = new HttpEntity<>(headers);
+            RestTemplate restTemplate = new RestTemplate();
+            ResponseEntity<KakaoMapResponse> response = restTemplate.exchange(url, HttpMethod.GET, entity, KakaoMapResponse.class);
+
+            if (response.getBody() != null && response.getBody().getRoutes().length > 0) {
+                KakaoMapResponse.Route.Leg leg = response.getRoutes()[0].getLegs()[0];
+                return leg.getDistance().getValue(); // 거리(m)
+                // 이동 시간은 추가로 필요한 경우 반환할 수 있음
+              
+            }
+        } catch (Exception e) {
+            System.err.println("Error fetching distance and time: " + e.getMessage());
+        }
+        return 0; // 기본값
+    }
+    
+    
 }
