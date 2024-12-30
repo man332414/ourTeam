@@ -2,18 +2,21 @@
 create table member
 (
 	userId varchar(30) primary key,
-    password varchar(50),
+    password varchar(100),
     email varchar(50),
     name varchar(30),
     nikName varchar(30),
     babyBirthDay date,
     telecom varchar(10),
-    phone char(11)
+    phone char(13),
+    role ENUM('ROLE_USER', 'ROLE_ADMIN', 'ROLE_MANAGER') DEFAULT 'ROLE_USER'
 );
 
-insert into member values('myid1', 'myPassword1', 'myEmail1@email.com', 'myName1', 'nicName1', '2024-12-20', 'skt', '0101010101');
-insert into member values('myid2', 'myPassword2', 'myEmail2@email.com', 'myName2', 'nicName2', '2024-12-19', 'kt', '0101010101');
-insert into member values('myid3', 'myPassword3', 'myEmail3@email.com', 'myName3', 'nicName3', '2024-12-16', 'lgu+', '0101010101');
+insert into member(userId, password, email, name, nikName, babyBirthDay, telecom, phone) values('myid1', 'myPassword1', 'myEmail1@email.com', 'myName1', 'nicName1', '2024-12-20', 'skt', '0101010101');
+insert into member(userId, password, email, name, nikName, babyBirthDay, telecom, phone) values('myid2', 'myPassword2', 'myEmail2@email.com', 'myName2', 'nicName2', '2024-12-19', 'kt', '0101010101');
+insert into member(userId, password, email, name, nikName, babyBirthDay, telecom, phone) values('myid3', 'myPassword3', 'myEmail3@email.com', 'myName3', 'nicName3', '2024-12-16', 'lgu+', '0101010101');
+
+select * from member;
 
 -- 2. 게시판 테이블
 create table board
@@ -98,7 +101,7 @@ insert into CalendarEvent values(null, 'mySchedule2', '2024-12-20 16:00:00', NUL
 insert into CalendarEvent values(null, 'mySchedule3', '2024-12-20 16:00:00', NULL, '0', NULL, NULL, '회의', '2024-12-20 16:00:00', '2024-12-20 16:00:02');
 
 select * from member;
-select * from CalendarEvent;
+select * from CalendiarEvent;
 select * from board;
 delete from member where userId='231';
 drop table CalendarEvent;
