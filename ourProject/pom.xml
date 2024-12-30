@@ -13,6 +13,7 @@
         <org.springframework.boot.version>2.6.8</org.springframework.boot.version>
         <org.slf4j.version>1.7.36</org.slf4j.version>
         <jackson.version>2.18.2</jackson.version>
+        <spring-boot.version>2.6.8</spring-boot.version> <!-- 최신 3.2.0.원하는 버전으로 변경 -->
         
     </properties>
 
@@ -187,17 +188,14 @@
 		    <version>6.1.9</version>
 		</dependency>
 		
-<<<<<<< HEAD
 		<dependency>
 		    <groupId>org.projectlombok</groupId>
 		    <artifactId>lombok</artifactId>
 		    <version>1.18.24</version> <!-- 사용하려는 최신 버전으로 변경 -->
 		    <scope>provided</scope>
-		    
-</dependency>
-=======
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
-		<!-- 스프링 시큐리티 활성화를 위한 의존성 추가 -->
+		<!--		 스프링 시큐리티 활성화를 위한 의존성 추가 -->
 		<dependency>
 		    <groupId>org.springframework.security</groupId>
 		    <artifactId>spring-security-config</artifactId>
@@ -208,7 +206,17 @@
 		    <artifactId>spring-security-taglibs</artifactId>
 		    <version>5.8.2</version>
 		</dependency>
->>>>>>> e62d1613dd6af8e9e1bb7b53f8c4a6b3121590d5
+		
+		<dependency> 
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-json</artifactId>
+		    <version>${spring-boot.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter</artifactId>
+		    <version>${spring-boot.version}</version>
+		</dependency>
 
     </dependencies>
 

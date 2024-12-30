@@ -4,7 +4,7 @@ import java.awt.geom.Point2D;
 
 public class DistanceCalculator {
 
-    public double distance(double startlat,double startlon,double endlat,double endlon) {
+    public double distance(double startlat,double startlon,double endlat,double endlon, String unit) {
         // 서울의 좌표
         Point2D start = new Point2D.Double(startlat, startlon);
 
@@ -14,26 +14,34 @@ public class DistanceCalculator {
         // 두 지점 간의 거리 계산
         double distance = start.distance(end);
 
-        // 결과 출력
-        System.out.printf("Distance between start and end: %.2f meters", distance*100);
-        System.out.println(" " );
-        System.out.println("start lat= "+ startlat+"start lon= "+ startlon);
-        System.out.println("end lat= "+ endlat+"end lon= "+ endlon);
+        
+        double theta = startlon - endlon;
+		double dist = Math.sin(deg2rad(startlat)) * Math.sin(deg2rad(endlat)) + Math.cos(deg2rad(startlat)) * Math.cos(deg2rad(endlat)) * Math.cos(deg2rad(theta));
+		
+		dist = Math.acos(dist);
+		dist = rad2deg(dist);
+		dist = dist * 60 * 1.1515;
+		
+		if (unit == "kilometer") {
+			dist = dist * 1.609344;
+		} else if(unit == "meter"){
+			dist = dist * 1609.344;
+		} 
 
-        // 서울시청의 좌표
-        Point2D seoul = new Point2D.Double(37.5665, 126.9780);
+        
+		return (dist);
+	}
+	
 
-        // 부산시청의 좌표
-        Point2D busan = new Point2D.Double(35.1796, 129.0756);
+	// This function converts decimal degrees to radians
+	private static double deg2rad(double deg) {
+		return (deg * Math.PI / 180.0);
+	}
+	
+	// This function converts radians to decimal degrees
+	private static double rad2deg(double rad) {
+		return (rad * 180 / Math.PI);
+	}
 
-        // 두 지점 간의 거리 계산
-        double distance2 = seoul.distance(busan);
-
-        // 결과 출력
-        System.out.printf("Distance between Seoul and Busan: %.2f kilometers", distance2*100);
-
-        return distance;
-
-    }
-
+  
 }
