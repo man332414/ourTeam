@@ -4,5 +4,5 @@ import java.time.LocalDate;
 
 public interface VaccinationScheduleService
 {
-	void vaccinationSchedule(LocalDate babyBirthDay);
+	void vaccinationSchedule(LocalDate babyBirthDay, String userId);
 }

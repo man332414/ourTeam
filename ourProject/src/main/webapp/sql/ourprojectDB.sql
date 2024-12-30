@@ -30,12 +30,15 @@ CREATE TABLE buychecklist -- 용품 테이블
 	productPrice int,                -- 취득가격
 	quantity int,                    -- 구매갯수
 	acquisitionPath VARCHAR(100),    -- 취득경로
-    acquisitionMethod VARCHAR(100)   -- 취득방법
+    acquisitionMethod VARCHAR(100),   -- 취득방법
+    filename varChar(100)
 );
 
-INSERT INTO buychecklist VALUES(0, '산모용', '출산','손목보호대', 20000, 2, '인터넷쇼핑몰','현금');
-INSERT INTO buychecklist VALUES(0, '산모용', '출산','오버나티트', 20000, 10, '인터넷쇼핑몰','현금');
-INSERT INTO buychecklist VALUES(0, '산모용', '출산','가습기', 100000, 1, '인터넷쇼핑몰','현금');
+drop table buychecklist;
+
+INSERT INTO buychecklist VALUES(0, '산모용', '출산','손목보호대', 20000, 2, '인터넷쇼핑몰','현금', null);
+INSERT INTO buychecklist VALUES(0, '산모용', '출산','오버나티트', 20000, 10, '인터넷쇼핑몰','현금', null);
+INSERT INTO buychecklist VALUES(0, '산모용', '출산','가습기', 100000, 1, '인터넷쇼핑몰','현금', null);
 
 -- 3. parentingDiary: 성장일기 테이블
 CREATE TABLE parentingDiary 

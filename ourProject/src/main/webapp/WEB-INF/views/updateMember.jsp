@@ -1,3 +1,4 @@
+<%@ page session = "false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
@@ -17,7 +18,10 @@
 	<div>
 		<form:form action="updateMember" modelAttribute="member" method="post">
 			<p>아이디 : <form:input path="userId" value="${member.getUserId()}" readonly="true" /></p>
-			<p>비밀번호 : <form:password path="password" /></p>
+			<p>비밀번호 : <form:password path="password" name="password" id="password" minlength="5" />
+			비밀번호 확인 :	<input type="password" id="passwordconfirm" />
+						<input type="hidden" id="pwCheck" value="false" />
+						<span id="pwConfirmInfo" style="display:none; color:red;">비밀번호가 일치하지 않습니다.</span>
 			<p>E-mail : <form:input path="email" value="${member.getEmail()}" /></p>
 			<p>이름 : <form:input path="name" value="${member.getName()}" /></p>
 			<p>사이트에서 사용할 별명 : <form:input path="nikName" value="${member.getNikName()}" /></p>
@@ -58,4 +62,33 @@
 			}
 	}	
 </script>
+<script>
+	//비밀번호 일치 여부 확인
+	let passwordconfirm = document.querySelector("#passwordconfirm");
+	console.log("passwordconfirm : " + passwordconfirm);
+	let password = document.querySelector("#password")
+	console.log("password : " + password);
+	let isPwCheck = document.querySelector("#pwCheck").value;
+	let pwConfirmInfo = document.querySelector("#pwConfirmInfo");
+	
+	passwordconfirm.addEventListener("input", pwConfirm);
+	
+	function pwConfirm()
+	{
+		console.log("pwConfirm() 입장");
+		if(passwordconfirm.value == password.value)
+		{
+			console.log("비밀번호 일치");
+			isPwCheck = 'true';
+			pwConfirmInfo.style.display="none";
+		}
+		else
+		{
+			isPwCheck = 'false';
+			pwConfirmInfo.style.display="inline";
+		}
+	}
+	
+</script>
+
 </html>

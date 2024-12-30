@@ -44,11 +44,11 @@ public class calendarEventRepositoryImpl implements calendarEventRepository
 
 	//모든 이벤트 읽어오기!
 	@Override
-	public List<CalendarEvent> getAllEvents()
+	public List<CalendarEvent> getAllEvents(String userId)
 	{
 		System.out.println("calendarEventRepository.getAllEvents() 입장");
-		String sql = "select * from CalendarEvent";
-		return template.query(sql, new Object[] {}, new calendarRowMapper());
+		String sql = "select * from CalendarEvent where userId=?";
+		return template.query(sql, new Object[] {userId}, new calendarRowMapper());
 	}
 
 	//이벤트 업데이트
@@ -74,8 +74,8 @@ public class calendarEventRepositoryImpl implements calendarEventRepository
 	{
 		for(CalendarEvent event : events)
 		{
-			String sql = "INSERT INTO CalendarEvent (title, start, end, all_day, description, location, category, created_at, updated_at) " +
-					"VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), NOW())";
+			String sql = "INSERT INTO CalendarEvent (title, start, end, all_day, description, location, category, userId, created_at, updated_at) " +
+					"VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())";
 
 			template.update
 			(
@@ -86,7 +86,8 @@ public class calendarEventRepositoryImpl implements calendarEventRepository
 				event.isAllDay(),
 				event.getDescription(),
 				event.getLocation(),
-				event.getCategory()
+				event.getCategory(),
+				event.getUserId()
 			);
 
 //			System.out.println("description "+event.getDescription());

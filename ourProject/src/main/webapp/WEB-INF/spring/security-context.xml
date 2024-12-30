@@ -12,25 +12,28 @@
        <intercept-url pattern="/diarys/**"  access="isAuthenticated()" />
        <intercept-url pattern="/**"  access="permitAll" /> 
 	 	<form-login login-page="/login"
-	 				default-target-url="/home"
+	 				default-target-url="/loginSuccess"
 	 				authentication-failure-url="/login?error=true"
-	 				username-parameter="username"
+	 				username-parameter="userId"
 	 				password-parameter="password" />
-	 	<csrf/>
-	 	<logout logout-success-url="/logout"/>
+<!-- 		<csrf/> -->
+	 	<csrf disabled="true" />
 	 	<session-management session-fixation-protection="migrateSession">
-	 		<concurrency-control max-sessions="1" error-if-maximum-exceeded="true"/>
+	 		<concurrency-control max-sessions="1" error-if-maximum-exceeded="false"/>
 	 	</session-management>
+	 	<logout invalidate-session="true" delete-cookies="JSESSIONID" logout-success-url="/logoutSuccess"/>
 	</http>
     
     <!-- 인증 관리 -->
     <authentication-manager>
         <authentication-provider>
+            <password-encoder ref="noopPasswordEncoder" />
             <jdbc-user-service data-source-ref="dataSource"
-                users-by-username-query="SELECT userId, password FROM member WHERE userId = ?"
-                authorities-by-username-query="SELECT role FROM member WHERE userId = ?" />
+                users-by-username-query="SELECT userId, password, 1 as enabled FROM member WHERE userId = ?"
+                authorities-by-username-query="SELECT userId, role FROM member WHERE userId = ?" />
         </authentication-provider>
     </authentication-manager>
+	<beans:bean id="noopPasswordEncoder" class="org.springframework.security.crypto.password.NoOpPasswordEncoder" factory-method="getInstance" />
 
 </beans:beans>
 	

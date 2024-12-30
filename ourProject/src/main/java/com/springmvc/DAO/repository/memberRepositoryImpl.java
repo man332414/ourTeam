@@ -28,7 +28,7 @@ public class memberRepositoryImpl implements memberRepository
 	public void addNewMemver(Member member)
 	{
 		System.out.println("memberRepository.addNewMember 입장");
-		String sql = "insert into member values(?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into member(userId, password, email, name, nikName, babyBirthDay, telecom, phone) values(?, ?, ?, ?, ?, ?, ?, ?)";
 		template.update(sql, member.getUserId(), member.getPassword(), member.getEmail(), member.getName(), member.getNikName(), member.getBabyBirthDay(), member.getTelecom(), member.getPhone());
 	}
 

@@ -21,10 +21,10 @@ public class calendarEventServiceImpl implements calendarEventService
 	}
 
 	@Override
-	public List<CalendarEvent> getAllEvents()
+	public List<CalendarEvent> getAllEvents(String userId)
 	{
 		System.out.println("calendarEventService.getAllEvents() 입장");
-		return calendarEventRepository.getAllEvents();
+		return calendarEventRepository.getAllEvents(userId);
 	}
 
 	@Override

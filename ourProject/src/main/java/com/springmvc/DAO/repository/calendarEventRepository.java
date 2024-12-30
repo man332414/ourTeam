@@ -9,7 +9,7 @@ public interface calendarEventRepository
 
 	void setEvent(CalendarEvent event);
 
-	List<CalendarEvent> getAllEvents();
+	List<CalendarEvent> getAllEvents(String userId);
 
 	void updateEvent(CalendarEvent event);
 

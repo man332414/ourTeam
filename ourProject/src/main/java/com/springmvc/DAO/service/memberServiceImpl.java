@@ -22,7 +22,7 @@ public class memberServiceImpl implements memberService
 		memberRepository.addNewMemver(member);
 		if(member.getBabyBirthDay() != null)
 		{
-			vaccinationScheduleService.vaccinationSchedule(member.getBabyBirthDay());
+			vaccinationScheduleService.vaccinationSchedule(member.getBabyBirthDay(), member.getUserId());
 		}
 	}
 

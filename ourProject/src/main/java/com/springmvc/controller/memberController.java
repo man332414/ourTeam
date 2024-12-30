@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -71,11 +74,13 @@ public class memberController
 //	--------------------------------- 회원정보 읽어오기 ---------------------------------
 
 	@GetMapping("/readMembers")
-	public String readAllMember(Model model)
+	public String readAllMember(Model model, HttpServletRequest req)
 	{
 		System.out.println("memberController.readAllMember() 입장");
 		//전처리 : 해당없음
 		//모델이동
+		HttpSession session = req.getSession(false);
+		System.out.println("session: " + session);
 		List<Member> members = memberService.readAllMember();
 		System.out.println("memberController.readAllMember() 모델 다녀왔고 뭐가져왔나 보자 하나만 꺼내봐라 : " + members.get(0).getUserId());
 		System.out.println("------------------------------------------");

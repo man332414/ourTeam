@@ -19,6 +19,7 @@ public class VaccinationScheduleServiceImpl implements VaccinationScheduleServic
 
 	List<CalendarEvent> events;
 	LocalDateTime baseDate;
+	String userId;
 
 	private CalendarEvent createEvent(String title, LocalDateTime start, int durationWeeks, String description)
 	{
@@ -29,6 +30,7 @@ public class VaccinationScheduleServiceImpl implements VaccinationScheduleServic
 		vaccinationSchedule.setAllDay(true);
 		vaccinationSchedule.setDescription(description);
 		vaccinationSchedule.setCategory("백신");
+		vaccinationSchedule.setUserId(userId);
 
 		return vaccinationSchedule;
 	}
@@ -43,15 +45,17 @@ public class VaccinationScheduleServiceImpl implements VaccinationScheduleServic
 		vaccinationSchedule.setAllDay(true);
 		vaccinationSchedule.setDescription(description);
 		vaccinationSchedule.setCategory("백신");
+		vaccinationSchedule.setUserId(userId);
 
 		return vaccinationSchedule;
 	}
 
 	@Override
-	public void vaccinationSchedule(LocalDate babyBirthDay)
+	public void vaccinationSchedule(LocalDate babyBirthDay, String userId)
 	{
 		events = new ArrayList<>();
 		LocalDateTime birth = babyBirthDay.atStartOfDay();
+		this.userId = userId;
 		// B형 간염
 		baseDate = birth; //1차 접종 시작시기
 		events.add(createEvent("B형 간염 1차", baseDate, 1, "HepB 1차"));

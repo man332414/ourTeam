@@ -1,3 +1,4 @@
+<%@ page session = "false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -64,7 +65,7 @@
         </section>
 
         <section id="map-section" class="mb-4">
-            <h2 class="text-center">지도</h2>
+            <h2 class="text-center"><a href="/ourProject/map">지도</a></h2>
             <div id="map"></div>
         </section>
 
