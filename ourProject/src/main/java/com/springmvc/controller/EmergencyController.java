@@ -34,6 +34,9 @@ public class EmergencyController {
 
 	@Autowired // 컴포넌트 스캔되어야 함
 	private EmergencyService emergencyService;
+	
+	@Autowired
+	private HospitalListAddOpenAPI hospitalListAddOpenAPI;
 
 	//private EmergencyValidator emergencyValidator;
 
@@ -149,9 +152,8 @@ public class EmergencyController {
 
 	try {
 		System.out.println("000.EmergencyController addapiRooms  try : 진입");
-		HospitalListAddOpenAPI hl = new HospitalListAddOpenAPI();
 
-        List<emergencyRoom> roomList = hl.fetchHospitalData(); // API 호출하여 데이터 가져오기
+        List<emergencyRoom> roomList = hospitalListAddOpenAPI.fetchHospitalData(); // API 호출하여 데이터 가져오기
         System.out.println("roomList =  " + roomList);
 
         Document documentInfo = null;
@@ -161,8 +163,8 @@ public class EmergencyController {
         urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("222", "UTF-8")); /*한 페이지 결과 수*/
         URL url = new URL(urlBuilder.toString());
 
-        roomList = hl.fetchHospitalData(urlBuilder.toString()); // API 호출하여 데이터 가져오기
-        System.out.println("+++fetchHospitalData(urlBuilder.toString())진입 " + urlBuilder.toString());
+        roomList = hospitalListAddOpenAPI.fetchHospitalData(urlBuilder.toString()); // API 호출하여 데이터 가져오기
+        System.out.println("+++fetchHospitalData(urlBuilder.toString())진입 완료" + urlBuilder.toString());
         System.out.println("+++documentInfo =  " + roomList);
 
 
@@ -182,7 +184,6 @@ public class EmergencyController {
 //		modelAndView.setViewName("emergencys");
 
 		return "redirect:/emergencys";
-//		return "redirect:/emergencys";
 	}
 
 	//HospitalListAddOpenAPI

@@ -10,7 +10,7 @@
 	<context-param>
 	    <param-name>contextConfigLocation</param-name>
 	    <param-value>/WEB-INF/spring/root-context.xml
-	    			 <!-- /WEB-INF/spring/security-context.xml -->
+<!-- 	    			 /WEB-INF/spring/security-context.xml -->
 	    </param-value>
 	</context-param>
 	<listener>
@@ -60,7 +60,7 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/spring/root-context.xml
-          		  	 /WEB-INF/spring/security-context.xml <!-- 설정파일 위치 작성 = 매핑 -->
+           		  	 /WEB-INF/spring/security-context.xml  <!--설정파일 위치 작성 = 매핑 -->
         </param-value>
     </context-param>
     <listener>

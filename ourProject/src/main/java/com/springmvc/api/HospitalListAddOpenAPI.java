@@ -13,17 +13,36 @@ import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
+import com.springmvc.DTO.KakaoMapResponse;
 import com.springmvc.DTO.emergencyRoom;
 import com.springmvc.controller.DistanceCalculator;
+import com.springmvc.service.NavigationService;
 
-
+@Component
 public class HospitalListAddOpenAPI {
 
+	
+	private final NavigationService navigationService;
+
+    @Autowired
+    public HospitalListAddOpenAPI(NavigationService navigationService) {
+        this.navigationService = navigationService;
+    }
+
+	
+	
 	private static final String API_URL = "http://apis.data.go.kr/B551182/hospAsmInfoService/getHospAsmInfo"; // 초기화
 
 	private StringBuilder urlBuilder;
@@ -33,9 +52,9 @@ public class HospitalListAddOpenAPI {
 
     	try {
     	System.out.println("HospitalListAddOpenAPI 진입");
-    	HospitalListAddOpenAPI hl = new HospitalListAddOpenAPI();
-
+    	
         StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/B551182/hospAsmInfoService/getHospAsmInfo"); /*URL*/
+        this.hospital(urlBuilder);
         //StringBuilder urlBuilder = new StringBuilder("https://apis.data.go.kr/B551182/hospInfoServicev2/getHospBasisList"); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=59ojQNxXAJkaA29tsw%2Fql6IaRazj4K%2BUDFTTAom7HTo318eWaC99iJ9Hy761TzJ1KAyTulV2WYF4A3U0MDD8Xg%3D%3D"); /*Service Key*/
         urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/
@@ -70,7 +89,7 @@ public class HospitalListAddOpenAPI {
         rd.close();
         conn.disconnect();
 
-		hl.hospital(urlBuilder );
+		hospital(urlBuilder );
     	}catch(Exception e) {}
     }
 
@@ -156,9 +175,9 @@ public class HospitalListAddOpenAPI {
 
     public List<emergencyRoom> fetchHospitalData(String apiUrl) throws Exception {
     	List<emergencyRoom> roomList = new ArrayList<>();
+    	double homeXPos = 35.232058;
+    	double homeYPos = 128.583789;
 
-    	System.out.println("10. fetchHospitalData:  진입 " );
-    	System.out.println("11. apiUrl=  " + apiUrl);
         URL url = new URL(apiUrl);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
@@ -207,26 +226,33 @@ public class HospitalListAddOpenAPI {
             String xPOS = hospitalElement.getElementsByTagName("YPos").item(0).getTextContent(); // <address> 요소
             String yPOS = hospitalElement.getElementsByTagName("XPos").item(0).getTextContent(); // <address> 요소
 
-            // 데이터 출력
-//            System.out.println("Hospital Name: " + name);
-//            System.out.println("Hospital Address: " + address);
+            
             System.out.println("x 좌표: " + xPOS);
 
             System.out.println("y 좌표: " + yPOS);
-//            System.out.println("---------------------------");
-//
+ 
             hospitalElement = (Element) hospitalNodes.item(i);
             emergencyRoom room = new emergencyRoom();
             DistanceCalculator dis = new DistanceCalculator();
+            String unit = "kilometer";
+            double diskilometer = dis.distance(35.232058,128.583789,Double.parseDouble(xPOS), Double.parseDouble(yPOS),unit);
+            System.out.println("dismeter= " + diskilometer +" km");
 
-            double dismeter = dis.distance(35.232058,128.583789,Double.parseDouble(xPOS), Double.parseDouble(yPOS));
-            System.out.println("dismeter= " + dismeter);
-
+         // 예시: homeXPos, homeYPos는 출발 위치의 좌표
+            System.out.println("10. navigationService= " + navigationService );
+            
+            String travelTime = navigationService.getDistanceAndTime(homeXPos + "," + homeYPos, xPOS + "," + yPOS);
+            
+            System.out.println("20. travelTime= " + travelTime );
+             
             room.setHosName(name);
             room.setHosaddr(address);
 
-            room.setDistance((int)dismeter);
-            room.setTravelTime("00:30:00");
+            room.setDistance((int)diskilometer);
+          
+            room.setTravelTime("00:30:00"); // 실제 이동 시간을 카카오 API에서 받아올 수 있도록 수정 필요
+
+            room.setTravelTime(travelTime); // 실제 이동 시간으로 설정
 
             room.setPediatrics(true);
             room.setObstetricsAndGynecology(false);
@@ -234,10 +260,11 @@ public class HospitalListAddOpenAPI {
             room.setLongitude(Double.parseDouble(yPOS));
 
             roomList.add(room);
-
-        }
+            }
 
         return roomList;
 
     	}
+    
+    
 }
