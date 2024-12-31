@@ -241,9 +241,8 @@ public class HospitalListAddOpenAPI {
          // 예시: homeXPos, homeYPos는 출발 위치의 좌표
             System.out.println("10. navigationService= " + navigationService );
             
-            String travelTime = navigationService.getDistanceAndTime(homeXPos + "," + homeYPos, xPOS + "," + yPOS);
+         //   String travelTime = navigationService.getDistanceAndTime(homeYPos + "," + homeXPos, yPOS + "," + xPOS);
             
-            System.out.println("20. travelTime= " + travelTime );
              
             room.setHosName(name);
             room.setHosaddr(address);
@@ -252,7 +251,8 @@ public class HospitalListAddOpenAPI {
           
             room.setTravelTime("00:30:00"); // 실제 이동 시간을 카카오 API에서 받아올 수 있도록 수정 필요
 
-            room.setTravelTime(travelTime); // 실제 이동 시간으로 설정
+            //System.out.println("20. travelTime= " + travelTime );
+           // room.setTravelTime(travelTime); // 실제 이동 시간으로 설정
 
             room.setPediatrics(true);
             room.setObstetricsAndGynecology(false);
