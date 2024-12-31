@@ -23,6 +23,8 @@ public class NavigationService {
     public String getDistanceAndTime(String start, String destination) {
         System.out.println("===========================");
         System.out.println("10000. getDistanceAndTime 진입");
+        System.out.println("10001. start= "+start);
+        System.out.println("10002. destination= "+destination);
         String url = "https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving";
 
         String requestUrl = UriComponentsBuilder.fromHttpUrl(url)
@@ -35,15 +37,10 @@ public class NavigationService {
         headers.set("X-NCP-APIGW-API-KEY-ID", clientId);
         headers.set("X-NCP-APIGW-API-KEY", clientSecret);
         HttpEntity<String> entity = new HttpEntity<>(headers);
-        System.out.println("11. HttpEntity entity= "+ entity);
 
         ResponseEntity<String> response;
-        System.out.println("12. ResponseEntity response= ");
         try {
-        	System.out.println("13. try 진입  ");
-        	
-            response = restTemplate.exchange(requestUrl, HttpMethod.GET, entity, String.class);
-            System.out.println("13-1. restTemplate response= "+ response);
+        	response = restTemplate.exchange(requestUrl, HttpMethod.GET, entity, String.class);
         } catch (HttpClientErrorException e) {
             System.err.println("HTTP 오류: " + e.getStatusCode() + " - " + e.getResponseBodyAsString());
             return "HTTP Error: " + e.getStatusCode();
@@ -58,8 +55,13 @@ public class NavigationService {
             JSONObject jsonResponse = new JSONObject(response.getBody());
             System.out.println("15. JSONObject jsonResponse = " + jsonResponse);
             double distance = jsonResponse.getJSONObject("route").getJSONObject("traoptimal").getDouble("distance") / 1000; // km 단위
-            String travelTime = jsonResponse.getJSONObject("route").getJSONObject("traoptimal").getString("summary");
+            long duration = jsonResponse.getJSONObject("route").getJSONArray("traoptimal").getJSONArray(0).getLong(0);
 
+            //long duration = jsonResponse.getJSONObject("route").getJSONArray("traoptimal").getJSONObject("summary").getLong("duration");
+ 
+            
+            String travelTime = (duration / 60)+":00";
+            
             System.out.println("distance = " + distance);
             System.out.println("==== travelTime = " + travelTime);
             return travelTime;
