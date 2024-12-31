@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link href="http://localhost:8080/ourProject/resources/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>병원관리 상세보기</title>
     <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=9c0a4381f5a94e6cb0eef56dbcf98cb6&libraries=services">
     </script> <!-- 여기에 발급받은 API 키를 입력하세요 -->

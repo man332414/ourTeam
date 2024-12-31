@@ -7,16 +7,18 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/c53a51a6e0.js" crossorigin="anonymous"></script>
+	
 </head>
 <body>
 	<%@ include file="header.jsp" %>
-	<div class="container">
-		<div>
-			<h1>회원가입 메뉴 입니다.</h1>
+	<div class="container d-grid justify-content-center" style="padding:140px 0 80px 0;">
+		<div class="pb-4">
+			<h1>회원가입</h1>
 		</div>
-		<table>
-			<form:form modelAttribute="member" method="post" id="signInForm" class="form-horizontal">
+		<table class="table" style="align-content: center;">
+			<form:form modelAttribute="member" method="post" id="signInForm">
 				<tr>
 					<td>아이디 :</td> 
 					<td> 
@@ -69,12 +71,11 @@
 					<td>전화번호 :</td>
 					<td><form:input type="tel" path="phone" name="phone" id="phoneNumber" /></td>
 				</tr>
-				<tr>
-					<td><input class="btn btn-primary" type="submit" value="회원가입" id="submitbtn"></td>
-				</tr>
 			</form:form>
 		</table>
+		<button class="btn btn-primary" type="submit" id="submitbtn">회원가입</button>
 	</div>
+	<%@ include file="footer.jsp" %>
 </body>
 <script type="text/javascript">
 	// 전화번호 자릿수 필터

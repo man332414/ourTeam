@@ -1,37 +1,65 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <%@ page session = "false" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@ page import="com.springmvc.DTO.Member" %>
 <%@ page pageEncoding="UTF-8"%>
-<header class="container" style="height:150px;">
-    <div class="text-center fixed-top bg-light py-3">
-        <h1><a href="/ourProject">임산부 정보 취합 프로젝트</a></h1>
-        <nav class="nav justify-content-center">
-            <sec:authorize access="hasRole('ROLE_ADMIN')">
-				<a class="nav-link" href="/ourProject/readMembers">회원 관리</a>
-            </sec:authorize>
-        <% 
-        	HttpSession session = request.getSession(false);
-           	if(session==null)
-       	   	{
-  	   	%>
-           		<a class="nav-link" href="/ourProject/signIn">회원 가입</a>
-           		<a class="nav-link" href="/ourProject/login">로그인</a>
-        <%
-       	   	}
-           	else
-           	{
-	        	Member member = (Member)session.getAttribute("member");
-   		%>
-				<a class="nav-link" href="/ourProject/logout">로그아웃</a>
-   	            <a class="nav-link" href="/ourProject/updateMember?userId=<%=member.getUserId()%>">회원정보수정</a>
-	            <a class="nav-link" href="/ourProject/diarys">성장일기</a>
-		<%
-         	}
-        %>
-            <a class="nav-link" href="/ourProject/board/list">게시판</a>
-            <a class="nav-link" href="/ourProject/calendar">예방접종 일정 관리</a>
-            <a class="nav-link" href="/ourProject/emergencys">응급실 보유병원 검색</a>
-            <a class="nav-link" href="/ourProject/products">출산/육아용품 체크리스트</a>
+<header class="header align-items-center fixed-top">
+    <div class="container-fluid py-4 position-relative d-flex align-items-center justify-content-between" style="background-image: url(${pageContext.request.contextPath}/resources/images/main_banner.jpg);" id="mainBanner">
+        <h1 style="font-family:montserrat;"><a href="/ourProject" class="text-decoration-none">MombyGrow<span style="color:red;">.</span></a></h1>
+        <nav class="navmenu">
+        	<ul class="d-flex justify-content-between" style="list-style: none; margin:0; padding:0; font-family:poppins;">
+        		<li>
+		        <% 
+		        	HttpSession session = request.getSession(false);
+		        %>
+	            <sec:authorize access="hasRole('ROLE_ADMIN')">
+	          		<li>
+						<a class="p-2 text-decoration-none link-light" href="/ourProject/readMembers">회원 관리</a>
+            		</li>
+	            </sec:authorize>
+           		<li>
+		            <a class="p-2 text-decoration-none link-light" href="/ourProject/diarys">성장일기</a>
+		        </li>
+           		<li>
+		            <a class="p-2 text-decoration-none link-light" href="/ourProject/board/list">게시판</a>
+	            </li>
+           		<li>
+		            <a class="p-2 text-decoration-none link-light" href="/ourProject/calendar">백신접종 일정관리</a>
+	            </li>
+           		<li>
+		            <a class="p-2 text-decoration-none link-light" href="/ourProject/emergencys">응급실 보유병원 검색</a>
+	            </li>
+           		<li>
+		            <a class="p-2 text-decoration-none link-light" href="/ourProject/products">출산/육아용품 체크리스트</a>
+        		</li>
+           		<li>
+		            <a class="p-2 text-decoration-none link-light" href="/ourProject/map">지도</a>
+        		</li>
+        	</ul>	
         </nav>
+        	<div>
+        		<%
+		           	if(session==null)
+		       	   	{
+		  	   	%>
+		           		<a class="btn btn-primary text-decoration-none" href="/ourProject/signIn">회원 가입</a>
+		           		<a class="btn btn-danger text-decoration-none" href="/ourProject/login">로그인</a>
+		        <%
+		       	   	}
+		           	else
+		           	{
+			      	 	Member member = (Member)session.getAttribute("member");
+		   		%>
+		   	            <a class="btn btn-primary text-decoration-none" href="/ourProject/updateMember?userId=<%=member.getUserId()%>">회원정보수정</a>
+						<a class="btn btn-danger text-decoration-none" href="/ourProject/logout">로그아웃</a>
+				<%
+		         	}
+		        %>
+        	</div>
     </div>
 </header>

@@ -8,13 +8,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Members Administration</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
 	<%@ include file="header.jsp" %>
-    <div class="container mt-5">
-		<p><h1>멤버 관리 페이지 입니다.</h1>
-	        <table class="table table-bordered">
+    <div class="container mt-5" style="padding:140px 0 80px 0;">
+  		<div class="pb-4">
+			<h1>멤버관리</h1>
+		</div>
+            <table class="table table-striped table-hover">
 			<tr>
 				<th>아이디</th><th>이메일</th><th>이름</th><th>닉네임</th><th>전화번호</th><th>비고</th>
 			</tr>
@@ -25,5 +27,6 @@
 			</c:forEach>
 		</table>
 	</div>
+	<%@ include file="footer.jsp" %>	
 </body>
 </html>

@@ -93,7 +93,7 @@ CREATE TABLE CalendarEvent (
     description TEXT,                              -- 이벤트 설명 (선택적)
     location VARCHAR(255),                         -- 이벤트 위치 (선택적)
     category VARCHAR(255),                         -- 이벤트 카테고리
-	userId INT,                                   -- 사용자 ID (member 테이블의 userId 참조)
+	userId varchar(30),                                   -- 사용자 ID (member 테이블의 userId 참조)
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP, -- 생성일시
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, -- 수정일시
     FOREIGN KEY (userId) REFERENCES member(userId) ON DELETE CASCADE -- 외래키 제약조건, 삭제시 Cascade
@@ -104,7 +104,7 @@ insert into CalendarEvent values(null, 'mySchedule2', '2024-12-20 16:00:00', NUL
 insert into CalendarEvent values(null, 'mySchedule3', '2024-12-20 16:00:00', NULL, '0', NULL, NULL, '회의', '2024-12-20 16:00:00', '2024-12-20 16:00:02');
 
 select * from member;
-select * from CalendiarEvent;
+select * from CalendarEvent;
 select * from board;
 delete from member where userId='231';
 drop table CalendarEvent;

@@ -47,8 +47,13 @@ public class calendarEventRepositoryImpl implements calendarEventRepository
 	public List<CalendarEvent> getAllEvents(String userId)
 	{
 		System.out.println("calendarEventRepository.getAllEvents() 입장");
-		String sql = "select * from CalendarEvent where userId=?";
-		return template.query(sql, new Object[] {userId}, new calendarRowMapper());
+		List<CalendarEvent> events = null;
+		if(userId!=null) 
+		{
+			String sql = "select * from CalendarEvent where userId=?";
+			events = template.query(sql, new Object[] {userId}, new calendarRowMapper());			
+		}
+		return events;
 	}
 
 	//이벤트 업데이트

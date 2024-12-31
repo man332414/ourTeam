@@ -44,8 +44,10 @@ public class loginController
 		if(session!=null) 
 		{
 	        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-	        String userId = ((User) authentication.getPrincipal()).getUsername();
+	        User userInfom = (User) authentication.getPrincipal();
+	        String userId = userInfom.getUsername();
 	        System.out.println("userId : " + userId);
+
 			try
 			{
 				Member memberById = memberService.getMemberById(userId);
@@ -54,18 +56,22 @@ public class loginController
 			} 
 			catch (Exception e) 
 			{
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+//			String auth = userInfom.getAuthorities().toString();
+//			System.out.println("auth to String : " + auth);
+//			session.setAttribute("auth", auth);
 		}
+		
 		System.out.println("------------------------------------------");
-
 		return "home";
 	}
 		
 	@GetMapping("/logoutSuccess")
 	public String logoutSuccess()
 	{
+		System.out.println("loginController.logoutSuccess() 입장");
 		System.out.println("------------------------------------------");
 		return "home";
 	}
