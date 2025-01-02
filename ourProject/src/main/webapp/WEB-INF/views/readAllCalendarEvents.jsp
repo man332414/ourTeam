@@ -5,6 +5,7 @@
 <head>
 <meta charset='utf-8' />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   	<script src="https://kit.fontawesome.com/c53a51a6e0.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -14,11 +15,12 @@
 	  padding: 0;
 	  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
 	  font-size: 14px;
+	  background-color: #f8f9fa; /* 배경색 설정 */
+	  list-style: none;
 	}
 	
 	#calendar {
 	  max-width: 1100px;
-/* 	  padding-top:80px; */
 	  margin: 0 auto;
 	}
 	
@@ -51,46 +53,65 @@
 </head>
 <body>
 	<%@ include file="header.jsp" %>
-    <div id="eventModal">
-        <div id="modal-content">
-            <h2 id="modalTitle">새 일정 추가</h2>
-			<form id="eventForm">
-			    <input type="hidden" id="id"><br><br>
-			    
-			    <label for="title">이벤트 제목 (필수):</label>
-			    <input type="text" id="title" name="title" required><br><br>
-			
-			    <label for="start">시작 날짜 및 시간 (필수):</label>
-			    <input type="datetime-local" id="start" name="start" required><br><br>
-			
-			    <label for="end">종료 날짜 및 시간:</label>
-			    <input type="datetime-local" id="end" name="end"><br><br>
-			
-			    <label for="allDay">하루 종일 이벤트:</label>
-			    <input type="checkbox" id="allDay" name="allDay"><br><br>
-			
-			    <label for="description">이벤트 설명:</label>
-			    <textarea id="description" name="description"></textarea><br><br>
-			
-			    <label for="location">이벤트 위치:</label>
-			    <input type="text" id="location" name="location"><br><br>
-			
-			    <label for="category">이벤트 카테고리:</label>
-			    <select id="category" name="category">
-			        <option id="category_0" value="회의">회의</option>
-			        <option id="category_1" value="일정">일정</option>
-			        <option id="category_2" value="휴가">휴가</option>
-			        <option id="category_3" value="기타">기타</option>
-			    </select><br><br>
-			
-			    <button id="modalSubmitBtn" type="submit">저장</button>
-			    <button id="closeBtn">취소</button>
-			    <button id="deleteButton" style="display:none;">삭제</button>
-			</form>
-        </div>
+<div id="eventModal">
+    <div id="modal-content">
+	    <div class="d-flex justify-content-between">
+	        <h2 id="modalTitle">새 일정 추가</h2>
+		    <button id="closeBtn" type="button" class="btn-close"></button>
+	    </div>
+        <form id="eventForm">
+            <input type="hidden" id="id">
+            <table class="table-borderless">
+                <tr>
+                    <td><label for="title">이벤트 제목 (필수):</label></td>
+                    <td><input type="text" id="title" name="title" required class="col"></td>
+                </tr>
+                <tr>
+                    <td><label for="start">시작 날짜 및 시간 (필수):</label></td>
+                    <td><input type="datetime-local" id="start" name="start" required class="col"></td>
+                </tr>
+                <tr>
+                    <td><label for="end">종료 날짜 및 시간:</label></td>
+                    <td><input type="datetime-local" id="end" name="end" class="col"></td>
+                </tr>
+                <tr>
+                    <td><label for="allDay">하루 종일 이벤트:</label></td>
+                    <td><input type="checkbox" id="allDay" name="allDay"></td>
+                </tr>
+                <tr>
+                    <td><label for="description">이벤트 설명:</label></td>
+                    <td><textarea id="description" name="description" class="col"></textarea></td>
+                </tr>
+                <tr>
+                    <td><label for="location">이벤트 위치:</label></td>
+                    <td><input type="text" id="location" name="location" class="col"></td>
+                </tr>
+                <tr>
+                    <td><label for="category">이벤트 카테고리:</label></td>
+                    <td>
+                        <select id="category" name="category" class="col">
+                            <option id="category_0" value="회의">회의</option>
+                            <option id="category_1" value="일정">일정</option>
+                            <option id="category_2" value="휴가">휴가</option>
+                            <option id="category_3" value="기타">기타</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: right;">
+                        <button id="modalSubmitBtn" type="submit" class="btn btn-primary">저장</button>
+                        <button id="deleteButton" type="button" style="display:none;" class="btn btn-danger">삭제</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
+</div>
 
-	<div id='calendar'></div>
+	<div class="container" style="padding:140px 0 30px 0;">
+		<div id='calendar'></div>
+	</div>
+	<%@ include file="footer.jsp" %>    
 </body>
 <script src="/ourProject/resources/js/(readAllCalendarEvents.jsp)fullCalendar.js"></script>
 </html>

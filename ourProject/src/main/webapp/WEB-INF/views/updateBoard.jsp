@@ -8,26 +8,63 @@
 <meta charset="UTF-8">
 <title>게시글</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/c53a51a6e0.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: #f8f9fa; /* 배경색 설정 */
+        }
+    </style>	
 </head>
 <body>
 	<%@ include file="header.jsp" %>
-	<div>
-		<h1>보드 수정하기</h1>
+	<div class="container d-grid justify-content-center" style="padding:140px 0 50px 0;">
+		<div>
+			<h1>게시글 수정하기</h1>
+		</div>
+		<div>
+			<form:form modelAttribute="board" method="post" class="form">
+				<div>
+				    <table class="table-borderless">
+				        <!-- 분류 -->
+				        <tr class="align-items-center">
+				            <td class="col-auto">
+				                <h4 class="col-form-label">분류 :</h4>
+				            </td>
+				            <td class="col-auto">
+				                <form:input path="category" value="${board.category}" class="form-control" />
+				            </td>
+				        <!-- 게시일자 -->
+				            <td class="col-auto">
+				                <h4 class="col-form-label">게시일자 :</h4>
+				            </td>
+				            <td class="col-auto">
+				                <form:input path="date" value="${board.date}" class="form-control" />
+				            </td>
+				        </tr>
+				        <!-- 제목 -->
+				        <tr class="align-items-center">
+				            <td class="col-auto">
+				                <h4 class="col-form-label">제목 :</h4>
+				            </td>
+				            <td class="col-auto">
+				                <form:input path="title" value="${board.title}" class="form-control" />
+				            </td>
+				        </tr>
+				    </table>
+				</div>
+				<div class="mt-3">
+					<h4>내용</h4>
+					<p><form:textarea path="content" value="${board.content}" rows="20" cols="100" /></p>
+					<p>
+					<a href="list" class="btn btn-secondary">목록으로</a>
+					<input type="submit" value="수정하기" class="btn btn-primary">
+					<a href="/ourProject/admin/delete?number=${board.number}" class="btn btn-danger">삭제</a></p>
+				</div>
+			</form:form>
+		</div>
 	</div>
-	<div>
-		<form:form modelAttribute="board" method="post">
-			<div>
-				<h2>분류 : <form:input path="category" value="${board.category}" /></h2>				
-				<h2>제목 : <form:input path="title" value="${board.title}" /></h2>
-				<h3>게시일자 :<form:input path="date" value="${board.date}" /></h3>
-			</div>
-			<div>
-				<h4>내용</h4>
-				<p><form:textarea path="content" value="${board.content}" rows="20" cols="100" /></p>
-				<p><a href="list">목록으로</a><input type="submit" value="수정하기"><a href="/ourProject/admin/delete?number=${board.number}">삭제</a></p>
-			</div>
-		</form:form>
-	</div>
+	
+	<%@ include file="footer.jsp" %>
 
 </body>
 </html>
