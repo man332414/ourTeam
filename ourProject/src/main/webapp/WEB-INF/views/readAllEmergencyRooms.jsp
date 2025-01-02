@@ -127,7 +127,7 @@
 						     <span>ID: ${room.number}</span>
                             </h5><br>
                             <p class="card-text">${room.hosaddr}<br></p>
-                            <p>거리: ${room.distance} km | 이동시간: ${room.travelTime} 분</p>
+                            <p>거리: ${room.distance} km | 이동시간: ${room.travelTime} 초</p>
                             <p>병상수: ${room.numOfBad}개</p>
                             <p>소아과: 
                                 <c:choose>

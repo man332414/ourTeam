@@ -226,23 +226,15 @@ public class HospitalListAddOpenAPI {
             String xPOS = hospitalElement.getElementsByTagName("YPos").item(0).getTextContent(); // <address> 요소
             String yPOS = hospitalElement.getElementsByTagName("XPos").item(0).getTextContent(); // <address> 요소
 
-            
-            System.out.println("x 좌표: " + xPOS);
-
-            System.out.println("y 좌표: " + yPOS);
- 
             hospitalElement = (Element) hospitalNodes.item(i);
             emergencyRoom room = new emergencyRoom();
             DistanceCalculator dis = new DistanceCalculator();
             String unit = "kilometer";
             double diskilometer = dis.distance(35.232058,128.583789,Double.parseDouble(xPOS), Double.parseDouble(yPOS),unit);
-            System.out.println("dismeter= " + diskilometer +" km");
 
          // 예시: homeXPos, homeYPos는 출발 위치의 좌표
-            System.out.println("10. navigationService= " + navigationService );
             
-         //   String travelTime = navigationService.getDistanceAndTime(homeYPos + "," + homeXPos, yPOS + "," + xPOS);
-            
+            String travelTime = navigationService.getDistanceAndTime(homeYPos + "," + homeXPos, yPOS + "," + xPOS);
              
             room.setHosName(name);
             room.setHosaddr(address);
@@ -251,8 +243,8 @@ public class HospitalListAddOpenAPI {
           
             room.setTravelTime("00:30:00"); // 실제 이동 시간을 카카오 API에서 받아올 수 있도록 수정 필요
 
-            //System.out.println("20. travelTime= " + travelTime );
-           // room.setTravelTime(travelTime); // 실제 이동 시간으로 설정
+            System.out.println("20. travelTime= " + travelTime );
+            room.setTravelTime(travelTime); // 실제 이동 시간으로 설정
 
             room.setPediatrics(true);
             room.setObstetricsAndGynecology(false);
@@ -265,6 +257,5 @@ public class HospitalListAddOpenAPI {
         return roomList;
 
     	}
-    
     
 }

@@ -1,5 +1,6 @@
 package com.springmvc.service;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -16,15 +17,7 @@ public class NavigationService {
     private final String clientId = "4hv51h0bie"; // 직접 입력한 API 키
     private final String clientSecret = "LCQ3zKx3buM8r0GKeaFPXVA0FJxq7XXtU4ViZqZf"; // 직접 입력한 비밀 키
     
-	//private final String clientId = "fT8cGc35ZB"; // 직접 입력한 비밀 키
-    //private final String clientSecret = "v6isiUY6Gf_HkL7Frwur"; // 직접 입력한 API 키
-   // private final String clientSecret = "fT8cGc35ZB"; // 직접 입력한 비밀 키
-
     public String getDistanceAndTime(String start, String destination) {
-        System.out.println("===========================");
-        System.out.println("10000. getDistanceAndTime 진입");
-        System.out.println("10001. start= "+start);
-        System.out.println("10002. destination= "+destination);
         String url = "https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving";
 
         String requestUrl = UriComponentsBuilder.fromHttpUrl(url)
@@ -51,20 +44,28 @@ public class NavigationService {
         }
 
         try {
-        	System.out.println("14. try 진입");
-            JSONObject jsonResponse = new JSONObject(response.getBody());
-            System.out.println("15. JSONObject jsonResponse = " + jsonResponse);
-            double distance = jsonResponse.getJSONObject("route").getJSONObject("traoptimal").getDouble("distance") / 1000; // km 단위
-            long duration = jsonResponse.getJSONObject("route").getJSONArray("traoptimal").getJSONArray(0).getLong(0);
+        	JSONObject jsonResponse = new JSONObject(response.getBody());
+            if (jsonResponse.getInt("code") != 0) {
+                return "Error: " + jsonResponse.getString("message");
+            }
 
-            //long duration = jsonResponse.getJSONObject("route").getJSONArray("traoptimal").getJSONObject("summary").getLong("duration");
- 
-            
-            String travelTime = (duration / 60)+":00";
-            
-            System.out.println("distance = " + distance);
-            System.out.println("==== travelTime = " + travelTime);
-            return travelTime;
+            JSONArray traoptimalArray = jsonResponse.getJSONObject("route").getJSONArray("traoptimal");
+            if (traoptimalArray.length() > 0) {
+                JSONObject traoptimal = traoptimalArray.getJSONObject(0);
+                double distance = traoptimal.getJSONObject("summary").getDouble("distance") / 1000; // km 단위
+                long duration = traoptimal.getJSONObject("summary").getLong("duration")/1000; // 초 단위
+
+                // 시간 변환
+                long hours = duration / 3600;
+                long minutes = (duration % 3600) / 60;
+                long seconds = duration % 60;
+
+                String travelTime = String.format("%02d:%02d:%02d", hours, minutes, seconds); // HH:MM:SS 형식
+
+                return travelTime;
+            } else {
+                return "Error: No traoptimal data found";
+            }
         } catch (Exception e) {
             System.err.println("JSON 파싱 오류: " + e.getMessage());
             return "Error parsing JSON response";
