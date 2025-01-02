@@ -10,7 +10,7 @@
 <%@ page pageEncoding="UTF-8"%>
 <header class="header align-items-center fixed-top">
     <div class="container-fluid py-4 position-relative d-flex align-items-center justify-content-between" style="background-image: url(${pageContext.request.contextPath}/resources/images/main_banner.jpg);" id="mainBanner">
-        <h1 style="font-family:montserrat;"><a href="/ourProject" class="text-decoration-none">MombyGrow<span style="color:red;">.</span></a></h1>
+        <h1 style="font-family:montserrat;"><a href="/ourProject" class="text-decoration-none" style="color:#0d6efd;">MombyGrow<span style="color:red;">.</span></a></h1>
         <nav class="navmenu">
         	<ul class="d-flex justify-content-between" style="list-style: none; margin:0; padding:0; font-family:poppins;">
         		<li>
@@ -37,14 +37,12 @@
            		<li>
 		            <a class="p-2 text-decoration-none link-light" href="/ourProject/products">출산/육아용품 체크리스트</a>
         		</li>
-           		<li>
-		            <a class="p-2 text-decoration-none link-light" href="/ourProject/map">지도</a>
-        		</li>
         	</ul>	
         </nav>
         	<div>
         		<%
-		           	if(session==null)
+		      	 	Member member = (Member)session.getAttribute("member");
+		           	if(member==null)
 		       	   	{
 		  	   	%>
 		           		<a class="btn btn-primary text-decoration-none" href="/ourProject/signIn">회원 가입</a>
@@ -53,8 +51,8 @@
 		       	   	}
 		           	else
 		           	{
-			      	 	Member member = (Member)session.getAttribute("member");
-		   		%>
+           		%>
+		   				<span style="color:#f9fafb; margin-right:10px;"><%=member.getNikName()%>님 안녕하세요!</span>
 		   	            <a class="btn btn-primary text-decoration-none" href="/ourProject/updateMember?userId=<%=member.getUserId()%>">회원정보수정</a>
 						<a class="btn btn-danger text-decoration-none" href="/ourProject/logout">로그아웃</a>
 				<%

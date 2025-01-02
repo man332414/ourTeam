@@ -23,35 +23,27 @@
 		</div>
 		<div>
 			<form:form modelAttribute="board" method="post" class="form">
-				<div>
-				    <table class="table-borderless">
-				        <!-- 분류 -->
-				        <tr class="align-items-center">
-				            <td class="col-auto">
-				                <h4 class="col-form-label">분류 :</h4>
-				            </td>
-				            <td class="col-auto">
-				                <form:input path="category" value="${board.category}" class="form-control" />
-				            </td>
-				        <!-- 게시일자 -->
-				            <td class="col-auto">
-				                <h4 class="col-form-label">게시일자 :</h4>
-				            </td>
-				            <td class="col-auto">
-				                <form:input path="date" value="${board.date}" class="form-control" />
-				            </td>
-				        </tr>
-				        <!-- 제목 -->
-				        <tr class="align-items-center">
-				            <td class="col-auto">
-				                <h4 class="col-form-label">제목 :</h4>
-				            </td>
-				            <td class="col-auto">
-				                <form:input path="title" value="${board.title}" class="form-control" />
-				            </td>
-				        </tr>
-				    </table>
-				</div>
+			    <table class="table-borderless" style="width:100%">
+			        <!-- 분류 -->
+			        <tr class="align-items-center d-flex justify-content-between">
+			            <td class="d-flex">
+			                <h4 class="col-form-label col-auto">분류 : </h4>
+			                <form:input path="category" value="${board.category}" class="form-control" />
+			            </td>
+			        <!-- 게시일자 -->
+			            <td class="d-flex">
+			                <h4 class="col-form-label col-auto">게시일자 : </h4>
+			                <form:input path="date" value="${board.date}" class="form-control" />
+			            </td>
+			        </tr>
+			        <!-- 제목 -->
+			        <tr class="align-items-center">
+			            <td class="d-flex" colspan="2">
+			                <h4 class="col-form-label col-auto">제목 : </h4>
+			                <form:input path="title" value="${board.title}" class="form-control" />
+			            </td>
+			        </tr>
+			    </table>
 				<div class="mt-3">
 					<h4>내용</h4>
 					<p><form:textarea path="content" value="${board.content}" rows="20" cols="100" /></p>

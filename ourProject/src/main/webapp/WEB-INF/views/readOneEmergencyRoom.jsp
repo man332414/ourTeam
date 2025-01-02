@@ -78,7 +78,7 @@
                 </p>
                 
                 <c:if test="${not empty room.hosaddr}">
-                    <img src="${pageContext.request.contextPath}/resources/images/${room.hosaddr}" alt="Diary Image" class="img-fluid mb-2" style="max-height: 300px; width: auto;"/>
+                    <img src="${pageContext.request.contextPath}/resources/images/${room.hosaddr}" alt="${room.hosName}" class="img-fluid mb-2" style="max-height: 300px; width: auto;"/>
                 </c:if>
 
                 <a href="<c:url value='/emergencys/update?number=${room.number}' />" class="btn btn-warning">수정</a>

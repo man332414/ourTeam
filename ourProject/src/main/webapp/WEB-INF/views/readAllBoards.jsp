@@ -71,7 +71,7 @@
 	                	</sec:authorize>
 	                    <th class="col-1 text-center">순번</th>
 	                    <th class="col-1 text-center">분류</th>
-	                    <th class="col text-center">제목</th>
+	                    <th class="col-auto text-center">제목</th>
 	                    <th class="col-2 text-center">게시일자</th>
 <!-- 	                    <th class="col text-center">비고</th> -->
 	                </tr>
