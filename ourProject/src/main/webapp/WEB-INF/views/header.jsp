@@ -1,11 +1,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <%@ page session = "false" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.springmvc.DTO.Member" %>
 <%@ page pageEncoding="UTF-8"%>
 <header class="header align-items-center fixed-top">
@@ -16,15 +14,27 @@
         		<li>
 		        <% 
 		        	HttpSession session = request.getSession(false);
+		        	Member member = null;
+		        	if(session!=null)
+		        	{
+	  		      	 	member = (Member)session.getAttribute("member");	        		
+		        	}
 		        %>
 	            <sec:authorize access="hasRole('ROLE_ADMIN')">
 	          		<li>
 						<a class="p-2 text-decoration-none link-light" href="/ourProject/readMembers">회원 관리</a>
             		</li>
 	            </sec:authorize>
+           		<%
+           			if(member!=null)
+           			{
+           		%>
            		<li>
-		            <a class="p-2 text-decoration-none link-light" href="/ourProject/diarys">성장일기</a>
+		            <a class="p-2 text-decoration-none link-light" href="/ourProject/diarys?userId=<%=member.getUserId()%>">성장일기</a>
 		        </li>
+	        	<%
+           			}
+	        	%>
            		<li>
 		            <a class="p-2 text-decoration-none link-light" href="/ourProject/board/list">게시판</a>
 	            </li>
@@ -41,7 +51,6 @@
         </nav>
         	<div>
         		<%
-		      	 	Member member = (Member)session.getAttribute("member");
 		           	if(member==null)
 		       	   	{
 		  	   	%>

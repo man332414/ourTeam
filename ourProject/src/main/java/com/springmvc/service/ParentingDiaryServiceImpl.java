@@ -20,9 +20,9 @@ public class ParentingDiaryServiceImpl implements ParentingDiaryService {
 	}
 
 	@Override
-	public List<parentingDiary> getALLparentingDiary() {
+	public List<parentingDiary> getALLparentingDiary(String userId) {
 		System.out.println("ParentingDiaryServiceImpl 진입");
-		return parentingDiaryRepository.getALLparentingDiary();
+		return parentingDiaryRepository.getALLparentingDiary(userId);
 	}
 
 	@Override

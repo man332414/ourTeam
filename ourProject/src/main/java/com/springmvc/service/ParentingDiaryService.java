@@ -6,7 +6,7 @@ import com.springmvc.DTO.parentingDiary;
 
 public interface ParentingDiaryService {
 
-	List<parentingDiary> getALLparentingDiary(); //ok
+	List<parentingDiary> getALLparentingDiary(String userId); //ok
 	parentingDiary getparentingDiaryById(int id);
 
 

@@ -8,33 +8,13 @@
 <head>
     <meta charset="UTF-8">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   	<script src="https://kit.fontawesome.com/c53a51a6e0.js" crossorigin="anonymous"></script>
     <title>성장일기 상세보기</title>
 </head>
 <body>
-<!--     <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
-<!--         <div class="container"> -->
-<!--             <a class="navbar-brand" href="#">성장일기 관리</a> -->
-<!--             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> -->
-<!--                 <span class="navbar-toggler-icon"></span> -->
-<!--             </button> -->
-<!--             <div class="collapse navbar-collapse" id="navbarNav"> -->
-<!--                 <ul class="navbar-nav"> -->
-<!--                     <li class="nav-item"> -->
-<!--                         <a class="nav-link" href="home">홈</a> -->
-<!--                     </li> -->
-<!--                     <li class="nav-item"> -->
-<!--                         <a class="nav-link" href="diarys">성장일기 관리</a> -->
-<!--                     </li> -->
-<!--                     <li class="nav-item"> -->
-<!--                         <a class="nav-link" href="products">출산용품 관리</a> -->
-<!--                     </li> -->
-<!--                 </ul> -->
-<!--             </div> -->
-<!--         </div> -->
-<!--     </nav> -->
 	<%@ include file="header.jsp" %>
 
-    <div class="container mt-4">
+	<div class="container justify-content-center" style="padding:140px 0 30px 0;">
         <h1 class="mb-4">성장일기 상세보기</h1>
 
         <div class="card">
@@ -80,5 +60,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<%@ include file="footer.jsp" %>
 </body>
 </html>

@@ -8,15 +8,18 @@
 <meta charset="UTF-8">
     <meta charset="UTF-8">
     <title>다이어리 입력</title>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   	<script src="https://kit.fontawesome.com/c53a51a6e0.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<%@ include file="header.jsp" %>
 
-    <div class="container">
+	<div class="container justify-content-center" style="padding:100px 0 30px 0;">
         <h1 class="mt-5">성장일기 작성하기</h1>
         <form action="add" method="post" class="mt-4" enctype="multipart/form-data">
-            <div class="mb-3">
+        	<input type="text" id="userId" name="userId" value="<%=member.getUserId()%>">
+        	<div class="mb-3">
                 <label for="today" class="form-label">일자</label>
                 <input type="datetime-local" class="form-control" id="today" name="today" required>
             </div>
@@ -48,8 +51,6 @@
             <a href="../diarys" class="btn btn-secondary">취소</a>
         </form>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<%@ include file="footer.jsp" %>
 </body>
 </html>

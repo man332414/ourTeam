@@ -6,14 +6,15 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   	<script src="https://kit.fontawesome.com/c53a51a6e0.js" crossorigin="anonymous"></script>
     <title>성장일기 수정</title>
 </head>
 <body>
 	<%@ include file="header.jsp" %>
 
-    <div class="container mt-4">
+	<div class="container justify-content-center" style="padding:140px 0 30px 0;">
         <h1 class="mb-4">성장일기 수정</h1>
         
         <form action="<c:url value='/diarys/update?id=${diary.id}' />" method="post">
@@ -38,6 +39,6 @@
         </form>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+	<%@ include file="footer.jsp" %>
 </body>
 </html>
