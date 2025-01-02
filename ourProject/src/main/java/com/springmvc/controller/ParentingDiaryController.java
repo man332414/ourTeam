@@ -162,11 +162,6 @@ public class ParentingDiaryController {
         return ResponseEntity.noContent().build(); // 204 No Content 응답 반환
     }
 
-	@ModelAttribute
-	public void addAttributrs(Model model) {
-		model.addAttribute("addTitle","신규일기등록");
-	}
-
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.setAllowedFields("id","today","weather","myMood","diaryText","fileName","diaryImage", "userId");

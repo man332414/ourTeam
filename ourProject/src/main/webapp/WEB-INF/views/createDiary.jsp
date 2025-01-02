@@ -18,7 +18,7 @@
 	<div class="container justify-content-center" style="padding:100px 0 30px 0;">
         <h1 class="mt-5">성장일기 작성하기</h1>
         <form action="add" method="post" class="mt-4" enctype="multipart/form-data">
-        	<input type="text" id="userId" name="userId" value="<%=member.getUserId()%>">
+        	<input type="hidden" id="userId" name="userId" value="<%=member.getUserId()%>">
         	<div class="mb-3">
                 <label for="today" class="form-label">일자</label>
                 <input type="datetime-local" class="form-control" id="today" name="today" required>
@@ -48,7 +48,7 @@
                 <textarea class="form-control" id="diaryText" name="diaryText" rows="5" required></textarea>
             </div>
             <button type="submit" class="btn btn-primary">저장</button>
-            <a href="../diarys" class="btn btn-secondary">취소</a>
+            <a href="../diarys?userId=<%=member.getUserId() %>" class="btn btn-secondary">취소</a>
         </form>
     </div>
 	<%@ include file="footer.jsp" %>

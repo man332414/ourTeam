@@ -28,6 +28,8 @@ public class memberController
 	@Autowired
 	private memberService memberService;
 
+	@Autowired
+	private loginController loginController;
 
 //	--------------------------------- 회원가입 ---------------------------------
 
@@ -105,10 +107,12 @@ public class memberController
 	}
 
 	@PostMapping("/updateMember")
-	public String updateMember(@ModelAttribute Member member, Model model)
+	public String updateMember(@ModelAttribute Member member, Model model, HttpServletRequest req)
 	{
 		System.out.println("memberComtroller.updateMember 입장 : " + member.getUserId());
 		memberService.updateMember(member);
+		model.addAttribute("updateStatus", "success");
+		loginController.loginSuccess(model, req);
 		System.out.println("------------------------------------------");
 
 		return "redirect:/updateMember?userId="+member.getUserId();
@@ -123,6 +127,6 @@ public class memberController
 		memberService.deleteMember(userId);
 		System.out.println("------------------------------------------");
 
-		return "redirect:/home";
+		return "redirect:/logout";
 	}
 }

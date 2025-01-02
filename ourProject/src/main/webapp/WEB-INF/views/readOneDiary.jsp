@@ -30,7 +30,7 @@
 
                 <a href="<c:url value='/diarys/update?id=${diary.id}' />" class="btn btn-warning">수정</a>
                 <button class="btn btn-danger delete-button" data-id="${diary.id}">삭제</button>
-                <a href="./" class="btn btn-secondary">목록으로 돌아가기</a>
+                <a href="./?userId=<%=member.getUserId()%>" class="btn btn-secondary">목록으로 돌아가기</a>
             </div>
         </div>
     </div>

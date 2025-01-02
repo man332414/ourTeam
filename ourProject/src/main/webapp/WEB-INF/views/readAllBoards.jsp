@@ -29,7 +29,7 @@
         <div class="d-flex justify-content-between">
         	<div class="d-flex justify-content-between">
 	            <form method="get" action="" class="form-select" style="width: auto; background-color: transparent; border: none;">
-	                <label for="numberOfRows">페이지당 항목 수:</label>
+	                <label for="numberOfRows">페이지당 항목 수 : </label>
 	                <select name="numberOfRows" id="numberOfRows" class="form-control" onchange="this.form.submit()" style="display:inline; width:auto;">
 	                    <option value="10" <%= numberOfRows == 10 ? "selected" : "" %>>선택</option>
 	                    <option value="10" <%= numberOfRows == 10 ? "selected" : "" %>>10</option>

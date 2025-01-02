@@ -23,7 +23,9 @@ public class VaccinationScheduleServiceImpl implements VaccinationScheduleServic
 
 	private CalendarEvent createEvent(String title, LocalDateTime start, int durationWeeks, String description)
 	{
+		System.out.println("백신 이벤트 저장 완료" + title);
 		CalendarEvent vaccinationSchedule = new CalendarEvent();
+		
 		vaccinationSchedule.setTitle(title);
 		vaccinationSchedule.setStart(start);
 		vaccinationSchedule.setEnd(start.plusWeeks(durationWeeks));
@@ -37,10 +39,11 @@ public class VaccinationScheduleServiceImpl implements VaccinationScheduleServic
 
 	private CalendarEvent createEvent(String title, int plusPeriod, int durationWeeks, String description)
 	{
+		System.out.println("백신 이벤트 저장 완료" + title);
 		CalendarEvent vaccinationSchedule = new CalendarEvent();
 
 		vaccinationSchedule.setTitle(title);
-		vaccinationSchedule.setStart(events.getLast().getStart().plusMonths(plusPeriod));
+		vaccinationSchedule.setStart(events.get(events.size()-1).getStart().plusMonths(plusPeriod));
 		vaccinationSchedule.setEnd(vaccinationSchedule.getStart().plusWeeks(durationWeeks));
 		vaccinationSchedule.setAllDay(true);
 		vaccinationSchedule.setDescription(description);
@@ -53,6 +56,7 @@ public class VaccinationScheduleServiceImpl implements VaccinationScheduleServic
 	@Override
 	public void vaccinationSchedule(LocalDate babyBirthDay, String userId)
 	{
+		System.out.println("VaccinationScheduleServiceImpl.vaccinationSchedule() 입장");
 		events = new ArrayList<>();
 		LocalDateTime birth = babyBirthDay.atStartOfDay();
 		this.userId = userId;
@@ -129,15 +133,15 @@ public class VaccinationScheduleServiceImpl implements VaccinationScheduleServic
 		{
 			if(hpvType == "hpv2")
 			{
-				events.add(createEvent("사람유두종바이러스 감염증", baseDate, 1, "HPV2 1차 면역력이 약한사람은 3회 접종"));
-				events.add(createEvent("사람유두종바이러스 감염증", 1, 1, "HPV2 2차 면역력이 약한사람은 3회 접종"));
-				events.add(createEvent("사람유두종바이러스 감염증", 5, 1, "HPV2 3차 면역력이 약한사람은 3회 접종"));
+				events.add(createEvent("사람유두종바이러스 감염증 1차(HPV2)", baseDate, 1, "HPV2 1차 면역력이 약한사람은 3회 접종"));
+				events.add(createEvent("사람유두종바이러스 감염증 2차(HPV2)", 1, 1, "HPV2 2차 면역력이 약한사람은 3회 접종"));
+				events.add(createEvent("사람유두종바이러스 감염증 3차(HPV2)", 5, 1, "HPV2 3차 면역력이 약한사람은 3회 접종"));
 			}
 			else if(hpvType == "hpv4")
 			{
-				events.add(createEvent("사람유두종바이러스 감염증", baseDate, 1, "HPV4 1차 면역력이 약한사람은 3회 접종"));
-				events.add(createEvent("사람유두종바이러스 감염증", 2, 1, "HPV4 2차 면역력이 약한사람은 3회 접종"));
-				events.add(createEvent("사람유두종바이러스 감염증", 4, 1, "HPV4 3차 면역력이 약한사람은 3회 접종"));
+				events.add(createEvent("사람유두종바이러스 감염증 1차(HPV4)", baseDate, 1, "HPV4 1차 면역력이 약한사람은 3회 접종"));
+				events.add(createEvent("사람유두종바이러스 감염증 2차(HPV4)", 2, 1, "HPV4 2차 면역력이 약한사람은 3회 접종"));
+				events.add(createEvent("사람유두종바이러스 감염증 3차(HPV4)", 4, 1, "HPV4 3차 면역력이 약한사람은 3회 접종"));
 			}
 		}
 		events.add(createEvent("사람유두종바이러스 감염증 1차", baseDate, 1, "HPV 1차"));
