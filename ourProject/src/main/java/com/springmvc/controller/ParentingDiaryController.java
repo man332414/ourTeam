@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,9 +35,12 @@ public class ParentingDiaryController {
 	private ParentingDiaryService parentingDiaryService;
 
 	@GetMapping
-	public String requestdiaryList(Model model, @RequestParam String userId) {
+	public String requestdiaryList(Model model ) {
+	//public String requestdiaryList(Model model, @RequestParam String userId) {
 		System.out.println("=============================");
 		System.out.println("000.rc : requestdiaryList 진입");
+		String userId = SecurityContextHolder.getContext().getAuthentication().getName();
+		System.out.println("userId : " + userId);
 
 		List<parentingDiary> list= parentingDiaryService.getALLparentingDiary(userId);
 		System.out.println("뷰이동: " + list);
