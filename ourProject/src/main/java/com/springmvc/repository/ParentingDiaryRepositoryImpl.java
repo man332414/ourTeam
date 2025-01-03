@@ -35,16 +35,16 @@ public class ParentingDiaryRepositoryImpl implements ParentingDiaryRepository {
 
 
 	@Override
-	public List<parentingDiary> getALLparentingDiary() {
+	public List<parentingDiary> getALLparentingDiary(String userId) {
 
 		System.out.println("ParentingDiaryRepositoryImpl 진입 ");
 
 		System.out.println("getALLparentingDiary: 진입");
 
-		String SQL = "select * from parentingDiary";
+		String SQL = "select * from parentingDiary where userId=?";
 
 		System.out.println("getALLparentingDiary 진입 SQL= " + SQL);
-		List<parentingDiary> diaryOfLists = template.query(SQL,new ParentingDiaryRowMapper());
+		List<parentingDiary> diaryOfLists = template.query(SQL, new Object[] {userId}, new ParentingDiaryRowMapper());
 
 		System.out.println("getALLparentingDiary  diaryOfLists= " + diaryOfLists);
 
@@ -78,7 +78,7 @@ public class ParentingDiaryRepositoryImpl implements ParentingDiaryRepository {
 	@Override
 	public void setNewparentingDiary(parentingDiary parentingDiary) {
 		System.out.println("ERI setNewparentingDiary 진입 "+ parentingDiary);
-			String SQL = "INSERT INTO parentingDiary VALUES(?,?,?,?,?,?)";
+			String SQL = "INSERT INTO parentingDiary VALUES(?,?,?,?,?,?,?)";
 			System.out.println("insert = " + SQL);
 			System.out.println("getToday() = " + parentingDiary.getToday());
 			System.out.println("getWeather() = " + parentingDiary.getWeather());
@@ -92,8 +92,8 @@ public class ParentingDiaryRepositoryImpl implements ParentingDiaryRepository {
 		        Timestamp timestamp = Timestamp.valueOf(today);
 
 		        // 데이터베이스에 데이터 삽입
-		        template.update(SQL,0, timestamp, parentingDiary.getWeather(),
-		                parentingDiary.getMyMood(), parentingDiary.getDiaryText(), parentingDiary.getFileName());
+		        template.update(SQL, null, timestamp, parentingDiary.getWeather(),
+		                parentingDiary.getMyMood(), parentingDiary.getDiaryText(), parentingDiary.getFileName(), parentingDiary.getUserId());
 		    } catch (Exception e) {
 		        e.printStackTrace(); // 예외 처리
 		    }

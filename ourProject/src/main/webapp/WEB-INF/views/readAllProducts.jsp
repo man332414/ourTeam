@@ -2,7 +2,6 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,42 +12,9 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
 </head>
 <body>
-<!--     <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
-<!--         <div class="container"> -->
-<!--             <a class="navbar-brand" href="#">프로젝트 이름</a> -->
-<!--             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> -->
-<!--                 <span class="navbar-toggler-icon"></span> -->
-<!--             </button> -->
-<!--             <div class="collapse navbar-collapse" id="navbarNav"> -->
-<!--                 <ul class="navbar-nav"> -->
-<!--                     <li class="nav-item"> -->
-<!--                         <a class="nav-link" href="home">홈</a> -->
-<!--                     </li> -->
-<!--                     <li class="nav-item"> -->
-<!--                         <a class="nav-link" href="emergencys">응급실 관리</a> -->
-<!--                     </li> -->
-<!--                     <li class="nav-item"> -->
-<!--                         <a class="nav-link" href="products">출산용품 관리</a> -->
-<!--                     </li> -->
-<!--                     <li class="nav-item"> -->
-<!--                         <a class="nav-link" href="growth-diary">성장일기</a> -->
-<!--                     </li> -->
-<!--                     <li class="nav-item"> -->
-<!--                         <a class="nav-link" href="consultation">상담 요청</a> -->
-<!--                     </li> -->
-<!--                     <li class="nav-item"> -->
-<!--                         <a class="nav-link" href="community">커뮤니티</a> -->
-<!--                     </li> -->
-<!--                     <li class="nav-item"> -->
-<!--                         <a class="nav-link" href="profile">내 정보</a> -->
-<!--                     </li> -->
-<!--                 </ul> -->
-<!--             </div> -->
-<!--         </div> -->
-<!--     </nav> -->
 	<%@ include file="header.jsp" %>
 
-    <div class="container">
+	<div class="container justify-content-center" style="padding:140px 0 30px 0;">
         <div class="p-5 mb-4 bg-light rounded-3">
             <h1 class="display-5 fw-bold">출산용품 관리</h1>
             <p class="col-md-8 fs-4">출산용품 목록을 확인하세요.</p>

@@ -30,6 +30,7 @@ public class ParentingDiaryRowMapper implements RowMapper<parentingDiary> {
 		diary.setMyMood(rs.getString(4));
 		diary.setDiaryText(rs.getString(5));
 		diary.setFileName(rs.getString(6)); // 파일 이름을 저장
+		diary.setUserId(rs.getString(7));
 
 		return diary;
 	}

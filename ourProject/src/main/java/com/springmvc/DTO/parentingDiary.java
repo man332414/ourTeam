@@ -14,6 +14,7 @@ public class parentingDiary
 	private String diaryText;  //내용
 	private String fileName;    //파일이름
 	private MultipartFile diaryImage; //사진이미지
+	private String userId;
 
 	public int getId() {
 		return id;
@@ -60,5 +61,10 @@ public class parentingDiary
 		System.out.println("diaryImage : " + diaryImage);
 		this.diaryImage = diaryImage;
 	}
-
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 }
