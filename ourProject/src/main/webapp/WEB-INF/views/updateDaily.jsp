@@ -35,7 +35,7 @@
                 <textarea class="form-control" id="diaryText" name="diaryText" rows="4" required>${diary.diaryText}</textarea>
             </div>
             <button type="submit" class="btn btn-primary">수정 완료</button>
-            <a href="./" class="btn btn-secondary">취소</a>
+            <a href="./?userId<%=member.getUserId() %>" class="btn btn-secondary">취소</a>
         </form>
     </div>
 
