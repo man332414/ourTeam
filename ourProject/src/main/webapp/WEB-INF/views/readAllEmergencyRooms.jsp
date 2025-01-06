@@ -139,10 +139,10 @@
                             <a href="<c:url value="/emergencys/${room.number}" />"    class="btn btn-secondary">상세정보 &raquo;</a>
                             <a href="<c:url value='/emergencys/update?number=${room.number}' />" class="btn btn-warning">수정</a>
                             <button class="btn btn-danger delete-button" data-id="${room.number}">삭제</button> <!-- Ajax 삭제 버튼 -->
-                            <a href="javascript:void(0);" 
-                            onclick="window.open('https://map.kakao.com/link/to/${room.hosName},${room.latitude},${room.longitude}/from/집,35.232058,128.583789', 
-                            		'_blank', 'width=981, height=650')">
-							        목적지 지도보기 </a>
+                            <button class="btn btn-info" onclick="window.open('https://map.kakao.com/link/to/${room.hosName},${room.latitude},${room.longitude}/from/집,35.232058,128.583789', 
+									'_blank', 'width=981, height=650')" color: #32CD32; cursor: pointer; font-size: 16px;">
+							    목적지지도보기&raquo;
+							</button>
                         </div>
                     </div>
                 </div>
