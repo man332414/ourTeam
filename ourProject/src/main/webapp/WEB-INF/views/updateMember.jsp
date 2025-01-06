@@ -57,7 +57,7 @@
 						</form:select></td>
 					</tr>
 					<tr>
-						<td>전화번호 : </td><td><form:input type="number" path="phone" value="${member.getPhone()}" /></td>
+						<td>전화번호 : </td><td><form:input type="tel" path="phone" value="${member.getPhone()}" /></td>
 					</tr>
 					<tr>
 						<td colspan="2" style="text-align:right;border-style: none;">

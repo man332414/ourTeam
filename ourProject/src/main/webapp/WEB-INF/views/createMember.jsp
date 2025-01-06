@@ -1,4 +1,4 @@
-<%@ page session = "false" %>
+h<%@ page session = "false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
@@ -41,9 +41,8 @@
 					<td>
 						<input type="password" id="passwordconfirm" />
 						<input type="hidden" id="pwCheck" value="false" />
-						<span id="pwConfirmInfo" style="display:none; color:red;">비밀번호가 일치하지 않습니다.</span>
+						<span id="pwConfirmInfo" style="display: inline;color: red;right: 30%;top: 36.2%;" class="position-absolute">비밀번호가 일치하지 않습니다.</span>
 					</td>
-				
 				</tr>
 				<tr>
 					<td>E-mail :</td>
