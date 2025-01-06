@@ -63,7 +63,7 @@
 						<td colspan="2" style="text-align:right;border-style: none;">
 							<br>
 							<input type="submit" value="수정" class="btn btn-primary">
-							<button id="delbtn" class="btn btn-danger">삭제</button>
+							<button id="delbtn" class="btn btn-danger">삭제 ${updateSuccess}</button>
 						</td>
 					</tr>
 				</form:form>
@@ -72,6 +72,18 @@
 	</div>	
 	<%@ include file="footer.jsp" %>
 </body>
+<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", updateStatus);
+	
+	function updateStatus()
+	{
+// 		console.log("updateStatus() 입장" + ${updateStatus});
+		if(${updateStatus == "success"})
+			{
+				alert("업데이트 완료했습니다.");
+			}
+	}
+</script>
 <script>
 	let deletebtn = document.querySelector("#delbtn");
 	console.log(deletebtn);
@@ -84,6 +96,7 @@
 		let result = window.confirm("정말 삭제하시겠습니까?");
 		if(result)
 			{
+				e.preventDefault();
 				alert("삭제합니다.")
 				window.location.href = "deleteMember?userId=${member.getUserId()}";
 				

@@ -73,6 +73,6 @@ public class loginController
 	{
 		System.out.println("loginController.logoutSuccess() 입장");
 		System.out.println("------------------------------------------");
-		return "home";
+		return "redirect:/home";
 	}
 }

@@ -9,6 +9,26 @@
     <meta charset="UTF-8">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<link rel="stylesheet" href="/ourProject/resources/css/emergency.css">
+		
+	<!-- Google Web Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+	
     <title>응급실 관리</title>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -56,48 +76,15 @@
     
 </head>
 <body>
-<!--     <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
-<!--         <div class="container"> -->
-<!--             <a class="navbar-brand" href="#">프로젝트 이름</a> -->
-<!--             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> -->
-<!--                 <span class="navbar-toggler-icon"></span> -->
-<!--             </button> -->
-<!--             <div class="collapse navbar-collapse" id="navbarNav"> -->
-<!--                 <ul class="navbar-nav"> -->
-<!--                     <li class="nav-item"> -->
-<!--                         <a class="nav-link" href="index.jsp">홈</a> -->
-<!--                     </li> -->
-<!--                     <li class="nav-item"> -->
-<!--                         <a class="nav-link" href="emergencys">응급실 관리</a> -->
-<!--                     </li> -->
-<!--                     <li class="nav-item"> -->
-<!--                         <a class="nav-link" href="products">출산용품 관리</a> -->
-<!--                     </li> -->
-<!--                     <li class="nav-item"> -->
-<!--                         <a class="nav-link" href="diary">성장일기</a> -->
-<!--                     </li> -->
-<!--                     <li class="nav-item"> -->
-<!--                         <a class="nav-link" href="consultation">상담 요청</a> -->
-<!--                     </li> -->
-<!--                     <li class="nav-item"> -->
-<!--                         <a class="nav-link" href="community">커뮤니티</a> -->
-<!--                     </li> -->
-<!--                     <li class="nav-item"> -->
-<!--                         <a class="nav-link" href="profile">내 정보</a> -->
-<!--                     </li> -->
-<!--                 </ul> -->
-<!--             </div> -->
-<!--         </div> -->
-<!--     </nav> -->
 	<%@ include file="header.jsp" %>
 
-    <div class="container">
+    <div class="container emergency" >
         <div class="mb-4 bg-light rounded-3">
             <div class="container-fluid py-1"><br>
-                <h1 class="display-5 fw-bold">응급실 관리</h1>
+                <h1 class="display-5 fw-bold">응급실 관리(emergencys)</h1>
                 <a href="emergencys/add" class="btn btn-primary">병원 등록</a>
                 <a href="emergencys/addapi" class="btn btn-secondary">병원 등록 API</a>
-                <p class="col-md-8 fs-4">응급실 목록을 확인하세요.</p>
+                <p class="col-md-8 fs-4 display-3">응급실 목록을 확인하세요</p>
             </div>
         </div>
         
@@ -121,7 +108,7 @@
             <c:forEach items="${emergencylist}" var="room">
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body" id="card-body">
                             <h5 class="card-title d-flex justify-content-between">
                              <span>${room.hosName}</span>
 						     <span>ID: ${room.number}</span>

@@ -23,8 +23,8 @@ public class homeController
 	public String goHomedefault(Model model)
 	{
 		System.out.println("homeController.goHomeDefault() 입장");
-		List<Board> boards = boardService.getSomeBoards();
-		model.addAttribute("boards",boards);
+//		List<Board> boards = boardService.getSomeBoards();
+//		model.addAttribute("boards",boards);
 		System.out.println("------------------------------------------");
 
 		return "home";
@@ -34,8 +34,8 @@ public class homeController
 	public String goHome(Model model)
 	{
 		System.out.println("homeController.goHome() 입장");
-		List<Board> boards = boardService.getSomeBoards();
-		model.addAttribute("boards", boards);
+//		List<Board> boards = boardService.getSomeBoards();
+//		model.addAttribute("boards", boards);
 		System.out.println("------------------------------------------");
 
 		return "home";

@@ -54,7 +54,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="travelTime" class="form-label">이동시간 (분)</label>
-                        <input type="number" class="form-control" id="travelTime" name="travelTime" value="${room.travelTime}" >
+                        <input type="datetime" class="form-control" id="travelTime" name="travelTime" value="${room.travelTime}" >
                     </div>
                     <div class="mb-3">
                         <label for="numOfBad" class="form-label">병상수</label>
