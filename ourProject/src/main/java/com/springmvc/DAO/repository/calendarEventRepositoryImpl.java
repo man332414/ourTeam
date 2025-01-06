@@ -26,9 +26,9 @@ public class calendarEventRepositoryImpl implements calendarEventRepository
 	@Override
 	public void setEvent(CalendarEvent event)
 	{
-		System.out.println("calendarEventRepository.setEvent() 입장");
-        String sql = "INSERT INTO CalendarEvent (title, start, end, all_day, description, location, category, created_at, updated_at) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), NOW())";
+		System.out.println("calendarEventRepository.setEvent() 입장" + event.getUserId());
+        String sql = "INSERT INTO CalendarEvent (title, start, end, all_day, description, location, category, userId, created_at, updated_at) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())";
 
         template.update
         (
@@ -38,7 +38,8 @@ public class calendarEventRepositoryImpl implements calendarEventRepository
     		event.isAllDay(),
     		event.getDescription(),
     		event.getLocation(),
-    		event.getCategory()
+    		event.getCategory(),
+    		event.getUserId()
        );
 	}
 

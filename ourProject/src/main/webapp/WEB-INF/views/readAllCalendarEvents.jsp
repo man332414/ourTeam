@@ -15,7 +15,7 @@
 	  padding: 0;
 	  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
 	  font-size: 14px;
-	  background-color: #f8f9fa; /* 배경색 설정 */
+	  background-color: #fefcf8; /* 배경색 설정 */
 	  list-style: none;
 	}
 	
@@ -108,8 +108,16 @@
     </div>
 </div>
 
-	<div class="container" style="padding:140px 0 30px 0;">
-		<div id='calendar'></div>
+	<div style="padding:140px 0 30px 0;">
+		<div class="position-absolute">
+			<ul style="list-style:none;">
+				<li><h2>일정 관리</h2></li>
+				<li><a href="#" class="link-dark" id="eventAdderBtn">일정 추가하기</a></li>
+				<li>일정 모아보기</li>
+				<li>일정 검색하기</li>
+			</ul>
+		</div>
+		<div id='calendar' style="margin:0 0 0 750px; max-height:650px;"></div>
 	</div>
 	<%@ include file="footer.jsp" %>    
 </body>

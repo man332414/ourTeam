@@ -11,7 +11,7 @@
 	<script src="https://kit.fontawesome.com/c53a51a6e0.js" crossorigin="anonymous"></script>
     <style>
         body {
-            background-color: #f8f9fa; /* 배경색 설정 */
+            background-color: #fefcf8; /* 배경색 설정 */
         }
     </style>	
 </head>

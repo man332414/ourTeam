@@ -2,13 +2,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <%@ page session = "false" %>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.springmvc.DTO.Member" %>
 <%@ page pageEncoding="UTF-8"%>
 <header class="header align-items-center fixed-top">
     <div class="container-fluid py-4 position-relative d-flex align-items-center justify-content-between" style="background-image: url(${pageContext.request.contextPath}/resources/images/main_banner.jpg);" id="mainBanner">
-        <h1 style="font-family:montserrat;"><a href="/ourProject" class="text-decoration-none" style="color:#0d6efd;">MombyGrow<span style="color:red;">.</span></a></h1>
+        <h1 style="font-family:montserrat; font-weight:500;"><a href="/ourProject" class="text-decoration-none" style="color:#0d6efd;">MombyGrow<span style="color:red;">.</span></a></h1>
         <nav class="navmenu">
         	<ul class="d-flex justify-content-between" style="list-style: none; margin:0; padding:0; font-family:poppins;">
         		<li>
@@ -42,7 +42,7 @@
 		            <a class="p-2 text-decoration-none link-light" href="/ourProject/calendar">백신접종 일정관리</a>
 	            </li>
            		<li>
-		            <a class="p-2 text-decoration-none link-light" href="/ourProject/emergencys">응급실 보유병원 검색</a>
+		            <a class="p-2 text-decoration-none link-light" href="/ourProject/emergencys">병원 검색</a>
 	            </li>
            		<li>
 		            <a class="p-2 text-decoration-none link-light" href="/ourProject/products">출산/육아용품 체크리스트</a>

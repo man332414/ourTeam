@@ -34,6 +34,7 @@ public class ProductController {
 	@Autowired // 컴포넌트 스캔되어야 함
 	private BuyCheckListService buyCheckListService;
 
+	//클래스 수준 매핑으로 모든 컨텐츠 읽어오기
 	@GetMapping
 	public String requestlistList(Model model) {
 		System.out.println("000.rc : requestlistList 진입");
@@ -51,7 +52,7 @@ public class ProductController {
 //		model.addAttribute(model);
 //		return "readOneProduct";
 //	}
-
+	//하나 읽어오기
 	@GetMapping("/product")
 	public String viewProductDetail(@RequestParam int id, Model model) {
 	    buyCheckList product = buyCheckListService.getbuyCheckListkByNum(id); // 제품 ID로 조회
@@ -59,7 +60,7 @@ public class ProductController {
 	    return "readOneProduct"; // JSP 파일 이름
 	}
 
-
+	//모든 리스트 읽어오기
 	@GetMapping("/all")
 	public ModelAndView requestAllLists() {
 		System.out.println("000.rc requestAlllists : 진입");

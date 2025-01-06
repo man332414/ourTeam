@@ -8,32 +8,15 @@
     <meta charset="UTF-8">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>병원 수정</title>
+    <style>
+        body{
+        	background-color:#fefcf8;
+        }
+    </style>
 </head>
 <body>
-<!--     <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
-<!--         <div class="container"> -->
-<!--             <a class="navbar-brand" href="#">병원 관리</a> -->
-<!--             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> -->
-<!--                 <span class="navbar-toggler-icon"></span> -->
-<!--             </button> -->
-<!--             <div class="collapse navbar-collapse" id="navbarNav"> -->
-<!--                 <ul class="navbar-nav"> -->
-<!--                     <li class="nav-item"> -->
-<!--                         <a class="nav-link" href="home">홈</a> -->
-<!--                     </li> -->
-<!--                     <li class="nav-item"> -->
-<!--                         <a class="nav-link" href="diarys">성장일기 관리</a> -->
-<!--                     </li> -->
-<!--                     <li class="nav-item"> -->
-<!--                         <a class="nav-link" href="products">출산용품 관리</a> -->
-<!--                     </li> -->
-<!--                 </ul> -->
-<!--             </div> -->
-<!--         </div> -->
-<!--     </nav> -->
 	<%@ include file="header.jsp" %>
-
-
+	
     <div class="container mt-4">
         <h1 class="mb-4">병원 수정</h1>
 

@@ -69,10 +69,12 @@ let addEventForm = document.querySelector("#eventForm"); //모달의 핵심 폼
 let eventData = null; // 이벤트 데이터 저장소
 let AjaxUrl = ''; // Ajaxurl 변수 선언 
 let delBtn = document.querySelector("#deleteButton");
+let eventAdderBtn = document.querySelector("#eventAdderBtn");
 
 delBtn.addEventListener("click", deleteFunc);
 closeBtn.addEventListener("click", disappearFunc);
 addEventForm.addEventListener("submit", elementForm);
+eventAdderBtn.addEventListener("click", funcEventAdderBtn);
 
 function disappearFunc()
 {
@@ -200,4 +202,12 @@ function toLocalISOString(date)
 		return date.toISOString().slice(0, 16);
 	}
 	return null;
+}
+
+function funcEventAdderBtn()
+{
+	addEventForm.reset();
+	appearFunc();
+						
+	AjaxUrl='calendar/addevent'; // addevent로 이동		
 }

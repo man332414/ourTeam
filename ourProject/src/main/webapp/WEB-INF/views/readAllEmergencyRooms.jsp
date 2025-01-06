@@ -8,6 +8,7 @@
 <head>
     <meta charset="UTF-8">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/c53a51a6e0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 	<link rel="stylesheet" href="/ourProject/resources/css/emergency.css">
 		
@@ -15,41 +16,18 @@
 	<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet"> 
 
     <!-- Icon Font Stylesheet -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
-	
+    	
     <title>응급실 관리</title>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-   
-	<style>
-    .scroll-top {
-        position: fixed;
-        bottom: 70px; /* 하단에서 위로 위치 조정 */
-        right: 20px;
-        display: none; /* 초기에는 숨김 */
-        z-index: 1000; /* 다른 요소 위에 표시 */
-    }
-    .scroll-bottom {
-        position: fixed;
-        bottom: 20px; /* 하단에서 위치 조정 */
-        right: 20px;
-        display: none; /* 초기에는 숨김 */
-        z-index: 1000; /* 다른 요소 위에 표시 */
-    }
-	</style>
-	
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>	
     
 	<script>
     $(document).ready(function() {
@@ -73,18 +51,23 @@
         });
     });
 	</script>
-    
+    <style>
+        body{
+        	background-color:#fefcf8;
+        }
+    </style>
 </head>
 <body>
 	<%@ include file="header.jsp" %>
 
     <div class="container emergency" >
-        <div class="mb-4 bg-light rounded-3">
+        <div class="mb-4 rounded-3">
             <div class="container-fluid py-1"><br>
-                <h1 class="display-5 fw-bold">응급실 관리(emergencys)</h1>
-                <a href="emergencys/add" class="btn btn-primary">병원 등록</a>
-                <a href="emergencys/addapi" class="btn btn-secondary">병원 등록 API</a>
-                <p class="col-md-8 fs-4 display-3">응급실 목록을 확인하세요</p>
+                <h1 class="display-5 fw-bold">병원 검색</h1>
+	            <sec:authorize access="hasRole('ROLE_ADMIN')">
+	                <a href="emergencys/add" class="btn btn-primary">병원 등록</a>
+	                <a href="emergencys/addapi" class="btn btn-secondary">병원 등록 API</a>
+                </sec:authorize>
             </div>
         </div>
         
@@ -137,9 +120,11 @@
                                 </c:choose>
                             </p>
                             <a href="<c:url value="/emergencys/${room.number}" />"    class="btn btn-secondary">상세정보 &raquo;</a>
-                            <a href="<c:url value='/emergencys/update?number=${room.number}' />" class="btn btn-warning">수정</a>
-                            <button class="btn btn-danger delete-button" data-id="${room.number}">삭제</button> <!-- Ajax 삭제 버튼 -->
-                            <a href="javascript:void(0);" 
+				            <sec:authorize access="hasRole('ROLE_ADMIN')">
+	                            <a href="<c:url value='/emergencys/update?number=${room.number}' />" class="btn btn-warning">수정</a>
+	                            <button class="btn btn-danger delete-button" data-id="${room.number}">삭제</button> <!-- Ajax 삭제 버튼 -->
+                            </sec:authorize>
+                            <a href="javascript:void(0);" class="btn btn-success"
                             onclick="window.open('https://map.kakao.com/link/to/${room.hosName},${room.latitude},${room.longitude}/from/집,35.232058,128.583789', 
                             		'_blank', 'width=981, height=650')">
 							        목적지 지도보기 </a>
@@ -195,5 +180,6 @@
     
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> <!-- Bootstrap JS -->
+    <%@ include file="footer.jsp" %>>
 </body>
 </html>

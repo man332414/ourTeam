@@ -13,6 +13,12 @@
    	<script src="https://kit.fontawesome.com/c53a51a6e0.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
+    <style>
+        body{
+        	background-color:#fefcf8;
+        }
+    </style>
+    
 </head>
 <body>
 	<%@ include file="header.jsp" %>

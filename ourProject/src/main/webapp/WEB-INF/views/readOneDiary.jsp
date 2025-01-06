@@ -10,6 +10,12 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
    	<script src="https://kit.fontawesome.com/c53a51a6e0.js" crossorigin="anonymous"></script>
     <title>성장일기 상세보기</title>
+    <style>
+        body{
+        	background-color:#fefcf8;
+        }
+    </style>
+    
 </head>
 <body>
 	<%@ include file="header.jsp" %>

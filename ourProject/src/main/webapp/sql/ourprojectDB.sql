@@ -39,9 +39,9 @@ CREATE TABLE buychecklist -- 용품 테이블
 
 drop table buychecklist;
 
-INSERT INTO buychecklist VALUES(0, '산모용', '출산','손목보호대', 20000, 2, '인터넷쇼핑몰','현금', null,'yunki');
-INSERT INTO buychecklist VALUES(0, '산모용', '출산','오버나티트', 20000, 10, '인터넷쇼핑몰','현금', null,'yunki');
-INSERT INTO buychecklist VALUES(0, '산모용', '출산','가습기', 100000, 1, '인터넷쇼핑몰','현금', null,'yunki');
+INSERT INTO buychecklist VALUES(0, '산모용', '출산','손목보호대', 20000, 2, '인터넷쇼핑몰','현금', null);
+INSERT INTO buychecklist VALUES(0, '산모용', '출산','오버나티트', 20000, 10, '인터넷쇼핑몰','현금', null);
+INSERT INTO buychecklist VALUES(0, '산모용', '출산','가습기', 100000, 1, '인터넷쇼핑몰','현금', null);
 
 drop table parentingDiary;
 
@@ -57,9 +57,10 @@ CREATE TABLE parentingDiary
     FOREIGN KEY (userId) REFERENCES member(userId) ON DELETE CASCADE -- 외래키 제약조건, 삭제시 Cascade
 );
 
-INSERT INTO parentingDiary VALUES(0, '2024-12-10', '맑음','즐거움', '즐거운 하루','','yunki');
-INSERT INTO parentingDiary VALUES(0, '2024-12-09 13:00:00', '좋음','즐거움', '즐거운 하루','','yunki');
-INSERT INTO parentingDiary VALUES(0, '2024-12-08 13:00:00', '흐림','흐려도 좋음', '날마다 계속되는 즐거운 하루','','yunki');
+select * from parentingdiary;
+INSERT INTO parentingDiary VALUES(0, '2024-12-10', '맑음','즐거움', '즐거운 하루','');
+INSERT INTO parentingDiary VALUES(0, '2024-12-09 13:00:00', '좋음','즐거움', '즐거운 하루','');
+INSERT INTO parentingDiary VALUES(0, '2024-12-08 13:00:00', '흐림','흐려도 좋음', '날마다 계속되는 즐거운 하루','');
 
 
 -- 1. 멤버 테이블
