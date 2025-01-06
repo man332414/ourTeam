@@ -63,7 +63,7 @@ h1, h2, h3 {
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    background-color: #4D65F9;
+    background-color: #9f4efc;
     border: 1px solid var(--bs-secondary) !important;
     color: var(--bs-white) !important;
     position: relative;

@@ -7,6 +7,7 @@
 <html>
 <head>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="stylesheet" href="/ourProject/resources/css/emergency.css">
 <title>병원 등록</title>
 	<style>
         body{
@@ -17,7 +18,7 @@
 <body>
 	<%@ include file="header.jsp"%>
 
-	<div class="container">
+	<div class="container emergency">
 		<div class="float-right"></div>
 		<form:form modelAttribute="NewRoom"
 			action="./add?${_csrf.parameterName}=${_csrf.token}"
