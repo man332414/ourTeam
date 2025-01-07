@@ -1,6 +1,5 @@
 <%@ page session = "false" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="jakarta.servlet.*"%>
 
 <!DOCTYPE html>
 <html>
@@ -39,7 +38,7 @@
             var encodedAddress = encodeURIComponent(address);
             console.log("200.encodedAddress: ", encodedAddress); // 주소 출력
             
-            fetch(`http://localhost:8080/ourProject/getCoordinates?address=${encodedAddress}`)
+            fetch(`http://daurn.cafe23.com/getCoordinates?address=${encodedAddress}`)
                 .then(response => {
             		console.log("310.response: ", response,response.ok);
                 	

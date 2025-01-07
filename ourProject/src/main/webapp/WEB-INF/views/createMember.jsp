@@ -1,5 +1,5 @@
 h<%@ page session = "false" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="jakarta.servlet.*"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
@@ -108,7 +108,7 @@ h<%@ page session = "false" %>
 		let userIdtoJsonify = {"userId" : userId};
 		console.log("userIdtoJsonify : "+userIdtoJsonify);
 		$.ajax({
-	        url: "/ourProject/isDuplicate",
+	        url: "/isDuplicate",
 	        type: "POST",
 	        contentType: "application/json",
 	        data: JSON.stringify(userIdtoJsonify),

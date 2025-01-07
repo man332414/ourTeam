@@ -1,7 +1,6 @@
 <%@ page session = "false" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="jakarta.servlet.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%! int numberOfRows; 
 	int currentPage;
 	%>
@@ -63,12 +62,17 @@
 	        <table class="table table-striped table-hover">
 	            <thead class="thead-white">
 	                <tr>
-	                	<sec:authorize access="hasRole('ROLE_ADMIN')">
+	                	<% if(member != null && member.getRole().equals("ROLE_ADMIN"))
+                    		{
+                   		%>
 		              		<th class="col-1 text-center">
 		              			<label for="number">선택
 		              			<input type="checkbox" id="number"></label>
 	              			</th>
-	                	</sec:authorize>
+						<%
+           	         		}
+                   		%>
+	              			
 	                    <th class="col-1 text-center">순번</th>
 	                    <th class="col-1 text-center">분류</th>
 	                    <th class="col-auto text-center">제목</th>
@@ -79,9 +83,13 @@
 	            <tbody id="resultBody">
 	                <c:forEach var="board" items="${boards}">
 	                    <tr>
-	                    	<sec:authorize access="hasRole('ROLE_ADMIN')">
+	                    	<% if(member != null && member.getRole().equals("ROLE_ADMIN"))
+	                    		{
+                    		%>
 	                    		<td class="col-1 text-center"><input type=checkbox name="number" value="${board.number}"></td>
-                    		</sec:authorize>
+                    		<%
+	                    		}
+                    		%>
 	                        <td class="col-1 text-center"><a href="${board.content}">${board.number}</a></td>
 	                        <td class="col-1 text-center"><a href="${board.content}">${board.category}</a></td>
 	                        <td class="col"><a href="${board.content}">${board.title}</a></td>
@@ -114,19 +122,25 @@
                 }
             %>		
         </div>
-        <sec:authorize access="hasRole('ROLE_ADMIN')">
+        <%
+        	if(member!=null && member.getRole().equals("ROLE_ADMIN"))
+        	{
+        		
+        %>
 	        <div class="d-flex" style="justify-content:space-between">
 	        	<div>
 					<button id="deleteBtn" class="btn btn-danger">삭제</button>
 					<a href="create" class="btn btn-primary">새 글쓰기</a>
 	        	</div>
-				<a href="/ourProject/board/refresh">글 다시 읽어오기</a>
+				<a href="<c:url value="/board/refresh"/>">글 다시 읽어오기</a>
 			</div>
-		</sec:authorize>
+		<%
+        	}
+		%>
     </div>
 	<%@ include file="footer.jsp" %>    
 </body>
-<script type="text/javascript" src="/ourProject/resources/js/(readAllBoards.jsp)searchFunction.js"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/(readAllBoards.jsp)searchFunction.js"/>"></script>
 <script>
 // 	버튼 누르면 제출되는 함수
 	let deleteBtn = document.querySelector("#deleteBtn");

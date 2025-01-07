@@ -62,4 +62,17 @@ public class memberServiceImpl implements memberService
 		return members;
 	}
 
+	@Override
+	public Member getLoginMember(String userId, String password) 
+	{
+		Member member = memberRepository.getMemberById(userId);
+		System.out.println("member id" + member.getUserId());
+		if(member.getPassword().equals(password))
+		{
+			return member;
+		}
+		
+		return null;
+	}
+
 }

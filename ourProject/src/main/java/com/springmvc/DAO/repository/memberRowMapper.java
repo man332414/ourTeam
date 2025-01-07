@@ -26,6 +26,7 @@ public class memberRowMapper implements RowMapper<Member>
 		}
 		member.setTelecom(rs.getString("telecom"));
 		member.setPhone(rs.getString("phone"));
+		member.setRole(rs.getString("role"));
 
 		return member;
 	}

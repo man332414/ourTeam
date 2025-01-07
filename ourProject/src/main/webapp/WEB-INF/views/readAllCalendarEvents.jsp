@@ -1,5 +1,5 @@
 <%@ page session = "false" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="jakarta.servlet.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -121,5 +121,5 @@
 	</div>
 	<%@ include file="footer.jsp" %>    
 </body>
-<script src="/ourProject/resources/js/(readAllCalendarEvents.jsp)fullCalendar.js"></script>
+<script src="<c:url value="/resources/js/(readAllCalendarEvents.jsp)fullCalendar.js"/>"></script>
 </html>

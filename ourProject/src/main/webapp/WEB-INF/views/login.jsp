@@ -1,5 +1,5 @@
 <%@ page session = "false" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="jakarta.servlet.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,14 +35,18 @@
 			</table>
 		</form>
 	</div>
-<script>
-	let error = ${error};
-	console.log("error : "+error);
-	if(error == 'true' || error == true)
-		{
-			alert("아이디 또는 비밀번호를 확인하세요");
-		}
-</script>
 	<%@ include file="footer.jsp" %>
+<script>
+	document.addEventListener("DOMContentLoaded", isError)
+	let error = <%=request.getParameter("error")%>;
+	console.log("error : "+error);
+	function isError()
+	{
+		if(error == 'true' || error == true)
+			{
+				alert("아이디 또는 비밀번호를 확인하세요");
+			}
+	}
+</script>
 </body>
 </html>

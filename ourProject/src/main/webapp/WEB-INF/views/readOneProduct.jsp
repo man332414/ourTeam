@@ -1,5 +1,5 @@
 <%@ page session = "false" %>
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="jakarta.servlet.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
@@ -31,7 +31,7 @@
                         <p class="card-text">상세 설명: ${product.acquisitionPath}</p>
                         <p class="card-text">구매 방법: ${product.acquisitionMethod}</p>
                         <c:if test="${not empty product.fileName}">
-		                    <img src="${pageContext.request.contextPath}/resources/images/${product.fileName}" alt="Product Image" class="img-fluid mb-2" style="max-height: 300px; width: auto;"/>
+		                    <img src="<c:url value="/resources/images/${product.fileName}"/>" alt="Product Image" class="img-fluid mb-2" style="max-height: 300px; width: auto;"/>
 		                </c:if>
                         <a href="../products" class="btn btn-primary">목록으로 돌아가기</a>
                     </div>

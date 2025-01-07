@@ -17,4 +17,6 @@ public interface memberService
 	int isDuplicate(String userId);
 
 	List<Member> readAllMember();
+
+	Member getLoginMember(String userId, String password);
 }

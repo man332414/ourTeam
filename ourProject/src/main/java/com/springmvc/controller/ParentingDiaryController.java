@@ -4,11 +4,8 @@ import java.io.File;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,6 +24,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.springmvc.DTO.parentingDiary;
 import com.springmvc.service.ParentingDiaryService;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping("/diarys")
 public class ParentingDiaryController {
@@ -39,7 +38,7 @@ public class ParentingDiaryController {
 	//public String requestdiaryList(Model model, @RequestParam String userId) {
 		System.out.println("=============================");
 		System.out.println("000.rc : requestdiaryList 진입");
-		String userId = SecurityContextHolder.getContext().getAuthentication().getName();
+		String userId = null; // SecurityContextHolder.getContext().getAuthentication().getName();
 		System.out.println("userId : " + userId);
 
 		List<parentingDiary> list= parentingDiaryService.getALLparentingDiary(userId);

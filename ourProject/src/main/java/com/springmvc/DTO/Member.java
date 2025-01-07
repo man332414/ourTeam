@@ -15,6 +15,7 @@ public class Member
     private LocalDate babyBirthDay;
 	private String telecom;
 	private String phone;
+	private String role;
 
 	public String getUserId() {
 		return userId;
@@ -63,5 +64,11 @@ public class Member
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
 	}
 }

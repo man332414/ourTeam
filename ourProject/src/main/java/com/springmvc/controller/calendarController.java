@@ -1,13 +1,10 @@
 package com.springmvc.controller;
 
-import java.security.Principal;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,7 +46,7 @@ public class calendarController
 	public ResponseEntity<List<CalendarEvent>> getAllEvents(Model model)
 	{
 		System.out.println("calendarController.getAllEvents() 입장");
-		String userId = SecurityContextHolder.getContext().getAuthentication().getName();
+		String userId = null; //SecurityContextHolder.getContext().getAuthentication().getName();
 		System.out.println("userId : " + userId);
 		List<CalendarEvent> jsontypeData = calendarEventService.getAllEvents(userId);
 //		for(CalendarEvent data:jsontypeData)

@@ -4,9 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -20,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.springmvc.DAO.service.memberService;
 import com.springmvc.DTO.Member;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping
@@ -112,7 +112,7 @@ public class memberController
 		System.out.println("memberComtroller.updateMember 입장 : " + member.getUserId());
 		memberService.updateMember(member);
 		model.addAttribute("updateStatus", "success");
-		loginController.loginSuccess(model, req);
+//		loginController.loginSuccess(model, req);
 		System.out.println("------------------------------------------");
 
 		return "redirect:/updateMember?userId="+member.getUserId();

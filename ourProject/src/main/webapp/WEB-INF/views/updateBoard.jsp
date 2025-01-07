@@ -1,5 +1,5 @@
 <%@ page session = "false" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="jakarta.servlet.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
@@ -50,7 +50,7 @@
 					<p>
 					<a href="list" class="btn btn-secondary">목록으로</a>
 					<input type="submit" value="수정하기" class="btn btn-primary">
-					<a href="/ourProject/admin/delete?number=${board.number}" class="btn btn-danger">삭제</a></p>
+					<a href="<c:url value="/admin/delete?number=${board.number}"/>" class="btn btn-danger">삭제</a></p>
 				</div>
 			</form:form>
 		</div>

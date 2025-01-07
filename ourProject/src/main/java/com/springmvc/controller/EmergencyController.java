@@ -4,8 +4,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -26,6 +24,8 @@ import org.w3c.dom.Document;
 import com.springmvc.DTO.emergencyRoom;
 import com.springmvc.api.HospitalListAddOpenAPI;
 import com.springmvc.service.EmergencyService;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 
 @Controller

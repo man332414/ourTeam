@@ -1,6 +1,5 @@
 <%@ page session = "false" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="jakarta.servlet.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,10 +29,16 @@
 				<p style="height:300px">${board.content}</p>
 				<p>
 					<a href="list" class="btn btn-secondary">목록으로</a>
-					<sec:authorize access="hasRole('ROLE_ADMIN')">
-						<a href="/ourProject/board/update?number=${board.number}" class="btn btn-primary">수정</a>
-						<a href="/ourProject/board/delete?number=${board.number}" class="btn btn-danger">삭제</a>
-					</sec:authorize>
+					<%
+						if(member!=null && member.getRole().equals("ROLE_ADMIN"))
+						{
+							
+					%>
+						<a href="<c:url value="/board/update?number=${board.number}"/>" class="btn btn-primary">수정</a>
+						<a href="<c:url value="/board/delete?number=${board.number}"/>" class="btn btn-danger">삭제</a>
+					<%
+						}					
+					%>
 				</p>
 			</div>
 		</div>

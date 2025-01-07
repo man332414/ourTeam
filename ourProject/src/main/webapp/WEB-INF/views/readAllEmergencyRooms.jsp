@@ -1,5 +1,5 @@
 <%@ page session = "false" %>
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="jakarta.servlet.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
@@ -60,14 +60,19 @@
 <body>
 	<%@ include file="header.jsp" %>
 
-    <div class="container emergency" >
+    <div class="container emergency" style="padding:140px 0 30px 0;" >
         <div class="mb-4 rounded-3">
             <div class="container-fluid py-1"><br>
                 <h1 class="display-5 fw-bold">병원 검색</h1>
-	            <sec:authorize access="hasRole('ROLE_ADMIN')">
+	            <% 
+       		     	if(member!=null && member.getRole().equals("ROLE_ADMIN"))
+	            	{
+            	%>
 	                <a href="emergencys/add" class="btn btn-primary">병원 등록</a>
 	                <a href="emergencys/addapi" class="btn btn-secondary">병원 등록 API</a>
-                </sec:authorize>
+                <%
+                	}
+	            %>
             </div>
         </div>
         
@@ -120,11 +125,15 @@
                                 </c:choose>
                             </p>
                             <a href="<c:url value="/emergencys/${room.number}" />"    class="btn btn-secondary">상세정보 &raquo;</a>
-  				            <sec:authorize access="hasRole('ROLE_ADMIN')">
-	                            <a href="<c:url value='/emergencys/update?number=${room.number}' />" class="btn btn-warning">수정</a>
-	                            <button class="btn btn-danger delete-button" data-id="${room.number}">삭제</button> <!-- Ajax 삭제 버튼 -->
-		                    </sec:authorize>
-                            
+					            <% 
+					            	if(member!=null && member.getRole().equals("ROLE_ADMIN"))
+					            	{
+				            	%>
+		                            <a href="<c:url value='/emergencys/update?number=${room.number}' />" class="btn btn-warning">수정</a>
+		                            <button class="btn btn-danger delete-button" data-id="${room.number}">삭제</button> <!-- Ajax 삭제 버튼 -->
+								<%
+									} 
+								%>                            
                             <button class="btn btn-info" onclick="window.open('https://map.kakao.com/link/to/${room.hosName},${room.latitude},${room.longitude}/from/집,35.232058,128.583789', 
 									'_blank', 'width=981, height=650')" color: #32CD32; cursor: pointer; font-size: 16px;">
 							    목적지지도보기&raquo;
