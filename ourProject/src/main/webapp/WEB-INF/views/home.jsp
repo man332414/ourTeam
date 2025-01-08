@@ -23,7 +23,7 @@
 	<section class="overflow-hidden position-relative" style="height: 900px;">
 		<%@ include file="header.jsp" %>
 		<div class="position-absolute" style="padding:80px 0px; left:10%; top:20%; z-index:1000;">
-		    <div class="container ">
+		    <div class="container">
 		    	<div class=" row col-lg-10 text-light">
 				    <h2>환영합니다!</h2>
 			    	<p>엄마와 아이가 함께 성장할 수 있는 서비스를 지향합니다.</p>

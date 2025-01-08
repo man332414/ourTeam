@@ -2,7 +2,8 @@
 	//	full calendar 초기화
 	let calendarEl = document.getElementById('calendar');
 //	console.log(calendarEl);
-	
+	let getAllUrl = './calendar/events?userId=';
+	console.log();
 	let calendar = new FullCalendar.Calendar(calendarEl, {
 		//헤더 생긴거 설정
 		headerToolbar: 
@@ -52,7 +53,7 @@
 		},
 		dayMaxEvents: true, // allow "more" link when too many events
 		initialView: 'dayGridMonth',
-	    events: './calendar/events', // 서버에서 이벤트 가져오기
+	    events: getAllUrl, // 서버에서 이벤트 가져오기
 		navLinks: true, // can click day/week names to navigate views
 		businessHours: true, // display business hours
 		editable: true,
@@ -118,7 +119,8 @@ function eventFormValues(){
 		extendedProps: {
 			description: $('#description').val() || null,
 			location: $('#location').val() || null,
-			category: $('#category').val()
+			category: $('#category').val(),
+			userId: $('#userId').val()
 		}
 	}
 } 
@@ -134,6 +136,7 @@ function eventUpdateForm(eventObj)
 	
 	// 수정 시 모달 폼에 데이터 집어넣기
 	document.querySelector("#id").value = eventObj.id;
+	document.querySelector("#userId").value = eventObj.userId;
 	document.querySelector("#title").value = eventObj.title;
 	console.log("제목 "+eventObj.title);
 	document.querySelector("#start").value = toLocalISOString(eventObj.start);

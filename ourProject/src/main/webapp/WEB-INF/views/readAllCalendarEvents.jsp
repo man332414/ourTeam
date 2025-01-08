@@ -48,11 +48,17 @@
   		width: 500px;
  	}
 </style>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <title>임산부 달력</title>
 </head>
 <body>
 	<%@ include file="header.jsp" %>
+	<%
+	   	if(member!=null)
+	   	{
+	   		String userId = member.getUserId();
+			request.setAttribute("userId" , member.getUserId());
+	   	}
+	%>
 <div id="eventModal">
     <div id="modal-content">
 	    <div class="d-flex justify-content-between">
@@ -61,6 +67,7 @@
 	    </div>
         <form id="eventForm">
             <input type="hidden" id="id">
+            <input type="hidden" id="userId">
             <table class="table-borderless">
                 <tr>
                     <td><label for="title">이벤트 제목 (필수):</label></td>
@@ -109,15 +116,15 @@
 </div>
 
 	<div style="padding:140px 0 30px 0;">
-		<div class="position-absolute">
-			<ul style="list-style:none;">
-				<li><h2>일정 관리</h2></li>
+<!-- 		<div class="position-absolute"> -->
+<!-- 			<ul style="list-style:none;"> -->
+<!-- 				<li><h2>일정 관리</h2></l	i> -->
 				<li><a href="#" class="link-dark" id="eventAdderBtn">일정 추가하기</a></li>
-				<li>일정 모아보기</li>
-				<li>일정 검색하기</li>
-			</ul>
-		</div>
-		<div id='calendar' style="margin:0 0 0 750px; max-height:650px;"></div>
+<!-- 				<li>일정 모아보기</li> -->
+<!-- 				<li>일정 검색하기</li> -->
+<!-- 			</ul> -->
+<!-- 		</div> -->
+		<div id='calendar'><!-- style="margin:0 0 0 750px; max-height:650px;" > --></div>
 	</div>
 	<%@ include file="footer.jsp" %>    
 </body>

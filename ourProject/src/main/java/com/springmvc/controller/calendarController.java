@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.springmvc.DAO.service.calendarEventService;
@@ -24,8 +25,9 @@ public class calendarController
 	calendarEventService calendarEventService;
 
 	@GetMapping
-	public String goCalendar()
+	public String goCalendar(@RequestParam(defaultValue = "null") String userId)
 	{
+		System.out.println("calendarController.goCalendar()입장 : "+userId); 
 		return "readAllCalendarEvents";
 	}
 
@@ -43,10 +45,10 @@ public class calendarController
 	// =================================== 모두 읽어오기 ===================================
 	@GetMapping(value="/events", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public ResponseEntity<List<CalendarEvent>> getAllEvents(Model model)
+	public ResponseEntity<List<CalendarEvent>> getAllEvents(@RequestParam String userId, Model model)
 	{
 		System.out.println("calendarController.getAllEvents() 입장");
-		String userId = null; //SecurityContextHolder.getContext().getAuthentication().getName();
+//		String userId = 11; //SecurityContextHolder.getContext().getAuthentication().getName();
 		System.out.println("userId : " + userId);
 		List<CalendarEvent> jsontypeData = calendarEventService.getAllEvents(userId);
 //		for(CalendarEvent data:jsontypeData)
