@@ -28,12 +28,14 @@
 						<td>아이디 : </td><td><input id="userId" name="userId" value="${member.userId}" class="form-control-plaintext" type="text" style="display: inline;width: auto;"></td>
 					</tr>
 					<tr>
-						<td>비밀번호 : </td><td><form:password path="password" name="password" id="password" minlength="5" /></td>
+						<td>비밀번호 : </td><td><form:password path="password" name="password" id="password"/></td>
 					</tr>
 					<tr>
-						<td>비밀번호 확인 :	</td><td><input type="password" id="passwordconfirm" />
-								<input type="hidden" id="pwCheck" value="false" />
-								<span id="pwConfirmInfo" style="display:none; color:red;">비밀번호가 일치하지 않습니다.</span>
+						<td>비밀번호 확인 :	</td>
+						<td>
+							<input type="password" id="passwordconfirm" />
+							<input type="hidden" id="pwCheck" value="false" />
+							<span id="pwConfirmInfo" style="display:none; color:red; position:absolute;" class="px-3">비밀번호가 일치하지 않습니다.</span>
 						</td>
 					</tr>
 					<tr>

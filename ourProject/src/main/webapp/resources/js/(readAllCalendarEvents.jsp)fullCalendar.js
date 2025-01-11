@@ -2,7 +2,9 @@
 	//	full calendar 초기화
 	let calendarEl = document.getElementById('calendar');
 //	console.log(calendarEl);
-	let getAllUrl = './calendar/events?userId=';
+	let userId = document.querySelector("#userId").value;
+	console.log(userId);
+	let getAllUrl = './calendar/events?userId='+userId;
 	console.log();
 	let calendar = new FullCalendar.Calendar(calendarEl, {
 		//헤더 생긴거 설정
@@ -110,6 +112,7 @@ function appearFunc()
 
 // jQuery의 사용자 입력 데이터 받아오기 기술
 function eventFormValues(){
+	console.log("userId in eventFormValues() "+$('#userId').val());
 	return{			
 		title: $('#title').val(),
 		start: $('#start').val(),

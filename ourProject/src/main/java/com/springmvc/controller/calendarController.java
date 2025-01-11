@@ -35,7 +35,7 @@ public class calendarController
 	@PostMapping("/addevent")
 	public ResponseEntity<String> setEvent(@RequestBody CalendarEvent event)
 	{
-		System.out.println("calendarController.setEvent() 입장 : " + event.getStart());
+		System.out.println("calendarController.setEvent() 입장 : " + event.getLocation());
 		calendarEventService.setEvent(event);
 		System.out.println("------------------------------------------");
 

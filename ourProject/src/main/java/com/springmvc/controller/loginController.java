@@ -45,7 +45,7 @@ public class loginController
 			HttpSession session = req.getSession(true);
 			session.setAttribute("member", member);
 			System.out.println("------------------------------------------");
-			return "redirect:/";
+			return "redirect:/home";
 		}
 		else
 		{
