@@ -52,7 +52,11 @@ public class calendarEventRepositoryImpl implements calendarEventRepository
 		if(userId!=null) 
 		{
 			String sql = "select * from CalendarEvent where userId=?";
-			events = template.query(sql, new Object[] {userId}, new calendarRowMapper());			
+			events = template.query(sql, new Object[] {userId}, new calendarRowMapper());
+//			for(CalendarEvent event:events) 
+//			{
+//				System.out.println(event.getTitle());
+//			}
 		}
 		return events;
 	}

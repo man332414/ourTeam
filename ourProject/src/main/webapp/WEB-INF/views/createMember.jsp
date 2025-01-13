@@ -41,7 +41,7 @@ h<%@ page session = "false" %>
 					<td>
 						<input type="password" id="passwordconfirm" />
 						<input type="hidden" id="pwCheck" value="false" />
-						<span id="pwConfirmInfo" style="display:none; color: red;right: 30%;top: 40%;" class="position-absolute">비밀번호가 일치하지 않습니다.</span>
+						<span id="pwConfirmInfo" style="display: inline; color: red; right: 23%; top: 43%;" class="position-absolute">비밀번호가 일치하지 않습니다.</span>
 					</td>
 				</tr>
 				<tr>
@@ -108,7 +108,7 @@ h<%@ page session = "false" %>
 		let userIdtoJsonify = {"userId" : userId};
 		console.log("userIdtoJsonify : "+userIdtoJsonify);
 		$.ajax({
-	        url: "/isDuplicate",
+	        url: "isDuplicate",
 	        type: "POST",
 	        contentType: "application/json",
 	        data: JSON.stringify(userIdtoJsonify),

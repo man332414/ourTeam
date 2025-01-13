@@ -67,7 +67,10 @@
 	    </div>
             <input type="hidden" id="id">
         <form id="eventForm">
-            <input type="hidden" id="userId" value="<%=member.getUserId()%>">
+            <input type="hidden" id="userId" value="<% if(member != null)
+											            {
+            												out.print(member.getUserId());
+            											}%>">
             <table class="table-borderless">
                 <tr>
                     <td><label for="title">이벤트 제목 (필수):</label></td>
