@@ -40,6 +40,7 @@
 			appearFunc();
 			eventUpdateForm(eventObj);
 			// 사용자가 수정을 누르면 데이터 폼이 ajax로 보낼 준비하고
+//			delBtn.style.display='none';
 			AjaxUrl='calendar/updateevent'; // updateevent로 이동
 		},
 		// 일정 드래그 시 일정 변경 저장
@@ -119,12 +120,12 @@ function eventFormValues(){
 		end: $('#end').val() ? $('#end').val() : null,
 		allDay: $('#allDay').is(':checked'),
 		id: $('#id').val() || null,
-		extendedProps: {
+//		extendedProps: {
 			description: $('#description').val() || null,
 			location: $('#location').val() || null,
 			category: $('#category').val(),
 			userId: $('#userId').val()
-		}
+//		}
 	}
 } 
 	
@@ -139,7 +140,7 @@ function eventUpdateForm(eventObj)
 	
 	// 수정 시 모달 폼에 데이터 집어넣기
 	document.querySelector("#id").value = eventObj.id;
-	document.querySelector("#userId").value = eventObj.userId;
+	document.querySelector("#userId").value = eventObj.extendedProps.userId;
 	document.querySelector("#title").value = eventObj.title;
 	console.log("제목 "+eventObj.title);
 	document.querySelector("#start").value = toLocalISOString(eventObj.start);

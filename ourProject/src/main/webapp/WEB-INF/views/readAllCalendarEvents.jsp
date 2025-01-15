@@ -65,12 +65,12 @@
 	        <h2 id="modalTitle">새 일정 추가</h2>
 		    <button id="closeBtn" type="button" class="btn-close"></button>
 	    </div>
-            <input type="hidden" id="id">
-        <form id="eventForm">
             <input type="hidden" id="userId" value="<% if(member != null)
 											            {
             												out.print(member.getUserId());
             											}%>">
+        <form id="eventForm">
+            <input type="hidden" id="id">
             <table class="table-borderless">
                 <tr>
                     <td><label for="title">이벤트 제목 (필수):</label></td>
@@ -110,7 +110,7 @@
                 <tr>
                     <td colspan="2" style="text-align: right;">
                         <button id="modalSubmitBtn" type="submit" class="btn btn-primary">저장</button>
-                        <button id="deleteButton" type="button" style="display:none;" class="btn btn-danger">삭제</button>
+                        <button id="deleteButton" type="submit" style="display:none;" class="btn btn-danger">삭제</button>
                     </td>
                 </tr>
             </table>
