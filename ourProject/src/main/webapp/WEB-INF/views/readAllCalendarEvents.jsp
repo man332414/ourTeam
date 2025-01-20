@@ -70,7 +70,7 @@
             												out.print(member.getUserId());
             											}%>">
         <form id="eventForm">
-            <input type="hidden" id="id">
+            <input type="hidden" id="eventId">
             <table class="table-borderless">
                 <tr>
                     <td><label for="title">이벤트 제목 (필수):</label></td>

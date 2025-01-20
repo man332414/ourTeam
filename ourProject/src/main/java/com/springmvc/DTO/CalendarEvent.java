@@ -83,15 +83,15 @@ public class CalendarEvent
 	public String getAllProps() 
 	{
 		return
-			"  id='" + id + "," + "\n" +
-	        "  title='" + title + "," + "\n" +
+			"  id=" + id + "," + "\n" +
+	        "  title=" + title + "," + "\n" +
 	        "  start=" + start + "," + "\n" +
 	        "  end=" + end + "," + "\n" +
 	        "  allDay=" + allDay + "," + "\n" +
-	        "  description='" + description + "," + "\n" +
-	        "  location='" + location + "," + "\n" +
-	        "  category='" + category + "," + "\n" +
-	        "  userId='" + userId + "\n";
+	        "  description=" + description + "," + "\n" +
+	        "  location=" + location + "," + "\n" +
+	        "  category=" + category + "," + "\n" +
+	        "  userId=" + userId + "\n";
 	}
 
 }

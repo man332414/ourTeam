@@ -114,12 +114,13 @@ function appearFunc()
 // jQuery의 사용자 입력 데이터 받아오기 기술
 function eventFormValues(){
 	console.log("userId in eventFormValues() "+$('#userId').val());
+	console.log("eventId in eventFormValues() "+$('#eventId').val());
 	return{			
 		title: $('#title').val(),
 		start: $('#start').val(),
 		end: $('#end').val() ? $('#end').val() : null,
 		allDay: $('#allDay').is(':checked'),
-		id: $('#id').val() || null,
+		id: $('#eventId').val() || null,
 //		extendedProps: {
 			description: $('#description').val() || null,
 			location: $('#location').val() || null,
@@ -139,7 +140,7 @@ function eventUpdateForm(eventObj)
 	delBtn.style.display='inline';
 	
 	// 수정 시 모달 폼에 데이터 집어넣기
-	document.querySelector("#id").value = eventObj.id;
+	document.querySelector("#eventId").value = eventObj.id;
 	document.querySelector("#userId").value = eventObj.extendedProps.userId;
 	document.querySelector("#title").value = eventObj.title;
 	console.log("제목 "+eventObj.title);
